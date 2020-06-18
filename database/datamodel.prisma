@@ -1,0 +1,27 @@
+type User {
+    id: ID! @id
+    email: String! @unique
+    name: String
+    password: String!
+    posts: [Post!]! @relation(link: INLINE)
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+}
+
+type Post {
+    id: ID! @id
+    title: String!
+    body: String
+    author: User!
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+}
+
+type Hotel{
+    id: ID! @id
+    hotelName: String!
+    title: String!
+    price: Int!
+    contactNumber: Int!
+    extraBed: Boolean
+}

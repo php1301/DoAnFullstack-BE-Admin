@@ -1,0 +1,81 @@
+type User {
+  id: ID!
+  email: String!
+  post: [Post!]!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Hotel{
+    id: ID!
+    hotelName: String!
+    title: String!
+    price: Int!
+    contactNumber: Int!
+    extraBed: Boolean
+}
+
+type Post {
+  id: ID!
+  title: String!
+  body: String
+  author: User!
+}
+
+input SignUpInput {
+  email: String!
+  password: String!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+input PostInput {
+  title: String!
+  body: String
+}
+
+type AuthPayload {
+  id: ID!
+  email: String!
+}
+
+type Query {
+  post(id: ID!): Post!
+  posts: [Post!]!
+}
+
+type Mutation {
+  signup(signUpInput: SignUpInput): AuthPayload!
+  login(loginInput: LoginInput): AuthPayload!
+  createPost(postInput: PostInput): Post!
+  createHotel(addHotelInput: AddHotelInput):Hotel!
+}
+
+type HotelPhotos {
+  url: String!
+}
+type Location {
+  url: String!
+}
+
+input AddHotelInput {
+  hotelName: String!
+  title: String!
+  pricePerNight: Int!
+  price:Int!
+  # hotelDetails: String!
+  # guest: Int!
+  # beds: Int!
+  # price: Int!
+  # hotelPhotos: [HotelPhotos!]!
+  # location: [Location!]!
+  contactNumber: Int!
+  # wifiAvailability: Boolean
+  # airCondition: Boolean
+  # parking: Boolean
+  # poolAvailability: Boolean
+  extraBed: Boolean
+}
