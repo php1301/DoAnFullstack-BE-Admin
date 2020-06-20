@@ -6,13 +6,66 @@ type User {
   updatedAt: String!
 }
 
-type Hotel{
-    id: ID!
-    hotelName: String!
-    title: String!
-    price: Int!
-    contactNumber: Int!
-    extraBed: Boolean
+type Hotel {
+  id: ID!
+  hotelName: String
+  title: String
+  content: String
+  slug: String
+  price: Int
+  status: Boolean
+  isNegotiable: Boolean
+  propertyType: String
+  condition: String
+  contactNumber: String
+  termsAndCondition: String
+  amenities: [Amenities]
+  image: [Image]
+  location: [Location]
+  gallery: [Gallery]
+  categories: [Categories]
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Amenities {
+  id: ID!
+  guestRoom: Int
+  bedRoom: Int
+  wifiAvailability: Boolean
+  parkingAvailability: Boolean
+  poolAvailability: Boolean
+  airCondition: Boolean
+  extraBedFacility: Boolean
+}
+
+type Image {
+  id: ID!
+  url: String
+}
+type Gallery {
+  id: ID!
+  url: String
+}
+
+type Location {
+  id: ID!
+  lat: String
+  lng: String
+  formattedAddress: String
+  zipcode: String
+  city: String
+  state_long: String
+  state_short: String
+  country_long: String
+  country_short: String
+}
+
+type Categories {
+  id: ID!
+  slug: String
+  name: String
+  image: Image
 }
 
 type Post {
@@ -42,40 +95,68 @@ type AuthPayload {
   email: String!
 }
 
-type Query {
-  post(id: ID!): Post!
-  posts: [Post!]!
-}
-
 type Mutation {
   signup(signUpInput: SignUpInput): AuthPayload!
   login(loginInput: LoginInput): AuthPayload!
   createPost(postInput: PostInput): Post!
-  createHotel(addHotelInput: AddHotelInput):Hotel!
+  createHotel(
+    addHotelInput: AddHotelInput
+    location: [LocationInput]
+    image: [ImageInput]
+    categories: [CategoriesInput]
+  ): Hotel!
+  createLocation(location: LocationInput): Location!
 }
 
 type HotelPhotos {
   url: String!
 }
-type Location {
-  url: String!
+# type Location {
+#   url: String!
+# }
+type Query {
+  amenities: [Amenities!]!
+  image(id:ID!): Hotel!
+  location(id: ID!): Location!
+  locations: [Location]
+  gallery(id:ID!):Gallery!
+  galleries: [Gallery!]!
+  category(id:ID!):Categories!
+  categories:[Categories!]!
 }
-
+input LocationInput {
+  lat: String
+  lng: String
+  formattedAddress: String
+  zipcode: String
+  city: String
+  state_long: String
+  state_short: String
+  country_long: String
+  country_short: String
+}
+input ImageInput {
+  url: String
+}
+input CategoriesInput {
+  slug: String
+  name: String
+  image: ImageInput
+}
 input AddHotelInput {
-  hotelName: String!
-  title: String!
-  pricePerNight: Int!
-  price:Int!
-  # hotelDetails: String!
-  # guest: Int!
-  # beds: Int!
-  # price: Int!
-  # hotelPhotos: [HotelPhotos!]!
-  # location: [Location!]!
-  contactNumber: Int!
-  # wifiAvailability: Boolean
-  # airCondition: Boolean
-  # parking: Boolean
-  # poolAvailability: Boolean
+  hotelName: String
+  pricePerNight: Int
+  hotelDetails: String
+  guest: Int
+  beds: Int
+  price: Int
+  hotelPhotos: [ImageInput]
+  location: [LocationInput]
+  locationDescription: String
+  contactNumber: String
+  wifiAvailability: Boolean
+  airCondition: Boolean
+  parking: Boolean
+  poolAvailability: Boolean
   extraBed: Boolean
 }

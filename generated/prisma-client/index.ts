@@ -16,7 +16,13 @@ export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
 export type Maybe<T> = T | undefined | null;
 
 export interface Exists {
+  amenities: (where?: AmenitiesWhereInput) => Promise<boolean>;
+  categories: (where?: CategoriesWhereInput) => Promise<boolean>;
+  categoryImages: (where?: CategoryImagesWhereInput) => Promise<boolean>;
+  gallery: (where?: GalleryWhereInput) => Promise<boolean>;
   hotel: (where?: HotelWhereInput) => Promise<boolean>;
+  image: (where?: ImageWhereInput) => Promise<boolean>;
+  location: (where?: LocationWhereInput) => Promise<boolean>;
   post: (where?: PostWhereInput) => Promise<boolean>;
   user: (where?: UserWhereInput) => Promise<boolean>;
 }
@@ -40,13 +46,91 @@ export interface Prisma {
    * Queries
    */
 
+  amenities: (where: AmenitiesWhereUniqueInput) => AmenitiesNullablePromise;
+  amenitieses: (args?: {
+    where?: AmenitiesWhereInput;
+    orderBy?: AmenitiesOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Amenities>;
+  amenitiesesConnection: (args?: {
+    where?: AmenitiesWhereInput;
+    orderBy?: AmenitiesOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => AmenitiesConnectionPromise;
+  categories: (where: CategoriesWhereUniqueInput) => CategoriesNullablePromise;
+  categorieses: (args?: {
+    where?: CategoriesWhereInput;
+    orderBy?: CategoriesOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Categories>;
+  categoriesesConnection: (args?: {
+    where?: CategoriesWhereInput;
+    orderBy?: CategoriesOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => CategoriesConnectionPromise;
+  categoryImages: (
+    where: CategoryImagesWhereUniqueInput
+  ) => CategoryImagesNullablePromise;
+  categoryImageses: (args?: {
+    where?: CategoryImagesWhereInput;
+    orderBy?: CategoryImagesOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<CategoryImages>;
+  categoryImagesesConnection: (args?: {
+    where?: CategoryImagesWhereInput;
+    orderBy?: CategoryImagesOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => CategoryImagesConnectionPromise;
+  gallery: (where: GalleryWhereUniqueInput) => GalleryNullablePromise;
+  galleries: (args?: {
+    where?: GalleryWhereInput;
+    orderBy?: GalleryOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Gallery>;
+  galleriesConnection: (args?: {
+    where?: GalleryWhereInput;
+    orderBy?: GalleryOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => GalleryConnectionPromise;
   hotel: (where: HotelWhereUniqueInput) => HotelNullablePromise;
   hotels: (args?: {
     where?: HotelWhereInput;
     orderBy?: HotelOrderByInput;
     skip?: Int;
-    after?: String;
-    before?: String;
+    after?: string;
+    before?: string;
     first?: Int;
     last?: Int;
   }) => FragmentableArray<Hotel>;
@@ -54,18 +138,56 @@ export interface Prisma {
     where?: HotelWhereInput;
     orderBy?: HotelOrderByInput;
     skip?: Int;
-    after?: String;
-    before?: String;
+    after?: string;
+    before?: string;
     first?: Int;
     last?: Int;
   }) => HotelConnectionPromise;
+  image: (where: ImageWhereUniqueInput) => ImageNullablePromise;
+  images: (args?: {
+    where?: ImageWhereInput;
+    orderBy?: ImageOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Image>;
+  imagesConnection: (args?: {
+    where?: ImageWhereInput;
+    orderBy?: ImageOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => ImageConnectionPromise;
+  location: (where: LocationWhereUniqueInput) => LocationNullablePromise;
+  locations: (args?: {
+    where?: LocationWhereInput;
+    orderBy?: LocationOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Location>;
+  locationsConnection: (args?: {
+    where?: LocationWhereInput;
+    orderBy?: LocationOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => LocationConnectionPromise;
   post: (where: PostWhereUniqueInput) => PostNullablePromise;
   posts: (args?: {
     where?: PostWhereInput;
     orderBy?: PostOrderByInput;
     skip?: Int;
-    after?: String;
-    before?: String;
+    after?: string;
+    before?: string;
     first?: Int;
     last?: Int;
   }) => FragmentableArray<Post>;
@@ -73,8 +195,8 @@ export interface Prisma {
     where?: PostWhereInput;
     orderBy?: PostOrderByInput;
     skip?: Int;
-    after?: String;
-    before?: String;
+    after?: string;
+    before?: string;
     first?: Int;
     last?: Int;
   }) => PostConnectionPromise;
@@ -83,8 +205,8 @@ export interface Prisma {
     where?: UserWhereInput;
     orderBy?: UserOrderByInput;
     skip?: Int;
-    after?: String;
-    before?: String;
+    after?: string;
+    before?: string;
     first?: Int;
     last?: Int;
   }) => FragmentableArray<User>;
@@ -92,8 +214,8 @@ export interface Prisma {
     where?: UserWhereInput;
     orderBy?: UserOrderByInput;
     skip?: Int;
-    after?: String;
-    before?: String;
+    after?: string;
+    before?: string;
     first?: Int;
     last?: Int;
   }) => UserConnectionPromise;
@@ -103,6 +225,76 @@ export interface Prisma {
    * Mutations
    */
 
+  createAmenities: (data: AmenitiesCreateInput) => AmenitiesPromise;
+  updateAmenities: (args: {
+    data: AmenitiesUpdateInput;
+    where: AmenitiesWhereUniqueInput;
+  }) => AmenitiesPromise;
+  updateManyAmenitieses: (args: {
+    data: AmenitiesUpdateManyMutationInput;
+    where?: AmenitiesWhereInput;
+  }) => BatchPayloadPromise;
+  upsertAmenities: (args: {
+    where: AmenitiesWhereUniqueInput;
+    create: AmenitiesCreateInput;
+    update: AmenitiesUpdateInput;
+  }) => AmenitiesPromise;
+  deleteAmenities: (where: AmenitiesWhereUniqueInput) => AmenitiesPromise;
+  deleteManyAmenitieses: (where?: AmenitiesWhereInput) => BatchPayloadPromise;
+  createCategories: (data: CategoriesCreateInput) => CategoriesPromise;
+  updateCategories: (args: {
+    data: CategoriesUpdateInput;
+    where: CategoriesWhereUniqueInput;
+  }) => CategoriesPromise;
+  updateManyCategorieses: (args: {
+    data: CategoriesUpdateManyMutationInput;
+    where?: CategoriesWhereInput;
+  }) => BatchPayloadPromise;
+  upsertCategories: (args: {
+    where: CategoriesWhereUniqueInput;
+    create: CategoriesCreateInput;
+    update: CategoriesUpdateInput;
+  }) => CategoriesPromise;
+  deleteCategories: (where: CategoriesWhereUniqueInput) => CategoriesPromise;
+  deleteManyCategorieses: (where?: CategoriesWhereInput) => BatchPayloadPromise;
+  createCategoryImages: (
+    data: CategoryImagesCreateInput
+  ) => CategoryImagesPromise;
+  updateCategoryImages: (args: {
+    data: CategoryImagesUpdateInput;
+    where: CategoryImagesWhereUniqueInput;
+  }) => CategoryImagesPromise;
+  updateManyCategoryImageses: (args: {
+    data: CategoryImagesUpdateManyMutationInput;
+    where?: CategoryImagesWhereInput;
+  }) => BatchPayloadPromise;
+  upsertCategoryImages: (args: {
+    where: CategoryImagesWhereUniqueInput;
+    create: CategoryImagesCreateInput;
+    update: CategoryImagesUpdateInput;
+  }) => CategoryImagesPromise;
+  deleteCategoryImages: (
+    where: CategoryImagesWhereUniqueInput
+  ) => CategoryImagesPromise;
+  deleteManyCategoryImageses: (
+    where?: CategoryImagesWhereInput
+  ) => BatchPayloadPromise;
+  createGallery: (data: GalleryCreateInput) => GalleryPromise;
+  updateGallery: (args: {
+    data: GalleryUpdateInput;
+    where: GalleryWhereUniqueInput;
+  }) => GalleryPromise;
+  updateManyGalleries: (args: {
+    data: GalleryUpdateManyMutationInput;
+    where?: GalleryWhereInput;
+  }) => BatchPayloadPromise;
+  upsertGallery: (args: {
+    where: GalleryWhereUniqueInput;
+    create: GalleryCreateInput;
+    update: GalleryUpdateInput;
+  }) => GalleryPromise;
+  deleteGallery: (where: GalleryWhereUniqueInput) => GalleryPromise;
+  deleteManyGalleries: (where?: GalleryWhereInput) => BatchPayloadPromise;
   createHotel: (data: HotelCreateInput) => HotelPromise;
   updateHotel: (args: {
     data: HotelUpdateInput;
@@ -119,6 +311,38 @@ export interface Prisma {
   }) => HotelPromise;
   deleteHotel: (where: HotelWhereUniqueInput) => HotelPromise;
   deleteManyHotels: (where?: HotelWhereInput) => BatchPayloadPromise;
+  createImage: (data: ImageCreateInput) => ImagePromise;
+  updateImage: (args: {
+    data: ImageUpdateInput;
+    where: ImageWhereUniqueInput;
+  }) => ImagePromise;
+  updateManyImages: (args: {
+    data: ImageUpdateManyMutationInput;
+    where?: ImageWhereInput;
+  }) => BatchPayloadPromise;
+  upsertImage: (args: {
+    where: ImageWhereUniqueInput;
+    create: ImageCreateInput;
+    update: ImageUpdateInput;
+  }) => ImagePromise;
+  deleteImage: (where: ImageWhereUniqueInput) => ImagePromise;
+  deleteManyImages: (where?: ImageWhereInput) => BatchPayloadPromise;
+  createLocation: (data: LocationCreateInput) => LocationPromise;
+  updateLocation: (args: {
+    data: LocationUpdateInput;
+    where: LocationWhereUniqueInput;
+  }) => LocationPromise;
+  updateManyLocations: (args: {
+    data: LocationUpdateManyMutationInput;
+    where?: LocationWhereInput;
+  }) => BatchPayloadPromise;
+  upsertLocation: (args: {
+    where: LocationWhereUniqueInput;
+    create: LocationCreateInput;
+    update: LocationUpdateInput;
+  }) => LocationPromise;
+  deleteLocation: (where: LocationWhereUniqueInput) => LocationPromise;
+  deleteManyLocations: (where?: LocationWhereInput) => BatchPayloadPromise;
   createPost: (data: PostCreateInput) => PostPromise;
   updatePost: (args: {
     data: PostUpdateInput;
@@ -160,9 +384,27 @@ export interface Prisma {
 }
 
 export interface Subscription {
+  amenities: (
+    where?: AmenitiesSubscriptionWhereInput
+  ) => AmenitiesSubscriptionPayloadSubscription;
+  categories: (
+    where?: CategoriesSubscriptionWhereInput
+  ) => CategoriesSubscriptionPayloadSubscription;
+  categoryImages: (
+    where?: CategoryImagesSubscriptionWhereInput
+  ) => CategoryImagesSubscriptionPayloadSubscription;
+  gallery: (
+    where?: GallerySubscriptionWhereInput
+  ) => GallerySubscriptionPayloadSubscription;
   hotel: (
     where?: HotelSubscriptionWhereInput
   ) => HotelSubscriptionPayloadSubscription;
+  image: (
+    where?: ImageSubscriptionWhereInput
+  ) => ImageSubscriptionPayloadSubscription;
+  location: (
+    where?: LocationSubscriptionWhereInput
+  ) => LocationSubscriptionPayloadSubscription;
   post: (
     where?: PostSubscriptionWhereInput
   ) => PostSubscriptionPayloadSubscription;
@@ -179,19 +421,101 @@ export interface ClientConstructor<T> {
  * Types
  */
 
+export type AmenitiesOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "guestRoom_ASC"
+  | "guestRoom_DESC"
+  | "bedRoom_ASC"
+  | "bedRoom_DESC"
+  | "wifiAvailability_ASC"
+  | "wifiAvailability_DESC"
+  | "parkingAvailability_ASC"
+  | "parkingAvailability_DESC"
+  | "poolAvailability_ASC"
+  | "poolAvailability_DESC"
+  | "airCondition_ASC"
+  | "airCondition_DESC"
+  | "extraBedFacility_ASC"
+  | "extraBedFacility_DESC";
+
+export type CategoriesOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "slug_ASC"
+  | "slug_DESC"
+  | "name_ASC"
+  | "name_DESC";
+
+export type CategoryImagesOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "url_ASC"
+  | "url_DESC";
+
+export type GalleryOrderByInput = "id_ASC" | "id_DESC" | "url_ASC" | "url_DESC";
+
+export type LocationOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "lat_ASC"
+  | "lat_DESC"
+  | "lng_ASC"
+  | "lng_DESC"
+  | "formattedAddress_ASC"
+  | "formattedAddress_DESC"
+  | "zipcode_ASC"
+  | "zipcode_DESC"
+  | "city_ASC"
+  | "city_DESC"
+  | "state_long_ASC"
+  | "state_long_DESC"
+  | "state_short_ASC"
+  | "state_short_DESC"
+  | "country_long_ASC"
+  | "country_long_DESC"
+  | "country_short_ASC"
+  | "country_short_DESC";
+
 export type HotelOrderByInput =
   | "id_ASC"
   | "id_DESC"
-  | "hotelName_ASC"
-  | "hotelName_DESC"
   | "title_ASC"
   | "title_DESC"
+  | "content_ASC"
+  | "content_DESC"
+  | "slug_ASC"
+  | "slug_DESC"
   | "price_ASC"
   | "price_DESC"
+  | "status_ASC"
+  | "status_DESC"
+  | "isNegotiable_ASC"
+  | "isNegotiable_DESC"
+  | "propertyType_ASC"
+  | "propertyType_DESC"
+  | "condition_ASC"
+  | "condition_DESC"
+  | "rating_ASC"
+  | "rating_DESC"
+  | "ratingCount_ASC"
+  | "ratingCount_DESC"
   | "contactNumber_ASC"
   | "contactNumber_DESC"
-  | "extraBed_ASC"
-  | "extraBed_DESC";
+  | "termsAndCondition_ASC"
+  | "termsAndCondition_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type ImageOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "url_ASC"
+  | "url_DESC"
+  | "thumb_url_ASC"
+  | "thumb_url_DESC";
 
 export type PostOrderByInput =
   | "id_ASC"
@@ -221,9 +545,334 @@ export type UserOrderByInput =
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
+export type AmenitiesWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface AmenitiesWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  guestRoom?: Maybe<Int>;
+  guestRoom_not?: Maybe<Int>;
+  guestRoom_in?: Maybe<Int[] | Int>;
+  guestRoom_not_in?: Maybe<Int[] | Int>;
+  guestRoom_lt?: Maybe<Int>;
+  guestRoom_lte?: Maybe<Int>;
+  guestRoom_gt?: Maybe<Int>;
+  guestRoom_gte?: Maybe<Int>;
+  bedRoom?: Maybe<Int>;
+  bedRoom_not?: Maybe<Int>;
+  bedRoom_in?: Maybe<Int[] | Int>;
+  bedRoom_not_in?: Maybe<Int[] | Int>;
+  bedRoom_lt?: Maybe<Int>;
+  bedRoom_lte?: Maybe<Int>;
+  bedRoom_gt?: Maybe<Int>;
+  bedRoom_gte?: Maybe<Int>;
+  wifiAvailability?: Maybe<boolean>;
+  wifiAvailability_not?: Maybe<boolean>;
+  parkingAvailability?: Maybe<boolean>;
+  parkingAvailability_not?: Maybe<boolean>;
+  poolAvailability?: Maybe<boolean>;
+  poolAvailability_not?: Maybe<boolean>;
+  airCondition?: Maybe<boolean>;
+  airCondition_not?: Maybe<boolean>;
+  extraBedFacility?: Maybe<boolean>;
+  extraBedFacility_not?: Maybe<boolean>;
+  AND?: Maybe<AmenitiesWhereInput[] | AmenitiesWhereInput>;
+  OR?: Maybe<AmenitiesWhereInput[] | AmenitiesWhereInput>;
+  NOT?: Maybe<AmenitiesWhereInput[] | AmenitiesWhereInput>;
+}
+
+export type CategoriesWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface CategoriesWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  slug?: Maybe<string>;
+  slug_not?: Maybe<string>;
+  slug_in?: Maybe<string[] | string>;
+  slug_not_in?: Maybe<string[] | string>;
+  slug_lt?: Maybe<string>;
+  slug_lte?: Maybe<string>;
+  slug_gt?: Maybe<string>;
+  slug_gte?: Maybe<string>;
+  slug_contains?: Maybe<string>;
+  slug_not_contains?: Maybe<string>;
+  slug_starts_with?: Maybe<string>;
+  slug_not_starts_with?: Maybe<string>;
+  slug_ends_with?: Maybe<string>;
+  slug_not_ends_with?: Maybe<string>;
+  name?: Maybe<string>;
+  name_not?: Maybe<string>;
+  name_in?: Maybe<string[] | string>;
+  name_not_in?: Maybe<string[] | string>;
+  name_lt?: Maybe<string>;
+  name_lte?: Maybe<string>;
+  name_gt?: Maybe<string>;
+  name_gte?: Maybe<string>;
+  name_contains?: Maybe<string>;
+  name_not_contains?: Maybe<string>;
+  name_starts_with?: Maybe<string>;
+  name_not_starts_with?: Maybe<string>;
+  name_ends_with?: Maybe<string>;
+  name_not_ends_with?: Maybe<string>;
+  image?: Maybe<CategoryImagesWhereInput>;
+  AND?: Maybe<CategoriesWhereInput[] | CategoriesWhereInput>;
+  OR?: Maybe<CategoriesWhereInput[] | CategoriesWhereInput>;
+  NOT?: Maybe<CategoriesWhereInput[] | CategoriesWhereInput>;
+}
+
+export interface CategoryImagesWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  url?: Maybe<string>;
+  url_not?: Maybe<string>;
+  url_in?: Maybe<string[] | string>;
+  url_not_in?: Maybe<string[] | string>;
+  url_lt?: Maybe<string>;
+  url_lte?: Maybe<string>;
+  url_gt?: Maybe<string>;
+  url_gte?: Maybe<string>;
+  url_contains?: Maybe<string>;
+  url_not_contains?: Maybe<string>;
+  url_starts_with?: Maybe<string>;
+  url_not_starts_with?: Maybe<string>;
+  url_ends_with?: Maybe<string>;
+  url_not_ends_with?: Maybe<string>;
+  AND?: Maybe<CategoryImagesWhereInput[] | CategoryImagesWhereInput>;
+  OR?: Maybe<CategoryImagesWhereInput[] | CategoryImagesWhereInput>;
+  NOT?: Maybe<CategoryImagesWhereInput[] | CategoryImagesWhereInput>;
+}
+
+export type CategoryImagesWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export type GalleryWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface GalleryWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  url?: Maybe<string>;
+  url_not?: Maybe<string>;
+  url_in?: Maybe<string[] | string>;
+  url_not_in?: Maybe<string[] | string>;
+  url_lt?: Maybe<string>;
+  url_lte?: Maybe<string>;
+  url_gt?: Maybe<string>;
+  url_gte?: Maybe<string>;
+  url_contains?: Maybe<string>;
+  url_not_contains?: Maybe<string>;
+  url_starts_with?: Maybe<string>;
+  url_not_starts_with?: Maybe<string>;
+  url_ends_with?: Maybe<string>;
+  url_not_ends_with?: Maybe<string>;
+  AND?: Maybe<GalleryWhereInput[] | GalleryWhereInput>;
+  OR?: Maybe<GalleryWhereInput[] | GalleryWhereInput>;
+  NOT?: Maybe<GalleryWhereInput[] | GalleryWhereInput>;
+}
+
 export type HotelWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
+
+export interface LocationWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  lat?: Maybe<string>;
+  lat_not?: Maybe<string>;
+  lat_in?: Maybe<string[] | string>;
+  lat_not_in?: Maybe<string[] | string>;
+  lat_lt?: Maybe<string>;
+  lat_lte?: Maybe<string>;
+  lat_gt?: Maybe<string>;
+  lat_gte?: Maybe<string>;
+  lat_contains?: Maybe<string>;
+  lat_not_contains?: Maybe<string>;
+  lat_starts_with?: Maybe<string>;
+  lat_not_starts_with?: Maybe<string>;
+  lat_ends_with?: Maybe<string>;
+  lat_not_ends_with?: Maybe<string>;
+  lng?: Maybe<string>;
+  lng_not?: Maybe<string>;
+  lng_in?: Maybe<string[] | string>;
+  lng_not_in?: Maybe<string[] | string>;
+  lng_lt?: Maybe<string>;
+  lng_lte?: Maybe<string>;
+  lng_gt?: Maybe<string>;
+  lng_gte?: Maybe<string>;
+  lng_contains?: Maybe<string>;
+  lng_not_contains?: Maybe<string>;
+  lng_starts_with?: Maybe<string>;
+  lng_not_starts_with?: Maybe<string>;
+  lng_ends_with?: Maybe<string>;
+  lng_not_ends_with?: Maybe<string>;
+  formattedAddress?: Maybe<string>;
+  formattedAddress_not?: Maybe<string>;
+  formattedAddress_in?: Maybe<string[] | string>;
+  formattedAddress_not_in?: Maybe<string[] | string>;
+  formattedAddress_lt?: Maybe<string>;
+  formattedAddress_lte?: Maybe<string>;
+  formattedAddress_gt?: Maybe<string>;
+  formattedAddress_gte?: Maybe<string>;
+  formattedAddress_contains?: Maybe<string>;
+  formattedAddress_not_contains?: Maybe<string>;
+  formattedAddress_starts_with?: Maybe<string>;
+  formattedAddress_not_starts_with?: Maybe<string>;
+  formattedAddress_ends_with?: Maybe<string>;
+  formattedAddress_not_ends_with?: Maybe<string>;
+  zipcode?: Maybe<string>;
+  zipcode_not?: Maybe<string>;
+  zipcode_in?: Maybe<string[] | string>;
+  zipcode_not_in?: Maybe<string[] | string>;
+  zipcode_lt?: Maybe<string>;
+  zipcode_lte?: Maybe<string>;
+  zipcode_gt?: Maybe<string>;
+  zipcode_gte?: Maybe<string>;
+  zipcode_contains?: Maybe<string>;
+  zipcode_not_contains?: Maybe<string>;
+  zipcode_starts_with?: Maybe<string>;
+  zipcode_not_starts_with?: Maybe<string>;
+  zipcode_ends_with?: Maybe<string>;
+  zipcode_not_ends_with?: Maybe<string>;
+  city?: Maybe<string>;
+  city_not?: Maybe<string>;
+  city_in?: Maybe<string[] | string>;
+  city_not_in?: Maybe<string[] | string>;
+  city_lt?: Maybe<string>;
+  city_lte?: Maybe<string>;
+  city_gt?: Maybe<string>;
+  city_gte?: Maybe<string>;
+  city_contains?: Maybe<string>;
+  city_not_contains?: Maybe<string>;
+  city_starts_with?: Maybe<string>;
+  city_not_starts_with?: Maybe<string>;
+  city_ends_with?: Maybe<string>;
+  city_not_ends_with?: Maybe<string>;
+  state_long?: Maybe<string>;
+  state_long_not?: Maybe<string>;
+  state_long_in?: Maybe<string[] | string>;
+  state_long_not_in?: Maybe<string[] | string>;
+  state_long_lt?: Maybe<string>;
+  state_long_lte?: Maybe<string>;
+  state_long_gt?: Maybe<string>;
+  state_long_gte?: Maybe<string>;
+  state_long_contains?: Maybe<string>;
+  state_long_not_contains?: Maybe<string>;
+  state_long_starts_with?: Maybe<string>;
+  state_long_not_starts_with?: Maybe<string>;
+  state_long_ends_with?: Maybe<string>;
+  state_long_not_ends_with?: Maybe<string>;
+  state_short?: Maybe<string>;
+  state_short_not?: Maybe<string>;
+  state_short_in?: Maybe<string[] | string>;
+  state_short_not_in?: Maybe<string[] | string>;
+  state_short_lt?: Maybe<string>;
+  state_short_lte?: Maybe<string>;
+  state_short_gt?: Maybe<string>;
+  state_short_gte?: Maybe<string>;
+  state_short_contains?: Maybe<string>;
+  state_short_not_contains?: Maybe<string>;
+  state_short_starts_with?: Maybe<string>;
+  state_short_not_starts_with?: Maybe<string>;
+  state_short_ends_with?: Maybe<string>;
+  state_short_not_ends_with?: Maybe<string>;
+  country_long?: Maybe<string>;
+  country_long_not?: Maybe<string>;
+  country_long_in?: Maybe<string[] | string>;
+  country_long_not_in?: Maybe<string[] | string>;
+  country_long_lt?: Maybe<string>;
+  country_long_lte?: Maybe<string>;
+  country_long_gt?: Maybe<string>;
+  country_long_gte?: Maybe<string>;
+  country_long_contains?: Maybe<string>;
+  country_long_not_contains?: Maybe<string>;
+  country_long_starts_with?: Maybe<string>;
+  country_long_not_starts_with?: Maybe<string>;
+  country_long_ends_with?: Maybe<string>;
+  country_long_not_ends_with?: Maybe<string>;
+  country_short?: Maybe<string>;
+  country_short_not?: Maybe<string>;
+  country_short_in?: Maybe<string[] | string>;
+  country_short_not_in?: Maybe<string[] | string>;
+  country_short_lt?: Maybe<string>;
+  country_short_lte?: Maybe<string>;
+  country_short_gt?: Maybe<string>;
+  country_short_gte?: Maybe<string>;
+  country_short_contains?: Maybe<string>;
+  country_short_not_contains?: Maybe<string>;
+  country_short_starts_with?: Maybe<string>;
+  country_short_not_starts_with?: Maybe<string>;
+  country_short_ends_with?: Maybe<string>;
+  country_short_not_ends_with?: Maybe<string>;
+  AND?: Maybe<LocationWhereInput[] | LocationWhereInput>;
+  OR?: Maybe<LocationWhereInput[] | LocationWhereInput>;
+  NOT?: Maybe<LocationWhereInput[] | LocationWhereInput>;
+}
 
 export interface HotelWhereInput {
   id?: Maybe<ID_Input>;
@@ -240,34 +889,48 @@ export interface HotelWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  hotelName?: Maybe<String>;
-  hotelName_not?: Maybe<String>;
-  hotelName_in?: Maybe<String[] | String>;
-  hotelName_not_in?: Maybe<String[] | String>;
-  hotelName_lt?: Maybe<String>;
-  hotelName_lte?: Maybe<String>;
-  hotelName_gt?: Maybe<String>;
-  hotelName_gte?: Maybe<String>;
-  hotelName_contains?: Maybe<String>;
-  hotelName_not_contains?: Maybe<String>;
-  hotelName_starts_with?: Maybe<String>;
-  hotelName_not_starts_with?: Maybe<String>;
-  hotelName_ends_with?: Maybe<String>;
-  hotelName_not_ends_with?: Maybe<String>;
-  title?: Maybe<String>;
-  title_not?: Maybe<String>;
-  title_in?: Maybe<String[] | String>;
-  title_not_in?: Maybe<String[] | String>;
-  title_lt?: Maybe<String>;
-  title_lte?: Maybe<String>;
-  title_gt?: Maybe<String>;
-  title_gte?: Maybe<String>;
-  title_contains?: Maybe<String>;
-  title_not_contains?: Maybe<String>;
-  title_starts_with?: Maybe<String>;
-  title_not_starts_with?: Maybe<String>;
-  title_ends_with?: Maybe<String>;
-  title_not_ends_with?: Maybe<String>;
+  title?: Maybe<string>;
+  title_not?: Maybe<string>;
+  title_in?: Maybe<string[] | string>;
+  title_not_in?: Maybe<string[] | string>;
+  title_lt?: Maybe<string>;
+  title_lte?: Maybe<string>;
+  title_gt?: Maybe<string>;
+  title_gte?: Maybe<string>;
+  title_contains?: Maybe<string>;
+  title_not_contains?: Maybe<string>;
+  title_starts_with?: Maybe<string>;
+  title_not_starts_with?: Maybe<string>;
+  title_ends_with?: Maybe<string>;
+  title_not_ends_with?: Maybe<string>;
+  content?: Maybe<string>;
+  content_not?: Maybe<string>;
+  content_in?: Maybe<string[] | string>;
+  content_not_in?: Maybe<string[] | string>;
+  content_lt?: Maybe<string>;
+  content_lte?: Maybe<string>;
+  content_gt?: Maybe<string>;
+  content_gte?: Maybe<string>;
+  content_contains?: Maybe<string>;
+  content_not_contains?: Maybe<string>;
+  content_starts_with?: Maybe<string>;
+  content_not_starts_with?: Maybe<string>;
+  content_ends_with?: Maybe<string>;
+  content_not_ends_with?: Maybe<string>;
+  slug?: Maybe<string>;
+  slug_not?: Maybe<string>;
+  slug_in?: Maybe<string[] | string>;
+  slug_not_in?: Maybe<string[] | string>;
+  slug_lt?: Maybe<string>;
+  slug_lte?: Maybe<string>;
+  slug_gt?: Maybe<string>;
+  slug_gte?: Maybe<string>;
+  slug_contains?: Maybe<string>;
+  slug_not_contains?: Maybe<string>;
+  slug_starts_with?: Maybe<string>;
+  slug_not_starts_with?: Maybe<string>;
+  slug_ends_with?: Maybe<string>;
+  slug_not_ends_with?: Maybe<string>;
   price?: Maybe<Int>;
   price_not?: Maybe<Int>;
   price_in?: Maybe<Int[] | Int>;
@@ -276,20 +939,171 @@ export interface HotelWhereInput {
   price_lte?: Maybe<Int>;
   price_gt?: Maybe<Int>;
   price_gte?: Maybe<Int>;
-  contactNumber?: Maybe<Int>;
-  contactNumber_not?: Maybe<Int>;
-  contactNumber_in?: Maybe<Int[] | Int>;
-  contactNumber_not_in?: Maybe<Int[] | Int>;
-  contactNumber_lt?: Maybe<Int>;
-  contactNumber_lte?: Maybe<Int>;
-  contactNumber_gt?: Maybe<Int>;
-  contactNumber_gte?: Maybe<Int>;
-  extraBed?: Maybe<Boolean>;
-  extraBed_not?: Maybe<Boolean>;
+  status?: Maybe<boolean>;
+  status_not?: Maybe<boolean>;
+  isNegotiable?: Maybe<boolean>;
+  isNegotiable_not?: Maybe<boolean>;
+  propertyType?: Maybe<string>;
+  propertyType_not?: Maybe<string>;
+  propertyType_in?: Maybe<string[] | string>;
+  propertyType_not_in?: Maybe<string[] | string>;
+  propertyType_lt?: Maybe<string>;
+  propertyType_lte?: Maybe<string>;
+  propertyType_gt?: Maybe<string>;
+  propertyType_gte?: Maybe<string>;
+  propertyType_contains?: Maybe<string>;
+  propertyType_not_contains?: Maybe<string>;
+  propertyType_starts_with?: Maybe<string>;
+  propertyType_not_starts_with?: Maybe<string>;
+  propertyType_ends_with?: Maybe<string>;
+  propertyType_not_ends_with?: Maybe<string>;
+  condition?: Maybe<string>;
+  condition_not?: Maybe<string>;
+  condition_in?: Maybe<string[] | string>;
+  condition_not_in?: Maybe<string[] | string>;
+  condition_lt?: Maybe<string>;
+  condition_lte?: Maybe<string>;
+  condition_gt?: Maybe<string>;
+  condition_gte?: Maybe<string>;
+  condition_contains?: Maybe<string>;
+  condition_not_contains?: Maybe<string>;
+  condition_starts_with?: Maybe<string>;
+  condition_not_starts_with?: Maybe<string>;
+  condition_ends_with?: Maybe<string>;
+  condition_not_ends_with?: Maybe<string>;
+  rating?: Maybe<Float>;
+  rating_not?: Maybe<Float>;
+  rating_in?: Maybe<Float[] | Float>;
+  rating_not_in?: Maybe<Float[] | Float>;
+  rating_lt?: Maybe<Float>;
+  rating_lte?: Maybe<Float>;
+  rating_gt?: Maybe<Float>;
+  rating_gte?: Maybe<Float>;
+  ratingCount?: Maybe<Int>;
+  ratingCount_not?: Maybe<Int>;
+  ratingCount_in?: Maybe<Int[] | Int>;
+  ratingCount_not_in?: Maybe<Int[] | Int>;
+  ratingCount_lt?: Maybe<Int>;
+  ratingCount_lte?: Maybe<Int>;
+  ratingCount_gt?: Maybe<Int>;
+  ratingCount_gte?: Maybe<Int>;
+  contactNumber?: Maybe<string>;
+  contactNumber_not?: Maybe<string>;
+  contactNumber_in?: Maybe<string[] | string>;
+  contactNumber_not_in?: Maybe<string[] | string>;
+  contactNumber_lt?: Maybe<string>;
+  contactNumber_lte?: Maybe<string>;
+  contactNumber_gt?: Maybe<string>;
+  contactNumber_gte?: Maybe<string>;
+  contactNumber_contains?: Maybe<string>;
+  contactNumber_not_contains?: Maybe<string>;
+  contactNumber_starts_with?: Maybe<string>;
+  contactNumber_not_starts_with?: Maybe<string>;
+  contactNumber_ends_with?: Maybe<string>;
+  contactNumber_not_ends_with?: Maybe<string>;
+  termsAndCondition?: Maybe<string>;
+  termsAndCondition_not?: Maybe<string>;
+  termsAndCondition_in?: Maybe<string[] | string>;
+  termsAndCondition_not_in?: Maybe<string[] | string>;
+  termsAndCondition_lt?: Maybe<string>;
+  termsAndCondition_lte?: Maybe<string>;
+  termsAndCondition_gt?: Maybe<string>;
+  termsAndCondition_gte?: Maybe<string>;
+  termsAndCondition_contains?: Maybe<string>;
+  termsAndCondition_not_contains?: Maybe<string>;
+  termsAndCondition_starts_with?: Maybe<string>;
+  termsAndCondition_not_starts_with?: Maybe<string>;
+  termsAndCondition_ends_with?: Maybe<string>;
+  termsAndCondition_not_ends_with?: Maybe<string>;
+  amenities_every?: Maybe<AmenitiesWhereInput>;
+  amenities_some?: Maybe<AmenitiesWhereInput>;
+  amenities_none?: Maybe<AmenitiesWhereInput>;
+  image?: Maybe<ImageWhereInput>;
+  location_every?: Maybe<LocationWhereInput>;
+  location_some?: Maybe<LocationWhereInput>;
+  location_none?: Maybe<LocationWhereInput>;
+  gallery_every?: Maybe<GalleryWhereInput>;
+  gallery_some?: Maybe<GalleryWhereInput>;
+  gallery_none?: Maybe<GalleryWhereInput>;
+  categories_every?: Maybe<CategoriesWhereInput>;
+  categories_some?: Maybe<CategoriesWhereInput>;
+  categories_none?: Maybe<CategoriesWhereInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
   AND?: Maybe<HotelWhereInput[] | HotelWhereInput>;
   OR?: Maybe<HotelWhereInput[] | HotelWhereInput>;
   NOT?: Maybe<HotelWhereInput[] | HotelWhereInput>;
 }
+
+export interface ImageWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  url?: Maybe<string>;
+  url_not?: Maybe<string>;
+  url_in?: Maybe<string[] | string>;
+  url_not_in?: Maybe<string[] | string>;
+  url_lt?: Maybe<string>;
+  url_lte?: Maybe<string>;
+  url_gt?: Maybe<string>;
+  url_gte?: Maybe<string>;
+  url_contains?: Maybe<string>;
+  url_not_contains?: Maybe<string>;
+  url_starts_with?: Maybe<string>;
+  url_not_starts_with?: Maybe<string>;
+  url_ends_with?: Maybe<string>;
+  url_not_ends_with?: Maybe<string>;
+  thumb_url?: Maybe<string>;
+  thumb_url_not?: Maybe<string>;
+  thumb_url_in?: Maybe<string[] | string>;
+  thumb_url_not_in?: Maybe<string[] | string>;
+  thumb_url_lt?: Maybe<string>;
+  thumb_url_lte?: Maybe<string>;
+  thumb_url_gt?: Maybe<string>;
+  thumb_url_gte?: Maybe<string>;
+  thumb_url_contains?: Maybe<string>;
+  thumb_url_not_contains?: Maybe<string>;
+  thumb_url_starts_with?: Maybe<string>;
+  thumb_url_not_starts_with?: Maybe<string>;
+  thumb_url_ends_with?: Maybe<string>;
+  thumb_url_not_ends_with?: Maybe<string>;
+  AND?: Maybe<ImageWhereInput[] | ImageWhereInput>;
+  OR?: Maybe<ImageWhereInput[] | ImageWhereInput>;
+  NOT?: Maybe<ImageWhereInput[] | ImageWhereInput>;
+}
+
+export type ImageWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export type LocationWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
 
 export type PostWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
@@ -310,34 +1124,34 @@ export interface PostWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  title?: Maybe<String>;
-  title_not?: Maybe<String>;
-  title_in?: Maybe<String[] | String>;
-  title_not_in?: Maybe<String[] | String>;
-  title_lt?: Maybe<String>;
-  title_lte?: Maybe<String>;
-  title_gt?: Maybe<String>;
-  title_gte?: Maybe<String>;
-  title_contains?: Maybe<String>;
-  title_not_contains?: Maybe<String>;
-  title_starts_with?: Maybe<String>;
-  title_not_starts_with?: Maybe<String>;
-  title_ends_with?: Maybe<String>;
-  title_not_ends_with?: Maybe<String>;
-  body?: Maybe<String>;
-  body_not?: Maybe<String>;
-  body_in?: Maybe<String[] | String>;
-  body_not_in?: Maybe<String[] | String>;
-  body_lt?: Maybe<String>;
-  body_lte?: Maybe<String>;
-  body_gt?: Maybe<String>;
-  body_gte?: Maybe<String>;
-  body_contains?: Maybe<String>;
-  body_not_contains?: Maybe<String>;
-  body_starts_with?: Maybe<String>;
-  body_not_starts_with?: Maybe<String>;
-  body_ends_with?: Maybe<String>;
-  body_not_ends_with?: Maybe<String>;
+  title?: Maybe<string>;
+  title_not?: Maybe<string>;
+  title_in?: Maybe<string[] | string>;
+  title_not_in?: Maybe<string[] | string>;
+  title_lt?: Maybe<string>;
+  title_lte?: Maybe<string>;
+  title_gt?: Maybe<string>;
+  title_gte?: Maybe<string>;
+  title_contains?: Maybe<string>;
+  title_not_contains?: Maybe<string>;
+  title_starts_with?: Maybe<string>;
+  title_not_starts_with?: Maybe<string>;
+  title_ends_with?: Maybe<string>;
+  title_not_ends_with?: Maybe<string>;
+  body?: Maybe<string>;
+  body_not?: Maybe<string>;
+  body_in?: Maybe<string[] | string>;
+  body_not_in?: Maybe<string[] | string>;
+  body_lt?: Maybe<string>;
+  body_lte?: Maybe<string>;
+  body_gt?: Maybe<string>;
+  body_gte?: Maybe<string>;
+  body_contains?: Maybe<string>;
+  body_not_contains?: Maybe<string>;
+  body_starts_with?: Maybe<string>;
+  body_not_starts_with?: Maybe<string>;
+  body_ends_with?: Maybe<string>;
+  body_not_ends_with?: Maybe<string>;
   author?: Maybe<UserWhereInput>;
   createdAt?: Maybe<DateTimeInput>;
   createdAt_not?: Maybe<DateTimeInput>;
@@ -375,48 +1189,48 @@ export interface UserWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  email?: Maybe<String>;
-  email_not?: Maybe<String>;
-  email_in?: Maybe<String[] | String>;
-  email_not_in?: Maybe<String[] | String>;
-  email_lt?: Maybe<String>;
-  email_lte?: Maybe<String>;
-  email_gt?: Maybe<String>;
-  email_gte?: Maybe<String>;
-  email_contains?: Maybe<String>;
-  email_not_contains?: Maybe<String>;
-  email_starts_with?: Maybe<String>;
-  email_not_starts_with?: Maybe<String>;
-  email_ends_with?: Maybe<String>;
-  email_not_ends_with?: Maybe<String>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
-  password?: Maybe<String>;
-  password_not?: Maybe<String>;
-  password_in?: Maybe<String[] | String>;
-  password_not_in?: Maybe<String[] | String>;
-  password_lt?: Maybe<String>;
-  password_lte?: Maybe<String>;
-  password_gt?: Maybe<String>;
-  password_gte?: Maybe<String>;
-  password_contains?: Maybe<String>;
-  password_not_contains?: Maybe<String>;
-  password_starts_with?: Maybe<String>;
-  password_not_starts_with?: Maybe<String>;
-  password_ends_with?: Maybe<String>;
-  password_not_ends_with?: Maybe<String>;
+  email?: Maybe<string>;
+  email_not?: Maybe<string>;
+  email_in?: Maybe<string[] | string>;
+  email_not_in?: Maybe<string[] | string>;
+  email_lt?: Maybe<string>;
+  email_lte?: Maybe<string>;
+  email_gt?: Maybe<string>;
+  email_gte?: Maybe<string>;
+  email_contains?: Maybe<string>;
+  email_not_contains?: Maybe<string>;
+  email_starts_with?: Maybe<string>;
+  email_not_starts_with?: Maybe<string>;
+  email_ends_with?: Maybe<string>;
+  email_not_ends_with?: Maybe<string>;
+  name?: Maybe<string>;
+  name_not?: Maybe<string>;
+  name_in?: Maybe<string[] | string>;
+  name_not_in?: Maybe<string[] | string>;
+  name_lt?: Maybe<string>;
+  name_lte?: Maybe<string>;
+  name_gt?: Maybe<string>;
+  name_gte?: Maybe<string>;
+  name_contains?: Maybe<string>;
+  name_not_contains?: Maybe<string>;
+  name_starts_with?: Maybe<string>;
+  name_not_starts_with?: Maybe<string>;
+  name_ends_with?: Maybe<string>;
+  name_not_ends_with?: Maybe<string>;
+  password?: Maybe<string>;
+  password_not?: Maybe<string>;
+  password_in?: Maybe<string[] | string>;
+  password_not_in?: Maybe<string[] | string>;
+  password_lt?: Maybe<string>;
+  password_lte?: Maybe<string>;
+  password_gt?: Maybe<string>;
+  password_gte?: Maybe<string>;
+  password_contains?: Maybe<string>;
+  password_not_contains?: Maybe<string>;
+  password_starts_with?: Maybe<string>;
+  password_not_starts_with?: Maybe<string>;
+  password_ends_with?: Maybe<string>;
+  password_not_ends_with?: Maybe<string>;
   posts_every?: Maybe<PostWhereInput>;
   posts_some?: Maybe<PostWhereInput>;
   posts_none?: Maybe<PostWhereInput>;
@@ -443,38 +1257,749 @@ export interface UserWhereInput {
 
 export type UserWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
-  email?: Maybe<String>;
+  email?: Maybe<string>;
 }>;
+
+export interface AmenitiesCreateInput {
+  id?: Maybe<ID_Input>;
+  guestRoom?: Maybe<Int>;
+  bedRoom?: Maybe<Int>;
+  wifiAvailability?: Maybe<boolean>;
+  parkingAvailability?: Maybe<boolean>;
+  poolAvailability?: Maybe<boolean>;
+  airCondition?: Maybe<boolean>;
+  extraBedFacility?: Maybe<boolean>;
+}
+
+export interface AmenitiesUpdateInput {
+  guestRoom?: Maybe<Int>;
+  bedRoom?: Maybe<Int>;
+  wifiAvailability?: Maybe<boolean>;
+  parkingAvailability?: Maybe<boolean>;
+  poolAvailability?: Maybe<boolean>;
+  airCondition?: Maybe<boolean>;
+  extraBedFacility?: Maybe<boolean>;
+}
+
+export interface AmenitiesUpdateManyMutationInput {
+  guestRoom?: Maybe<Int>;
+  bedRoom?: Maybe<Int>;
+  wifiAvailability?: Maybe<boolean>;
+  parkingAvailability?: Maybe<boolean>;
+  poolAvailability?: Maybe<boolean>;
+  airCondition?: Maybe<boolean>;
+  extraBedFacility?: Maybe<boolean>;
+}
+
+export interface CategoriesCreateInput {
+  id?: Maybe<ID_Input>;
+  slug?: Maybe<string>;
+  name?: Maybe<string>;
+  image?: Maybe<CategoryImagesCreateOneInput>;
+}
+
+export interface CategoryImagesCreateOneInput {
+  create?: Maybe<CategoryImagesCreateInput>;
+  connect?: Maybe<CategoryImagesWhereUniqueInput>;
+}
+
+export interface CategoryImagesCreateInput {
+  id?: Maybe<ID_Input>;
+  url?: Maybe<string>;
+}
+
+export interface CategoriesUpdateInput {
+  slug?: Maybe<string>;
+  name?: Maybe<string>;
+  image?: Maybe<CategoryImagesUpdateOneInput>;
+}
+
+export interface CategoryImagesUpdateOneInput {
+  create?: Maybe<CategoryImagesCreateInput>;
+  update?: Maybe<CategoryImagesUpdateDataInput>;
+  upsert?: Maybe<CategoryImagesUpsertNestedInput>;
+  delete?: Maybe<boolean>;
+  disconnect?: Maybe<boolean>;
+  connect?: Maybe<CategoryImagesWhereUniqueInput>;
+}
+
+export interface CategoryImagesUpdateDataInput {
+  url?: Maybe<string>;
+}
+
+export interface CategoryImagesUpsertNestedInput {
+  update: CategoryImagesUpdateDataInput;
+  create: CategoryImagesCreateInput;
+}
+
+export interface CategoriesUpdateManyMutationInput {
+  slug?: Maybe<string>;
+  name?: Maybe<string>;
+}
+
+export interface CategoryImagesUpdateInput {
+  url?: Maybe<string>;
+}
+
+export interface CategoryImagesUpdateManyMutationInput {
+  url?: Maybe<string>;
+}
+
+export interface GalleryCreateInput {
+  id?: Maybe<ID_Input>;
+  url?: Maybe<string>;
+}
+
+export interface GalleryUpdateInput {
+  url?: Maybe<string>;
+}
+
+export interface GalleryUpdateManyMutationInput {
+  url?: Maybe<string>;
+}
 
 export interface HotelCreateInput {
   id?: Maybe<ID_Input>;
-  hotelName: String;
-  title: String;
-  price: Int;
-  contactNumber: Int;
-  extraBed?: Maybe<Boolean>;
+  title: string;
+  content?: Maybe<string>;
+  slug?: Maybe<string>;
+  price?: Maybe<Int>;
+  status?: Maybe<boolean>;
+  isNegotiable?: Maybe<boolean>;
+  propertyType?: Maybe<string>;
+  condition?: Maybe<string>;
+  rating?: Maybe<Float>;
+  ratingCount?: Maybe<Int>;
+  contactNumber?: Maybe<string>;
+  termsAndCondition?: Maybe<string>;
+  amenities?: Maybe<AmenitiesCreateManyInput>;
+  image?: Maybe<ImageCreateOneInput>;
+  location?: Maybe<LocationCreateManyInput>;
+  gallery?: Maybe<GalleryCreateManyInput>;
+  categories?: Maybe<CategoriesCreateManyInput>;
+}
+
+export interface AmenitiesCreateManyInput {
+  create?: Maybe<AmenitiesCreateInput[] | AmenitiesCreateInput>;
+  connect?: Maybe<AmenitiesWhereUniqueInput[] | AmenitiesWhereUniqueInput>;
+}
+
+export interface ImageCreateOneInput {
+  create?: Maybe<ImageCreateInput>;
+  connect?: Maybe<ImageWhereUniqueInput>;
+}
+
+export interface ImageCreateInput {
+  id?: Maybe<ID_Input>;
+  url?: Maybe<string>;
+  thumb_url?: Maybe<string>;
+}
+
+export interface LocationCreateManyInput {
+  create?: Maybe<LocationCreateInput[] | LocationCreateInput>;
+  connect?: Maybe<LocationWhereUniqueInput[] | LocationWhereUniqueInput>;
+}
+
+export interface LocationCreateInput {
+  id?: Maybe<ID_Input>;
+  lat?: Maybe<string>;
+  lng?: Maybe<string>;
+  formattedAddress?: Maybe<string>;
+  zipcode?: Maybe<string>;
+  city?: Maybe<string>;
+  state_long?: Maybe<string>;
+  state_short?: Maybe<string>;
+  country_long?: Maybe<string>;
+  country_short?: Maybe<string>;
+}
+
+export interface GalleryCreateManyInput {
+  create?: Maybe<GalleryCreateInput[] | GalleryCreateInput>;
+  connect?: Maybe<GalleryWhereUniqueInput[] | GalleryWhereUniqueInput>;
+}
+
+export interface CategoriesCreateManyInput {
+  create?: Maybe<CategoriesCreateInput[] | CategoriesCreateInput>;
+  connect?: Maybe<CategoriesWhereUniqueInput[] | CategoriesWhereUniqueInput>;
 }
 
 export interface HotelUpdateInput {
-  hotelName?: Maybe<String>;
-  title?: Maybe<String>;
+  title?: Maybe<string>;
+  content?: Maybe<string>;
+  slug?: Maybe<string>;
   price?: Maybe<Int>;
-  contactNumber?: Maybe<Int>;
-  extraBed?: Maybe<Boolean>;
+  status?: Maybe<boolean>;
+  isNegotiable?: Maybe<boolean>;
+  propertyType?: Maybe<string>;
+  condition?: Maybe<string>;
+  rating?: Maybe<Float>;
+  ratingCount?: Maybe<Int>;
+  contactNumber?: Maybe<string>;
+  termsAndCondition?: Maybe<string>;
+  amenities?: Maybe<AmenitiesUpdateManyInput>;
+  image?: Maybe<ImageUpdateOneInput>;
+  location?: Maybe<LocationUpdateManyInput>;
+  gallery?: Maybe<GalleryUpdateManyInput>;
+  categories?: Maybe<CategoriesUpdateManyInput>;
+}
+
+export interface AmenitiesUpdateManyInput {
+  create?: Maybe<AmenitiesCreateInput[] | AmenitiesCreateInput>;
+  update?: Maybe<
+    | AmenitiesUpdateWithWhereUniqueNestedInput[]
+    | AmenitiesUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | AmenitiesUpsertWithWhereUniqueNestedInput[]
+    | AmenitiesUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<AmenitiesWhereUniqueInput[] | AmenitiesWhereUniqueInput>;
+  connect?: Maybe<AmenitiesWhereUniqueInput[] | AmenitiesWhereUniqueInput>;
+  set?: Maybe<AmenitiesWhereUniqueInput[] | AmenitiesWhereUniqueInput>;
+  disconnect?: Maybe<AmenitiesWhereUniqueInput[] | AmenitiesWhereUniqueInput>;
+  deleteMany?: Maybe<AmenitiesScalarWhereInput[] | AmenitiesScalarWhereInput>;
+  updateMany?: Maybe<
+    | AmenitiesUpdateManyWithWhereNestedInput[]
+    | AmenitiesUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface AmenitiesUpdateWithWhereUniqueNestedInput {
+  where: AmenitiesWhereUniqueInput;
+  data: AmenitiesUpdateDataInput;
+}
+
+export interface AmenitiesUpdateDataInput {
+  guestRoom?: Maybe<Int>;
+  bedRoom?: Maybe<Int>;
+  wifiAvailability?: Maybe<boolean>;
+  parkingAvailability?: Maybe<boolean>;
+  poolAvailability?: Maybe<boolean>;
+  airCondition?: Maybe<boolean>;
+  extraBedFacility?: Maybe<boolean>;
+}
+
+export interface AmenitiesUpsertWithWhereUniqueNestedInput {
+  where: AmenitiesWhereUniqueInput;
+  update: AmenitiesUpdateDataInput;
+  create: AmenitiesCreateInput;
+}
+
+export interface AmenitiesScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  guestRoom?: Maybe<Int>;
+  guestRoom_not?: Maybe<Int>;
+  guestRoom_in?: Maybe<Int[] | Int>;
+  guestRoom_not_in?: Maybe<Int[] | Int>;
+  guestRoom_lt?: Maybe<Int>;
+  guestRoom_lte?: Maybe<Int>;
+  guestRoom_gt?: Maybe<Int>;
+  guestRoom_gte?: Maybe<Int>;
+  bedRoom?: Maybe<Int>;
+  bedRoom_not?: Maybe<Int>;
+  bedRoom_in?: Maybe<Int[] | Int>;
+  bedRoom_not_in?: Maybe<Int[] | Int>;
+  bedRoom_lt?: Maybe<Int>;
+  bedRoom_lte?: Maybe<Int>;
+  bedRoom_gt?: Maybe<Int>;
+  bedRoom_gte?: Maybe<Int>;
+  wifiAvailability?: Maybe<boolean>;
+  wifiAvailability_not?: Maybe<boolean>;
+  parkingAvailability?: Maybe<boolean>;
+  parkingAvailability_not?: Maybe<boolean>;
+  poolAvailability?: Maybe<boolean>;
+  poolAvailability_not?: Maybe<boolean>;
+  airCondition?: Maybe<boolean>;
+  airCondition_not?: Maybe<boolean>;
+  extraBedFacility?: Maybe<boolean>;
+  extraBedFacility_not?: Maybe<boolean>;
+  AND?: Maybe<AmenitiesScalarWhereInput[] | AmenitiesScalarWhereInput>;
+  OR?: Maybe<AmenitiesScalarWhereInput[] | AmenitiesScalarWhereInput>;
+  NOT?: Maybe<AmenitiesScalarWhereInput[] | AmenitiesScalarWhereInput>;
+}
+
+export interface AmenitiesUpdateManyWithWhereNestedInput {
+  where: AmenitiesScalarWhereInput;
+  data: AmenitiesUpdateManyDataInput;
+}
+
+export interface AmenitiesUpdateManyDataInput {
+  guestRoom?: Maybe<Int>;
+  bedRoom?: Maybe<Int>;
+  wifiAvailability?: Maybe<boolean>;
+  parkingAvailability?: Maybe<boolean>;
+  poolAvailability?: Maybe<boolean>;
+  airCondition?: Maybe<boolean>;
+  extraBedFacility?: Maybe<boolean>;
+}
+
+export interface ImageUpdateOneInput {
+  create?: Maybe<ImageCreateInput>;
+  update?: Maybe<ImageUpdateDataInput>;
+  upsert?: Maybe<ImageUpsertNestedInput>;
+  delete?: Maybe<boolean>;
+  disconnect?: Maybe<boolean>;
+  connect?: Maybe<ImageWhereUniqueInput>;
+}
+
+export interface ImageUpdateDataInput {
+  url?: Maybe<string>;
+  thumb_url?: Maybe<string>;
+}
+
+export interface ImageUpsertNestedInput {
+  update: ImageUpdateDataInput;
+  create: ImageCreateInput;
+}
+
+export interface LocationUpdateManyInput {
+  create?: Maybe<LocationCreateInput[] | LocationCreateInput>;
+  update?: Maybe<
+    | LocationUpdateWithWhereUniqueNestedInput[]
+    | LocationUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | LocationUpsertWithWhereUniqueNestedInput[]
+    | LocationUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<LocationWhereUniqueInput[] | LocationWhereUniqueInput>;
+  connect?: Maybe<LocationWhereUniqueInput[] | LocationWhereUniqueInput>;
+  set?: Maybe<LocationWhereUniqueInput[] | LocationWhereUniqueInput>;
+  disconnect?: Maybe<LocationWhereUniqueInput[] | LocationWhereUniqueInput>;
+  deleteMany?: Maybe<LocationScalarWhereInput[] | LocationScalarWhereInput>;
+  updateMany?: Maybe<
+    | LocationUpdateManyWithWhereNestedInput[]
+    | LocationUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface LocationUpdateWithWhereUniqueNestedInput {
+  where: LocationWhereUniqueInput;
+  data: LocationUpdateDataInput;
+}
+
+export interface LocationUpdateDataInput {
+  lat?: Maybe<string>;
+  lng?: Maybe<string>;
+  formattedAddress?: Maybe<string>;
+  zipcode?: Maybe<string>;
+  city?: Maybe<string>;
+  state_long?: Maybe<string>;
+  state_short?: Maybe<string>;
+  country_long?: Maybe<string>;
+  country_short?: Maybe<string>;
+}
+
+export interface LocationUpsertWithWhereUniqueNestedInput {
+  where: LocationWhereUniqueInput;
+  update: LocationUpdateDataInput;
+  create: LocationCreateInput;
+}
+
+export interface LocationScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  lat?: Maybe<string>;
+  lat_not?: Maybe<string>;
+  lat_in?: Maybe<string[] | string>;
+  lat_not_in?: Maybe<string[] | string>;
+  lat_lt?: Maybe<string>;
+  lat_lte?: Maybe<string>;
+  lat_gt?: Maybe<string>;
+  lat_gte?: Maybe<string>;
+  lat_contains?: Maybe<string>;
+  lat_not_contains?: Maybe<string>;
+  lat_starts_with?: Maybe<string>;
+  lat_not_starts_with?: Maybe<string>;
+  lat_ends_with?: Maybe<string>;
+  lat_not_ends_with?: Maybe<string>;
+  lng?: Maybe<string>;
+  lng_not?: Maybe<string>;
+  lng_in?: Maybe<string[] | string>;
+  lng_not_in?: Maybe<string[] | string>;
+  lng_lt?: Maybe<string>;
+  lng_lte?: Maybe<string>;
+  lng_gt?: Maybe<string>;
+  lng_gte?: Maybe<string>;
+  lng_contains?: Maybe<string>;
+  lng_not_contains?: Maybe<string>;
+  lng_starts_with?: Maybe<string>;
+  lng_not_starts_with?: Maybe<string>;
+  lng_ends_with?: Maybe<string>;
+  lng_not_ends_with?: Maybe<string>;
+  formattedAddress?: Maybe<string>;
+  formattedAddress_not?: Maybe<string>;
+  formattedAddress_in?: Maybe<string[] | string>;
+  formattedAddress_not_in?: Maybe<string[] | string>;
+  formattedAddress_lt?: Maybe<string>;
+  formattedAddress_lte?: Maybe<string>;
+  formattedAddress_gt?: Maybe<string>;
+  formattedAddress_gte?: Maybe<string>;
+  formattedAddress_contains?: Maybe<string>;
+  formattedAddress_not_contains?: Maybe<string>;
+  formattedAddress_starts_with?: Maybe<string>;
+  formattedAddress_not_starts_with?: Maybe<string>;
+  formattedAddress_ends_with?: Maybe<string>;
+  formattedAddress_not_ends_with?: Maybe<string>;
+  zipcode?: Maybe<string>;
+  zipcode_not?: Maybe<string>;
+  zipcode_in?: Maybe<string[] | string>;
+  zipcode_not_in?: Maybe<string[] | string>;
+  zipcode_lt?: Maybe<string>;
+  zipcode_lte?: Maybe<string>;
+  zipcode_gt?: Maybe<string>;
+  zipcode_gte?: Maybe<string>;
+  zipcode_contains?: Maybe<string>;
+  zipcode_not_contains?: Maybe<string>;
+  zipcode_starts_with?: Maybe<string>;
+  zipcode_not_starts_with?: Maybe<string>;
+  zipcode_ends_with?: Maybe<string>;
+  zipcode_not_ends_with?: Maybe<string>;
+  city?: Maybe<string>;
+  city_not?: Maybe<string>;
+  city_in?: Maybe<string[] | string>;
+  city_not_in?: Maybe<string[] | string>;
+  city_lt?: Maybe<string>;
+  city_lte?: Maybe<string>;
+  city_gt?: Maybe<string>;
+  city_gte?: Maybe<string>;
+  city_contains?: Maybe<string>;
+  city_not_contains?: Maybe<string>;
+  city_starts_with?: Maybe<string>;
+  city_not_starts_with?: Maybe<string>;
+  city_ends_with?: Maybe<string>;
+  city_not_ends_with?: Maybe<string>;
+  state_long?: Maybe<string>;
+  state_long_not?: Maybe<string>;
+  state_long_in?: Maybe<string[] | string>;
+  state_long_not_in?: Maybe<string[] | string>;
+  state_long_lt?: Maybe<string>;
+  state_long_lte?: Maybe<string>;
+  state_long_gt?: Maybe<string>;
+  state_long_gte?: Maybe<string>;
+  state_long_contains?: Maybe<string>;
+  state_long_not_contains?: Maybe<string>;
+  state_long_starts_with?: Maybe<string>;
+  state_long_not_starts_with?: Maybe<string>;
+  state_long_ends_with?: Maybe<string>;
+  state_long_not_ends_with?: Maybe<string>;
+  state_short?: Maybe<string>;
+  state_short_not?: Maybe<string>;
+  state_short_in?: Maybe<string[] | string>;
+  state_short_not_in?: Maybe<string[] | string>;
+  state_short_lt?: Maybe<string>;
+  state_short_lte?: Maybe<string>;
+  state_short_gt?: Maybe<string>;
+  state_short_gte?: Maybe<string>;
+  state_short_contains?: Maybe<string>;
+  state_short_not_contains?: Maybe<string>;
+  state_short_starts_with?: Maybe<string>;
+  state_short_not_starts_with?: Maybe<string>;
+  state_short_ends_with?: Maybe<string>;
+  state_short_not_ends_with?: Maybe<string>;
+  country_long?: Maybe<string>;
+  country_long_not?: Maybe<string>;
+  country_long_in?: Maybe<string[] | string>;
+  country_long_not_in?: Maybe<string[] | string>;
+  country_long_lt?: Maybe<string>;
+  country_long_lte?: Maybe<string>;
+  country_long_gt?: Maybe<string>;
+  country_long_gte?: Maybe<string>;
+  country_long_contains?: Maybe<string>;
+  country_long_not_contains?: Maybe<string>;
+  country_long_starts_with?: Maybe<string>;
+  country_long_not_starts_with?: Maybe<string>;
+  country_long_ends_with?: Maybe<string>;
+  country_long_not_ends_with?: Maybe<string>;
+  country_short?: Maybe<string>;
+  country_short_not?: Maybe<string>;
+  country_short_in?: Maybe<string[] | string>;
+  country_short_not_in?: Maybe<string[] | string>;
+  country_short_lt?: Maybe<string>;
+  country_short_lte?: Maybe<string>;
+  country_short_gt?: Maybe<string>;
+  country_short_gte?: Maybe<string>;
+  country_short_contains?: Maybe<string>;
+  country_short_not_contains?: Maybe<string>;
+  country_short_starts_with?: Maybe<string>;
+  country_short_not_starts_with?: Maybe<string>;
+  country_short_ends_with?: Maybe<string>;
+  country_short_not_ends_with?: Maybe<string>;
+  AND?: Maybe<LocationScalarWhereInput[] | LocationScalarWhereInput>;
+  OR?: Maybe<LocationScalarWhereInput[] | LocationScalarWhereInput>;
+  NOT?: Maybe<LocationScalarWhereInput[] | LocationScalarWhereInput>;
+}
+
+export interface LocationUpdateManyWithWhereNestedInput {
+  where: LocationScalarWhereInput;
+  data: LocationUpdateManyDataInput;
+}
+
+export interface LocationUpdateManyDataInput {
+  lat?: Maybe<string>;
+  lng?: Maybe<string>;
+  formattedAddress?: Maybe<string>;
+  zipcode?: Maybe<string>;
+  city?: Maybe<string>;
+  state_long?: Maybe<string>;
+  state_short?: Maybe<string>;
+  country_long?: Maybe<string>;
+  country_short?: Maybe<string>;
+}
+
+export interface GalleryUpdateManyInput {
+  create?: Maybe<GalleryCreateInput[] | GalleryCreateInput>;
+  update?: Maybe<
+    | GalleryUpdateWithWhereUniqueNestedInput[]
+    | GalleryUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | GalleryUpsertWithWhereUniqueNestedInput[]
+    | GalleryUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<GalleryWhereUniqueInput[] | GalleryWhereUniqueInput>;
+  connect?: Maybe<GalleryWhereUniqueInput[] | GalleryWhereUniqueInput>;
+  set?: Maybe<GalleryWhereUniqueInput[] | GalleryWhereUniqueInput>;
+  disconnect?: Maybe<GalleryWhereUniqueInput[] | GalleryWhereUniqueInput>;
+  deleteMany?: Maybe<GalleryScalarWhereInput[] | GalleryScalarWhereInput>;
+  updateMany?: Maybe<
+    | GalleryUpdateManyWithWhereNestedInput[]
+    | GalleryUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface GalleryUpdateWithWhereUniqueNestedInput {
+  where: GalleryWhereUniqueInput;
+  data: GalleryUpdateDataInput;
+}
+
+export interface GalleryUpdateDataInput {
+  url?: Maybe<string>;
+}
+
+export interface GalleryUpsertWithWhereUniqueNestedInput {
+  where: GalleryWhereUniqueInput;
+  update: GalleryUpdateDataInput;
+  create: GalleryCreateInput;
+}
+
+export interface GalleryScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  url?: Maybe<string>;
+  url_not?: Maybe<string>;
+  url_in?: Maybe<string[] | string>;
+  url_not_in?: Maybe<string[] | string>;
+  url_lt?: Maybe<string>;
+  url_lte?: Maybe<string>;
+  url_gt?: Maybe<string>;
+  url_gte?: Maybe<string>;
+  url_contains?: Maybe<string>;
+  url_not_contains?: Maybe<string>;
+  url_starts_with?: Maybe<string>;
+  url_not_starts_with?: Maybe<string>;
+  url_ends_with?: Maybe<string>;
+  url_not_ends_with?: Maybe<string>;
+  AND?: Maybe<GalleryScalarWhereInput[] | GalleryScalarWhereInput>;
+  OR?: Maybe<GalleryScalarWhereInput[] | GalleryScalarWhereInput>;
+  NOT?: Maybe<GalleryScalarWhereInput[] | GalleryScalarWhereInput>;
+}
+
+export interface GalleryUpdateManyWithWhereNestedInput {
+  where: GalleryScalarWhereInput;
+  data: GalleryUpdateManyDataInput;
+}
+
+export interface GalleryUpdateManyDataInput {
+  url?: Maybe<string>;
+}
+
+export interface CategoriesUpdateManyInput {
+  create?: Maybe<CategoriesCreateInput[] | CategoriesCreateInput>;
+  update?: Maybe<
+    | CategoriesUpdateWithWhereUniqueNestedInput[]
+    | CategoriesUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | CategoriesUpsertWithWhereUniqueNestedInput[]
+    | CategoriesUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<CategoriesWhereUniqueInput[] | CategoriesWhereUniqueInput>;
+  connect?: Maybe<CategoriesWhereUniqueInput[] | CategoriesWhereUniqueInput>;
+  set?: Maybe<CategoriesWhereUniqueInput[] | CategoriesWhereUniqueInput>;
+  disconnect?: Maybe<CategoriesWhereUniqueInput[] | CategoriesWhereUniqueInput>;
+  deleteMany?: Maybe<CategoriesScalarWhereInput[] | CategoriesScalarWhereInput>;
+  updateMany?: Maybe<
+    | CategoriesUpdateManyWithWhereNestedInput[]
+    | CategoriesUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface CategoriesUpdateWithWhereUniqueNestedInput {
+  where: CategoriesWhereUniqueInput;
+  data: CategoriesUpdateDataInput;
+}
+
+export interface CategoriesUpdateDataInput {
+  slug?: Maybe<string>;
+  name?: Maybe<string>;
+  image?: Maybe<CategoryImagesUpdateOneInput>;
+}
+
+export interface CategoriesUpsertWithWhereUniqueNestedInput {
+  where: CategoriesWhereUniqueInput;
+  update: CategoriesUpdateDataInput;
+  create: CategoriesCreateInput;
+}
+
+export interface CategoriesScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  slug?: Maybe<string>;
+  slug_not?: Maybe<string>;
+  slug_in?: Maybe<string[] | string>;
+  slug_not_in?: Maybe<string[] | string>;
+  slug_lt?: Maybe<string>;
+  slug_lte?: Maybe<string>;
+  slug_gt?: Maybe<string>;
+  slug_gte?: Maybe<string>;
+  slug_contains?: Maybe<string>;
+  slug_not_contains?: Maybe<string>;
+  slug_starts_with?: Maybe<string>;
+  slug_not_starts_with?: Maybe<string>;
+  slug_ends_with?: Maybe<string>;
+  slug_not_ends_with?: Maybe<string>;
+  name?: Maybe<string>;
+  name_not?: Maybe<string>;
+  name_in?: Maybe<string[] | string>;
+  name_not_in?: Maybe<string[] | string>;
+  name_lt?: Maybe<string>;
+  name_lte?: Maybe<string>;
+  name_gt?: Maybe<string>;
+  name_gte?: Maybe<string>;
+  name_contains?: Maybe<string>;
+  name_not_contains?: Maybe<string>;
+  name_starts_with?: Maybe<string>;
+  name_not_starts_with?: Maybe<string>;
+  name_ends_with?: Maybe<string>;
+  name_not_ends_with?: Maybe<string>;
+  AND?: Maybe<CategoriesScalarWhereInput[] | CategoriesScalarWhereInput>;
+  OR?: Maybe<CategoriesScalarWhereInput[] | CategoriesScalarWhereInput>;
+  NOT?: Maybe<CategoriesScalarWhereInput[] | CategoriesScalarWhereInput>;
+}
+
+export interface CategoriesUpdateManyWithWhereNestedInput {
+  where: CategoriesScalarWhereInput;
+  data: CategoriesUpdateManyDataInput;
+}
+
+export interface CategoriesUpdateManyDataInput {
+  slug?: Maybe<string>;
+  name?: Maybe<string>;
 }
 
 export interface HotelUpdateManyMutationInput {
-  hotelName?: Maybe<String>;
-  title?: Maybe<String>;
+  title?: Maybe<string>;
+  content?: Maybe<string>;
+  slug?: Maybe<string>;
   price?: Maybe<Int>;
-  contactNumber?: Maybe<Int>;
-  extraBed?: Maybe<Boolean>;
+  status?: Maybe<boolean>;
+  isNegotiable?: Maybe<boolean>;
+  propertyType?: Maybe<string>;
+  condition?: Maybe<string>;
+  rating?: Maybe<Float>;
+  ratingCount?: Maybe<Int>;
+  contactNumber?: Maybe<string>;
+  termsAndCondition?: Maybe<string>;
+}
+
+export interface ImageUpdateInput {
+  url?: Maybe<string>;
+  thumb_url?: Maybe<string>;
+}
+
+export interface ImageUpdateManyMutationInput {
+  url?: Maybe<string>;
+  thumb_url?: Maybe<string>;
+}
+
+export interface LocationUpdateInput {
+  lat?: Maybe<string>;
+  lng?: Maybe<string>;
+  formattedAddress?: Maybe<string>;
+  zipcode?: Maybe<string>;
+  city?: Maybe<string>;
+  state_long?: Maybe<string>;
+  state_short?: Maybe<string>;
+  country_long?: Maybe<string>;
+  country_short?: Maybe<string>;
+}
+
+export interface LocationUpdateManyMutationInput {
+  lat?: Maybe<string>;
+  lng?: Maybe<string>;
+  formattedAddress?: Maybe<string>;
+  zipcode?: Maybe<string>;
+  city?: Maybe<string>;
+  state_long?: Maybe<string>;
+  state_short?: Maybe<string>;
+  country_long?: Maybe<string>;
+  country_short?: Maybe<string>;
 }
 
 export interface PostCreateInput {
   id?: Maybe<ID_Input>;
-  title: String;
-  body?: Maybe<String>;
+  title: string;
+  body?: Maybe<string>;
   author: UserCreateOneWithoutPostsInput;
 }
 
@@ -485,14 +2010,14 @@ export interface UserCreateOneWithoutPostsInput {
 
 export interface UserCreateWithoutPostsInput {
   id?: Maybe<ID_Input>;
-  email: String;
-  name?: Maybe<String>;
-  password: String;
+  email: string;
+  name?: Maybe<string>;
+  password: string;
 }
 
 export interface PostUpdateInput {
-  title?: Maybe<String>;
-  body?: Maybe<String>;
+  title?: Maybe<string>;
+  body?: Maybe<string>;
   author?: Maybe<UserUpdateOneRequiredWithoutPostsInput>;
 }
 
@@ -504,9 +2029,9 @@ export interface UserUpdateOneRequiredWithoutPostsInput {
 }
 
 export interface UserUpdateWithoutPostsDataInput {
-  email?: Maybe<String>;
-  name?: Maybe<String>;
-  password?: Maybe<String>;
+  email?: Maybe<string>;
+  name?: Maybe<string>;
+  password?: Maybe<string>;
 }
 
 export interface UserUpsertWithoutPostsInput {
@@ -515,15 +2040,15 @@ export interface UserUpsertWithoutPostsInput {
 }
 
 export interface PostUpdateManyMutationInput {
-  title?: Maybe<String>;
-  body?: Maybe<String>;
+  title?: Maybe<string>;
+  body?: Maybe<string>;
 }
 
 export interface UserCreateInput {
   id?: Maybe<ID_Input>;
-  email: String;
-  name?: Maybe<String>;
-  password: String;
+  email: string;
+  name?: Maybe<string>;
+  password: string;
   posts?: Maybe<PostCreateManyWithoutAuthorInput>;
 }
 
@@ -534,14 +2059,14 @@ export interface PostCreateManyWithoutAuthorInput {
 
 export interface PostCreateWithoutAuthorInput {
   id?: Maybe<ID_Input>;
-  title: String;
-  body?: Maybe<String>;
+  title: string;
+  body?: Maybe<string>;
 }
 
 export interface UserUpdateInput {
-  email?: Maybe<String>;
-  name?: Maybe<String>;
-  password?: Maybe<String>;
+  email?: Maybe<string>;
+  name?: Maybe<string>;
+  password?: Maybe<string>;
   posts?: Maybe<PostUpdateManyWithoutAuthorInput>;
 }
 
@@ -571,8 +2096,8 @@ export interface PostUpdateWithWhereUniqueWithoutAuthorInput {
 }
 
 export interface PostUpdateWithoutAuthorDataInput {
-  title?: Maybe<String>;
-  body?: Maybe<String>;
+  title?: Maybe<string>;
+  body?: Maybe<string>;
 }
 
 export interface PostUpsertWithWhereUniqueWithoutAuthorInput {
@@ -596,34 +2121,34 @@ export interface PostScalarWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  title?: Maybe<String>;
-  title_not?: Maybe<String>;
-  title_in?: Maybe<String[] | String>;
-  title_not_in?: Maybe<String[] | String>;
-  title_lt?: Maybe<String>;
-  title_lte?: Maybe<String>;
-  title_gt?: Maybe<String>;
-  title_gte?: Maybe<String>;
-  title_contains?: Maybe<String>;
-  title_not_contains?: Maybe<String>;
-  title_starts_with?: Maybe<String>;
-  title_not_starts_with?: Maybe<String>;
-  title_ends_with?: Maybe<String>;
-  title_not_ends_with?: Maybe<String>;
-  body?: Maybe<String>;
-  body_not?: Maybe<String>;
-  body_in?: Maybe<String[] | String>;
-  body_not_in?: Maybe<String[] | String>;
-  body_lt?: Maybe<String>;
-  body_lte?: Maybe<String>;
-  body_gt?: Maybe<String>;
-  body_gte?: Maybe<String>;
-  body_contains?: Maybe<String>;
-  body_not_contains?: Maybe<String>;
-  body_starts_with?: Maybe<String>;
-  body_not_starts_with?: Maybe<String>;
-  body_ends_with?: Maybe<String>;
-  body_not_ends_with?: Maybe<String>;
+  title?: Maybe<string>;
+  title_not?: Maybe<string>;
+  title_in?: Maybe<string[] | string>;
+  title_not_in?: Maybe<string[] | string>;
+  title_lt?: Maybe<string>;
+  title_lte?: Maybe<string>;
+  title_gt?: Maybe<string>;
+  title_gte?: Maybe<string>;
+  title_contains?: Maybe<string>;
+  title_not_contains?: Maybe<string>;
+  title_starts_with?: Maybe<string>;
+  title_not_starts_with?: Maybe<string>;
+  title_ends_with?: Maybe<string>;
+  title_not_ends_with?: Maybe<string>;
+  body?: Maybe<string>;
+  body_not?: Maybe<string>;
+  body_in?: Maybe<string[] | string>;
+  body_not_in?: Maybe<string[] | string>;
+  body_lt?: Maybe<string>;
+  body_lte?: Maybe<string>;
+  body_gt?: Maybe<string>;
+  body_gte?: Maybe<string>;
+  body_contains?: Maybe<string>;
+  body_not_contains?: Maybe<string>;
+  body_starts_with?: Maybe<string>;
+  body_not_starts_with?: Maybe<string>;
+  body_ends_with?: Maybe<string>;
+  body_not_ends_with?: Maybe<string>;
   createdAt?: Maybe<DateTimeInput>;
   createdAt_not?: Maybe<DateTimeInput>;
   createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
@@ -651,32 +2176,123 @@ export interface PostUpdateManyWithWhereNestedInput {
 }
 
 export interface PostUpdateManyDataInput {
-  title?: Maybe<String>;
-  body?: Maybe<String>;
+  title?: Maybe<string>;
+  body?: Maybe<string>;
 }
 
 export interface UserUpdateManyMutationInput {
-  email?: Maybe<String>;
-  name?: Maybe<String>;
-  password?: Maybe<String>;
+  email?: Maybe<string>;
+  name?: Maybe<string>;
+  password?: Maybe<string>;
+}
+
+export interface AmenitiesSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<string>;
+  updatedFields_contains_every?: Maybe<string[] | string>;
+  updatedFields_contains_some?: Maybe<string[] | string>;
+  node?: Maybe<AmenitiesWhereInput>;
+  AND?: Maybe<
+    AmenitiesSubscriptionWhereInput[] | AmenitiesSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    AmenitiesSubscriptionWhereInput[] | AmenitiesSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    AmenitiesSubscriptionWhereInput[] | AmenitiesSubscriptionWhereInput
+  >;
+}
+
+export interface CategoriesSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<string>;
+  updatedFields_contains_every?: Maybe<string[] | string>;
+  updatedFields_contains_some?: Maybe<string[] | string>;
+  node?: Maybe<CategoriesWhereInput>;
+  AND?: Maybe<
+    CategoriesSubscriptionWhereInput[] | CategoriesSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    CategoriesSubscriptionWhereInput[] | CategoriesSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    CategoriesSubscriptionWhereInput[] | CategoriesSubscriptionWhereInput
+  >;
+}
+
+export interface CategoryImagesSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<string>;
+  updatedFields_contains_every?: Maybe<string[] | string>;
+  updatedFields_contains_some?: Maybe<string[] | string>;
+  node?: Maybe<CategoryImagesWhereInput>;
+  AND?: Maybe<
+    | CategoryImagesSubscriptionWhereInput[]
+    | CategoryImagesSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    | CategoryImagesSubscriptionWhereInput[]
+    | CategoryImagesSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    | CategoryImagesSubscriptionWhereInput[]
+    | CategoryImagesSubscriptionWhereInput
+  >;
+}
+
+export interface GallerySubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<string>;
+  updatedFields_contains_every?: Maybe<string[] | string>;
+  updatedFields_contains_some?: Maybe<string[] | string>;
+  node?: Maybe<GalleryWhereInput>;
+  AND?: Maybe<GallerySubscriptionWhereInput[] | GallerySubscriptionWhereInput>;
+  OR?: Maybe<GallerySubscriptionWhereInput[] | GallerySubscriptionWhereInput>;
+  NOT?: Maybe<GallerySubscriptionWhereInput[] | GallerySubscriptionWhereInput>;
 }
 
 export interface HotelSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
+  updatedFields_contains?: Maybe<string>;
+  updatedFields_contains_every?: Maybe<string[] | string>;
+  updatedFields_contains_some?: Maybe<string[] | string>;
   node?: Maybe<HotelWhereInput>;
   AND?: Maybe<HotelSubscriptionWhereInput[] | HotelSubscriptionWhereInput>;
   OR?: Maybe<HotelSubscriptionWhereInput[] | HotelSubscriptionWhereInput>;
   NOT?: Maybe<HotelSubscriptionWhereInput[] | HotelSubscriptionWhereInput>;
 }
 
+export interface ImageSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<string>;
+  updatedFields_contains_every?: Maybe<string[] | string>;
+  updatedFields_contains_some?: Maybe<string[] | string>;
+  node?: Maybe<ImageWhereInput>;
+  AND?: Maybe<ImageSubscriptionWhereInput[] | ImageSubscriptionWhereInput>;
+  OR?: Maybe<ImageSubscriptionWhereInput[] | ImageSubscriptionWhereInput>;
+  NOT?: Maybe<ImageSubscriptionWhereInput[] | ImageSubscriptionWhereInput>;
+}
+
+export interface LocationSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<string>;
+  updatedFields_contains_every?: Maybe<string[] | string>;
+  updatedFields_contains_some?: Maybe<string[] | string>;
+  node?: Maybe<LocationWhereInput>;
+  AND?: Maybe<
+    LocationSubscriptionWhereInput[] | LocationSubscriptionWhereInput
+  >;
+  OR?: Maybe<LocationSubscriptionWhereInput[] | LocationSubscriptionWhereInput>;
+  NOT?: Maybe<
+    LocationSubscriptionWhereInput[] | LocationSubscriptionWhereInput
+  >;
+}
+
 export interface PostSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
+  updatedFields_contains?: Maybe<string>;
+  updatedFields_contains_every?: Maybe<string[] | string>;
+  updatedFields_contains_some?: Maybe<string[] | string>;
   node?: Maybe<PostWhereInput>;
   AND?: Maybe<PostSubscriptionWhereInput[] | PostSubscriptionWhereInput>;
   OR?: Maybe<PostSubscriptionWhereInput[] | PostSubscriptionWhereInput>;
@@ -685,9 +2301,9 @@ export interface PostSubscriptionWhereInput {
 
 export interface UserSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
+  updatedFields_contains?: Maybe<string>;
+  updatedFields_contains_every?: Maybe<string[] | string>;
+  updatedFields_contains_some?: Maybe<string[] | string>;
   node?: Maybe<UserWhereInput>;
   AND?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
   OR?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
@@ -698,44 +2314,649 @@ export interface NodeNode {
   id: ID_Output;
 }
 
+export interface Amenities {
+  id: ID_Output;
+  guestRoom?: Int;
+  bedRoom?: Int;
+  wifiAvailability?: boolean;
+  parkingAvailability?: boolean;
+  poolAvailability?: boolean;
+  airCondition?: boolean;
+  extraBedFacility?: boolean;
+}
+
+export interface AmenitiesPromise extends Promise<Amenities>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  guestRoom: () => Promise<Int>;
+  bedRoom: () => Promise<Int>;
+  wifiAvailability: () => Promise<boolean>;
+  parkingAvailability: () => Promise<boolean>;
+  poolAvailability: () => Promise<boolean>;
+  airCondition: () => Promise<boolean>;
+  extraBedFacility: () => Promise<boolean>;
+}
+
+export interface AmenitiesSubscription
+  extends Promise<AsyncIterator<Amenities>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  guestRoom: () => Promise<AsyncIterator<Int>>;
+  bedRoom: () => Promise<AsyncIterator<Int>>;
+  wifiAvailability: () => Promise<AsyncIterator<boolean>>;
+  parkingAvailability: () => Promise<AsyncIterator<boolean>>;
+  poolAvailability: () => Promise<AsyncIterator<boolean>>;
+  airCondition: () => Promise<AsyncIterator<boolean>>;
+  extraBedFacility: () => Promise<AsyncIterator<boolean>>;
+}
+
+export interface AmenitiesNullablePromise
+  extends Promise<Amenities | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  guestRoom: () => Promise<Int>;
+  bedRoom: () => Promise<Int>;
+  wifiAvailability: () => Promise<boolean>;
+  parkingAvailability: () => Promise<boolean>;
+  poolAvailability: () => Promise<boolean>;
+  airCondition: () => Promise<boolean>;
+  extraBedFacility: () => Promise<boolean>;
+}
+
+export interface AmenitiesConnection {
+  pageInfo: PageInfo;
+  edges: AmenitiesEdge[];
+}
+
+export interface AmenitiesConnectionPromise
+  extends Promise<AmenitiesConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<AmenitiesEdge>>() => T;
+  aggregate: <T = AggregateAmenitiesPromise>() => T;
+}
+
+export interface AmenitiesConnectionSubscription
+  extends Promise<AsyncIterator<AmenitiesConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<AmenitiesEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateAmenitiesSubscription>() => T;
+}
+
+export interface PageInfo {
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
+  startCursor?: string;
+  endCursor?: string;
+}
+
+export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
+  hasNextPage: () => Promise<boolean>;
+  hasPreviousPage: () => Promise<boolean>;
+  startCursor: () => Promise<string>;
+  endCursor: () => Promise<string>;
+}
+
+export interface PageInfoSubscription
+  extends Promise<AsyncIterator<PageInfo>>,
+    Fragmentable {
+  hasNextPage: () => Promise<AsyncIterator<boolean>>;
+  hasPreviousPage: () => Promise<AsyncIterator<boolean>>;
+  startCursor: () => Promise<AsyncIterator<string>>;
+  endCursor: () => Promise<AsyncIterator<string>>;
+}
+
+export interface AmenitiesEdge {
+  node: Amenities;
+  cursor: string;
+}
+
+export interface AmenitiesEdgePromise
+  extends Promise<AmenitiesEdge>,
+    Fragmentable {
+  node: <T = AmenitiesPromise>() => T;
+  cursor: () => Promise<string>;
+}
+
+export interface AmenitiesEdgeSubscription
+  extends Promise<AsyncIterator<AmenitiesEdge>>,
+    Fragmentable {
+  node: <T = AmenitiesSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<string>>;
+}
+
+export interface AggregateAmenities {
+  count: Int;
+}
+
+export interface AggregateAmenitiesPromise
+  extends Promise<AggregateAmenities>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateAmenitiesSubscription
+  extends Promise<AsyncIterator<AggregateAmenities>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface Categories {
+  id: ID_Output;
+  slug?: string;
+  name?: string;
+}
+
+export interface CategoriesPromise extends Promise<Categories>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  slug: () => Promise<string>;
+  name: () => Promise<string>;
+  image: <T = CategoryImagesPromise>() => T;
+}
+
+export interface CategoriesSubscription
+  extends Promise<AsyncIterator<Categories>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  slug: () => Promise<AsyncIterator<string>>;
+  name: () => Promise<AsyncIterator<string>>;
+  image: <T = CategoryImagesSubscription>() => T;
+}
+
+export interface CategoriesNullablePromise
+  extends Promise<Categories | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  slug: () => Promise<string>;
+  name: () => Promise<string>;
+  image: <T = CategoryImagesPromise>() => T;
+}
+
+export interface CategoryImages {
+  id: ID_Output;
+  url?: string;
+}
+
+export interface CategoryImagesPromise
+  extends Promise<CategoryImages>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  url: () => Promise<string>;
+}
+
+export interface CategoryImagesSubscription
+  extends Promise<AsyncIterator<CategoryImages>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  url: () => Promise<AsyncIterator<string>>;
+}
+
+export interface CategoryImagesNullablePromise
+  extends Promise<CategoryImages | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  url: () => Promise<string>;
+}
+
+export interface CategoriesConnection {
+  pageInfo: PageInfo;
+  edges: CategoriesEdge[];
+}
+
+export interface CategoriesConnectionPromise
+  extends Promise<CategoriesConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<CategoriesEdge>>() => T;
+  aggregate: <T = AggregateCategoriesPromise>() => T;
+}
+
+export interface CategoriesConnectionSubscription
+  extends Promise<AsyncIterator<CategoriesConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<CategoriesEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateCategoriesSubscription>() => T;
+}
+
+export interface CategoriesEdge {
+  node: Categories;
+  cursor: string;
+}
+
+export interface CategoriesEdgePromise
+  extends Promise<CategoriesEdge>,
+    Fragmentable {
+  node: <T = CategoriesPromise>() => T;
+  cursor: () => Promise<string>;
+}
+
+export interface CategoriesEdgeSubscription
+  extends Promise<AsyncIterator<CategoriesEdge>>,
+    Fragmentable {
+  node: <T = CategoriesSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<string>>;
+}
+
+export interface AggregateCategories {
+  count: Int;
+}
+
+export interface AggregateCategoriesPromise
+  extends Promise<AggregateCategories>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateCategoriesSubscription
+  extends Promise<AsyncIterator<AggregateCategories>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface CategoryImagesConnection {
+  pageInfo: PageInfo;
+  edges: CategoryImagesEdge[];
+}
+
+export interface CategoryImagesConnectionPromise
+  extends Promise<CategoryImagesConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<CategoryImagesEdge>>() => T;
+  aggregate: <T = AggregateCategoryImagesPromise>() => T;
+}
+
+export interface CategoryImagesConnectionSubscription
+  extends Promise<AsyncIterator<CategoryImagesConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<CategoryImagesEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateCategoryImagesSubscription>() => T;
+}
+
+export interface CategoryImagesEdge {
+  node: CategoryImages;
+  cursor: string;
+}
+
+export interface CategoryImagesEdgePromise
+  extends Promise<CategoryImagesEdge>,
+    Fragmentable {
+  node: <T = CategoryImagesPromise>() => T;
+  cursor: () => Promise<string>;
+}
+
+export interface CategoryImagesEdgeSubscription
+  extends Promise<AsyncIterator<CategoryImagesEdge>>,
+    Fragmentable {
+  node: <T = CategoryImagesSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<string>>;
+}
+
+export interface AggregateCategoryImages {
+  count: Int;
+}
+
+export interface AggregateCategoryImagesPromise
+  extends Promise<AggregateCategoryImages>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateCategoryImagesSubscription
+  extends Promise<AsyncIterator<AggregateCategoryImages>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface Gallery {
+  id: ID_Output;
+  url?: string;
+}
+
+export interface GalleryPromise extends Promise<Gallery>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  url: () => Promise<string>;
+}
+
+export interface GallerySubscription
+  extends Promise<AsyncIterator<Gallery>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  url: () => Promise<AsyncIterator<string>>;
+}
+
+export interface GalleryNullablePromise
+  extends Promise<Gallery | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  url: () => Promise<string>;
+}
+
+export interface GalleryConnection {
+  pageInfo: PageInfo;
+  edges: GalleryEdge[];
+}
+
+export interface GalleryConnectionPromise
+  extends Promise<GalleryConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<GalleryEdge>>() => T;
+  aggregate: <T = AggregateGalleryPromise>() => T;
+}
+
+export interface GalleryConnectionSubscription
+  extends Promise<AsyncIterator<GalleryConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<GalleryEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateGallerySubscription>() => T;
+}
+
+export interface GalleryEdge {
+  node: Gallery;
+  cursor: string;
+}
+
+export interface GalleryEdgePromise extends Promise<GalleryEdge>, Fragmentable {
+  node: <T = GalleryPromise>() => T;
+  cursor: () => Promise<string>;
+}
+
+export interface GalleryEdgeSubscription
+  extends Promise<AsyncIterator<GalleryEdge>>,
+    Fragmentable {
+  node: <T = GallerySubscription>() => T;
+  cursor: () => Promise<AsyncIterator<string>>;
+}
+
+export interface AggregateGallery {
+  count: Int;
+}
+
+export interface AggregateGalleryPromise
+  extends Promise<AggregateGallery>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateGallerySubscription
+  extends Promise<AsyncIterator<AggregateGallery>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
 export interface Hotel {
   id: ID_Output;
-  hotelName: String;
-  title: String;
-  price: Int;
-  contactNumber: Int;
-  extraBed?: Boolean;
+  title: string;
+  content?: string;
+  slug?: string;
+  price?: Int;
+  status?: boolean;
+  isNegotiable?: boolean;
+  propertyType?: string;
+  condition?: string;
+  rating?: Float;
+  ratingCount?: Int;
+  contactNumber?: string;
+  termsAndCondition?: string;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
 }
 
 export interface HotelPromise extends Promise<Hotel>, Fragmentable {
   id: () => Promise<ID_Output>;
-  hotelName: () => Promise<String>;
-  title: () => Promise<String>;
+  title: () => Promise<string>;
+  content: () => Promise<string>;
+  slug: () => Promise<string>;
   price: () => Promise<Int>;
-  contactNumber: () => Promise<Int>;
-  extraBed: () => Promise<Boolean>;
+  status: () => Promise<boolean>;
+  isNegotiable: () => Promise<boolean>;
+  propertyType: () => Promise<string>;
+  condition: () => Promise<string>;
+  rating: () => Promise<Float>;
+  ratingCount: () => Promise<Int>;
+  contactNumber: () => Promise<string>;
+  termsAndCondition: () => Promise<string>;
+  amenities: <T = FragmentableArray<Amenities>>(args?: {
+    where?: AmenitiesWhereInput;
+    orderBy?: AmenitiesOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  image: <T = ImagePromise>() => T;
+  location: <T = FragmentableArray<Location>>(args?: {
+    where?: LocationWhereInput;
+    orderBy?: LocationOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  gallery: <T = FragmentableArray<Gallery>>(args?: {
+    where?: GalleryWhereInput;
+    orderBy?: GalleryOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  categories: <T = FragmentableArray<Categories>>(args?: {
+    where?: CategoriesWhereInput;
+    orderBy?: CategoriesOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
 }
 
 export interface HotelSubscription
   extends Promise<AsyncIterator<Hotel>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  hotelName: () => Promise<AsyncIterator<String>>;
-  title: () => Promise<AsyncIterator<String>>;
+  title: () => Promise<AsyncIterator<string>>;
+  content: () => Promise<AsyncIterator<string>>;
+  slug: () => Promise<AsyncIterator<string>>;
   price: () => Promise<AsyncIterator<Int>>;
-  contactNumber: () => Promise<AsyncIterator<Int>>;
-  extraBed: () => Promise<AsyncIterator<Boolean>>;
+  status: () => Promise<AsyncIterator<boolean>>;
+  isNegotiable: () => Promise<AsyncIterator<boolean>>;
+  propertyType: () => Promise<AsyncIterator<string>>;
+  condition: () => Promise<AsyncIterator<string>>;
+  rating: () => Promise<AsyncIterator<Float>>;
+  ratingCount: () => Promise<AsyncIterator<Int>>;
+  contactNumber: () => Promise<AsyncIterator<string>>;
+  termsAndCondition: () => Promise<AsyncIterator<string>>;
+  amenities: <T = Promise<AsyncIterator<AmenitiesSubscription>>>(args?: {
+    where?: AmenitiesWhereInput;
+    orderBy?: AmenitiesOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  image: <T = ImageSubscription>() => T;
+  location: <T = Promise<AsyncIterator<LocationSubscription>>>(args?: {
+    where?: LocationWhereInput;
+    orderBy?: LocationOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  gallery: <T = Promise<AsyncIterator<GallerySubscription>>>(args?: {
+    where?: GalleryWhereInput;
+    orderBy?: GalleryOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  categories: <T = Promise<AsyncIterator<CategoriesSubscription>>>(args?: {
+    where?: CategoriesWhereInput;
+    orderBy?: CategoriesOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
 export interface HotelNullablePromise
   extends Promise<Hotel | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  hotelName: () => Promise<String>;
-  title: () => Promise<String>;
+  title: () => Promise<string>;
+  content: () => Promise<string>;
+  slug: () => Promise<string>;
   price: () => Promise<Int>;
-  contactNumber: () => Promise<Int>;
-  extraBed: () => Promise<Boolean>;
+  status: () => Promise<boolean>;
+  isNegotiable: () => Promise<boolean>;
+  propertyType: () => Promise<string>;
+  condition: () => Promise<string>;
+  rating: () => Promise<Float>;
+  ratingCount: () => Promise<Int>;
+  contactNumber: () => Promise<string>;
+  termsAndCondition: () => Promise<string>;
+  amenities: <T = FragmentableArray<Amenities>>(args?: {
+    where?: AmenitiesWhereInput;
+    orderBy?: AmenitiesOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  image: <T = ImagePromise>() => T;
+  location: <T = FragmentableArray<Location>>(args?: {
+    where?: LocationWhereInput;
+    orderBy?: LocationOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  gallery: <T = FragmentableArray<Gallery>>(args?: {
+    where?: GalleryWhereInput;
+    orderBy?: GalleryOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  categories: <T = FragmentableArray<Categories>>(args?: {
+    where?: CategoriesWhereInput;
+    orderBy?: CategoriesOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface Image {
+  id: ID_Output;
+  url?: string;
+  thumb_url?: string;
+}
+
+export interface ImagePromise extends Promise<Image>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  url: () => Promise<string>;
+  thumb_url: () => Promise<string>;
+}
+
+export interface ImageSubscription
+  extends Promise<AsyncIterator<Image>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  url: () => Promise<AsyncIterator<string>>;
+  thumb_url: () => Promise<AsyncIterator<string>>;
+}
+
+export interface ImageNullablePromise
+  extends Promise<Image | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  url: () => Promise<string>;
+  thumb_url: () => Promise<string>;
+}
+
+export interface Location {
+  id: ID_Output;
+  lat?: string;
+  lng?: string;
+  formattedAddress?: string;
+  zipcode?: string;
+  city?: string;
+  state_long?: string;
+  state_short?: string;
+  country_long?: string;
+  country_short?: string;
+}
+
+export interface LocationPromise extends Promise<Location>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  lat: () => Promise<string>;
+  lng: () => Promise<string>;
+  formattedAddress: () => Promise<string>;
+  zipcode: () => Promise<string>;
+  city: () => Promise<string>;
+  state_long: () => Promise<string>;
+  state_short: () => Promise<string>;
+  country_long: () => Promise<string>;
+  country_short: () => Promise<string>;
+}
+
+export interface LocationSubscription
+  extends Promise<AsyncIterator<Location>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  lat: () => Promise<AsyncIterator<string>>;
+  lng: () => Promise<AsyncIterator<string>>;
+  formattedAddress: () => Promise<AsyncIterator<string>>;
+  zipcode: () => Promise<AsyncIterator<string>>;
+  city: () => Promise<AsyncIterator<string>>;
+  state_long: () => Promise<AsyncIterator<string>>;
+  state_short: () => Promise<AsyncIterator<string>>;
+  country_long: () => Promise<AsyncIterator<string>>;
+  country_short: () => Promise<AsyncIterator<string>>;
+}
+
+export interface LocationNullablePromise
+  extends Promise<Location | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  lat: () => Promise<string>;
+  lng: () => Promise<string>;
+  formattedAddress: () => Promise<string>;
+  zipcode: () => Promise<string>;
+  city: () => Promise<string>;
+  state_long: () => Promise<string>;
+  state_short: () => Promise<string>;
+  country_long: () => Promise<string>;
+  country_short: () => Promise<string>;
 }
 
 export interface HotelConnection {
@@ -759,44 +2980,21 @@ export interface HotelConnectionSubscription
   aggregate: <T = AggregateHotelSubscription>() => T;
 }
 
-export interface PageInfo {
-  hasNextPage: Boolean;
-  hasPreviousPage: Boolean;
-  startCursor?: String;
-  endCursor?: String;
-}
-
-export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
-  hasNextPage: () => Promise<Boolean>;
-  hasPreviousPage: () => Promise<Boolean>;
-  startCursor: () => Promise<String>;
-  endCursor: () => Promise<String>;
-}
-
-export interface PageInfoSubscription
-  extends Promise<AsyncIterator<PageInfo>>,
-    Fragmentable {
-  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
-  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
-  startCursor: () => Promise<AsyncIterator<String>>;
-  endCursor: () => Promise<AsyncIterator<String>>;
-}
-
 export interface HotelEdge {
   node: Hotel;
-  cursor: String;
+  cursor: string;
 }
 
 export interface HotelEdgePromise extends Promise<HotelEdge>, Fragmentable {
   node: <T = HotelPromise>() => T;
-  cursor: () => Promise<String>;
+  cursor: () => Promise<string>;
 }
 
 export interface HotelEdgeSubscription
   extends Promise<AsyncIterator<HotelEdge>>,
     Fragmentable {
   node: <T = HotelSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  cursor: () => Promise<AsyncIterator<string>>;
 }
 
 export interface AggregateHotel {
@@ -815,18 +3013,128 @@ export interface AggregateHotelSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
+export interface ImageConnection {
+  pageInfo: PageInfo;
+  edges: ImageEdge[];
+}
+
+export interface ImageConnectionPromise
+  extends Promise<ImageConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<ImageEdge>>() => T;
+  aggregate: <T = AggregateImagePromise>() => T;
+}
+
+export interface ImageConnectionSubscription
+  extends Promise<AsyncIterator<ImageConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ImageEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateImageSubscription>() => T;
+}
+
+export interface ImageEdge {
+  node: Image;
+  cursor: string;
+}
+
+export interface ImageEdgePromise extends Promise<ImageEdge>, Fragmentable {
+  node: <T = ImagePromise>() => T;
+  cursor: () => Promise<string>;
+}
+
+export interface ImageEdgeSubscription
+  extends Promise<AsyncIterator<ImageEdge>>,
+    Fragmentable {
+  node: <T = ImageSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<string>>;
+}
+
+export interface AggregateImage {
+  count: Int;
+}
+
+export interface AggregateImagePromise
+  extends Promise<AggregateImage>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateImageSubscription
+  extends Promise<AsyncIterator<AggregateImage>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface LocationConnection {
+  pageInfo: PageInfo;
+  edges: LocationEdge[];
+}
+
+export interface LocationConnectionPromise
+  extends Promise<LocationConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<LocationEdge>>() => T;
+  aggregate: <T = AggregateLocationPromise>() => T;
+}
+
+export interface LocationConnectionSubscription
+  extends Promise<AsyncIterator<LocationConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<LocationEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateLocationSubscription>() => T;
+}
+
+export interface LocationEdge {
+  node: Location;
+  cursor: string;
+}
+
+export interface LocationEdgePromise
+  extends Promise<LocationEdge>,
+    Fragmentable {
+  node: <T = LocationPromise>() => T;
+  cursor: () => Promise<string>;
+}
+
+export interface LocationEdgeSubscription
+  extends Promise<AsyncIterator<LocationEdge>>,
+    Fragmentable {
+  node: <T = LocationSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<string>>;
+}
+
+export interface AggregateLocation {
+  count: Int;
+}
+
+export interface AggregateLocationPromise
+  extends Promise<AggregateLocation>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateLocationSubscription
+  extends Promise<AsyncIterator<AggregateLocation>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
 export interface Post {
   id: ID_Output;
-  title: String;
-  body?: String;
+  title: string;
+  body?: string;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
 
 export interface PostPromise extends Promise<Post>, Fragmentable {
   id: () => Promise<ID_Output>;
-  title: () => Promise<String>;
-  body: () => Promise<String>;
+  title: () => Promise<string>;
+  body: () => Promise<string>;
   author: <T = UserPromise>() => T;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
@@ -836,8 +3144,8 @@ export interface PostSubscription
   extends Promise<AsyncIterator<Post>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  title: () => Promise<AsyncIterator<String>>;
-  body: () => Promise<AsyncIterator<String>>;
+  title: () => Promise<AsyncIterator<string>>;
+  body: () => Promise<AsyncIterator<string>>;
   author: <T = UserSubscription>() => T;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
@@ -847,8 +3155,8 @@ export interface PostNullablePromise
   extends Promise<Post | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  title: () => Promise<String>;
-  body: () => Promise<String>;
+  title: () => Promise<string>;
+  body: () => Promise<string>;
   author: <T = UserPromise>() => T;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
@@ -856,24 +3164,24 @@ export interface PostNullablePromise
 
 export interface User {
   id: ID_Output;
-  email: String;
-  name?: String;
-  password: String;
+  email: string;
+  name?: string;
+  password: string;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
 
 export interface UserPromise extends Promise<User>, Fragmentable {
   id: () => Promise<ID_Output>;
-  email: () => Promise<String>;
-  name: () => Promise<String>;
-  password: () => Promise<String>;
+  email: () => Promise<string>;
+  name: () => Promise<string>;
+  password: () => Promise<string>;
   posts: <T = FragmentableArray<Post>>(args?: {
     where?: PostWhereInput;
     orderBy?: PostOrderByInput;
     skip?: Int;
-    after?: String;
-    before?: String;
+    after?: string;
+    before?: string;
     first?: Int;
     last?: Int;
   }) => T;
@@ -885,15 +3193,15 @@ export interface UserSubscription
   extends Promise<AsyncIterator<User>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  email: () => Promise<AsyncIterator<String>>;
-  name: () => Promise<AsyncIterator<String>>;
-  password: () => Promise<AsyncIterator<String>>;
+  email: () => Promise<AsyncIterator<string>>;
+  name: () => Promise<AsyncIterator<string>>;
+  password: () => Promise<AsyncIterator<string>>;
   posts: <T = Promise<AsyncIterator<PostSubscription>>>(args?: {
     where?: PostWhereInput;
     orderBy?: PostOrderByInput;
     skip?: Int;
-    after?: String;
-    before?: String;
+    after?: string;
+    before?: string;
     first?: Int;
     last?: Int;
   }) => T;
@@ -905,15 +3213,15 @@ export interface UserNullablePromise
   extends Promise<User | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  email: () => Promise<String>;
-  name: () => Promise<String>;
-  password: () => Promise<String>;
+  email: () => Promise<string>;
+  name: () => Promise<string>;
+  password: () => Promise<string>;
   posts: <T = FragmentableArray<Post>>(args?: {
     where?: PostWhereInput;
     orderBy?: PostOrderByInput;
     skip?: Int;
-    after?: String;
-    before?: String;
+    after?: string;
+    before?: string;
     first?: Int;
     last?: Int;
   }) => T;
@@ -944,19 +3252,19 @@ export interface PostConnectionSubscription
 
 export interface PostEdge {
   node: Post;
-  cursor: String;
+  cursor: string;
 }
 
 export interface PostEdgePromise extends Promise<PostEdge>, Fragmentable {
   node: <T = PostPromise>() => T;
-  cursor: () => Promise<String>;
+  cursor: () => Promise<string>;
 }
 
 export interface PostEdgeSubscription
   extends Promise<AsyncIterator<PostEdge>>,
     Fragmentable {
   node: <T = PostSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  cursor: () => Promise<AsyncIterator<string>>;
 }
 
 export interface AggregatePost {
@@ -998,19 +3306,19 @@ export interface UserConnectionSubscription
 
 export interface UserEdge {
   node: User;
-  cursor: String;
+  cursor: string;
 }
 
 export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
   node: <T = UserPromise>() => T;
-  cursor: () => Promise<String>;
+  cursor: () => Promise<string>;
 }
 
 export interface UserEdgeSubscription
   extends Promise<AsyncIterator<UserEdge>>,
     Fragmentable {
   node: <T = UserSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  cursor: () => Promise<AsyncIterator<string>>;
 }
 
 export interface AggregateUser {
@@ -1045,10 +3353,207 @@ export interface BatchPayloadSubscription
   count: () => Promise<AsyncIterator<Long>>;
 }
 
+export interface AmenitiesSubscriptionPayload {
+  mutation: MutationType;
+  node: Amenities;
+  updatedFields: string[];
+  previousValues: AmenitiesPreviousValues;
+}
+
+export interface AmenitiesSubscriptionPayloadPromise
+  extends Promise<AmenitiesSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = AmenitiesPromise>() => T;
+  updatedFields: () => Promise<string[]>;
+  previousValues: <T = AmenitiesPreviousValuesPromise>() => T;
+}
+
+export interface AmenitiesSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<AmenitiesSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = AmenitiesSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<string[]>>;
+  previousValues: <T = AmenitiesPreviousValuesSubscription>() => T;
+}
+
+export interface AmenitiesPreviousValues {
+  id: ID_Output;
+  guestRoom?: Int;
+  bedRoom?: Int;
+  wifiAvailability?: boolean;
+  parkingAvailability?: boolean;
+  poolAvailability?: boolean;
+  airCondition?: boolean;
+  extraBedFacility?: boolean;
+}
+
+export interface AmenitiesPreviousValuesPromise
+  extends Promise<AmenitiesPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  guestRoom: () => Promise<Int>;
+  bedRoom: () => Promise<Int>;
+  wifiAvailability: () => Promise<boolean>;
+  parkingAvailability: () => Promise<boolean>;
+  poolAvailability: () => Promise<boolean>;
+  airCondition: () => Promise<boolean>;
+  extraBedFacility: () => Promise<boolean>;
+}
+
+export interface AmenitiesPreviousValuesSubscription
+  extends Promise<AsyncIterator<AmenitiesPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  guestRoom: () => Promise<AsyncIterator<Int>>;
+  bedRoom: () => Promise<AsyncIterator<Int>>;
+  wifiAvailability: () => Promise<AsyncIterator<boolean>>;
+  parkingAvailability: () => Promise<AsyncIterator<boolean>>;
+  poolAvailability: () => Promise<AsyncIterator<boolean>>;
+  airCondition: () => Promise<AsyncIterator<boolean>>;
+  extraBedFacility: () => Promise<AsyncIterator<boolean>>;
+}
+
+export interface CategoriesSubscriptionPayload {
+  mutation: MutationType;
+  node: Categories;
+  updatedFields: string[];
+  previousValues: CategoriesPreviousValues;
+}
+
+export interface CategoriesSubscriptionPayloadPromise
+  extends Promise<CategoriesSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = CategoriesPromise>() => T;
+  updatedFields: () => Promise<string[]>;
+  previousValues: <T = CategoriesPreviousValuesPromise>() => T;
+}
+
+export interface CategoriesSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<CategoriesSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = CategoriesSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<string[]>>;
+  previousValues: <T = CategoriesPreviousValuesSubscription>() => T;
+}
+
+export interface CategoriesPreviousValues {
+  id: ID_Output;
+  slug?: string;
+  name?: string;
+}
+
+export interface CategoriesPreviousValuesPromise
+  extends Promise<CategoriesPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  slug: () => Promise<string>;
+  name: () => Promise<string>;
+}
+
+export interface CategoriesPreviousValuesSubscription
+  extends Promise<AsyncIterator<CategoriesPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  slug: () => Promise<AsyncIterator<string>>;
+  name: () => Promise<AsyncIterator<string>>;
+}
+
+export interface CategoryImagesSubscriptionPayload {
+  mutation: MutationType;
+  node: CategoryImages;
+  updatedFields: string[];
+  previousValues: CategoryImagesPreviousValues;
+}
+
+export interface CategoryImagesSubscriptionPayloadPromise
+  extends Promise<CategoryImagesSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = CategoryImagesPromise>() => T;
+  updatedFields: () => Promise<string[]>;
+  previousValues: <T = CategoryImagesPreviousValuesPromise>() => T;
+}
+
+export interface CategoryImagesSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<CategoryImagesSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = CategoryImagesSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<string[]>>;
+  previousValues: <T = CategoryImagesPreviousValuesSubscription>() => T;
+}
+
+export interface CategoryImagesPreviousValues {
+  id: ID_Output;
+  url?: string;
+}
+
+export interface CategoryImagesPreviousValuesPromise
+  extends Promise<CategoryImagesPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  url: () => Promise<string>;
+}
+
+export interface CategoryImagesPreviousValuesSubscription
+  extends Promise<AsyncIterator<CategoryImagesPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  url: () => Promise<AsyncIterator<string>>;
+}
+
+export interface GallerySubscriptionPayload {
+  mutation: MutationType;
+  node: Gallery;
+  updatedFields: string[];
+  previousValues: GalleryPreviousValues;
+}
+
+export interface GallerySubscriptionPayloadPromise
+  extends Promise<GallerySubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = GalleryPromise>() => T;
+  updatedFields: () => Promise<string[]>;
+  previousValues: <T = GalleryPreviousValuesPromise>() => T;
+}
+
+export interface GallerySubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<GallerySubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = GallerySubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<string[]>>;
+  previousValues: <T = GalleryPreviousValuesSubscription>() => T;
+}
+
+export interface GalleryPreviousValues {
+  id: ID_Output;
+  url?: string;
+}
+
+export interface GalleryPreviousValuesPromise
+  extends Promise<GalleryPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  url: () => Promise<string>;
+}
+
+export interface GalleryPreviousValuesSubscription
+  extends Promise<AsyncIterator<GalleryPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  url: () => Promise<AsyncIterator<string>>;
+}
+
 export interface HotelSubscriptionPayload {
   mutation: MutationType;
   node: Hotel;
-  updatedFields: String[];
+  updatedFields: string[];
   previousValues: HotelPreviousValues;
 }
 
@@ -1057,7 +3562,7 @@ export interface HotelSubscriptionPayloadPromise
     Fragmentable {
   mutation: () => Promise<MutationType>;
   node: <T = HotelPromise>() => T;
-  updatedFields: () => Promise<String[]>;
+  updatedFields: () => Promise<string[]>;
   previousValues: <T = HotelPreviousValuesPromise>() => T;
 }
 
@@ -1066,45 +3571,187 @@ export interface HotelSubscriptionPayloadSubscription
     Fragmentable {
   mutation: () => Promise<AsyncIterator<MutationType>>;
   node: <T = HotelSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  updatedFields: () => Promise<AsyncIterator<string[]>>;
   previousValues: <T = HotelPreviousValuesSubscription>() => T;
 }
 
 export interface HotelPreviousValues {
   id: ID_Output;
-  hotelName: String;
-  title: String;
-  price: Int;
-  contactNumber: Int;
-  extraBed?: Boolean;
+  title: string;
+  content?: string;
+  slug?: string;
+  price?: Int;
+  status?: boolean;
+  isNegotiable?: boolean;
+  propertyType?: string;
+  condition?: string;
+  rating?: Float;
+  ratingCount?: Int;
+  contactNumber?: string;
+  termsAndCondition?: string;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
 }
 
 export interface HotelPreviousValuesPromise
   extends Promise<HotelPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  hotelName: () => Promise<String>;
-  title: () => Promise<String>;
+  title: () => Promise<string>;
+  content: () => Promise<string>;
+  slug: () => Promise<string>;
   price: () => Promise<Int>;
-  contactNumber: () => Promise<Int>;
-  extraBed: () => Promise<Boolean>;
+  status: () => Promise<boolean>;
+  isNegotiable: () => Promise<boolean>;
+  propertyType: () => Promise<string>;
+  condition: () => Promise<string>;
+  rating: () => Promise<Float>;
+  ratingCount: () => Promise<Int>;
+  contactNumber: () => Promise<string>;
+  termsAndCondition: () => Promise<string>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
 }
 
 export interface HotelPreviousValuesSubscription
   extends Promise<AsyncIterator<HotelPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  hotelName: () => Promise<AsyncIterator<String>>;
-  title: () => Promise<AsyncIterator<String>>;
+  title: () => Promise<AsyncIterator<string>>;
+  content: () => Promise<AsyncIterator<string>>;
+  slug: () => Promise<AsyncIterator<string>>;
   price: () => Promise<AsyncIterator<Int>>;
-  contactNumber: () => Promise<AsyncIterator<Int>>;
-  extraBed: () => Promise<AsyncIterator<Boolean>>;
+  status: () => Promise<AsyncIterator<boolean>>;
+  isNegotiable: () => Promise<AsyncIterator<boolean>>;
+  propertyType: () => Promise<AsyncIterator<string>>;
+  condition: () => Promise<AsyncIterator<string>>;
+  rating: () => Promise<AsyncIterator<Float>>;
+  ratingCount: () => Promise<AsyncIterator<Int>>;
+  contactNumber: () => Promise<AsyncIterator<string>>;
+  termsAndCondition: () => Promise<AsyncIterator<string>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface ImageSubscriptionPayload {
+  mutation: MutationType;
+  node: Image;
+  updatedFields: string[];
+  previousValues: ImagePreviousValues;
+}
+
+export interface ImageSubscriptionPayloadPromise
+  extends Promise<ImageSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = ImagePromise>() => T;
+  updatedFields: () => Promise<string[]>;
+  previousValues: <T = ImagePreviousValuesPromise>() => T;
+}
+
+export interface ImageSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<ImageSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = ImageSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<string[]>>;
+  previousValues: <T = ImagePreviousValuesSubscription>() => T;
+}
+
+export interface ImagePreviousValues {
+  id: ID_Output;
+  url?: string;
+  thumb_url?: string;
+}
+
+export interface ImagePreviousValuesPromise
+  extends Promise<ImagePreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  url: () => Promise<string>;
+  thumb_url: () => Promise<string>;
+}
+
+export interface ImagePreviousValuesSubscription
+  extends Promise<AsyncIterator<ImagePreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  url: () => Promise<AsyncIterator<string>>;
+  thumb_url: () => Promise<AsyncIterator<string>>;
+}
+
+export interface LocationSubscriptionPayload {
+  mutation: MutationType;
+  node: Location;
+  updatedFields: string[];
+  previousValues: LocationPreviousValues;
+}
+
+export interface LocationSubscriptionPayloadPromise
+  extends Promise<LocationSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = LocationPromise>() => T;
+  updatedFields: () => Promise<string[]>;
+  previousValues: <T = LocationPreviousValuesPromise>() => T;
+}
+
+export interface LocationSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<LocationSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = LocationSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<string[]>>;
+  previousValues: <T = LocationPreviousValuesSubscription>() => T;
+}
+
+export interface LocationPreviousValues {
+  id: ID_Output;
+  lat?: string;
+  lng?: string;
+  formattedAddress?: string;
+  zipcode?: string;
+  city?: string;
+  state_long?: string;
+  state_short?: string;
+  country_long?: string;
+  country_short?: string;
+}
+
+export interface LocationPreviousValuesPromise
+  extends Promise<LocationPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  lat: () => Promise<string>;
+  lng: () => Promise<string>;
+  formattedAddress: () => Promise<string>;
+  zipcode: () => Promise<string>;
+  city: () => Promise<string>;
+  state_long: () => Promise<string>;
+  state_short: () => Promise<string>;
+  country_long: () => Promise<string>;
+  country_short: () => Promise<string>;
+}
+
+export interface LocationPreviousValuesSubscription
+  extends Promise<AsyncIterator<LocationPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  lat: () => Promise<AsyncIterator<string>>;
+  lng: () => Promise<AsyncIterator<string>>;
+  formattedAddress: () => Promise<AsyncIterator<string>>;
+  zipcode: () => Promise<AsyncIterator<string>>;
+  city: () => Promise<AsyncIterator<string>>;
+  state_long: () => Promise<AsyncIterator<string>>;
+  state_short: () => Promise<AsyncIterator<string>>;
+  country_long: () => Promise<AsyncIterator<string>>;
+  country_short: () => Promise<AsyncIterator<string>>;
 }
 
 export interface PostSubscriptionPayload {
   mutation: MutationType;
   node: Post;
-  updatedFields: String[];
+  updatedFields: string[];
   previousValues: PostPreviousValues;
 }
 
@@ -1113,7 +3760,7 @@ export interface PostSubscriptionPayloadPromise
     Fragmentable {
   mutation: () => Promise<MutationType>;
   node: <T = PostPromise>() => T;
-  updatedFields: () => Promise<String[]>;
+  updatedFields: () => Promise<string[]>;
   previousValues: <T = PostPreviousValuesPromise>() => T;
 }
 
@@ -1122,14 +3769,14 @@ export interface PostSubscriptionPayloadSubscription
     Fragmentable {
   mutation: () => Promise<AsyncIterator<MutationType>>;
   node: <T = PostSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  updatedFields: () => Promise<AsyncIterator<string[]>>;
   previousValues: <T = PostPreviousValuesSubscription>() => T;
 }
 
 export interface PostPreviousValues {
   id: ID_Output;
-  title: String;
-  body?: String;
+  title: string;
+  body?: string;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -1138,8 +3785,8 @@ export interface PostPreviousValuesPromise
   extends Promise<PostPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  title: () => Promise<String>;
-  body: () => Promise<String>;
+  title: () => Promise<string>;
+  body: () => Promise<string>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -1148,8 +3795,8 @@ export interface PostPreviousValuesSubscription
   extends Promise<AsyncIterator<PostPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  title: () => Promise<AsyncIterator<String>>;
-  body: () => Promise<AsyncIterator<String>>;
+  title: () => Promise<AsyncIterator<string>>;
+  body: () => Promise<AsyncIterator<string>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
@@ -1157,7 +3804,7 @@ export interface PostPreviousValuesSubscription
 export interface UserSubscriptionPayload {
   mutation: MutationType;
   node: User;
-  updatedFields: String[];
+  updatedFields: string[];
   previousValues: UserPreviousValues;
 }
 
@@ -1166,7 +3813,7 @@ export interface UserSubscriptionPayloadPromise
     Fragmentable {
   mutation: () => Promise<MutationType>;
   node: <T = UserPromise>() => T;
-  updatedFields: () => Promise<String[]>;
+  updatedFields: () => Promise<string[]>;
   previousValues: <T = UserPreviousValuesPromise>() => T;
 }
 
@@ -1175,15 +3822,15 @@ export interface UserSubscriptionPayloadSubscription
     Fragmentable {
   mutation: () => Promise<AsyncIterator<MutationType>>;
   node: <T = UserSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  updatedFields: () => Promise<AsyncIterator<string[]>>;
   previousValues: <T = UserPreviousValuesSubscription>() => T;
 }
 
 export interface UserPreviousValues {
   id: ID_Output;
-  email: String;
-  name?: String;
-  password: String;
+  email: string;
+  name?: string;
+  password: string;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -1192,9 +3839,9 @@ export interface UserPreviousValuesPromise
   extends Promise<UserPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  email: () => Promise<String>;
-  name: () => Promise<String>;
-  password: () => Promise<String>;
+  email: () => Promise<string>;
+  name: () => Promise<string>;
+  password: () => Promise<string>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -1203,9 +3850,9 @@ export interface UserPreviousValuesSubscription
   extends Promise<AsyncIterator<UserPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  email: () => Promise<AsyncIterator<String>>;
-  name: () => Promise<AsyncIterator<String>>;
-  password: () => Promise<AsyncIterator<String>>;
+  email: () => Promise<AsyncIterator<string>>;
+  name: () => Promise<AsyncIterator<string>>;
+  password: () => Promise<AsyncIterator<string>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
@@ -1217,11 +3864,6 @@ export type ID_Input = string | number;
 export type ID_Output = string;
 
 /*
-The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
-*/
-export type String = string;
-
-/*
 The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
 */
 export type Int = number;
@@ -1230,6 +3872,16 @@ export type Int = number;
 The `Boolean` scalar type represents `true` or `false`.
 */
 export type Boolean = boolean;
+
+/*
+The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
+*/
+export type String = string;
+
+/*
+The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).
+*/
+export type Float = number;
 
 /*
 DateTime scalar input type, allowing Date
@@ -1258,6 +3910,30 @@ export const models: Model[] = [
   },
   {
     name: "Hotel",
+    embedded: false
+  },
+  {
+    name: "Amenities",
+    embedded: false
+  },
+  {
+    name: "Image",
+    embedded: false
+  },
+  {
+    name: "CategoryImages",
+    embedded: false
+  },
+  {
+    name: "Gallery",
+    embedded: false
+  },
+  {
+    name: "Location",
+    embedded: false
+  },
+  {
+    name: "Categories",
     embedded: false
   }
 ];

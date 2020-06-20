@@ -1,0 +1,86 @@
+type User {
+  id: ID! @id
+  email: String! @unique
+  name: String
+  password: String!
+  posts: [Post!]! @relation(link: INLINE)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Post {
+  id: ID! @id
+  title: String!
+  body: String
+  author: User!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Hotel {
+  id: ID! @id
+  title: String!
+  content: String
+  slug: String
+  price: Int
+  status: Boolean
+  isNegotiable: Boolean
+  propertyType: String
+  condition: String
+  rating: Float
+  ratingCount: Int
+  contactNumber: String
+  termsAndCondition: String
+  amenities: [Amenities] @relation(link: INLINE)
+  image: Image @relation(link: INLINE)
+  location: [Location] @relation(link: INLINE)
+  gallery: [Gallery] @relation(link: INLINE)
+  categories: [Categories] @relation(link: INLINE)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Amenities {
+  id: ID! @id
+  guestRoom: Int
+  bedRoom: Int
+  wifiAvailability: Boolean
+  parkingAvailability: Boolean
+  poolAvailability: Boolean
+  airCondition: Boolean
+  extraBedFacility: Boolean
+}
+
+type Image {
+  id: ID! @id
+  url: String
+  thumb_url: String
+}
+type CategoryImages {
+  id: ID! @id
+  url: String
+}
+type Gallery {
+  id: ID! @id
+  url: String
+}
+
+type Location {
+  id: ID! @id
+  lat: String
+  lng: String
+  formattedAddress: String
+  zipcode: String
+  city: String
+  state_long: String
+  state_short: String
+  country_long: String
+  country_short: String
+}
+
+type Categories {
+  id: ID! @id
+  slug: String
+  name: String
+  image: CategoryImages @relation(link: INLINE)
+}
