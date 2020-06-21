@@ -2,9 +2,9 @@ import {
   Resolver,
   Mutation,
   Args,
-  ResolveProperty,
   Parent,
   Query,
+  ResolveField,
 } from '@nestjs/graphql';
 import { PrismaService } from 'src/prisma/prisma.service';
 import {
@@ -12,7 +12,12 @@ import {
   LocationInput,
   ImageInput,
   CategoriesInput,
+  User,
+  Hotel,
 } from 'src/graphql.schema.generated';
+import { UseGuards } from '@nestjs/common';
+import { GqlAuthGuard } from 'src/auth/graphql-auth.guard';
+import { GqlUser } from 'src/shared/decorators/decorator';
 
 @Resolver('Hotel')
 export class HotelResolver {
@@ -56,10 +61,17 @@ export class HotelResolver {
   async categories() {
     return this.prisma.client.categorieses();
   }
-
+  // Các field được connect nhau thì cần resolve theo đúng id, xử lý return mutation field agentId
+  @ResolveField()
+  async connectId(@Parent() { id }: Hotel) {
+    console.log(id);
+    return this.prisma.client.hotel({ id }).connectId();
+  }
   @Mutation()
   //   Bóc data từ Input và gọi ORM.createHotel và gán cho các key trong model của prisma
+  @UseGuards(GqlAuthGuard)
   async createHotel(
+    @GqlUser() user: User,
     @Args('addHotelInput')
     {
       hotelName,
@@ -84,12 +96,19 @@ export class HotelResolver {
     @Args('categories')
     categoryItems: CategoriesInput[],
   ) {
+    console.log(user.id);
     const newHotel = await this.prisma.client.createHotel({
       // Của prisma
+      agentId: user.id,
+      connectId: {
+        connect: {
+          id: user.id,
+        },
+      },
+      // Bind agentId vào user.id bằng connect
       title: hotelName,
       slug: this.format(hotelName),
       content: hotelDetails,
-      status: true,
       price: pricePerNight,
       isNegotiable: true,
       termsAndCondition: locationDescription,
@@ -128,10 +147,6 @@ export class HotelResolver {
         })),
       },
     });
-    return newHotel
+    return newHotel;
   }
-  // @ResolveProperty()
-  // async location(@Parent() { id }: Hotel) {
-  //   return this.prisma.client.hotel({ id }).location;
-  // }
 }

@@ -30,7 +30,7 @@ type AggregateLocation {
   count: Int!
 }
 
-type AggregatePost {
+type AggregateSocial {
   count: Int!
 }
 
@@ -649,6 +649,11 @@ input GalleryCreateManyInput {
   connect: [GalleryWhereUniqueInput!]
 }
 
+input GalleryCreateOneInput {
+  create: GalleryCreateInput
+  connect: GalleryWhereUniqueInput
+}
+
 type GalleryEdge {
   node: Gallery!
   cursor: String!
@@ -751,9 +756,23 @@ input GalleryUpdateManyWithWhereNestedInput {
   data: GalleryUpdateManyDataInput!
 }
 
+input GalleryUpdateOneInput {
+  create: GalleryCreateInput
+  update: GalleryUpdateDataInput
+  upsert: GalleryUpsertNestedInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: GalleryWhereUniqueInput
+}
+
 input GalleryUpdateWithWhereUniqueNestedInput {
   where: GalleryWhereUniqueInput!
   data: GalleryUpdateDataInput!
+}
+
+input GalleryUpsertNestedInput {
+  update: GalleryUpdateDataInput!
+  create: GalleryCreateInput!
 }
 
 input GalleryUpsertWithWhereUniqueNestedInput {
@@ -802,11 +821,13 @@ input GalleryWhereUniqueInput {
 
 type Hotel {
   id: ID!
+  connectId: User
+  agentId: String
   title: String!
-  content: String
   slug: String
-  price: Int
-  status: Boolean
+  content: String
+  status: String
+  price: String
   isNegotiable: Boolean
   propertyType: String
   condition: String
@@ -831,11 +852,45 @@ type HotelConnection {
 
 input HotelCreateInput {
   id: ID
+  connectId: UserCreateOneWithoutListed_postsInput
+  agentId: String
   title: String!
-  content: String
   slug: String
-  price: Int
-  status: Boolean
+  content: String
+  status: String
+  price: String
+  isNegotiable: Boolean
+  propertyType: String
+  condition: String
+  rating: Float
+  ratingCount: Int
+  contactNumber: String
+  termsAndCondition: String
+  amenities: AmenitiesCreateManyInput
+  image: ImageCreateOneInput
+  location: LocationCreateManyInput
+  gallery: GalleryCreateManyInput
+  categories: CategoriesCreateManyInput
+}
+
+input HotelCreateManyInput {
+  create: [HotelCreateInput!]
+  connect: [HotelWhereUniqueInput!]
+}
+
+input HotelCreateManyWithoutConnectIdInput {
+  create: [HotelCreateWithoutConnectIdInput!]
+  connect: [HotelWhereUniqueInput!]
+}
+
+input HotelCreateWithoutConnectIdInput {
+  id: ID
+  agentId: String
+  title: String!
+  slug: String
+  content: String
+  status: String
+  price: String
   isNegotiable: Boolean
   propertyType: String
   condition: String
@@ -858,16 +913,18 @@ type HotelEdge {
 enum HotelOrderByInput {
   id_ASC
   id_DESC
+  agentId_ASC
+  agentId_DESC
   title_ASC
   title_DESC
-  content_ASC
-  content_DESC
   slug_ASC
   slug_DESC
-  price_ASC
-  price_DESC
+  content_ASC
+  content_DESC
   status_ASC
   status_DESC
+  price_ASC
+  price_DESC
   isNegotiable_ASC
   isNegotiable_DESC
   propertyType_ASC
@@ -890,11 +947,12 @@ enum HotelOrderByInput {
 
 type HotelPreviousValues {
   id: ID!
+  agentId: String
   title: String!
-  content: String
   slug: String
-  price: Int
-  status: Boolean
+  content: String
+  status: String
+  price: String
   isNegotiable: Boolean
   propertyType: String
   condition: String
@@ -904,6 +962,200 @@ type HotelPreviousValues {
   termsAndCondition: String
   createdAt: DateTime!
   updatedAt: DateTime!
+}
+
+input HotelScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  agentId: String
+  agentId_not: String
+  agentId_in: [String!]
+  agentId_not_in: [String!]
+  agentId_lt: String
+  agentId_lte: String
+  agentId_gt: String
+  agentId_gte: String
+  agentId_contains: String
+  agentId_not_contains: String
+  agentId_starts_with: String
+  agentId_not_starts_with: String
+  agentId_ends_with: String
+  agentId_not_ends_with: String
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  slug: String
+  slug_not: String
+  slug_in: [String!]
+  slug_not_in: [String!]
+  slug_lt: String
+  slug_lte: String
+  slug_gt: String
+  slug_gte: String
+  slug_contains: String
+  slug_not_contains: String
+  slug_starts_with: String
+  slug_not_starts_with: String
+  slug_ends_with: String
+  slug_not_ends_with: String
+  content: String
+  content_not: String
+  content_in: [String!]
+  content_not_in: [String!]
+  content_lt: String
+  content_lte: String
+  content_gt: String
+  content_gte: String
+  content_contains: String
+  content_not_contains: String
+  content_starts_with: String
+  content_not_starts_with: String
+  content_ends_with: String
+  content_not_ends_with: String
+  status: String
+  status_not: String
+  status_in: [String!]
+  status_not_in: [String!]
+  status_lt: String
+  status_lte: String
+  status_gt: String
+  status_gte: String
+  status_contains: String
+  status_not_contains: String
+  status_starts_with: String
+  status_not_starts_with: String
+  status_ends_with: String
+  status_not_ends_with: String
+  price: String
+  price_not: String
+  price_in: [String!]
+  price_not_in: [String!]
+  price_lt: String
+  price_lte: String
+  price_gt: String
+  price_gte: String
+  price_contains: String
+  price_not_contains: String
+  price_starts_with: String
+  price_not_starts_with: String
+  price_ends_with: String
+  price_not_ends_with: String
+  isNegotiable: Boolean
+  isNegotiable_not: Boolean
+  propertyType: String
+  propertyType_not: String
+  propertyType_in: [String!]
+  propertyType_not_in: [String!]
+  propertyType_lt: String
+  propertyType_lte: String
+  propertyType_gt: String
+  propertyType_gte: String
+  propertyType_contains: String
+  propertyType_not_contains: String
+  propertyType_starts_with: String
+  propertyType_not_starts_with: String
+  propertyType_ends_with: String
+  propertyType_not_ends_with: String
+  condition: String
+  condition_not: String
+  condition_in: [String!]
+  condition_not_in: [String!]
+  condition_lt: String
+  condition_lte: String
+  condition_gt: String
+  condition_gte: String
+  condition_contains: String
+  condition_not_contains: String
+  condition_starts_with: String
+  condition_not_starts_with: String
+  condition_ends_with: String
+  condition_not_ends_with: String
+  rating: Float
+  rating_not: Float
+  rating_in: [Float!]
+  rating_not_in: [Float!]
+  rating_lt: Float
+  rating_lte: Float
+  rating_gt: Float
+  rating_gte: Float
+  ratingCount: Int
+  ratingCount_not: Int
+  ratingCount_in: [Int!]
+  ratingCount_not_in: [Int!]
+  ratingCount_lt: Int
+  ratingCount_lte: Int
+  ratingCount_gt: Int
+  ratingCount_gte: Int
+  contactNumber: String
+  contactNumber_not: String
+  contactNumber_in: [String!]
+  contactNumber_not_in: [String!]
+  contactNumber_lt: String
+  contactNumber_lte: String
+  contactNumber_gt: String
+  contactNumber_gte: String
+  contactNumber_contains: String
+  contactNumber_not_contains: String
+  contactNumber_starts_with: String
+  contactNumber_not_starts_with: String
+  contactNumber_ends_with: String
+  contactNumber_not_ends_with: String
+  termsAndCondition: String
+  termsAndCondition_not: String
+  termsAndCondition_in: [String!]
+  termsAndCondition_not_in: [String!]
+  termsAndCondition_lt: String
+  termsAndCondition_lte: String
+  termsAndCondition_gt: String
+  termsAndCondition_gte: String
+  termsAndCondition_contains: String
+  termsAndCondition_not_contains: String
+  termsAndCondition_starts_with: String
+  termsAndCondition_not_starts_with: String
+  termsAndCondition_ends_with: String
+  termsAndCondition_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [HotelScalarWhereInput!]
+  OR: [HotelScalarWhereInput!]
+  NOT: [HotelScalarWhereInput!]
 }
 
 type HotelSubscriptionPayload {
@@ -924,12 +1176,14 @@ input HotelSubscriptionWhereInput {
   NOT: [HotelSubscriptionWhereInput!]
 }
 
-input HotelUpdateInput {
+input HotelUpdateDataInput {
+  connectId: UserUpdateOneWithoutListed_postsInput
+  agentId: String
   title: String
-  content: String
   slug: String
-  price: Int
-  status: Boolean
+  content: String
+  status: String
+  price: String
   isNegotiable: Boolean
   propertyType: String
   condition: String
@@ -944,12 +1198,14 @@ input HotelUpdateInput {
   categories: CategoriesUpdateManyInput
 }
 
-input HotelUpdateManyMutationInput {
+input HotelUpdateInput {
+  connectId: UserUpdateOneWithoutListed_postsInput
+  agentId: String
   title: String
-  content: String
   slug: String
-  price: Int
-  status: Boolean
+  content: String
+  status: String
+  price: String
   isNegotiable: Boolean
   propertyType: String
   condition: String
@@ -957,6 +1213,115 @@ input HotelUpdateManyMutationInput {
   ratingCount: Int
   contactNumber: String
   termsAndCondition: String
+  amenities: AmenitiesUpdateManyInput
+  image: ImageUpdateOneInput
+  location: LocationUpdateManyInput
+  gallery: GalleryUpdateManyInput
+  categories: CategoriesUpdateManyInput
+}
+
+input HotelUpdateManyDataInput {
+  agentId: String
+  title: String
+  slug: String
+  content: String
+  status: String
+  price: String
+  isNegotiable: Boolean
+  propertyType: String
+  condition: String
+  rating: Float
+  ratingCount: Int
+  contactNumber: String
+  termsAndCondition: String
+}
+
+input HotelUpdateManyInput {
+  create: [HotelCreateInput!]
+  update: [HotelUpdateWithWhereUniqueNestedInput!]
+  upsert: [HotelUpsertWithWhereUniqueNestedInput!]
+  delete: [HotelWhereUniqueInput!]
+  connect: [HotelWhereUniqueInput!]
+  set: [HotelWhereUniqueInput!]
+  disconnect: [HotelWhereUniqueInput!]
+  deleteMany: [HotelScalarWhereInput!]
+  updateMany: [HotelUpdateManyWithWhereNestedInput!]
+}
+
+input HotelUpdateManyMutationInput {
+  agentId: String
+  title: String
+  slug: String
+  content: String
+  status: String
+  price: String
+  isNegotiable: Boolean
+  propertyType: String
+  condition: String
+  rating: Float
+  ratingCount: Int
+  contactNumber: String
+  termsAndCondition: String
+}
+
+input HotelUpdateManyWithoutConnectIdInput {
+  create: [HotelCreateWithoutConnectIdInput!]
+  delete: [HotelWhereUniqueInput!]
+  connect: [HotelWhereUniqueInput!]
+  set: [HotelWhereUniqueInput!]
+  disconnect: [HotelWhereUniqueInput!]
+  update: [HotelUpdateWithWhereUniqueWithoutConnectIdInput!]
+  upsert: [HotelUpsertWithWhereUniqueWithoutConnectIdInput!]
+  deleteMany: [HotelScalarWhereInput!]
+  updateMany: [HotelUpdateManyWithWhereNestedInput!]
+}
+
+input HotelUpdateManyWithWhereNestedInput {
+  where: HotelScalarWhereInput!
+  data: HotelUpdateManyDataInput!
+}
+
+input HotelUpdateWithoutConnectIdDataInput {
+  agentId: String
+  title: String
+  slug: String
+  content: String
+  status: String
+  price: String
+  isNegotiable: Boolean
+  propertyType: String
+  condition: String
+  rating: Float
+  ratingCount: Int
+  contactNumber: String
+  termsAndCondition: String
+  amenities: AmenitiesUpdateManyInput
+  image: ImageUpdateOneInput
+  location: LocationUpdateManyInput
+  gallery: GalleryUpdateManyInput
+  categories: CategoriesUpdateManyInput
+}
+
+input HotelUpdateWithWhereUniqueNestedInput {
+  where: HotelWhereUniqueInput!
+  data: HotelUpdateDataInput!
+}
+
+input HotelUpdateWithWhereUniqueWithoutConnectIdInput {
+  where: HotelWhereUniqueInput!
+  data: HotelUpdateWithoutConnectIdDataInput!
+}
+
+input HotelUpsertWithWhereUniqueNestedInput {
+  where: HotelWhereUniqueInput!
+  update: HotelUpdateDataInput!
+  create: HotelCreateInput!
+}
+
+input HotelUpsertWithWhereUniqueWithoutConnectIdInput {
+  where: HotelWhereUniqueInput!
+  update: HotelUpdateWithoutConnectIdDataInput!
+  create: HotelCreateWithoutConnectIdInput!
 }
 
 input HotelWhereInput {
@@ -974,6 +1339,21 @@ input HotelWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  connectId: UserWhereInput
+  agentId: String
+  agentId_not: String
+  agentId_in: [String!]
+  agentId_not_in: [String!]
+  agentId_lt: String
+  agentId_lte: String
+  agentId_gt: String
+  agentId_gte: String
+  agentId_contains: String
+  agentId_not_contains: String
+  agentId_starts_with: String
+  agentId_not_starts_with: String
+  agentId_ends_with: String
+  agentId_not_ends_with: String
   title: String
   title_not: String
   title_in: [String!]
@@ -988,20 +1368,6 @@ input HotelWhereInput {
   title_not_starts_with: String
   title_ends_with: String
   title_not_ends_with: String
-  content: String
-  content_not: String
-  content_in: [String!]
-  content_not_in: [String!]
-  content_lt: String
-  content_lte: String
-  content_gt: String
-  content_gte: String
-  content_contains: String
-  content_not_contains: String
-  content_starts_with: String
-  content_not_starts_with: String
-  content_ends_with: String
-  content_not_ends_with: String
   slug: String
   slug_not: String
   slug_in: [String!]
@@ -1016,16 +1382,48 @@ input HotelWhereInput {
   slug_not_starts_with: String
   slug_ends_with: String
   slug_not_ends_with: String
-  price: Int
-  price_not: Int
-  price_in: [Int!]
-  price_not_in: [Int!]
-  price_lt: Int
-  price_lte: Int
-  price_gt: Int
-  price_gte: Int
-  status: Boolean
-  status_not: Boolean
+  content: String
+  content_not: String
+  content_in: [String!]
+  content_not_in: [String!]
+  content_lt: String
+  content_lte: String
+  content_gt: String
+  content_gte: String
+  content_contains: String
+  content_not_contains: String
+  content_starts_with: String
+  content_not_starts_with: String
+  content_ends_with: String
+  content_not_ends_with: String
+  status: String
+  status_not: String
+  status_in: [String!]
+  status_not_in: [String!]
+  status_lt: String
+  status_lte: String
+  status_gt: String
+  status_gte: String
+  status_contains: String
+  status_not_contains: String
+  status_starts_with: String
+  status_not_starts_with: String
+  status_ends_with: String
+  status_not_ends_with: String
+  price: String
+  price_not: String
+  price_in: [String!]
+  price_not_in: [String!]
+  price_lt: String
+  price_lte: String
+  price_gt: String
+  price_gte: String
+  price_contains: String
+  price_not_contains: String
+  price_starts_with: String
+  price_not_starts_with: String
+  price_ends_with: String
+  price_not_ends_with: String
   isNegotiable: Boolean
   isNegotiable_not: Boolean
   propertyType: String
@@ -1317,6 +1715,11 @@ input LocationCreateManyInput {
   connect: [LocationWhereUniqueInput!]
 }
 
+input LocationCreateOneInput {
+  create: LocationCreateInput
+  connect: LocationWhereUniqueInput
+}
+
 type LocationEdge {
   node: Location!
   cursor: String!
@@ -1587,9 +1990,23 @@ input LocationUpdateManyWithWhereNestedInput {
   data: LocationUpdateManyDataInput!
 }
 
+input LocationUpdateOneInput {
+  create: LocationCreateInput
+  update: LocationUpdateDataInput
+  upsert: LocationUpsertNestedInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: LocationWhereUniqueInput
+}
+
 input LocationUpdateWithWhereUniqueNestedInput {
   where: LocationWhereUniqueInput!
   data: LocationUpdateDataInput!
+}
+
+input LocationUpsertNestedInput {
+  update: LocationUpdateDataInput!
+  create: LocationCreateInput!
 }
 
 input LocationUpsertWithWhereUniqueNestedInput {
@@ -1793,12 +2210,12 @@ type Mutation {
   upsertLocation(where: LocationWhereUniqueInput!, create: LocationCreateInput!, update: LocationUpdateInput!): Location!
   deleteLocation(where: LocationWhereUniqueInput!): Location
   deleteManyLocations(where: LocationWhereInput): BatchPayload!
-  createPost(data: PostCreateInput!): Post!
-  updatePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
-  updateManyPosts(data: PostUpdateManyMutationInput!, where: PostWhereInput): BatchPayload!
-  upsertPost(where: PostWhereUniqueInput!, create: PostCreateInput!, update: PostUpdateInput!): Post!
-  deletePost(where: PostWhereUniqueInput!): Post
-  deleteManyPosts(where: PostWhereInput): BatchPayload!
+  createSocial(data: SocialCreateInput!): Social!
+  updateSocial(data: SocialUpdateInput!, where: SocialWhereUniqueInput!): Social
+  updateManySocials(data: SocialUpdateManyMutationInput!, where: SocialWhereInput): BatchPayload!
+  upsertSocial(where: SocialWhereUniqueInput!, create: SocialCreateInput!, update: SocialUpdateInput!): Social!
+  deleteSocial(where: SocialWhereUniqueInput!): Social
+  deleteManySocials(where: SocialWhereInput): BatchPayload!
   createUser(data: UserCreateInput!): User!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
@@ -1824,265 +2241,6 @@ type PageInfo {
   endCursor: String
 }
 
-type Post {
-  id: ID!
-  title: String!
-  body: String
-  author: User!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-}
-
-type PostConnection {
-  pageInfo: PageInfo!
-  edges: [PostEdge]!
-  aggregate: AggregatePost!
-}
-
-input PostCreateInput {
-  id: ID
-  title: String!
-  body: String
-  author: UserCreateOneWithoutPostsInput!
-}
-
-input PostCreateManyWithoutAuthorInput {
-  create: [PostCreateWithoutAuthorInput!]
-  connect: [PostWhereUniqueInput!]
-}
-
-input PostCreateWithoutAuthorInput {
-  id: ID
-  title: String!
-  body: String
-}
-
-type PostEdge {
-  node: Post!
-  cursor: String!
-}
-
-enum PostOrderByInput {
-  id_ASC
-  id_DESC
-  title_ASC
-  title_DESC
-  body_ASC
-  body_DESC
-  createdAt_ASC
-  createdAt_DESC
-  updatedAt_ASC
-  updatedAt_DESC
-}
-
-type PostPreviousValues {
-  id: ID!
-  title: String!
-  body: String
-  createdAt: DateTime!
-  updatedAt: DateTime!
-}
-
-input PostScalarWhereInput {
-  id: ID
-  id_not: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_gt: ID
-  id_gte: ID
-  id_contains: ID
-  id_not_contains: ID
-  id_starts_with: ID
-  id_not_starts_with: ID
-  id_ends_with: ID
-  id_not_ends_with: ID
-  title: String
-  title_not: String
-  title_in: [String!]
-  title_not_in: [String!]
-  title_lt: String
-  title_lte: String
-  title_gt: String
-  title_gte: String
-  title_contains: String
-  title_not_contains: String
-  title_starts_with: String
-  title_not_starts_with: String
-  title_ends_with: String
-  title_not_ends_with: String
-  body: String
-  body_not: String
-  body_in: [String!]
-  body_not_in: [String!]
-  body_lt: String
-  body_lte: String
-  body_gt: String
-  body_gte: String
-  body_contains: String
-  body_not_contains: String
-  body_starts_with: String
-  body_not_starts_with: String
-  body_ends_with: String
-  body_not_ends_with: String
-  createdAt: DateTime
-  createdAt_not: DateTime
-  createdAt_in: [DateTime!]
-  createdAt_not_in: [DateTime!]
-  createdAt_lt: DateTime
-  createdAt_lte: DateTime
-  createdAt_gt: DateTime
-  createdAt_gte: DateTime
-  updatedAt: DateTime
-  updatedAt_not: DateTime
-  updatedAt_in: [DateTime!]
-  updatedAt_not_in: [DateTime!]
-  updatedAt_lt: DateTime
-  updatedAt_lte: DateTime
-  updatedAt_gt: DateTime
-  updatedAt_gte: DateTime
-  AND: [PostScalarWhereInput!]
-  OR: [PostScalarWhereInput!]
-  NOT: [PostScalarWhereInput!]
-}
-
-type PostSubscriptionPayload {
-  mutation: MutationType!
-  node: Post
-  updatedFields: [String!]
-  previousValues: PostPreviousValues
-}
-
-input PostSubscriptionWhereInput {
-  mutation_in: [MutationType!]
-  updatedFields_contains: String
-  updatedFields_contains_every: [String!]
-  updatedFields_contains_some: [String!]
-  node: PostWhereInput
-  AND: [PostSubscriptionWhereInput!]
-  OR: [PostSubscriptionWhereInput!]
-  NOT: [PostSubscriptionWhereInput!]
-}
-
-input PostUpdateInput {
-  title: String
-  body: String
-  author: UserUpdateOneRequiredWithoutPostsInput
-}
-
-input PostUpdateManyDataInput {
-  title: String
-  body: String
-}
-
-input PostUpdateManyMutationInput {
-  title: String
-  body: String
-}
-
-input PostUpdateManyWithoutAuthorInput {
-  create: [PostCreateWithoutAuthorInput!]
-  delete: [PostWhereUniqueInput!]
-  connect: [PostWhereUniqueInput!]
-  set: [PostWhereUniqueInput!]
-  disconnect: [PostWhereUniqueInput!]
-  update: [PostUpdateWithWhereUniqueWithoutAuthorInput!]
-  upsert: [PostUpsertWithWhereUniqueWithoutAuthorInput!]
-  deleteMany: [PostScalarWhereInput!]
-  updateMany: [PostUpdateManyWithWhereNestedInput!]
-}
-
-input PostUpdateManyWithWhereNestedInput {
-  where: PostScalarWhereInput!
-  data: PostUpdateManyDataInput!
-}
-
-input PostUpdateWithoutAuthorDataInput {
-  title: String
-  body: String
-}
-
-input PostUpdateWithWhereUniqueWithoutAuthorInput {
-  where: PostWhereUniqueInput!
-  data: PostUpdateWithoutAuthorDataInput!
-}
-
-input PostUpsertWithWhereUniqueWithoutAuthorInput {
-  where: PostWhereUniqueInput!
-  update: PostUpdateWithoutAuthorDataInput!
-  create: PostCreateWithoutAuthorInput!
-}
-
-input PostWhereInput {
-  id: ID
-  id_not: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_gt: ID
-  id_gte: ID
-  id_contains: ID
-  id_not_contains: ID
-  id_starts_with: ID
-  id_not_starts_with: ID
-  id_ends_with: ID
-  id_not_ends_with: ID
-  title: String
-  title_not: String
-  title_in: [String!]
-  title_not_in: [String!]
-  title_lt: String
-  title_lte: String
-  title_gt: String
-  title_gte: String
-  title_contains: String
-  title_not_contains: String
-  title_starts_with: String
-  title_not_starts_with: String
-  title_ends_with: String
-  title_not_ends_with: String
-  body: String
-  body_not: String
-  body_in: [String!]
-  body_not_in: [String!]
-  body_lt: String
-  body_lte: String
-  body_gt: String
-  body_gte: String
-  body_contains: String
-  body_not_contains: String
-  body_starts_with: String
-  body_not_starts_with: String
-  body_ends_with: String
-  body_not_ends_with: String
-  author: UserWhereInput
-  createdAt: DateTime
-  createdAt_not: DateTime
-  createdAt_in: [DateTime!]
-  createdAt_not_in: [DateTime!]
-  createdAt_lt: DateTime
-  createdAt_lte: DateTime
-  createdAt_gt: DateTime
-  createdAt_gte: DateTime
-  updatedAt: DateTime
-  updatedAt_not: DateTime
-  updatedAt_in: [DateTime!]
-  updatedAt_not_in: [DateTime!]
-  updatedAt_lt: DateTime
-  updatedAt_lte: DateTime
-  updatedAt_gt: DateTime
-  updatedAt_gte: DateTime
-  AND: [PostWhereInput!]
-  OR: [PostWhereInput!]
-  NOT: [PostWhereInput!]
-}
-
-input PostWhereUniqueInput {
-  id: ID
-}
-
 type Query {
   amenities(where: AmenitiesWhereUniqueInput!): Amenities
   amenitieses(where: AmenitiesWhereInput, orderBy: AmenitiesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Amenities]!
@@ -2105,13 +2263,199 @@ type Query {
   location(where: LocationWhereUniqueInput!): Location
   locations(where: LocationWhereInput, orderBy: LocationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Location]!
   locationsConnection(where: LocationWhereInput, orderBy: LocationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): LocationConnection!
-  post(where: PostWhereUniqueInput!): Post
-  posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post]!
-  postsConnection(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PostConnection!
+  social(where: SocialWhereUniqueInput!): Social
+  socials(where: SocialWhereInput, orderBy: SocialOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Social]!
+  socialsConnection(where: SocialWhereInput, orderBy: SocialOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): SocialConnection!
   user(where: UserWhereUniqueInput!): User
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
   node(id: ID!): Node
+}
+
+type Social {
+  id: ID!
+  facebook: String
+  twitter: String
+  linkedIN: String
+  instagram: String
+}
+
+type SocialConnection {
+  pageInfo: PageInfo!
+  edges: [SocialEdge]!
+  aggregate: AggregateSocial!
+}
+
+input SocialCreateInput {
+  id: ID
+  facebook: String
+  twitter: String
+  linkedIN: String
+  instagram: String
+}
+
+input SocialCreateOneInput {
+  create: SocialCreateInput
+  connect: SocialWhereUniqueInput
+}
+
+type SocialEdge {
+  node: Social!
+  cursor: String!
+}
+
+enum SocialOrderByInput {
+  id_ASC
+  id_DESC
+  facebook_ASC
+  facebook_DESC
+  twitter_ASC
+  twitter_DESC
+  linkedIN_ASC
+  linkedIN_DESC
+  instagram_ASC
+  instagram_DESC
+}
+
+type SocialPreviousValues {
+  id: ID!
+  facebook: String
+  twitter: String
+  linkedIN: String
+  instagram: String
+}
+
+type SocialSubscriptionPayload {
+  mutation: MutationType!
+  node: Social
+  updatedFields: [String!]
+  previousValues: SocialPreviousValues
+}
+
+input SocialSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: SocialWhereInput
+  AND: [SocialSubscriptionWhereInput!]
+  OR: [SocialSubscriptionWhereInput!]
+  NOT: [SocialSubscriptionWhereInput!]
+}
+
+input SocialUpdateDataInput {
+  facebook: String
+  twitter: String
+  linkedIN: String
+  instagram: String
+}
+
+input SocialUpdateInput {
+  facebook: String
+  twitter: String
+  linkedIN: String
+  instagram: String
+}
+
+input SocialUpdateManyMutationInput {
+  facebook: String
+  twitter: String
+  linkedIN: String
+  instagram: String
+}
+
+input SocialUpdateOneInput {
+  create: SocialCreateInput
+  update: SocialUpdateDataInput
+  upsert: SocialUpsertNestedInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: SocialWhereUniqueInput
+}
+
+input SocialUpsertNestedInput {
+  update: SocialUpdateDataInput!
+  create: SocialCreateInput!
+}
+
+input SocialWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  facebook: String
+  facebook_not: String
+  facebook_in: [String!]
+  facebook_not_in: [String!]
+  facebook_lt: String
+  facebook_lte: String
+  facebook_gt: String
+  facebook_gte: String
+  facebook_contains: String
+  facebook_not_contains: String
+  facebook_starts_with: String
+  facebook_not_starts_with: String
+  facebook_ends_with: String
+  facebook_not_ends_with: String
+  twitter: String
+  twitter_not: String
+  twitter_in: [String!]
+  twitter_not_in: [String!]
+  twitter_lt: String
+  twitter_lte: String
+  twitter_gt: String
+  twitter_gte: String
+  twitter_contains: String
+  twitter_not_contains: String
+  twitter_starts_with: String
+  twitter_not_starts_with: String
+  twitter_ends_with: String
+  twitter_not_ends_with: String
+  linkedIN: String
+  linkedIN_not: String
+  linkedIN_in: [String!]
+  linkedIN_not_in: [String!]
+  linkedIN_lt: String
+  linkedIN_lte: String
+  linkedIN_gt: String
+  linkedIN_gte: String
+  linkedIN_contains: String
+  linkedIN_not_contains: String
+  linkedIN_starts_with: String
+  linkedIN_not_starts_with: String
+  linkedIN_ends_with: String
+  linkedIN_not_ends_with: String
+  instagram: String
+  instagram_not: String
+  instagram_in: [String!]
+  instagram_not_in: [String!]
+  instagram_lt: String
+  instagram_lte: String
+  instagram_gt: String
+  instagram_gte: String
+  instagram_contains: String
+  instagram_not_contains: String
+  instagram_starts_with: String
+  instagram_not_starts_with: String
+  instagram_ends_with: String
+  instagram_not_ends_with: String
+  AND: [SocialWhereInput!]
+  OR: [SocialWhereInput!]
+  NOT: [SocialWhereInput!]
+}
+
+input SocialWhereUniqueInput {
+  id: ID
 }
 
 type Subscription {
@@ -2122,16 +2466,28 @@ type Subscription {
   hotel(where: HotelSubscriptionWhereInput): HotelSubscriptionPayload
   image(where: ImageSubscriptionWhereInput): ImageSubscriptionPayload
   location(where: LocationSubscriptionWhereInput): LocationSubscriptionPayload
-  post(where: PostSubscriptionWhereInput): PostSubscriptionPayload
+  social(where: SocialSubscriptionWhereInput): SocialSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
 }
 
 type User {
   id: ID!
-  email: String!
-  name: String
+  first_name: String!
+  last_name: String!
+  username: String!
   password: String!
-  posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post!]
+  email: String!
+  cellNumber: String
+  profile_pic: Gallery
+  cover_pic: Gallery
+  date_of_birth: String
+  gender: String
+  content: String
+  agent_location: Location
+  gallery(where: GalleryWhereInput, orderBy: GalleryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Gallery!]
+  social_profile: Social
+  listed_posts(where: HotelWhereInput, orderBy: HotelOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Hotel!]
+  favourite_post(where: HotelWhereInput, orderBy: HotelOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Hotel!]
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -2144,22 +2500,46 @@ type UserConnection {
 
 input UserCreateInput {
   id: ID
-  email: String!
-  name: String
+  first_name: String!
+  last_name: String!
+  username: String!
   password: String!
-  posts: PostCreateManyWithoutAuthorInput
+  email: String!
+  cellNumber: String
+  profile_pic: GalleryCreateOneInput
+  cover_pic: GalleryCreateOneInput
+  date_of_birth: String
+  gender: String
+  content: String
+  agent_location: LocationCreateOneInput
+  gallery: GalleryCreateManyInput
+  social_profile: SocialCreateOneInput
+  listed_posts: HotelCreateManyWithoutConnectIdInput
+  favourite_post: HotelCreateManyInput
 }
 
-input UserCreateOneWithoutPostsInput {
-  create: UserCreateWithoutPostsInput
+input UserCreateOneWithoutListed_postsInput {
+  create: UserCreateWithoutListed_postsInput
   connect: UserWhereUniqueInput
 }
 
-input UserCreateWithoutPostsInput {
+input UserCreateWithoutListed_postsInput {
   id: ID
-  email: String!
-  name: String
+  first_name: String!
+  last_name: String!
+  username: String!
   password: String!
+  email: String!
+  cellNumber: String
+  profile_pic: GalleryCreateOneInput
+  cover_pic: GalleryCreateOneInput
+  date_of_birth: String
+  gender: String
+  content: String
+  agent_location: LocationCreateOneInput
+  gallery: GalleryCreateManyInput
+  social_profile: SocialCreateOneInput
+  favourite_post: HotelCreateManyInput
 }
 
 type UserEdge {
@@ -2170,12 +2550,24 @@ type UserEdge {
 enum UserOrderByInput {
   id_ASC
   id_DESC
-  email_ASC
-  email_DESC
-  name_ASC
-  name_DESC
+  first_name_ASC
+  first_name_DESC
+  last_name_ASC
+  last_name_DESC
+  username_ASC
+  username_DESC
   password_ASC
   password_DESC
+  email_ASC
+  email_DESC
+  cellNumber_ASC
+  cellNumber_DESC
+  date_of_birth_ASC
+  date_of_birth_DESC
+  gender_ASC
+  gender_DESC
+  content_ASC
+  content_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -2184,9 +2576,15 @@ enum UserOrderByInput {
 
 type UserPreviousValues {
   id: ID!
-  email: String!
-  name: String
+  first_name: String!
+  last_name: String!
+  username: String!
   password: String!
+  email: String!
+  cellNumber: String
+  date_of_birth: String
+  gender: String
+  content: String
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -2210,34 +2608,66 @@ input UserSubscriptionWhereInput {
 }
 
 input UserUpdateInput {
-  email: String
-  name: String
+  first_name: String
+  last_name: String
+  username: String
   password: String
-  posts: PostUpdateManyWithoutAuthorInput
+  email: String
+  cellNumber: String
+  profile_pic: GalleryUpdateOneInput
+  cover_pic: GalleryUpdateOneInput
+  date_of_birth: String
+  gender: String
+  content: String
+  agent_location: LocationUpdateOneInput
+  gallery: GalleryUpdateManyInput
+  social_profile: SocialUpdateOneInput
+  listed_posts: HotelUpdateManyWithoutConnectIdInput
+  favourite_post: HotelUpdateManyInput
 }
 
 input UserUpdateManyMutationInput {
-  email: String
-  name: String
+  first_name: String
+  last_name: String
+  username: String
   password: String
+  email: String
+  cellNumber: String
+  date_of_birth: String
+  gender: String
+  content: String
 }
 
-input UserUpdateOneRequiredWithoutPostsInput {
-  create: UserCreateWithoutPostsInput
-  update: UserUpdateWithoutPostsDataInput
-  upsert: UserUpsertWithoutPostsInput
+input UserUpdateOneWithoutListed_postsInput {
+  create: UserCreateWithoutListed_postsInput
+  update: UserUpdateWithoutListed_postsDataInput
+  upsert: UserUpsertWithoutListed_postsInput
+  delete: Boolean
+  disconnect: Boolean
   connect: UserWhereUniqueInput
 }
 
-input UserUpdateWithoutPostsDataInput {
-  email: String
-  name: String
+input UserUpdateWithoutListed_postsDataInput {
+  first_name: String
+  last_name: String
+  username: String
   password: String
+  email: String
+  cellNumber: String
+  profile_pic: GalleryUpdateOneInput
+  cover_pic: GalleryUpdateOneInput
+  date_of_birth: String
+  gender: String
+  content: String
+  agent_location: LocationUpdateOneInput
+  gallery: GalleryUpdateManyInput
+  social_profile: SocialUpdateOneInput
+  favourite_post: HotelUpdateManyInput
 }
 
-input UserUpsertWithoutPostsInput {
-  update: UserUpdateWithoutPostsDataInput!
-  create: UserCreateWithoutPostsInput!
+input UserUpsertWithoutListed_postsInput {
+  update: UserUpdateWithoutListed_postsDataInput!
+  create: UserCreateWithoutListed_postsInput!
 }
 
 input UserWhereInput {
@@ -2255,34 +2685,48 @@ input UserWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  email: String
-  email_not: String
-  email_in: [String!]
-  email_not_in: [String!]
-  email_lt: String
-  email_lte: String
-  email_gt: String
-  email_gte: String
-  email_contains: String
-  email_not_contains: String
-  email_starts_with: String
-  email_not_starts_with: String
-  email_ends_with: String
-  email_not_ends_with: String
-  name: String
-  name_not: String
-  name_in: [String!]
-  name_not_in: [String!]
-  name_lt: String
-  name_lte: String
-  name_gt: String
-  name_gte: String
-  name_contains: String
-  name_not_contains: String
-  name_starts_with: String
-  name_not_starts_with: String
-  name_ends_with: String
-  name_not_ends_with: String
+  first_name: String
+  first_name_not: String
+  first_name_in: [String!]
+  first_name_not_in: [String!]
+  first_name_lt: String
+  first_name_lte: String
+  first_name_gt: String
+  first_name_gte: String
+  first_name_contains: String
+  first_name_not_contains: String
+  first_name_starts_with: String
+  first_name_not_starts_with: String
+  first_name_ends_with: String
+  first_name_not_ends_with: String
+  last_name: String
+  last_name_not: String
+  last_name_in: [String!]
+  last_name_not_in: [String!]
+  last_name_lt: String
+  last_name_lte: String
+  last_name_gt: String
+  last_name_gte: String
+  last_name_contains: String
+  last_name_not_contains: String
+  last_name_starts_with: String
+  last_name_not_starts_with: String
+  last_name_ends_with: String
+  last_name_not_ends_with: String
+  username: String
+  username_not: String
+  username_in: [String!]
+  username_not_in: [String!]
+  username_lt: String
+  username_lte: String
+  username_gt: String
+  username_gte: String
+  username_contains: String
+  username_not_contains: String
+  username_starts_with: String
+  username_not_starts_with: String
+  username_ends_with: String
+  username_not_ends_with: String
   password: String
   password_not: String
   password_in: [String!]
@@ -2297,9 +2741,89 @@ input UserWhereInput {
   password_not_starts_with: String
   password_ends_with: String
   password_not_ends_with: String
-  posts_every: PostWhereInput
-  posts_some: PostWhereInput
-  posts_none: PostWhereInput
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  cellNumber: String
+  cellNumber_not: String
+  cellNumber_in: [String!]
+  cellNumber_not_in: [String!]
+  cellNumber_lt: String
+  cellNumber_lte: String
+  cellNumber_gt: String
+  cellNumber_gte: String
+  cellNumber_contains: String
+  cellNumber_not_contains: String
+  cellNumber_starts_with: String
+  cellNumber_not_starts_with: String
+  cellNumber_ends_with: String
+  cellNumber_not_ends_with: String
+  profile_pic: GalleryWhereInput
+  cover_pic: GalleryWhereInput
+  date_of_birth: String
+  date_of_birth_not: String
+  date_of_birth_in: [String!]
+  date_of_birth_not_in: [String!]
+  date_of_birth_lt: String
+  date_of_birth_lte: String
+  date_of_birth_gt: String
+  date_of_birth_gte: String
+  date_of_birth_contains: String
+  date_of_birth_not_contains: String
+  date_of_birth_starts_with: String
+  date_of_birth_not_starts_with: String
+  date_of_birth_ends_with: String
+  date_of_birth_not_ends_with: String
+  gender: String
+  gender_not: String
+  gender_in: [String!]
+  gender_not_in: [String!]
+  gender_lt: String
+  gender_lte: String
+  gender_gt: String
+  gender_gte: String
+  gender_contains: String
+  gender_not_contains: String
+  gender_starts_with: String
+  gender_not_starts_with: String
+  gender_ends_with: String
+  gender_not_ends_with: String
+  content: String
+  content_not: String
+  content_in: [String!]
+  content_not_in: [String!]
+  content_lt: String
+  content_lte: String
+  content_gt: String
+  content_gte: String
+  content_contains: String
+  content_not_contains: String
+  content_starts_with: String
+  content_not_starts_with: String
+  content_ends_with: String
+  content_not_ends_with: String
+  agent_location: LocationWhereInput
+  gallery_every: GalleryWhereInput
+  gallery_some: GalleryWhereInput
+  gallery_none: GalleryWhereInput
+  social_profile: SocialWhereInput
+  listed_posts_every: HotelWhereInput
+  listed_posts_some: HotelWhereInput
+  listed_posts_none: HotelWhereInput
+  favourite_post_every: HotelWhereInput
+  favourite_post_some: HotelWhereInput
+  favourite_post_none: HotelWhereInput
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]

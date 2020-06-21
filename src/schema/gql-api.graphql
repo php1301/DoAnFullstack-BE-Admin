@@ -1,22 +1,44 @@
 type User {
   id: ID!
+  first_name: String!
+  last_name: String!
+  username: String!
+  password: String!
   email: String!
-  post: [Post!]!
+  cellNumber: String
+  profile_pic: Image
+  cover_pic: Image
+  date_of_birth: String
+  gender: String
+  content: String
+  agent_location: Location
+  gallery: [Gallery]
+  social_profile: Social
+  listed_posts: [Hotel]
+  favourite_post: [Hotel]
   createdAt: String!
   updatedAt: String!
 }
 
+# enum Gender {
+#   Male
+#   Female
+#   Other
+# }
 type Hotel {
   id: ID!
-  hotelName: String
+  connectId: User
+  agentId: String
   title: String
-  content: String
   slug: String
-  price: Int
-  status: Boolean
+  status: String
+  content: String
+  price: String
   isNegotiable: Boolean
   propertyType: String
   condition: String
+  rating: Float
+  ratingCount: Int
   contactNumber: String
   termsAndCondition: String
   amenities: [Amenities]
@@ -68,14 +90,10 @@ type Categories {
   image: Image
 }
 
-type Post {
-  id: ID!
-  title: String!
-  body: String
-  author: User!
-}
-
 input SignUpInput {
+  username: String
+  first_name: String
+  last_name: String
   email: String!
   password: String!
 }
@@ -83,11 +101,6 @@ input SignUpInput {
 input LoginInput {
   email: String!
   password: String!
-}
-
-input PostInput {
-  title: String!
-  body: String
 }
 
 type AuthPayload {
@@ -98,7 +111,6 @@ type AuthPayload {
 type Mutation {
   signup(signUpInput: SignUpInput): AuthPayload!
   login(loginInput: LoginInput): AuthPayload!
-  createPost(postInput: PostInput): Post!
   createHotel(
     addHotelInput: AddHotelInput
     location: [LocationInput]
@@ -111,18 +123,22 @@ type Mutation {
 type HotelPhotos {
   url: String!
 }
-# type Location {
-#   url: String!
-# }
+type Social {
+  facebook: String
+  twitter: String
+  linkedIN: String
+  instagram: String
+}
 type Query {
   amenities: [Amenities!]!
-  image(id:ID!): Hotel!
+  image(id: ID!): Hotel!
   location(id: ID!): Location!
   locations: [Location]
-  gallery(id:ID!):Gallery!
+  gallery(id: ID!): Gallery!
   galleries: [Gallery!]!
-  category(id:ID!):Categories!
-  categories:[Categories!]!
+  category(id: ID!): Categories!
+  categories: [Categories!]!
+  userPosts(id: ID!): User
 }
 input LocationInput {
   lat: String
@@ -145,7 +161,7 @@ input CategoriesInput {
 }
 input AddHotelInput {
   hotelName: String
-  pricePerNight: Int
+  pricePerNight: String
   hotelDetails: String
   guest: Int
   beds: Int

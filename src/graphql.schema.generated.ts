@@ -8,7 +8,7 @@
 /* eslint-disable */
 export class AddHotelInput {
     hotelName?: string;
-    pricePerNight?: number;
+    pricePerNight?: string;
     hotelDetails?: string;
     guest?: number;
     beds?: number;
@@ -51,12 +51,10 @@ export class LoginInput {
     password: string;
 }
 
-export class PostInput {
-    title: string;
-    body?: string;
-}
-
 export class SignUpInput {
+    username?: string;
+    first_name?: string;
+    last_name?: string;
     email: string;
     password: string;
 }
@@ -91,15 +89,18 @@ export class Gallery {
 
 export class Hotel {
     id: string;
-    hotelName?: string;
+    connectId?: User;
+    agentId?: string;
     title?: string;
-    content?: string;
     slug?: string;
-    price?: number;
-    status?: boolean;
+    status?: string;
+    content?: string;
+    price?: string;
     isNegotiable?: boolean;
     propertyType?: string;
     condition?: string;
+    rating?: number;
+    ratingCount?: number;
     contactNumber?: string;
     termsAndCondition?: string;
     amenities?: Amenities[];
@@ -138,18 +139,9 @@ export abstract class IMutation {
 
     abstract login(loginInput?: LoginInput): AuthPayload | Promise<AuthPayload>;
 
-    abstract createPost(postInput?: PostInput): Post | Promise<Post>;
-
     abstract createHotel(addHotelInput?: AddHotelInput, location?: LocationInput[], image?: ImageInput[], categories?: CategoriesInput[]): Hotel | Promise<Hotel>;
 
     abstract createLocation(location?: LocationInput): Location | Promise<Location>;
-}
-
-export class Post {
-    id: string;
-    title: string;
-    body?: string;
-    author: User;
 }
 
 export abstract class IQuery {
@@ -168,12 +160,35 @@ export abstract class IQuery {
     abstract category(id: string): Categories | Promise<Categories>;
 
     abstract categories(): Categories[] | Promise<Categories[]>;
+
+    abstract userPosts(id: string): User | Promise<User>;
+}
+
+export class Social {
+    facebook?: string;
+    twitter?: string;
+    linkedIN?: string;
+    instagram?: string;
 }
 
 export class User {
     id: string;
+    first_name: string;
+    last_name: string;
+    username: string;
+    password: string;
     email: string;
-    post: Post[];
+    cellNumber?: string;
+    profile_pic?: Image;
+    cover_pic?: Image;
+    date_of_birth?: string;
+    gender?: string;
+    content?: string;
+    agent_location?: Location;
+    gallery?: Gallery[];
+    social_profile?: Social;
+    listed_posts?: Hotel[];
+    favourite_post?: Hotel[];
     createdAt: string;
     updatedAt: string;
 }

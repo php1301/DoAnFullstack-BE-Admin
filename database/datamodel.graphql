@@ -1,29 +1,49 @@
 type User {
   id: ID! @id
-  email: String! @unique
-  name: String
+  first_name: String!
+  last_name: String!
+  username: String!
   password: String!
-  posts: [Post!]! @relation(link: INLINE)
+  email: String! @unique
+  cellNumber: String @defailt(value: "0000")
+  profile_pic: Gallery @relation(link: INLINE, name: "Profile")
+  cover_pic: Gallery @relation(link: INLINE, name: "Cover")
+  date_of_birth: String
+  gender: String
+  content: String
+  agent_location: Location @relation(link: INLINE)
+  gallery: [Gallery] @relation(link: INLINE, name: "User_gallery")
+  social_profile: Social @relation(link: INLINE)
+  # 1 field sử dụng cùng 1 model thì phải khai báo relation name để specify các loại relations
+  listed_posts: [Hotel] @relation(link: INLINE, name: "Hotel_created")
+  favourite_post: [Hotel] @relation(link: INLINE, name: "Hotel_liked")
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
 
-type Post {
+type Social {
   id: ID! @id
-  title: String!
-  body: String
-  author: User!
-  createdAt: DateTime! @createdAt
-  updatedAt: DateTime! @updatedAt
+  facebook: String
+  twitter: String
+  linkedIN: String
+  instagram: String
+}
+
+enum Gender {
+  Male
+  Female
+  Other
 }
 
 type Hotel {
   id: ID! @id
+  connectId: User @relation(name: "Hotel_created")
+  agentId: String
   title: String!
-  content: String
   slug: String
-  price: Int
-  status: Boolean
+  content: String
+  status: String @defailt(value: "Public")
+  price: String
   isNegotiable: Boolean
   propertyType: String
   condition: String
