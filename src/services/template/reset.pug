@@ -1,0 +1,47 @@
+doctype html
+head
+  title Reset Password
+.container
+  .row
+    .col-xs-12.col-sm-6.col-md-4.text-center
+      h3 Reset Password
+      h2 #{email}
+  .row
+    .col-xs-12.col-sm-6.col-md-4.extra-padding
+      label.idleLabel(for='newPassword') New Password
+      .input-group
+        input#newPassword.form-control.isRequired(type='password' name='newPassword' title='enter your new password' maxlength='50')
+        span.input-group-addon(title='Invalid password')
+          i.fa.fa-lg.fa-fw.fa-times.text-danger
+  .row
+    .col-xs-12.col-sm-6.col-md-4.extra-padding
+      label.idleLabel(for='newPasswordConfirm') Verify password
+      .input-group
+        input#newPasswordConfirm.form-control.isRequired(type='password' name='newPasswordConfirm')
+        span.input-group-addon(title='Passwords match')
+          i.fa.fa-lg.fa-fw.fa-check.text-success
+style.
+  textarea {
+  resize: none;
+  }
+  .idleLabel {
+  position: absolute;
+  color: #888888;
+  margin: 7px 13px;
+  font-weight: normal;
+  z-index: 3;
+  }
+  .activeLabel {
+  position: absolute;
+  color: grey;
+  font-size: x-small;
+  margin: -5px 10px;
+  background-color: #FFFFFF;
+  border-left: solid #888888 1px;
+  border-right: solid #888888 1px;
+  padding: 0 4px;
+  z-index: 3;
+  }
+  .extra-padding {
+  margin-bottom: 0.5em;
+  }
