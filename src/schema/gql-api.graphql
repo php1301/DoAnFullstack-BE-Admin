@@ -6,8 +6,8 @@ type User {
   password: String!
   email: String!
   cellNumber: String
-  profile_pic: Image
-  cover_pic: Image
+  profile_pic: [Image]
+  cover_pic: [Image]
   date_of_birth: String
   gender: String
   content: String
@@ -27,6 +27,7 @@ type User {
 # }
 type Hotel {
   id: ID!
+  peopleLiked: [User]
   connectId: User
   agentId: String
   title: String
@@ -89,37 +90,10 @@ type Categories {
   name: String
   image: Image
 }
-
-input SignUpInput {
-  username: String
-  first_name: String
-  last_name: String
-  email: String!
-  password: String!
-}
-
-input LoginInput {
-  email: String!
-  password: String!
-}
-
 type AuthPayload {
   id: ID!
   email: String!
 }
-
-type Mutation {
-  signup(signUpInput: SignUpInput): AuthPayload!
-  login(loginInput: LoginInput): AuthPayload!
-  createHotel(
-    addHotelInput: AddHotelInput
-    location: [LocationInput]
-    image: [ImageInput]
-    categories: [CategoriesInput]
-  ): Hotel!
-  createLocation(location: LocationInput): Location!
-}
-
 type HotelPhotos {
   url: String!
 }
@@ -131,15 +105,57 @@ type Social {
 }
 type Query {
   amenities: [Amenities!]!
-  image(id: ID!): Hotel!
-  location(id: ID!): Location!
+  imageId(id: ID!): Hotel!
+  locationId(id: ID!): Location!
   locations: [Location]
-  gallery(id: ID!): Gallery!
+  galleryId(id: ID!): Gallery!
   galleries: [Gallery!]!
-  category(id: ID!): Categories!
+  categoryId(id: ID!): Categories!
   categories: [Categories!]!
   userPosts(id: ID!): User
+  getUserInfo(id: ID!): User
 }
+type Mutation {
+  signup(signUpInput: SignUpInput): AuthPayload!
+  login(loginInput: LoginInput): AuthPayload!
+  createHotel(
+    addHotelInput: AddHotelInput
+    location: [LocationInput]
+    image: [ImageInput]
+    categories: [CategoriesInput]
+  ): Hotel!
+  createLocation(location: LocationInput): Location!
+  updateProfile(profile: UpdateProfileInput, location: LocationInput): User
+  updatePhotos(photos: UpdatePhotosInput): User
+  updatePassword(password: UpdatePassword): User!
+  forgetPassword(email: String): User
+  sendContact(contact: ContactInput): User
+  likeHotel(id: String): Hotel
+  dislikeHotel(id: ID!): Hotel
+}
+
+input UpdateProfileInput {
+  first_name: String
+  last_name: String
+  date_of_birth: String
+  gender: String
+  email: String
+  content: String
+  agent_location: LocationInput
+  cellNumber: String
+}
+
+input UpdatePhotosInput {
+  cover_pic: [ImageInput]
+  profile_pic: [ImageInput]
+}
+
+input UpdatePassword {
+  confirmPassword: String!
+  oldPassword: String!
+  newPassword: String!
+}
+
 input LocationInput {
   lat: String
   lng: String
@@ -166,6 +182,7 @@ input AddHotelInput {
   guest: Int
   beds: Int
   price: Int
+  # Co the khong can nhung nen ghi vo cho de hieu
   hotelPhotos: [ImageInput]
   location: [LocationInput]
   locationDescription: String
@@ -175,4 +192,23 @@ input AddHotelInput {
   parking: Boolean
   poolAvailability: Boolean
   extraBed: Boolean
+}
+input SignUpInput {
+  username: String
+  first_name: String
+  last_name: String
+  email: String!
+  password: String!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+input ContactInput {
+  targetEmail: String!
+  message: String
+  email: String
+  cellNumber: String
 }

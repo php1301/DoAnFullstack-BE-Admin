@@ -455,6 +455,32 @@ export type CategoryImagesOrderByInput =
 
 export type GalleryOrderByInput = "id_ASC" | "id_DESC" | "url_ASC" | "url_DESC";
 
+export type UserOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "first_name_ASC"
+  | "first_name_DESC"
+  | "last_name_ASC"
+  | "last_name_DESC"
+  | "username_ASC"
+  | "username_DESC"
+  | "password_ASC"
+  | "password_DESC"
+  | "email_ASC"
+  | "email_DESC"
+  | "cellNumber_ASC"
+  | "cellNumber_DESC"
+  | "date_of_birth_ASC"
+  | "date_of_birth_DESC"
+  | "gender_ASC"
+  | "gender_DESC"
+  | "content_ASC"
+  | "content_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
 export type HotelOrderByInput =
   | "id_ASC"
   | "id_DESC"
@@ -530,32 +556,6 @@ export type SocialOrderByInput =
   | "linkedIN_DESC"
   | "instagram_ASC"
   | "instagram_DESC";
-
-export type UserOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "first_name_ASC"
-  | "first_name_DESC"
-  | "last_name_ASC"
-  | "last_name_DESC"
-  | "username_ASC"
-  | "username_DESC"
-  | "password_ASC"
-  | "password_DESC"
-  | "email_ASC"
-  | "email_DESC"
-  | "cellNumber_ASC"
-  | "cellNumber_DESC"
-  | "date_of_birth_ASC"
-  | "date_of_birth_DESC"
-  | "gender_ASC"
-  | "gender_DESC"
-  | "content_ASC"
-  | "content_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC";
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
@@ -742,214 +742,6 @@ export type HotelWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
-export interface HotelWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  connectId?: Maybe<UserWhereInput>;
-  agentId?: Maybe<string>;
-  agentId_not?: Maybe<string>;
-  agentId_in?: Maybe<string[] | string>;
-  agentId_not_in?: Maybe<string[] | string>;
-  agentId_lt?: Maybe<string>;
-  agentId_lte?: Maybe<string>;
-  agentId_gt?: Maybe<string>;
-  agentId_gte?: Maybe<string>;
-  agentId_contains?: Maybe<string>;
-  agentId_not_contains?: Maybe<string>;
-  agentId_starts_with?: Maybe<string>;
-  agentId_not_starts_with?: Maybe<string>;
-  agentId_ends_with?: Maybe<string>;
-  agentId_not_ends_with?: Maybe<string>;
-  title?: Maybe<string>;
-  title_not?: Maybe<string>;
-  title_in?: Maybe<string[] | string>;
-  title_not_in?: Maybe<string[] | string>;
-  title_lt?: Maybe<string>;
-  title_lte?: Maybe<string>;
-  title_gt?: Maybe<string>;
-  title_gte?: Maybe<string>;
-  title_contains?: Maybe<string>;
-  title_not_contains?: Maybe<string>;
-  title_starts_with?: Maybe<string>;
-  title_not_starts_with?: Maybe<string>;
-  title_ends_with?: Maybe<string>;
-  title_not_ends_with?: Maybe<string>;
-  slug?: Maybe<string>;
-  slug_not?: Maybe<string>;
-  slug_in?: Maybe<string[] | string>;
-  slug_not_in?: Maybe<string[] | string>;
-  slug_lt?: Maybe<string>;
-  slug_lte?: Maybe<string>;
-  slug_gt?: Maybe<string>;
-  slug_gte?: Maybe<string>;
-  slug_contains?: Maybe<string>;
-  slug_not_contains?: Maybe<string>;
-  slug_starts_with?: Maybe<string>;
-  slug_not_starts_with?: Maybe<string>;
-  slug_ends_with?: Maybe<string>;
-  slug_not_ends_with?: Maybe<string>;
-  content?: Maybe<string>;
-  content_not?: Maybe<string>;
-  content_in?: Maybe<string[] | string>;
-  content_not_in?: Maybe<string[] | string>;
-  content_lt?: Maybe<string>;
-  content_lte?: Maybe<string>;
-  content_gt?: Maybe<string>;
-  content_gte?: Maybe<string>;
-  content_contains?: Maybe<string>;
-  content_not_contains?: Maybe<string>;
-  content_starts_with?: Maybe<string>;
-  content_not_starts_with?: Maybe<string>;
-  content_ends_with?: Maybe<string>;
-  content_not_ends_with?: Maybe<string>;
-  status?: Maybe<string>;
-  status_not?: Maybe<string>;
-  status_in?: Maybe<string[] | string>;
-  status_not_in?: Maybe<string[] | string>;
-  status_lt?: Maybe<string>;
-  status_lte?: Maybe<string>;
-  status_gt?: Maybe<string>;
-  status_gte?: Maybe<string>;
-  status_contains?: Maybe<string>;
-  status_not_contains?: Maybe<string>;
-  status_starts_with?: Maybe<string>;
-  status_not_starts_with?: Maybe<string>;
-  status_ends_with?: Maybe<string>;
-  status_not_ends_with?: Maybe<string>;
-  price?: Maybe<string>;
-  price_not?: Maybe<string>;
-  price_in?: Maybe<string[] | string>;
-  price_not_in?: Maybe<string[] | string>;
-  price_lt?: Maybe<string>;
-  price_lte?: Maybe<string>;
-  price_gt?: Maybe<string>;
-  price_gte?: Maybe<string>;
-  price_contains?: Maybe<string>;
-  price_not_contains?: Maybe<string>;
-  price_starts_with?: Maybe<string>;
-  price_not_starts_with?: Maybe<string>;
-  price_ends_with?: Maybe<string>;
-  price_not_ends_with?: Maybe<string>;
-  isNegotiable?: Maybe<boolean>;
-  isNegotiable_not?: Maybe<boolean>;
-  propertyType?: Maybe<string>;
-  propertyType_not?: Maybe<string>;
-  propertyType_in?: Maybe<string[] | string>;
-  propertyType_not_in?: Maybe<string[] | string>;
-  propertyType_lt?: Maybe<string>;
-  propertyType_lte?: Maybe<string>;
-  propertyType_gt?: Maybe<string>;
-  propertyType_gte?: Maybe<string>;
-  propertyType_contains?: Maybe<string>;
-  propertyType_not_contains?: Maybe<string>;
-  propertyType_starts_with?: Maybe<string>;
-  propertyType_not_starts_with?: Maybe<string>;
-  propertyType_ends_with?: Maybe<string>;
-  propertyType_not_ends_with?: Maybe<string>;
-  condition?: Maybe<string>;
-  condition_not?: Maybe<string>;
-  condition_in?: Maybe<string[] | string>;
-  condition_not_in?: Maybe<string[] | string>;
-  condition_lt?: Maybe<string>;
-  condition_lte?: Maybe<string>;
-  condition_gt?: Maybe<string>;
-  condition_gte?: Maybe<string>;
-  condition_contains?: Maybe<string>;
-  condition_not_contains?: Maybe<string>;
-  condition_starts_with?: Maybe<string>;
-  condition_not_starts_with?: Maybe<string>;
-  condition_ends_with?: Maybe<string>;
-  condition_not_ends_with?: Maybe<string>;
-  rating?: Maybe<Float>;
-  rating_not?: Maybe<Float>;
-  rating_in?: Maybe<Float[] | Float>;
-  rating_not_in?: Maybe<Float[] | Float>;
-  rating_lt?: Maybe<Float>;
-  rating_lte?: Maybe<Float>;
-  rating_gt?: Maybe<Float>;
-  rating_gte?: Maybe<Float>;
-  ratingCount?: Maybe<Int>;
-  ratingCount_not?: Maybe<Int>;
-  ratingCount_in?: Maybe<Int[] | Int>;
-  ratingCount_not_in?: Maybe<Int[] | Int>;
-  ratingCount_lt?: Maybe<Int>;
-  ratingCount_lte?: Maybe<Int>;
-  ratingCount_gt?: Maybe<Int>;
-  ratingCount_gte?: Maybe<Int>;
-  contactNumber?: Maybe<string>;
-  contactNumber_not?: Maybe<string>;
-  contactNumber_in?: Maybe<string[] | string>;
-  contactNumber_not_in?: Maybe<string[] | string>;
-  contactNumber_lt?: Maybe<string>;
-  contactNumber_lte?: Maybe<string>;
-  contactNumber_gt?: Maybe<string>;
-  contactNumber_gte?: Maybe<string>;
-  contactNumber_contains?: Maybe<string>;
-  contactNumber_not_contains?: Maybe<string>;
-  contactNumber_starts_with?: Maybe<string>;
-  contactNumber_not_starts_with?: Maybe<string>;
-  contactNumber_ends_with?: Maybe<string>;
-  contactNumber_not_ends_with?: Maybe<string>;
-  termsAndCondition?: Maybe<string>;
-  termsAndCondition_not?: Maybe<string>;
-  termsAndCondition_in?: Maybe<string[] | string>;
-  termsAndCondition_not_in?: Maybe<string[] | string>;
-  termsAndCondition_lt?: Maybe<string>;
-  termsAndCondition_lte?: Maybe<string>;
-  termsAndCondition_gt?: Maybe<string>;
-  termsAndCondition_gte?: Maybe<string>;
-  termsAndCondition_contains?: Maybe<string>;
-  termsAndCondition_not_contains?: Maybe<string>;
-  termsAndCondition_starts_with?: Maybe<string>;
-  termsAndCondition_not_starts_with?: Maybe<string>;
-  termsAndCondition_ends_with?: Maybe<string>;
-  termsAndCondition_not_ends_with?: Maybe<string>;
-  amenities_every?: Maybe<AmenitiesWhereInput>;
-  amenities_some?: Maybe<AmenitiesWhereInput>;
-  amenities_none?: Maybe<AmenitiesWhereInput>;
-  image?: Maybe<ImageWhereInput>;
-  location_every?: Maybe<LocationWhereInput>;
-  location_some?: Maybe<LocationWhereInput>;
-  location_none?: Maybe<LocationWhereInput>;
-  gallery_every?: Maybe<GalleryWhereInput>;
-  gallery_some?: Maybe<GalleryWhereInput>;
-  gallery_none?: Maybe<GalleryWhereInput>;
-  categories_every?: Maybe<CategoriesWhereInput>;
-  categories_some?: Maybe<CategoriesWhereInput>;
-  categories_none?: Maybe<CategoriesWhereInput>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  AND?: Maybe<HotelWhereInput[] | HotelWhereInput>;
-  OR?: Maybe<HotelWhereInput[] | HotelWhereInput>;
-  NOT?: Maybe<HotelWhereInput[] | HotelWhereInput>;
-}
-
 export interface UserWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
@@ -1049,8 +841,12 @@ export interface UserWhereInput {
   cellNumber_not_starts_with?: Maybe<string>;
   cellNumber_ends_with?: Maybe<string>;
   cellNumber_not_ends_with?: Maybe<string>;
-  profile_pic?: Maybe<GalleryWhereInput>;
-  cover_pic?: Maybe<GalleryWhereInput>;
+  profile_pic_every?: Maybe<GalleryWhereInput>;
+  profile_pic_some?: Maybe<GalleryWhereInput>;
+  profile_pic_none?: Maybe<GalleryWhereInput>;
+  cover_pic_every?: Maybe<GalleryWhereInput>;
+  cover_pic_some?: Maybe<GalleryWhereInput>;
+  cover_pic_none?: Maybe<GalleryWhereInput>;
   date_of_birth?: Maybe<string>;
   date_of_birth_not?: Maybe<string>;
   date_of_birth_in?: Maybe<string[] | string>;
@@ -1347,6 +1143,217 @@ export interface SocialWhereInput {
   NOT?: Maybe<SocialWhereInput[] | SocialWhereInput>;
 }
 
+export interface HotelWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  peopleLiked_every?: Maybe<UserWhereInput>;
+  peopleLiked_some?: Maybe<UserWhereInput>;
+  peopleLiked_none?: Maybe<UserWhereInput>;
+  connectId?: Maybe<UserWhereInput>;
+  agentId?: Maybe<string>;
+  agentId_not?: Maybe<string>;
+  agentId_in?: Maybe<string[] | string>;
+  agentId_not_in?: Maybe<string[] | string>;
+  agentId_lt?: Maybe<string>;
+  agentId_lte?: Maybe<string>;
+  agentId_gt?: Maybe<string>;
+  agentId_gte?: Maybe<string>;
+  agentId_contains?: Maybe<string>;
+  agentId_not_contains?: Maybe<string>;
+  agentId_starts_with?: Maybe<string>;
+  agentId_not_starts_with?: Maybe<string>;
+  agentId_ends_with?: Maybe<string>;
+  agentId_not_ends_with?: Maybe<string>;
+  title?: Maybe<string>;
+  title_not?: Maybe<string>;
+  title_in?: Maybe<string[] | string>;
+  title_not_in?: Maybe<string[] | string>;
+  title_lt?: Maybe<string>;
+  title_lte?: Maybe<string>;
+  title_gt?: Maybe<string>;
+  title_gte?: Maybe<string>;
+  title_contains?: Maybe<string>;
+  title_not_contains?: Maybe<string>;
+  title_starts_with?: Maybe<string>;
+  title_not_starts_with?: Maybe<string>;
+  title_ends_with?: Maybe<string>;
+  title_not_ends_with?: Maybe<string>;
+  slug?: Maybe<string>;
+  slug_not?: Maybe<string>;
+  slug_in?: Maybe<string[] | string>;
+  slug_not_in?: Maybe<string[] | string>;
+  slug_lt?: Maybe<string>;
+  slug_lte?: Maybe<string>;
+  slug_gt?: Maybe<string>;
+  slug_gte?: Maybe<string>;
+  slug_contains?: Maybe<string>;
+  slug_not_contains?: Maybe<string>;
+  slug_starts_with?: Maybe<string>;
+  slug_not_starts_with?: Maybe<string>;
+  slug_ends_with?: Maybe<string>;
+  slug_not_ends_with?: Maybe<string>;
+  content?: Maybe<string>;
+  content_not?: Maybe<string>;
+  content_in?: Maybe<string[] | string>;
+  content_not_in?: Maybe<string[] | string>;
+  content_lt?: Maybe<string>;
+  content_lte?: Maybe<string>;
+  content_gt?: Maybe<string>;
+  content_gte?: Maybe<string>;
+  content_contains?: Maybe<string>;
+  content_not_contains?: Maybe<string>;
+  content_starts_with?: Maybe<string>;
+  content_not_starts_with?: Maybe<string>;
+  content_ends_with?: Maybe<string>;
+  content_not_ends_with?: Maybe<string>;
+  status?: Maybe<string>;
+  status_not?: Maybe<string>;
+  status_in?: Maybe<string[] | string>;
+  status_not_in?: Maybe<string[] | string>;
+  status_lt?: Maybe<string>;
+  status_lte?: Maybe<string>;
+  status_gt?: Maybe<string>;
+  status_gte?: Maybe<string>;
+  status_contains?: Maybe<string>;
+  status_not_contains?: Maybe<string>;
+  status_starts_with?: Maybe<string>;
+  status_not_starts_with?: Maybe<string>;
+  status_ends_with?: Maybe<string>;
+  status_not_ends_with?: Maybe<string>;
+  price?: Maybe<string>;
+  price_not?: Maybe<string>;
+  price_in?: Maybe<string[] | string>;
+  price_not_in?: Maybe<string[] | string>;
+  price_lt?: Maybe<string>;
+  price_lte?: Maybe<string>;
+  price_gt?: Maybe<string>;
+  price_gte?: Maybe<string>;
+  price_contains?: Maybe<string>;
+  price_not_contains?: Maybe<string>;
+  price_starts_with?: Maybe<string>;
+  price_not_starts_with?: Maybe<string>;
+  price_ends_with?: Maybe<string>;
+  price_not_ends_with?: Maybe<string>;
+  isNegotiable?: Maybe<boolean>;
+  isNegotiable_not?: Maybe<boolean>;
+  propertyType?: Maybe<string>;
+  propertyType_not?: Maybe<string>;
+  propertyType_in?: Maybe<string[] | string>;
+  propertyType_not_in?: Maybe<string[] | string>;
+  propertyType_lt?: Maybe<string>;
+  propertyType_lte?: Maybe<string>;
+  propertyType_gt?: Maybe<string>;
+  propertyType_gte?: Maybe<string>;
+  propertyType_contains?: Maybe<string>;
+  propertyType_not_contains?: Maybe<string>;
+  propertyType_starts_with?: Maybe<string>;
+  propertyType_not_starts_with?: Maybe<string>;
+  propertyType_ends_with?: Maybe<string>;
+  propertyType_not_ends_with?: Maybe<string>;
+  condition?: Maybe<string>;
+  condition_not?: Maybe<string>;
+  condition_in?: Maybe<string[] | string>;
+  condition_not_in?: Maybe<string[] | string>;
+  condition_lt?: Maybe<string>;
+  condition_lte?: Maybe<string>;
+  condition_gt?: Maybe<string>;
+  condition_gte?: Maybe<string>;
+  condition_contains?: Maybe<string>;
+  condition_not_contains?: Maybe<string>;
+  condition_starts_with?: Maybe<string>;
+  condition_not_starts_with?: Maybe<string>;
+  condition_ends_with?: Maybe<string>;
+  condition_not_ends_with?: Maybe<string>;
+  rating?: Maybe<Float>;
+  rating_not?: Maybe<Float>;
+  rating_in?: Maybe<Float[] | Float>;
+  rating_not_in?: Maybe<Float[] | Float>;
+  rating_lt?: Maybe<Float>;
+  rating_lte?: Maybe<Float>;
+  rating_gt?: Maybe<Float>;
+  rating_gte?: Maybe<Float>;
+  ratingCount?: Maybe<Int>;
+  ratingCount_not?: Maybe<Int>;
+  ratingCount_in?: Maybe<Int[] | Int>;
+  ratingCount_not_in?: Maybe<Int[] | Int>;
+  ratingCount_lt?: Maybe<Int>;
+  ratingCount_lte?: Maybe<Int>;
+  ratingCount_gt?: Maybe<Int>;
+  ratingCount_gte?: Maybe<Int>;
+  contactNumber?: Maybe<string>;
+  contactNumber_not?: Maybe<string>;
+  contactNumber_in?: Maybe<string[] | string>;
+  contactNumber_not_in?: Maybe<string[] | string>;
+  contactNumber_lt?: Maybe<string>;
+  contactNumber_lte?: Maybe<string>;
+  contactNumber_gt?: Maybe<string>;
+  contactNumber_gte?: Maybe<string>;
+  contactNumber_contains?: Maybe<string>;
+  contactNumber_not_contains?: Maybe<string>;
+  contactNumber_starts_with?: Maybe<string>;
+  contactNumber_not_starts_with?: Maybe<string>;
+  contactNumber_ends_with?: Maybe<string>;
+  contactNumber_not_ends_with?: Maybe<string>;
+  termsAndCondition?: Maybe<string>;
+  termsAndCondition_not?: Maybe<string>;
+  termsAndCondition_in?: Maybe<string[] | string>;
+  termsAndCondition_not_in?: Maybe<string[] | string>;
+  termsAndCondition_lt?: Maybe<string>;
+  termsAndCondition_lte?: Maybe<string>;
+  termsAndCondition_gt?: Maybe<string>;
+  termsAndCondition_gte?: Maybe<string>;
+  termsAndCondition_contains?: Maybe<string>;
+  termsAndCondition_not_contains?: Maybe<string>;
+  termsAndCondition_starts_with?: Maybe<string>;
+  termsAndCondition_not_starts_with?: Maybe<string>;
+  termsAndCondition_ends_with?: Maybe<string>;
+  termsAndCondition_not_ends_with?: Maybe<string>;
+  amenities_every?: Maybe<AmenitiesWhereInput>;
+  amenities_some?: Maybe<AmenitiesWhereInput>;
+  amenities_none?: Maybe<AmenitiesWhereInput>;
+  image?: Maybe<ImageWhereInput>;
+  location_every?: Maybe<LocationWhereInput>;
+  location_some?: Maybe<LocationWhereInput>;
+  location_none?: Maybe<LocationWhereInput>;
+  gallery_every?: Maybe<GalleryWhereInput>;
+  gallery_some?: Maybe<GalleryWhereInput>;
+  gallery_none?: Maybe<GalleryWhereInput>;
+  categories_every?: Maybe<CategoriesWhereInput>;
+  categories_some?: Maybe<CategoriesWhereInput>;
+  categories_none?: Maybe<CategoriesWhereInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<HotelWhereInput[] | HotelWhereInput>;
+  OR?: Maybe<HotelWhereInput[] | HotelWhereInput>;
+  NOT?: Maybe<HotelWhereInput[] | HotelWhereInput>;
+}
+
 export interface ImageWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
@@ -1512,6 +1519,7 @@ export interface GalleryUpdateManyMutationInput {
 
 export interface HotelCreateInput {
   id?: Maybe<ID_Input>;
+  peopleLiked?: Maybe<UserCreateManyWithoutFavourite_postInput>;
   connectId?: Maybe<UserCreateOneWithoutListed_postsInput>;
   agentId?: Maybe<string>;
   title: string;
@@ -1533,12 +1541,15 @@ export interface HotelCreateInput {
   categories?: Maybe<CategoriesCreateManyInput>;
 }
 
-export interface UserCreateOneWithoutListed_postsInput {
-  create?: Maybe<UserCreateWithoutListed_postsInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
+export interface UserCreateManyWithoutFavourite_postInput {
+  create?: Maybe<
+    | UserCreateWithoutFavourite_postInput[]
+    | UserCreateWithoutFavourite_postInput
+  >;
+  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
 }
 
-export interface UserCreateWithoutListed_postsInput {
+export interface UserCreateWithoutFavourite_postInput {
   id?: Maybe<ID_Input>;
   first_name: string;
   last_name: string;
@@ -1546,20 +1557,20 @@ export interface UserCreateWithoutListed_postsInput {
   password: string;
   email: string;
   cellNumber?: Maybe<string>;
-  profile_pic?: Maybe<GalleryCreateOneInput>;
-  cover_pic?: Maybe<GalleryCreateOneInput>;
+  profile_pic?: Maybe<GalleryCreateManyInput>;
+  cover_pic?: Maybe<GalleryCreateManyInput>;
   date_of_birth?: Maybe<string>;
   gender?: Maybe<string>;
   content?: Maybe<string>;
   agent_location?: Maybe<LocationCreateOneInput>;
   gallery?: Maybe<GalleryCreateManyInput>;
   social_profile?: Maybe<SocialCreateOneInput>;
-  favourite_post?: Maybe<HotelCreateManyInput>;
+  listed_posts?: Maybe<HotelCreateManyWithoutConnectIdInput>;
 }
 
-export interface GalleryCreateOneInput {
-  create?: Maybe<GalleryCreateInput>;
-  connect?: Maybe<GalleryWhereUniqueInput>;
+export interface GalleryCreateManyInput {
+  create?: Maybe<GalleryCreateInput[] | GalleryCreateInput>;
+  connect?: Maybe<GalleryWhereUniqueInput[] | GalleryWhereUniqueInput>;
 }
 
 export interface LocationCreateOneInput {
@@ -1580,11 +1591,6 @@ export interface LocationCreateInput {
   country_short?: Maybe<string>;
 }
 
-export interface GalleryCreateManyInput {
-  create?: Maybe<GalleryCreateInput[] | GalleryCreateInput>;
-  connect?: Maybe<GalleryWhereUniqueInput[] | GalleryWhereUniqueInput>;
-}
-
 export interface SocialCreateOneInput {
   create?: Maybe<SocialCreateInput>;
   connect?: Maybe<SocialWhereUniqueInput>;
@@ -1598,9 +1604,34 @@ export interface SocialCreateInput {
   instagram?: Maybe<string>;
 }
 
-export interface HotelCreateManyInput {
-  create?: Maybe<HotelCreateInput[] | HotelCreateInput>;
+export interface HotelCreateManyWithoutConnectIdInput {
+  create?: Maybe<
+    HotelCreateWithoutConnectIdInput[] | HotelCreateWithoutConnectIdInput
+  >;
   connect?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
+}
+
+export interface HotelCreateWithoutConnectIdInput {
+  id?: Maybe<ID_Input>;
+  peopleLiked?: Maybe<UserCreateManyWithoutFavourite_postInput>;
+  agentId?: Maybe<string>;
+  title: string;
+  slug?: Maybe<string>;
+  content?: Maybe<string>;
+  status?: Maybe<string>;
+  price?: Maybe<string>;
+  isNegotiable?: Maybe<boolean>;
+  propertyType?: Maybe<string>;
+  condition?: Maybe<string>;
+  rating?: Maybe<Float>;
+  ratingCount?: Maybe<Int>;
+  contactNumber?: Maybe<string>;
+  termsAndCondition?: Maybe<string>;
+  amenities?: Maybe<AmenitiesCreateManyInput>;
+  image?: Maybe<ImageCreateOneInput>;
+  location?: Maybe<LocationCreateManyInput>;
+  gallery?: Maybe<GalleryCreateManyInput>;
+  categories?: Maybe<CategoriesCreateManyInput>;
 }
 
 export interface AmenitiesCreateManyInput {
@@ -1629,7 +1660,62 @@ export interface CategoriesCreateManyInput {
   connect?: Maybe<CategoriesWhereUniqueInput[] | CategoriesWhereUniqueInput>;
 }
 
+export interface UserCreateOneWithoutListed_postsInput {
+  create?: Maybe<UserCreateWithoutListed_postsInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserCreateWithoutListed_postsInput {
+  id?: Maybe<ID_Input>;
+  first_name: string;
+  last_name: string;
+  username: string;
+  password: string;
+  email: string;
+  cellNumber?: Maybe<string>;
+  profile_pic?: Maybe<GalleryCreateManyInput>;
+  cover_pic?: Maybe<GalleryCreateManyInput>;
+  date_of_birth?: Maybe<string>;
+  gender?: Maybe<string>;
+  content?: Maybe<string>;
+  agent_location?: Maybe<LocationCreateOneInput>;
+  gallery?: Maybe<GalleryCreateManyInput>;
+  social_profile?: Maybe<SocialCreateOneInput>;
+  favourite_post?: Maybe<HotelCreateManyWithoutPeopleLikedInput>;
+}
+
+export interface HotelCreateManyWithoutPeopleLikedInput {
+  create?: Maybe<
+    HotelCreateWithoutPeopleLikedInput[] | HotelCreateWithoutPeopleLikedInput
+  >;
+  connect?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
+}
+
+export interface HotelCreateWithoutPeopleLikedInput {
+  id?: Maybe<ID_Input>;
+  connectId?: Maybe<UserCreateOneWithoutListed_postsInput>;
+  agentId?: Maybe<string>;
+  title: string;
+  slug?: Maybe<string>;
+  content?: Maybe<string>;
+  status?: Maybe<string>;
+  price?: Maybe<string>;
+  isNegotiable?: Maybe<boolean>;
+  propertyType?: Maybe<string>;
+  condition?: Maybe<string>;
+  rating?: Maybe<Float>;
+  ratingCount?: Maybe<Int>;
+  contactNumber?: Maybe<string>;
+  termsAndCondition?: Maybe<string>;
+  amenities?: Maybe<AmenitiesCreateManyInput>;
+  image?: Maybe<ImageCreateOneInput>;
+  location?: Maybe<LocationCreateManyInput>;
+  gallery?: Maybe<GalleryCreateManyInput>;
+  categories?: Maybe<CategoriesCreateManyInput>;
+}
+
 export interface HotelUpdateInput {
+  peopleLiked?: Maybe<UserUpdateManyWithoutFavourite_postInput>;
   connectId?: Maybe<UserUpdateOneWithoutListed_postsInput>;
   agentId?: Maybe<string>;
   title?: Maybe<string>;
@@ -1651,75 +1737,50 @@ export interface HotelUpdateInput {
   categories?: Maybe<CategoriesUpdateManyInput>;
 }
 
-export interface UserUpdateOneWithoutListed_postsInput {
-  create?: Maybe<UserCreateWithoutListed_postsInput>;
-  update?: Maybe<UserUpdateWithoutListed_postsDataInput>;
-  upsert?: Maybe<UserUpsertWithoutListed_postsInput>;
-  delete?: Maybe<boolean>;
-  disconnect?: Maybe<boolean>;
-  connect?: Maybe<UserWhereUniqueInput>;
+export interface UserUpdateManyWithoutFavourite_postInput {
+  create?: Maybe<
+    | UserCreateWithoutFavourite_postInput[]
+    | UserCreateWithoutFavourite_postInput
+  >;
+  delete?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  set?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  disconnect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  update?: Maybe<
+    | UserUpdateWithWhereUniqueWithoutFavourite_postInput[]
+    | UserUpdateWithWhereUniqueWithoutFavourite_postInput
+  >;
+  upsert?: Maybe<
+    | UserUpsertWithWhereUniqueWithoutFavourite_postInput[]
+    | UserUpsertWithWhereUniqueWithoutFavourite_postInput
+  >;
+  deleteMany?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+  updateMany?: Maybe<
+    UserUpdateManyWithWhereNestedInput[] | UserUpdateManyWithWhereNestedInput
+  >;
 }
 
-export interface UserUpdateWithoutListed_postsDataInput {
+export interface UserUpdateWithWhereUniqueWithoutFavourite_postInput {
+  where: UserWhereUniqueInput;
+  data: UserUpdateWithoutFavourite_postDataInput;
+}
+
+export interface UserUpdateWithoutFavourite_postDataInput {
   first_name?: Maybe<string>;
   last_name?: Maybe<string>;
   username?: Maybe<string>;
   password?: Maybe<string>;
   email?: Maybe<string>;
   cellNumber?: Maybe<string>;
-  profile_pic?: Maybe<GalleryUpdateOneInput>;
-  cover_pic?: Maybe<GalleryUpdateOneInput>;
+  profile_pic?: Maybe<GalleryUpdateManyInput>;
+  cover_pic?: Maybe<GalleryUpdateManyInput>;
   date_of_birth?: Maybe<string>;
   gender?: Maybe<string>;
   content?: Maybe<string>;
   agent_location?: Maybe<LocationUpdateOneInput>;
   gallery?: Maybe<GalleryUpdateManyInput>;
   social_profile?: Maybe<SocialUpdateOneInput>;
-  favourite_post?: Maybe<HotelUpdateManyInput>;
-}
-
-export interface GalleryUpdateOneInput {
-  create?: Maybe<GalleryCreateInput>;
-  update?: Maybe<GalleryUpdateDataInput>;
-  upsert?: Maybe<GalleryUpsertNestedInput>;
-  delete?: Maybe<boolean>;
-  disconnect?: Maybe<boolean>;
-  connect?: Maybe<GalleryWhereUniqueInput>;
-}
-
-export interface GalleryUpdateDataInput {
-  url?: Maybe<string>;
-}
-
-export interface GalleryUpsertNestedInput {
-  update: GalleryUpdateDataInput;
-  create: GalleryCreateInput;
-}
-
-export interface LocationUpdateOneInput {
-  create?: Maybe<LocationCreateInput>;
-  update?: Maybe<LocationUpdateDataInput>;
-  upsert?: Maybe<LocationUpsertNestedInput>;
-  delete?: Maybe<boolean>;
-  disconnect?: Maybe<boolean>;
-  connect?: Maybe<LocationWhereUniqueInput>;
-}
-
-export interface LocationUpdateDataInput {
-  lat?: Maybe<string>;
-  lng?: Maybe<string>;
-  formattedAddress?: Maybe<string>;
-  zipcode?: Maybe<string>;
-  city?: Maybe<string>;
-  state_long?: Maybe<string>;
-  state_short?: Maybe<string>;
-  country_long?: Maybe<string>;
-  country_short?: Maybe<string>;
-}
-
-export interface LocationUpsertNestedInput {
-  update: LocationUpdateDataInput;
-  create: LocationCreateInput;
+  listed_posts?: Maybe<HotelUpdateManyWithoutConnectIdInput>;
 }
 
 export interface GalleryUpdateManyInput {
@@ -1746,6 +1807,10 @@ export interface GalleryUpdateManyInput {
 export interface GalleryUpdateWithWhereUniqueNestedInput {
   where: GalleryWhereUniqueInput;
   data: GalleryUpdateDataInput;
+}
+
+export interface GalleryUpdateDataInput {
+  url?: Maybe<string>;
 }
 
 export interface GalleryUpsertWithWhereUniqueNestedInput {
@@ -1797,6 +1862,32 @@ export interface GalleryUpdateManyDataInput {
   url?: Maybe<string>;
 }
 
+export interface LocationUpdateOneInput {
+  create?: Maybe<LocationCreateInput>;
+  update?: Maybe<LocationUpdateDataInput>;
+  upsert?: Maybe<LocationUpsertNestedInput>;
+  delete?: Maybe<boolean>;
+  disconnect?: Maybe<boolean>;
+  connect?: Maybe<LocationWhereUniqueInput>;
+}
+
+export interface LocationUpdateDataInput {
+  lat?: Maybe<string>;
+  lng?: Maybe<string>;
+  formattedAddress?: Maybe<string>;
+  zipcode?: Maybe<string>;
+  city?: Maybe<string>;
+  state_long?: Maybe<string>;
+  state_short?: Maybe<string>;
+  country_long?: Maybe<string>;
+  country_short?: Maybe<string>;
+}
+
+export interface LocationUpsertNestedInput {
+  update: LocationUpdateDataInput;
+  create: LocationCreateInput;
+}
+
 export interface SocialUpdateOneInput {
   create?: Maybe<SocialCreateInput>;
   update?: Maybe<SocialUpdateDataInput>;
@@ -1818,33 +1909,35 @@ export interface SocialUpsertNestedInput {
   create: SocialCreateInput;
 }
 
-export interface HotelUpdateManyInput {
-  create?: Maybe<HotelCreateInput[] | HotelCreateInput>;
-  update?: Maybe<
-    | HotelUpdateWithWhereUniqueNestedInput[]
-    | HotelUpdateWithWhereUniqueNestedInput
-  >;
-  upsert?: Maybe<
-    | HotelUpsertWithWhereUniqueNestedInput[]
-    | HotelUpsertWithWhereUniqueNestedInput
+export interface HotelUpdateManyWithoutConnectIdInput {
+  create?: Maybe<
+    HotelCreateWithoutConnectIdInput[] | HotelCreateWithoutConnectIdInput
   >;
   delete?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
   connect?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
   set?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
   disconnect?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
+  update?: Maybe<
+    | HotelUpdateWithWhereUniqueWithoutConnectIdInput[]
+    | HotelUpdateWithWhereUniqueWithoutConnectIdInput
+  >;
+  upsert?: Maybe<
+    | HotelUpsertWithWhereUniqueWithoutConnectIdInput[]
+    | HotelUpsertWithWhereUniqueWithoutConnectIdInput
+  >;
   deleteMany?: Maybe<HotelScalarWhereInput[] | HotelScalarWhereInput>;
   updateMany?: Maybe<
     HotelUpdateManyWithWhereNestedInput[] | HotelUpdateManyWithWhereNestedInput
   >;
 }
 
-export interface HotelUpdateWithWhereUniqueNestedInput {
+export interface HotelUpdateWithWhereUniqueWithoutConnectIdInput {
   where: HotelWhereUniqueInput;
-  data: HotelUpdateDataInput;
+  data: HotelUpdateWithoutConnectIdDataInput;
 }
 
-export interface HotelUpdateDataInput {
-  connectId?: Maybe<UserUpdateOneWithoutListed_postsInput>;
+export interface HotelUpdateWithoutConnectIdDataInput {
+  peopleLiked?: Maybe<UserUpdateManyWithoutFavourite_postInput>;
   agentId?: Maybe<string>;
   title?: Maybe<string>;
   slug?: Maybe<string>;
@@ -2278,10 +2371,10 @@ export interface CategoriesUpdateManyDataInput {
   name?: Maybe<string>;
 }
 
-export interface HotelUpsertWithWhereUniqueNestedInput {
+export interface HotelUpsertWithWhereUniqueWithoutConnectIdInput {
   where: HotelWhereUniqueInput;
-  update: HotelUpdateDataInput;
-  create: HotelCreateInput;
+  update: HotelUpdateWithoutConnectIdDataInput;
+  create: HotelCreateWithoutConnectIdInput;
 }
 
 export interface HotelScalarWhereInput {
@@ -2499,6 +2592,273 @@ export interface HotelUpdateManyDataInput {
   termsAndCondition?: Maybe<string>;
 }
 
+export interface UserUpsertWithWhereUniqueWithoutFavourite_postInput {
+  where: UserWhereUniqueInput;
+  update: UserUpdateWithoutFavourite_postDataInput;
+  create: UserCreateWithoutFavourite_postInput;
+}
+
+export interface UserScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  first_name?: Maybe<string>;
+  first_name_not?: Maybe<string>;
+  first_name_in?: Maybe<string[] | string>;
+  first_name_not_in?: Maybe<string[] | string>;
+  first_name_lt?: Maybe<string>;
+  first_name_lte?: Maybe<string>;
+  first_name_gt?: Maybe<string>;
+  first_name_gte?: Maybe<string>;
+  first_name_contains?: Maybe<string>;
+  first_name_not_contains?: Maybe<string>;
+  first_name_starts_with?: Maybe<string>;
+  first_name_not_starts_with?: Maybe<string>;
+  first_name_ends_with?: Maybe<string>;
+  first_name_not_ends_with?: Maybe<string>;
+  last_name?: Maybe<string>;
+  last_name_not?: Maybe<string>;
+  last_name_in?: Maybe<string[] | string>;
+  last_name_not_in?: Maybe<string[] | string>;
+  last_name_lt?: Maybe<string>;
+  last_name_lte?: Maybe<string>;
+  last_name_gt?: Maybe<string>;
+  last_name_gte?: Maybe<string>;
+  last_name_contains?: Maybe<string>;
+  last_name_not_contains?: Maybe<string>;
+  last_name_starts_with?: Maybe<string>;
+  last_name_not_starts_with?: Maybe<string>;
+  last_name_ends_with?: Maybe<string>;
+  last_name_not_ends_with?: Maybe<string>;
+  username?: Maybe<string>;
+  username_not?: Maybe<string>;
+  username_in?: Maybe<string[] | string>;
+  username_not_in?: Maybe<string[] | string>;
+  username_lt?: Maybe<string>;
+  username_lte?: Maybe<string>;
+  username_gt?: Maybe<string>;
+  username_gte?: Maybe<string>;
+  username_contains?: Maybe<string>;
+  username_not_contains?: Maybe<string>;
+  username_starts_with?: Maybe<string>;
+  username_not_starts_with?: Maybe<string>;
+  username_ends_with?: Maybe<string>;
+  username_not_ends_with?: Maybe<string>;
+  password?: Maybe<string>;
+  password_not?: Maybe<string>;
+  password_in?: Maybe<string[] | string>;
+  password_not_in?: Maybe<string[] | string>;
+  password_lt?: Maybe<string>;
+  password_lte?: Maybe<string>;
+  password_gt?: Maybe<string>;
+  password_gte?: Maybe<string>;
+  password_contains?: Maybe<string>;
+  password_not_contains?: Maybe<string>;
+  password_starts_with?: Maybe<string>;
+  password_not_starts_with?: Maybe<string>;
+  password_ends_with?: Maybe<string>;
+  password_not_ends_with?: Maybe<string>;
+  email?: Maybe<string>;
+  email_not?: Maybe<string>;
+  email_in?: Maybe<string[] | string>;
+  email_not_in?: Maybe<string[] | string>;
+  email_lt?: Maybe<string>;
+  email_lte?: Maybe<string>;
+  email_gt?: Maybe<string>;
+  email_gte?: Maybe<string>;
+  email_contains?: Maybe<string>;
+  email_not_contains?: Maybe<string>;
+  email_starts_with?: Maybe<string>;
+  email_not_starts_with?: Maybe<string>;
+  email_ends_with?: Maybe<string>;
+  email_not_ends_with?: Maybe<string>;
+  cellNumber?: Maybe<string>;
+  cellNumber_not?: Maybe<string>;
+  cellNumber_in?: Maybe<string[] | string>;
+  cellNumber_not_in?: Maybe<string[] | string>;
+  cellNumber_lt?: Maybe<string>;
+  cellNumber_lte?: Maybe<string>;
+  cellNumber_gt?: Maybe<string>;
+  cellNumber_gte?: Maybe<string>;
+  cellNumber_contains?: Maybe<string>;
+  cellNumber_not_contains?: Maybe<string>;
+  cellNumber_starts_with?: Maybe<string>;
+  cellNumber_not_starts_with?: Maybe<string>;
+  cellNumber_ends_with?: Maybe<string>;
+  cellNumber_not_ends_with?: Maybe<string>;
+  date_of_birth?: Maybe<string>;
+  date_of_birth_not?: Maybe<string>;
+  date_of_birth_in?: Maybe<string[] | string>;
+  date_of_birth_not_in?: Maybe<string[] | string>;
+  date_of_birth_lt?: Maybe<string>;
+  date_of_birth_lte?: Maybe<string>;
+  date_of_birth_gt?: Maybe<string>;
+  date_of_birth_gte?: Maybe<string>;
+  date_of_birth_contains?: Maybe<string>;
+  date_of_birth_not_contains?: Maybe<string>;
+  date_of_birth_starts_with?: Maybe<string>;
+  date_of_birth_not_starts_with?: Maybe<string>;
+  date_of_birth_ends_with?: Maybe<string>;
+  date_of_birth_not_ends_with?: Maybe<string>;
+  gender?: Maybe<string>;
+  gender_not?: Maybe<string>;
+  gender_in?: Maybe<string[] | string>;
+  gender_not_in?: Maybe<string[] | string>;
+  gender_lt?: Maybe<string>;
+  gender_lte?: Maybe<string>;
+  gender_gt?: Maybe<string>;
+  gender_gte?: Maybe<string>;
+  gender_contains?: Maybe<string>;
+  gender_not_contains?: Maybe<string>;
+  gender_starts_with?: Maybe<string>;
+  gender_not_starts_with?: Maybe<string>;
+  gender_ends_with?: Maybe<string>;
+  gender_not_ends_with?: Maybe<string>;
+  content?: Maybe<string>;
+  content_not?: Maybe<string>;
+  content_in?: Maybe<string[] | string>;
+  content_not_in?: Maybe<string[] | string>;
+  content_lt?: Maybe<string>;
+  content_lte?: Maybe<string>;
+  content_gt?: Maybe<string>;
+  content_gte?: Maybe<string>;
+  content_contains?: Maybe<string>;
+  content_not_contains?: Maybe<string>;
+  content_starts_with?: Maybe<string>;
+  content_not_starts_with?: Maybe<string>;
+  content_ends_with?: Maybe<string>;
+  content_not_ends_with?: Maybe<string>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+  OR?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+  NOT?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+}
+
+export interface UserUpdateManyWithWhereNestedInput {
+  where: UserScalarWhereInput;
+  data: UserUpdateManyDataInput;
+}
+
+export interface UserUpdateManyDataInput {
+  first_name?: Maybe<string>;
+  last_name?: Maybe<string>;
+  username?: Maybe<string>;
+  password?: Maybe<string>;
+  email?: Maybe<string>;
+  cellNumber?: Maybe<string>;
+  date_of_birth?: Maybe<string>;
+  gender?: Maybe<string>;
+  content?: Maybe<string>;
+}
+
+export interface UserUpdateOneWithoutListed_postsInput {
+  create?: Maybe<UserCreateWithoutListed_postsInput>;
+  update?: Maybe<UserUpdateWithoutListed_postsDataInput>;
+  upsert?: Maybe<UserUpsertWithoutListed_postsInput>;
+  delete?: Maybe<boolean>;
+  disconnect?: Maybe<boolean>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserUpdateWithoutListed_postsDataInput {
+  first_name?: Maybe<string>;
+  last_name?: Maybe<string>;
+  username?: Maybe<string>;
+  password?: Maybe<string>;
+  email?: Maybe<string>;
+  cellNumber?: Maybe<string>;
+  profile_pic?: Maybe<GalleryUpdateManyInput>;
+  cover_pic?: Maybe<GalleryUpdateManyInput>;
+  date_of_birth?: Maybe<string>;
+  gender?: Maybe<string>;
+  content?: Maybe<string>;
+  agent_location?: Maybe<LocationUpdateOneInput>;
+  gallery?: Maybe<GalleryUpdateManyInput>;
+  social_profile?: Maybe<SocialUpdateOneInput>;
+  favourite_post?: Maybe<HotelUpdateManyWithoutPeopleLikedInput>;
+}
+
+export interface HotelUpdateManyWithoutPeopleLikedInput {
+  create?: Maybe<
+    HotelCreateWithoutPeopleLikedInput[] | HotelCreateWithoutPeopleLikedInput
+  >;
+  delete?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
+  connect?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
+  set?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
+  disconnect?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
+  update?: Maybe<
+    | HotelUpdateWithWhereUniqueWithoutPeopleLikedInput[]
+    | HotelUpdateWithWhereUniqueWithoutPeopleLikedInput
+  >;
+  upsert?: Maybe<
+    | HotelUpsertWithWhereUniqueWithoutPeopleLikedInput[]
+    | HotelUpsertWithWhereUniqueWithoutPeopleLikedInput
+  >;
+  deleteMany?: Maybe<HotelScalarWhereInput[] | HotelScalarWhereInput>;
+  updateMany?: Maybe<
+    HotelUpdateManyWithWhereNestedInput[] | HotelUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface HotelUpdateWithWhereUniqueWithoutPeopleLikedInput {
+  where: HotelWhereUniqueInput;
+  data: HotelUpdateWithoutPeopleLikedDataInput;
+}
+
+export interface HotelUpdateWithoutPeopleLikedDataInput {
+  connectId?: Maybe<UserUpdateOneWithoutListed_postsInput>;
+  agentId?: Maybe<string>;
+  title?: Maybe<string>;
+  slug?: Maybe<string>;
+  content?: Maybe<string>;
+  status?: Maybe<string>;
+  price?: Maybe<string>;
+  isNegotiable?: Maybe<boolean>;
+  propertyType?: Maybe<string>;
+  condition?: Maybe<string>;
+  rating?: Maybe<Float>;
+  ratingCount?: Maybe<Int>;
+  contactNumber?: Maybe<string>;
+  termsAndCondition?: Maybe<string>;
+  amenities?: Maybe<AmenitiesUpdateManyInput>;
+  image?: Maybe<ImageUpdateOneInput>;
+  location?: Maybe<LocationUpdateManyInput>;
+  gallery?: Maybe<GalleryUpdateManyInput>;
+  categories?: Maybe<CategoriesUpdateManyInput>;
+}
+
+export interface HotelUpsertWithWhereUniqueWithoutPeopleLikedInput {
+  where: HotelWhereUniqueInput;
+  update: HotelUpdateWithoutPeopleLikedDataInput;
+  create: HotelCreateWithoutPeopleLikedInput;
+}
+
 export interface UserUpsertWithoutListed_postsInput {
   update: UserUpdateWithoutListed_postsDataInput;
   create: UserCreateWithoutListed_postsInput;
@@ -2576,8 +2936,8 @@ export interface UserCreateInput {
   password: string;
   email: string;
   cellNumber?: Maybe<string>;
-  profile_pic?: Maybe<GalleryCreateOneInput>;
-  cover_pic?: Maybe<GalleryCreateOneInput>;
+  profile_pic?: Maybe<GalleryCreateManyInput>;
+  cover_pic?: Maybe<GalleryCreateManyInput>;
   date_of_birth?: Maybe<string>;
   gender?: Maybe<string>;
   content?: Maybe<string>;
@@ -2585,36 +2945,7 @@ export interface UserCreateInput {
   gallery?: Maybe<GalleryCreateManyInput>;
   social_profile?: Maybe<SocialCreateOneInput>;
   listed_posts?: Maybe<HotelCreateManyWithoutConnectIdInput>;
-  favourite_post?: Maybe<HotelCreateManyInput>;
-}
-
-export interface HotelCreateManyWithoutConnectIdInput {
-  create?: Maybe<
-    HotelCreateWithoutConnectIdInput[] | HotelCreateWithoutConnectIdInput
-  >;
-  connect?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
-}
-
-export interface HotelCreateWithoutConnectIdInput {
-  id?: Maybe<ID_Input>;
-  agentId?: Maybe<string>;
-  title: string;
-  slug?: Maybe<string>;
-  content?: Maybe<string>;
-  status?: Maybe<string>;
-  price?: Maybe<string>;
-  isNegotiable?: Maybe<boolean>;
-  propertyType?: Maybe<string>;
-  condition?: Maybe<string>;
-  rating?: Maybe<Float>;
-  ratingCount?: Maybe<Int>;
-  contactNumber?: Maybe<string>;
-  termsAndCondition?: Maybe<string>;
-  amenities?: Maybe<AmenitiesCreateManyInput>;
-  image?: Maybe<ImageCreateOneInput>;
-  location?: Maybe<LocationCreateManyInput>;
-  gallery?: Maybe<GalleryCreateManyInput>;
-  categories?: Maybe<CategoriesCreateManyInput>;
+  favourite_post?: Maybe<HotelCreateManyWithoutPeopleLikedInput>;
 }
 
 export interface UserUpdateInput {
@@ -2624,8 +2955,8 @@ export interface UserUpdateInput {
   password?: Maybe<string>;
   email?: Maybe<string>;
   cellNumber?: Maybe<string>;
-  profile_pic?: Maybe<GalleryUpdateOneInput>;
-  cover_pic?: Maybe<GalleryUpdateOneInput>;
+  profile_pic?: Maybe<GalleryUpdateManyInput>;
+  cover_pic?: Maybe<GalleryUpdateManyInput>;
   date_of_birth?: Maybe<string>;
   gender?: Maybe<string>;
   content?: Maybe<string>;
@@ -2633,61 +2964,7 @@ export interface UserUpdateInput {
   gallery?: Maybe<GalleryUpdateManyInput>;
   social_profile?: Maybe<SocialUpdateOneInput>;
   listed_posts?: Maybe<HotelUpdateManyWithoutConnectIdInput>;
-  favourite_post?: Maybe<HotelUpdateManyInput>;
-}
-
-export interface HotelUpdateManyWithoutConnectIdInput {
-  create?: Maybe<
-    HotelCreateWithoutConnectIdInput[] | HotelCreateWithoutConnectIdInput
-  >;
-  delete?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
-  connect?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
-  set?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
-  disconnect?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
-  update?: Maybe<
-    | HotelUpdateWithWhereUniqueWithoutConnectIdInput[]
-    | HotelUpdateWithWhereUniqueWithoutConnectIdInput
-  >;
-  upsert?: Maybe<
-    | HotelUpsertWithWhereUniqueWithoutConnectIdInput[]
-    | HotelUpsertWithWhereUniqueWithoutConnectIdInput
-  >;
-  deleteMany?: Maybe<HotelScalarWhereInput[] | HotelScalarWhereInput>;
-  updateMany?: Maybe<
-    HotelUpdateManyWithWhereNestedInput[] | HotelUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface HotelUpdateWithWhereUniqueWithoutConnectIdInput {
-  where: HotelWhereUniqueInput;
-  data: HotelUpdateWithoutConnectIdDataInput;
-}
-
-export interface HotelUpdateWithoutConnectIdDataInput {
-  agentId?: Maybe<string>;
-  title?: Maybe<string>;
-  slug?: Maybe<string>;
-  content?: Maybe<string>;
-  status?: Maybe<string>;
-  price?: Maybe<string>;
-  isNegotiable?: Maybe<boolean>;
-  propertyType?: Maybe<string>;
-  condition?: Maybe<string>;
-  rating?: Maybe<Float>;
-  ratingCount?: Maybe<Int>;
-  contactNumber?: Maybe<string>;
-  termsAndCondition?: Maybe<string>;
-  amenities?: Maybe<AmenitiesUpdateManyInput>;
-  image?: Maybe<ImageUpdateOneInput>;
-  location?: Maybe<LocationUpdateManyInput>;
-  gallery?: Maybe<GalleryUpdateManyInput>;
-  categories?: Maybe<CategoriesUpdateManyInput>;
-}
-
-export interface HotelUpsertWithWhereUniqueWithoutConnectIdInput {
-  where: HotelWhereUniqueInput;
-  update: HotelUpdateWithoutConnectIdDataInput;
-  create: HotelCreateWithoutConnectIdInput;
+  favourite_post?: Maybe<HotelUpdateManyWithoutPeopleLikedInput>;
 }
 
 export interface UserUpdateManyMutationInput {
@@ -3225,6 +3502,15 @@ export interface Hotel {
 
 export interface HotelPromise extends Promise<Hotel>, Fragmentable {
   id: () => Promise<ID_Output>;
+  peopleLiked: <T = FragmentableArray<User>>(args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
   connectId: <T = UserPromise>() => T;
   agentId: () => Promise<string>;
   title: () => Promise<string>;
@@ -3284,6 +3570,15 @@ export interface HotelSubscription
   extends Promise<AsyncIterator<Hotel>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  peopleLiked: <T = Promise<AsyncIterator<UserSubscription>>>(args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
   connectId: <T = UserSubscription>() => T;
   agentId: () => Promise<AsyncIterator<string>>;
   title: () => Promise<AsyncIterator<string>>;
@@ -3343,6 +3638,15 @@ export interface HotelNullablePromise
   extends Promise<Hotel | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  peopleLiked: <T = FragmentableArray<User>>(args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
   connectId: <T = UserPromise>() => T;
   agentId: () => Promise<string>;
   title: () => Promise<string>;
@@ -3421,8 +3725,24 @@ export interface UserPromise extends Promise<User>, Fragmentable {
   password: () => Promise<string>;
   email: () => Promise<string>;
   cellNumber: () => Promise<string>;
-  profile_pic: <T = GalleryPromise>() => T;
-  cover_pic: <T = GalleryPromise>() => T;
+  profile_pic: <T = FragmentableArray<Gallery>>(args?: {
+    where?: GalleryWhereInput;
+    orderBy?: GalleryOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  cover_pic: <T = FragmentableArray<Gallery>>(args?: {
+    where?: GalleryWhereInput;
+    orderBy?: GalleryOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
   date_of_birth: () => Promise<string>;
   gender: () => Promise<string>;
   content: () => Promise<string>;
@@ -3469,8 +3789,24 @@ export interface UserSubscription
   password: () => Promise<AsyncIterator<string>>;
   email: () => Promise<AsyncIterator<string>>;
   cellNumber: () => Promise<AsyncIterator<string>>;
-  profile_pic: <T = GallerySubscription>() => T;
-  cover_pic: <T = GallerySubscription>() => T;
+  profile_pic: <T = Promise<AsyncIterator<GallerySubscription>>>(args?: {
+    where?: GalleryWhereInput;
+    orderBy?: GalleryOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  cover_pic: <T = Promise<AsyncIterator<GallerySubscription>>>(args?: {
+    where?: GalleryWhereInput;
+    orderBy?: GalleryOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
   date_of_birth: () => Promise<AsyncIterator<string>>;
   gender: () => Promise<AsyncIterator<string>>;
   content: () => Promise<AsyncIterator<string>>;
@@ -3517,8 +3853,24 @@ export interface UserNullablePromise
   password: () => Promise<string>;
   email: () => Promise<string>;
   cellNumber: () => Promise<string>;
-  profile_pic: <T = GalleryPromise>() => T;
-  cover_pic: <T = GalleryPromise>() => T;
+  profile_pic: <T = FragmentableArray<Gallery>>(args?: {
+    where?: GalleryWhereInput;
+    orderBy?: GalleryOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  cover_pic: <T = FragmentableArray<Gallery>>(args?: {
+    where?: GalleryWhereInput;
+    orderBy?: GalleryOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
   date_of_birth: () => Promise<string>;
   gender: () => Promise<string>;
   content: () => Promise<string>;
@@ -4510,6 +4862,11 @@ The `String` scalar type represents textual data, represented as UTF-8 character
 export type String = string;
 
 /*
+The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).
+*/
+export type Float = number;
+
+/*
 DateTime scalar input type, allowing Date
 */
 export type DateTimeInput = Date | string;
@@ -4518,11 +4875,6 @@ export type DateTimeInput = Date | string;
 DateTime scalar output type, which is always a string
 */
 export type DateTimeOutput = string;
-
-/*
-The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).
-*/
-export type Float = number;
 
 export type Long = string;
 

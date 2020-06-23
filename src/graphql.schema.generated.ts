@@ -30,6 +30,13 @@ export class CategoriesInput {
     image?: ImageInput;
 }
 
+export class ContactInput {
+    targetEmail: string;
+    message?: string;
+    email?: string;
+    cellNumber?: string;
+}
+
 export class ImageInput {
     url?: string;
 }
@@ -57,6 +64,28 @@ export class SignUpInput {
     last_name?: string;
     email: string;
     password: string;
+}
+
+export class UpdatePassword {
+    confirmPassword: string;
+    oldPassword: string;
+    newPassword: string;
+}
+
+export class UpdatePhotosInput {
+    cover_pic?: ImageInput[];
+    profile_pic?: ImageInput[];
+}
+
+export class UpdateProfileInput {
+    first_name?: string;
+    last_name?: string;
+    date_of_birth?: string;
+    gender?: string;
+    email?: string;
+    content?: string;
+    agent_location?: LocationInput;
+    cellNumber?: string;
 }
 
 export class Amenities {
@@ -89,6 +118,7 @@ export class Gallery {
 
 export class Hotel {
     id: string;
+    peopleLiked?: User[];
     connectId?: User;
     agentId?: string;
     title?: string;
@@ -142,26 +172,42 @@ export abstract class IMutation {
     abstract createHotel(addHotelInput?: AddHotelInput, location?: LocationInput[], image?: ImageInput[], categories?: CategoriesInput[]): Hotel | Promise<Hotel>;
 
     abstract createLocation(location?: LocationInput): Location | Promise<Location>;
+
+    abstract updateProfile(profile?: UpdateProfileInput, location?: LocationInput): User | Promise<User>;
+
+    abstract updatePhotos(photos?: UpdatePhotosInput): User | Promise<User>;
+
+    abstract updatePassword(password?: UpdatePassword): User | Promise<User>;
+
+    abstract forgetPassword(email?: string): User | Promise<User>;
+
+    abstract sendContact(contact?: ContactInput): User | Promise<User>;
+
+    abstract likeHotel(id?: string): Hotel | Promise<Hotel>;
+
+    abstract dislikeHotel(id: string): Hotel | Promise<Hotel>;
 }
 
 export abstract class IQuery {
     abstract amenities(): Amenities[] | Promise<Amenities[]>;
 
-    abstract image(id: string): Hotel | Promise<Hotel>;
+    abstract imageId(id: string): Hotel | Promise<Hotel>;
 
-    abstract location(id: string): Location | Promise<Location>;
+    abstract locationId(id: string): Location | Promise<Location>;
 
     abstract locations(): Location[] | Promise<Location[]>;
 
-    abstract gallery(id: string): Gallery | Promise<Gallery>;
+    abstract galleryId(id: string): Gallery | Promise<Gallery>;
 
     abstract galleries(): Gallery[] | Promise<Gallery[]>;
 
-    abstract category(id: string): Categories | Promise<Categories>;
+    abstract categoryId(id: string): Categories | Promise<Categories>;
 
     abstract categories(): Categories[] | Promise<Categories[]>;
 
     abstract userPosts(id: string): User | Promise<User>;
+
+    abstract getUserInfo(id: string): User | Promise<User>;
 }
 
 export class Social {
@@ -179,8 +225,8 @@ export class User {
     password: string;
     email: string;
     cellNumber?: string;
-    profile_pic?: Image;
-    cover_pic?: Image;
+    profile_pic?: Image[];
+    cover_pic?: Image[];
     date_of_birth?: string;
     gender?: string;
     content?: string;

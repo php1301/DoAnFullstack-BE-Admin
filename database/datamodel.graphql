@@ -6,8 +6,8 @@ type User {
   password: String!
   email: String! @unique
   cellNumber: String @defailt(value: "0000")
-  profile_pic: Gallery @relation(link: INLINE, name: "Profile")
-  cover_pic: Gallery @relation(link: INLINE, name: "Cover")
+  profile_pic: [Gallery] @relation(link: INLINE, name: "Profile")
+  cover_pic: [Gallery] @relation(link: INLINE, name: "Cover")
   date_of_birth: String
   gender: String
   content: String
@@ -37,6 +37,7 @@ enum Gender {
 
 type Hotel {
   id: ID! @id
+  peopleLiked: [User] @relation(name: "Hotel_liked")
   connectId: User @relation(name: "Hotel_created")
   agentId: String
   title: String!

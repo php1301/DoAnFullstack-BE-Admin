@@ -30,19 +30,19 @@ export class HotelResolver {
       .join('-');
 
   @Query()
-  async location(@Args('id') id: string) {
+  async locationId(@Args('id') id: string) {
     return this.prisma.client.location({ id });
   }
   @Query()
-  async image(@Args('id') id: string) {
+  async imageId(@Args('id') id: string) {
     return this.prisma.client.image({ id });
   }
   @Query()
-  async gallery(@Args('id') id: string) {
+  async galleryId(@Args('id') id: string) {
     return this.prisma.client.gallery({ id });
   }
   @Query()
-  async category(@Args('id') id: string) {
+  async categoryId(@Args('id') id: string) {
     return this.prisma.client.categories({ id });
   }
   @Query()
@@ -61,12 +61,33 @@ export class HotelResolver {
   async categories() {
     return this.prisma.client.categorieses();
   }
+  
   // Các field được connect nhau thì cần resolve theo đúng id, xử lý return mutation field agentId
-  @ResolveField()
-  async connectId(@Parent() { id }: Hotel) {
-    console.log(id);
-    return this.prisma.client.hotel({ id }).connectId();
-  }
+  // @ResolveField()
+  // async connectId(@Parent() { id }: Hotel) {
+  //   // console.log(id);
+  //   return this.prisma.client.hotel({ id }).connectId();
+  // }
+  // @ResolveField()
+  // async location(@Parent() { id }: Hotel) {
+  //   const fragment = ` fragment hotelLocationFragmnet on Hotel
+  //   {
+  //   location{
+  //     id
+  //     lat
+  //     lng
+  //     formattedAddress
+  //     zipcode
+  //     city
+  //     state_long
+  //     state_short
+  //     country_long
+  //     country_short
+  //   }
+  // }
+  //   `;
+  //   return this.prisma.client.hotels().$fragment(fragment);
+  // }
   @Mutation()
   //   Bóc data từ Input và gọi ORM.createHotel và gán cho các key trong model của prisma
   @UseGuards(GqlAuthGuard)
