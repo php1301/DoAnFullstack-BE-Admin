@@ -14,6 +14,7 @@ import {
   CategoriesInput,
   User,
   Hotel,
+  Reviews,
 } from 'src/graphql.schema.generated';
 import { UseGuards } from '@nestjs/common';
 import { GqlAuthGuard } from 'src/auth/graphql-auth.guard';
@@ -22,31 +23,135 @@ import { GqlUser } from 'src/shared/decorators/decorator';
 @Resolver('Hotel')
 export class HotelResolver {
   constructor(private readonly prisma: PrismaService) {}
-  format = (s: string) =>
+  format = s =>
     s
       .toLowerCase()
       .split(/\s|%20/)
       .filter(Boolean)
       .join('-');
 
+  // Các field được connect nhau thì cần resolve theo đúng id, để mutation và query return được subfield
+  @ResolveField()
+  async connectId(@Parent() { id }: Hotel) {
+    // console.log(id);
+    return this.prisma.client.hotel({ id }).connectId();
+  }
+  @ResolveField()
+  async peopleLiked(@Parent() { id }: Hotel) {
+    // console.log(id);
+    return this.prisma.client.hotel({ id }).peopleLiked();
+  }
+  // Mẹo để có id resolve trong trường hợp parent - data trả về khác type - khai báo schema file thêm 1 field chứa id đó
+  // Nếu schema đó có link:INLINE (chứa) thì ko cần
+  @ResolveField()
+  async reviews(
+    @Parent() { reviewedHotelId }: Reviews,
+    @Parent() user: Reviews[],
+  ) {
+    // Nếu vừa dùng cho cả query và mutation thì nên ráng bóc ra 1 cái stable từ cái id ta đã gán connect
+    // const id = reviewedHotelId
+    const id = reviewedHotelId ? reviewedHotelId : user[0].reviewedHotelId;
+    // console.log(id);
+    // Có thể ko cần ghi trong fragment field đã resolved
+    const fragment = `fragment getUserInfoFromReview on User
+    {
+      reviewTitle
+      reviewAuthorId
+      {
+        id
+        first_name
+        last_name
+        username
+        password
+        email
+        cellNumber
+        profile_pic
+        {
+          id
+          url
+        }
+        cover_pic
+        {
+          id
+          url
+        }
+        date_of_birth
+        gender
+        content
+        agent_location{
+          id
+          lat
+          lng
+          formattedAddress
+          zipcode
+          city
+          state_long
+          state_short
+          country_long
+          country_short
+        }
+        gallery
+        {
+          id
+          url
+        }
+        social_profile{
+          id
+          facebook
+          twitter
+          linkedIn
+          instagram
+        }
+
+        createdAt
+        updatedAt
+      }
+    }`;
+    // console.log(user[0].reviewedHotelId);
+    return this.prisma.client
+      .hotel({ id: id })
+      .reviews()
+      .$fragment(fragment);
+  }
+  @ResolveField()
+  async location(@Parent() { id }: Hotel) {
+    // console.log('id tu con' + id);
+    return this.prisma.client.hotel({ id }).location();
+  }
+  @ResolveField()
+  async amenities(@Parent() { id }: Hotel) {
+    return this.prisma.client.hotel({ id }).amenities();
+  }
+  @ResolveField()
+  async image(@Parent() { id }: Hotel) {
+    return this.prisma.client.hotel({ id }).image();
+  }
+  @ResolveField()
+  async gallery(@Parent() { id }: Hotel) {
+    return this.prisma.client.hotel({ id }).gallery();
+  }
+  @ResolveField()
+  async categories(@Parent() { id }: Hotel) {
+    return this.prisma.client.hotel({ id }).categories();
+  }
   @Query()
-  async locationId(@Args('id') id: string) {
+  async locationId(@Args('id') id) {
     return this.prisma.client.location({ id });
   }
   @Query()
-  async imageId(@Args('id') id: string) {
+  async imageId(@Args('id') id) {
     return this.prisma.client.image({ id });
   }
   @Query()
-  async galleryId(@Args('id') id: string) {
+  async galleryId(@Args('id') id) {
     return this.prisma.client.gallery({ id });
   }
   @Query()
-  async categoryId(@Args('id') id: string) {
+  async categoryId(@Args('id') id) {
     return this.prisma.client.categories({ id });
   }
   @Query()
-  async amenities() {
+  async allAmenities() {
     return this.prisma.client.amenitieses();
   }
   @Query()
@@ -58,36 +163,14 @@ export class HotelResolver {
     return this.prisma.client.galleries();
   }
   @Query()
-  async categories() {
+  async allCategories() {
     return this.prisma.client.categorieses();
   }
-  
-  // Các field được connect nhau thì cần resolve theo đúng id, xử lý return mutation field agentId
-  // @ResolveField()
-  // async connectId(@Parent() { id }: Hotel) {
-  //   // console.log(id);
-  //   return this.prisma.client.hotel({ id }).connectId();
-  // }
-  // @ResolveField()
-  // async location(@Parent() { id }: Hotel) {
-  //   const fragment = ` fragment hotelLocationFragmnet on Hotel
-  //   {
-  //   location{
-  //     id
-  //     lat
-  //     lng
-  //     formattedAddress
-  //     zipcode
-  //     city
-  //     state_long
-  //     state_short
-  //     country_long
-  //     country_short
-  //   }
-  // }
-  //   `;
-  //   return this.prisma.client.hotels().$fragment(fragment);
-  // }
+  @Query()
+  async getHotelReviews(@Args('id') id) {
+    return this.prisma.client.hotel({ id }).reviews();
+  }
+
   @Mutation()
   //   Bóc data từ Input và gọi ORM.createHotel và gán cho các key trong model của prisma
   @UseGuards(GqlAuthGuard)
@@ -117,7 +200,8 @@ export class HotelResolver {
     @Args('categories')
     categoryItems: CategoriesInput[],
   ) {
-    console.log(user.id);
+    // console.log(user.id);
+    // console.log(imageItems);
     const newHotel = await this.prisma.client.createHotel({
       // Của prisma
       agentId: user.id,
@@ -148,7 +232,7 @@ export class HotelResolver {
       image: {
         create: {
           url: imageItems[0].url,
-          thumb_url: imageItems[1].url,
+          thumb_url: imageItems[1] ? imageItems[1].url : imageItems[0].url,
         },
       },
       location: {
@@ -158,15 +242,15 @@ export class HotelResolver {
         create: imageItems,
       },
       // 2 có 1 field con là object (cấp 3 hoặc array)
-      categories: {
-        create: categoryItems.map(i => ({
-          slug: i.slug,
-          name: i.name,
-          image: {
-            create: i.image,
-          },
-        })),
-      },
+      // categories: {
+      //   create: categoryItems.map(i => ({
+      //     slug: i.slug,
+      //     name: i.name,
+      //     image: {
+      //       create: i.image,
+      //     },
+      //   })),
+      // },
     });
     return newHotel;
   }
