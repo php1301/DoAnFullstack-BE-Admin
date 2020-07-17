@@ -2,7 +2,7 @@
   "collection": "@nestjs/schematics",
   "sourceRoot": "src",
   "compilerOptions": {
-    "assets": ["**/*.pug"],
+    "assets": ["**/*.pug", "**/*.graphql"],
     "watchAssets": true
   }
 }
