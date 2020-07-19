@@ -21,6 +21,10 @@ export class GraphqlOptions implements GqlOptionsFactory {
       introspection: true,
       playground: true,
       cors: false,
+      uploads: {
+        maxFileSize: 10000000, // 10 MB
+        maxFiles: 5,
+      },
     };
   }
 }
