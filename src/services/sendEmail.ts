@@ -23,20 +23,21 @@ export class MailService {
         console.log(err);
       });
   }
-  public sendContact(email, messsage, cellNumber, targetEmail): void {
+  public sendContact(subject, email, messsage, cellNumber): void {
     this.mailerService
       .sendMail({
-        to: targetEmail,
-        from: process.env.LOCAL_EMAIL,
-        subject: 'Reset password Link ✔',
+        from: email,
+        to: process.env.LOCAL_EMAIL,
+        subject,
         html: `<div>
-        <h3>${email}</h3>
-        <p>${messsage}</p>
-        <h2>${cellNumber}</h2>
+        <h1>${subject}</h1>
+        <h3>From: ${email}</h3>
+        <p>Message: ${messsage}</p>
+        <h2>Phone: ${cellNumber}</h2>
         </div>`,
       })
       .then(success => {
-        console.log(success + targetEmail);
+        console.log(success + email);
       })
       .catch(err => {
         console.log(err);
