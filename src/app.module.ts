@@ -8,10 +8,15 @@ import { AuthModule } from './auth/auth.module';
 import { APP_PIPE } from '@nestjs/core';
 import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './user/user.module';
-
+import { PubSub } from 'graphql-subscriptions';
+import { RedisPubSub } from 'graphql-redis-subscriptions';
+import * as Redis from 'ioredis';
 // document cho mail https://nest-modules.github.io/mailer/docs/mailer.html
 import { MailerModule } from '@nestjs-modules/mailer';
 import { PugAdapter } from '@nestjs-modules/mailer/dist/adapters/pug.adapter';
+import { PingPongModule } from './ping-pong/ping-pong.module';
+import { AwsService } from './aws/aws.service';
+import { UtilsModule } from './utils/utils.module';
 
 // Để validation work xuyên suốt app thì phải provide validation pipe
 @Module({
@@ -33,7 +38,7 @@ import { PugAdapter } from '@nestjs-modules/mailer/dist/adapters/pug.adapter';
         },
         template: {
           // dir: process.cwd() + '/templates/',
-          adapter: new PugAdapter(), // or new PugAdapter()
+          adapter: new PugAdapter(),
           options: {
             strict: true,
           },
@@ -50,6 +55,8 @@ import { PugAdapter } from '@nestjs-modules/mailer/dist/adapters/pug.adapter';
     HotelModule,
     AuthModule,
     UserModule,
+    PingPongModule,
+    UtilsModule,
   ],
   controllers: [AppController],
   providers: [
@@ -57,6 +64,8 @@ import { PugAdapter } from '@nestjs-modules/mailer/dist/adapters/pug.adapter';
       provide: APP_PIPE,
       useClass: ValidationPipe,
     },
+    AwsService,
+   
   ],
 })
 export class AppModule {}
