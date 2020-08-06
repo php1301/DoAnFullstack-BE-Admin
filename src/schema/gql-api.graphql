@@ -6,6 +6,8 @@ type User {
   password: String!
   email: String!
   cellNumber: String
+  profile_pic_main: String
+  cover_pic_main: String
   profile_pic: [Image]
   cover_pic: [Image]
   date_of_birth: String
@@ -14,8 +16,10 @@ type User {
   agent_location: Location
   gallery: [Gallery]
   social_profile: Social
+  reviews_maked: [ReviewFields]
   listed_posts: [Hotel]
   favourite_post: [Hotel]
+  reviewed_post: [Hotel]
   createdAt: String!
   updatedAt: String!
 }
@@ -28,8 +32,11 @@ type User {
 type Hotel {
   id: ID!
   peopleLiked: [User]
+  peopleReviewed: [User]
   connectId: User
   agentId: String
+  agentEmail: String 
+  agentName: String
   title: String
   slug: String
   status: String
@@ -43,14 +50,46 @@ type Hotel {
   contactNumber: String
   termsAndCondition: String
   amenities: [Amenities]
-  image: [Image]
+  image: Image
   location: [Location]
   gallery: [Gallery]
   categories: [Categories]
+  reviews: [Reviews]
   createdAt: String!
   updatedAt: String!
 }
 
+type Reviews {
+  reviewID: ID!
+  reviewTitle: String
+  reviewText: String
+  reviewTips: String
+  sortOfTrip: String
+  reviewAuthorId: User
+  reviewAuthorFirstName: String
+  reviewAuthorLastName: String
+  reviewAuthorEmail: String
+  reviewOverall: Float
+  reviewAuthorPic: String
+  reviewedHotel: Hotel
+  # Có thể ko cần cái này
+  reviewedHotelId: ID
+  reviewPics: [Image]
+  reviewDate: String
+  reviewOptional: [ReviewOptionals]
+  reviewFields: [ReviewFields]
+}
+
+type ReviewOptionals {
+  id: ID!
+  option: String
+  optionField: String
+}
+type ReviewFields {
+  id: ID!
+  rating: Int
+  ratingFieldName: String
+}
 type Amenities {
   id: ID!
   guestRoom: Int
@@ -65,16 +104,19 @@ type Amenities {
 type Image {
   id: ID!
   url: String
+  thumb_url: String
 }
 type Gallery {
   id: ID!
+  uid: String
   url: String
+  signedRequest: String
 }
 
 type Location {
   id: ID!
-  lat: String
-  lng: String
+  lat: Float
+  lng: Float
   formattedAddress: String
   zipcode: String
   city: String
@@ -91,8 +133,12 @@ type Categories {
   image: Image
 }
 type AuthPayload {
-  id: ID!
-  email: String!
+  id: ID
+  email: String
+  first_name: String
+  last_name: String
+  profile_pic_main: String
+  cover_pic_main: String
 }
 type HotelPhotos {
   url: String!
@@ -100,24 +146,30 @@ type HotelPhotos {
 type Social {
   facebook: String
   twitter: String
-  linkedIN: String
+  linkedIn: String
   instagram: String
 }
 type Query {
-  amenities: [Amenities!]!
+  allAmenities: [Amenities!]!
   imageId(id: ID!): Hotel!
   locationId(id: ID!): Location!
   locations: [Location]
   galleryId(id: ID!): Gallery!
   galleries: [Gallery!]!
   categoryId(id: ID!): Categories!
-  categories: [Categories!]!
+  allCategories: [Categories!]!
   userPosts(id: ID!): User
+  favouritePosts(id: ID!): User
+  favouritePostsHeart(id: ID!): User
   getUserInfo(id: ID!): User
+  getUserGallery(id: ID!): User
+  getHotelInfo(id: ID!): Hotel
+  getHotelReviews(id: ID!): Hotel
+  getUserReviews(id: ID!): User
 }
 type Mutation {
   signup(signUpInput: SignUpInput): AuthPayload!
-  login(loginInput: LoginInput): AuthPayload!
+  login(loginInput: LoginInput): AuthPayload
   createHotel(
     addHotelInput: AddHotelInput
     location: [LocationInput]
@@ -125,15 +177,41 @@ type Mutation {
     categories: [CategoriesInput]
   ): Hotel!
   createLocation(location: LocationInput): Location!
-  updateProfile(profile: UpdateProfileInput, location: LocationInput): User
-  updatePhotos(photos: UpdatePhotosInput): User
+  updateProfile(
+    profile: UpdateProfileInput
+    location: LocationInput
+    social: SocialInput
+  ): User
+  updatePhotos(photos: [UpdatePhotosInput]): User
+  deletePhotos(photos: [DeletePhotosInput]): User
+  setProfilePic(url: String): User
+  setCoverPic(url: String): User
   updatePassword(password: UpdatePassword): User!
   forgetPassword(email: String): User
   sendContact(contact: ContactInput): User
-  likeHotel(id: String): Hotel
+  likeHotel(id: ID!): Hotel
   dislikeHotel(id: ID!): Hotel
+  makeReviews(reviews: ReviewInput, hotelId: ID): Hotel
+  mockData(mock: MockInput): User
 }
-
+input ReviewInput {
+  reviewOverall: Float
+  reviewTitle: String
+  reviewTips: String
+  reviewText: String
+  sortOfTrip: String
+  reviewFieldInput: [ReviewFieldInput]
+  reviewOptionals: [ReviewOptionalsInput]
+  reviewPics: [ImageInput]
+}
+input ReviewFieldInput {
+  rating: Int
+  ratingFieldName: String
+}
+input ReviewOptionalsInput {
+  option: String
+  optionField: String
+}
 input UpdateProfileInput {
   first_name: String
   last_name: String
@@ -146,8 +224,12 @@ input UpdateProfileInput {
 }
 
 input UpdatePhotosInput {
-  cover_pic: [ImageInput]
-  profile_pic: [ImageInput]
+  url: String
+  uid: String
+  signedRequest: String
+}
+input DeletePhotosInput {
+  id: ID!
 }
 
 input UpdatePassword {
@@ -155,10 +237,14 @@ input UpdatePassword {
   oldPassword: String!
   newPassword: String!
 }
-
+input SocialInput {
+  facebook: String
+  instagram: String
+  twitter: String
+}
 input LocationInput {
-  lat: String
-  lng: String
+  lat: Float
+  lng: Float
   formattedAddress: String
   zipcode: String
   city: String
@@ -199,6 +285,8 @@ input SignUpInput {
   last_name: String
   email: String!
   password: String!
+  profile_pic_main: String
+  cover_pic_main: String
 }
 
 input LoginInput {
@@ -207,8 +295,42 @@ input LoginInput {
 }
 
 input ContactInput {
-  targetEmail: String!
+  subject: String!
   message: String
   email: String
   cellNumber: String
+}
+input MockInput {
+  title: [String]
+}
+# Realtime
+type Query {
+  noop: Boolean
+}
+
+type Mutation {
+  ping: Ping
+}
+
+type Subscription {
+  pong: Pong
+  notification(channelId: String): Message
+}
+type Message {
+  # Có thể cho user nếu muốn routing nữa
+  reviewAuthorName: String
+  reviewAuthorId: String
+  reviewedHotelId: Hotel
+  reviewedHotelName: String
+  hotelManagerId: String
+  reviewTitle: String
+  reviewText: String
+  peopleReviewedArr: [User]
+}
+type Ping {
+  id: ID
+}
+
+type Pong {
+  pingId: ID
 }
