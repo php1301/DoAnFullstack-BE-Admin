@@ -30,6 +30,7 @@
     "@nestjs/passport": "^7.0.0",
     "@nestjs/platform-express": "^7.0.0",
     "@prisma/cli": "^2.0.1",
+    "@types/lodash": "^4.14.159",
     "@types/passport-jwt": "^3.0.3",
     "apollo-server-express": "^2.14.5",
     "aws-sdk": "^2.709.0",
