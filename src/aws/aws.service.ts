@@ -17,7 +17,7 @@ export class AwsService {
         Body: file.buffer,
         Bucket: AWS_S3_BUCKET_NAME,
         Key: urlKey,
-        ACL: 'public-read',
+        ACL: 'public-read', //Để đọc được url
       };
       // console.log(params);
 
