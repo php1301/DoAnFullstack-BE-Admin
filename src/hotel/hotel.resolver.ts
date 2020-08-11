@@ -41,21 +41,51 @@ export class HotelResolver {
     // console.log(id);
     return this.prisma.client.hotel({ id }).peopleLiked();
   }
+  @ResolveField()
+  async peopleReviewed(@Parent() { id }: Hotel) {
+    return await this.prisma.client.hotel({ id }).peopleReviewed();
+  }
   // Mẹo để có id resolve trong trường hợp parent - data trả về khác type - khai báo schema file thêm 1 field chứa id đó
   // Nếu schema đó có link:INLINE (chứa) thì ko cần
   @ResolveField()
-  async reviews(
-    @Parent() { reviewedHotelId }: Reviews,
-    @Parent() user: Reviews[],
-  ) {
+  async reviews(@Parent() hotel: Hotel) {
     // Nếu vừa dùng cho cả query và mutation thì nên ráng bóc ra 1 cái stable từ cái id ta đã gán connect
     // const id = reviewedHotelId
-    const id = reviewedHotelId ? reviewedHotelId : user[0].reviewedHotelId;
+    // const id = reviewedHotelId ? reviewedHotelId : user[0].reviewedHotelId;
+    const id = hotel.id;
     // console.log(id);
     // Có thể ko cần ghi trong fragment field đã resolved
     const fragment = `fragment getUserInfoFromReview on User
     {
       reviewTitle
+      reviewedHotelId
+      reviewID
+      reviewText
+      peopleLiked {
+        id
+      }
+      peopleDisliked {
+        id
+      }
+      sortOfTrip
+      reviewAuthorEmail
+      reviewOverall
+      reviewTips
+      reviewAuthorPic
+      reviewPics{
+        url
+      }
+      reviewDate
+      reviewOptional{
+        option
+        optionField
+      }
+      reviewFields{
+        rating
+        ratingFieldName
+      }
+      reviewAuthorFirstName
+      reviewAuthorLastName
       reviewAuthorId
       {
         id
@@ -110,7 +140,7 @@ export class HotelResolver {
     // console.log(user[0].reviewedHotelId);
     return this.prisma.client
       .hotel({ id: id })
-      .reviews()
+      .reviews({ orderBy: 'reviewDate_DESC' })
       .$fragment(fragment);
   }
   @ResolveField()
@@ -167,6 +197,10 @@ export class HotelResolver {
     return this.prisma.client.categorieses();
   }
   @Query()
+  async getHotelInfo(@Args('id') id) {
+    return this.prisma.client.hotel({ id });
+  }
+  @Query()
   async getHotelReviews(@Args('id') id) {
     return this.prisma.client.hotel({ id }).reviews();
   }
@@ -182,17 +216,19 @@ export class HotelResolver {
       pricePerNight,
       hotelDetails,
       guest,
-      beds,
+      rooms,
       // price,
       // hotelPhotos,
       locationDescription,
       contactNumber,
       wifiAvailability,
       airCondition,
+      isNegotiable,
+      propertyType,
       parking,
       poolAvailability,
       extraBed,
-    }: AddHotelInput,
+    }: AddHotelInput, // Có thể sử dụng Dto cho bớt dài dòng
     @Args('location')
     items: LocationInput[],
     @Args('image')
@@ -211,17 +247,20 @@ export class HotelResolver {
         },
       },
       // Bind agentId vào user.id bằng connect
+      agentEmail: user.email,
+      agentName: user.first_name + ' ' + user.last_name,
       title: hotelName,
       slug: this.format(hotelName),
       content: hotelDetails,
       price: pricePerNight,
-      isNegotiable: true,
+      isNegotiable,
+      propertyType,
       termsAndCondition: locationDescription,
       contactNumber,
       amenities: {
         create: {
           guestRoom: guest,
-          bedRoom: beds,
+          bedRoom: rooms,
           wifiAvailability,
           airCondition,
           parkingAvailability: parking,
