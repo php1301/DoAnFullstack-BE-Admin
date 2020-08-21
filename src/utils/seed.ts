@@ -32,7 +32,7 @@ const setup = async (dataMock: any[]) => {
         agentName: "Phuc Pham",
         slug: format(i.slug),
         content: i.content,
-        price: i.price,
+        price: parseInt(i.price),
         isNegotiable: i.isNegotiable,
         propertyType: i.propertyType,
         condition: i.condition,
