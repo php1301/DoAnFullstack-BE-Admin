@@ -32,6 +32,7 @@
     "@prisma/cli": "^2.0.1",
     "@types/lodash": "^4.14.159",
     "@types/passport-jwt": "^3.0.3",
+    "@types/stripe": "^7.13.24",
     "apollo-server-express": "^2.14.5",
     "aws-sdk": "^2.709.0",
     "bcryptjs": "^2.4.3",
@@ -54,7 +55,9 @@
     "pug": "^3.0.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^6.5.4"
+    "rxjs": "^6.5.4",
+    "stripe": "^8.89.0",
+    "uuid": "^8.3.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.0.0",
