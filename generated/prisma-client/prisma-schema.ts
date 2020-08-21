@@ -14,6 +14,10 @@ type AggregateCategoryImages {
   count: Int!
 }
 
+type AggregateCoupon {
+  count: Int!
+}
+
 type AggregateGallery {
   count: Int!
 }
@@ -30,7 +34,31 @@ type AggregateLocation {
   count: Int!
 }
 
+type AggregateNotification {
+  count: Int!
+}
+
+type AggregateReviewFields {
+  count: Int!
+}
+
+type AggregateReviewImages {
+  count: Int!
+}
+
+type AggregateReviewOptionals {
+  count: Int!
+}
+
+type AggregateReviews {
+  count: Int!
+}
+
 type AggregateSocial {
+  count: Int!
+}
+
+type AggregateTransaction {
   count: Int!
 }
 
@@ -626,11 +654,566 @@ input CategoryImagesWhereUniqueInput {
   id: ID
 }
 
+type Coupon {
+  couponId: ID!
+  couponName: String!
+  couponDescription: String
+  couponAuthor: User
+  couponAuthorId: String
+  couponType: Int
+  couponValue: Int
+  couponQuantity: Int
+  couponStartDate: String
+  couponEndDate: String
+  couponRange: String
+  couponTarget(where: HotelWhereInput, orderBy: HotelOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Hotel!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type CouponConnection {
+  pageInfo: PageInfo!
+  edges: [CouponEdge]!
+  aggregate: AggregateCoupon!
+}
+
+input CouponCreateInput {
+  couponId: ID
+  couponName: String!
+  couponDescription: String
+  couponAuthor: UserCreateOneWithoutCoupons_makedInput
+  couponAuthorId: String
+  couponType: Int
+  couponValue: Int
+  couponQuantity: Int
+  couponStartDate: String
+  couponEndDate: String
+  couponRange: String
+  couponTarget: HotelCreateManyWithoutCouponsAvailableInput
+}
+
+input CouponCreateManyWithoutCouponAuthorInput {
+  create: [CouponCreateWithoutCouponAuthorInput!]
+  connect: [CouponWhereUniqueInput!]
+}
+
+input CouponCreateManyWithoutCouponTargetInput {
+  create: [CouponCreateWithoutCouponTargetInput!]
+  connect: [CouponWhereUniqueInput!]
+}
+
+input CouponCreateWithoutCouponAuthorInput {
+  couponId: ID
+  couponName: String!
+  couponDescription: String
+  couponAuthorId: String
+  couponType: Int
+  couponValue: Int
+  couponQuantity: Int
+  couponStartDate: String
+  couponEndDate: String
+  couponRange: String
+  couponTarget: HotelCreateManyWithoutCouponsAvailableInput
+}
+
+input CouponCreateWithoutCouponTargetInput {
+  couponId: ID
+  couponName: String!
+  couponDescription: String
+  couponAuthor: UserCreateOneWithoutCoupons_makedInput
+  couponAuthorId: String
+  couponType: Int
+  couponValue: Int
+  couponQuantity: Int
+  couponStartDate: String
+  couponEndDate: String
+  couponRange: String
+}
+
+type CouponEdge {
+  node: Coupon!
+  cursor: String!
+}
+
+enum CouponOrderByInput {
+  couponId_ASC
+  couponId_DESC
+  couponName_ASC
+  couponName_DESC
+  couponDescription_ASC
+  couponDescription_DESC
+  couponAuthorId_ASC
+  couponAuthorId_DESC
+  couponType_ASC
+  couponType_DESC
+  couponValue_ASC
+  couponValue_DESC
+  couponQuantity_ASC
+  couponQuantity_DESC
+  couponStartDate_ASC
+  couponStartDate_DESC
+  couponEndDate_ASC
+  couponEndDate_DESC
+  couponRange_ASC
+  couponRange_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type CouponPreviousValues {
+  couponId: ID!
+  couponName: String!
+  couponDescription: String
+  couponAuthorId: String
+  couponType: Int
+  couponValue: Int
+  couponQuantity: Int
+  couponStartDate: String
+  couponEndDate: String
+  couponRange: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input CouponScalarWhereInput {
+  couponId: ID
+  couponId_not: ID
+  couponId_in: [ID!]
+  couponId_not_in: [ID!]
+  couponId_lt: ID
+  couponId_lte: ID
+  couponId_gt: ID
+  couponId_gte: ID
+  couponId_contains: ID
+  couponId_not_contains: ID
+  couponId_starts_with: ID
+  couponId_not_starts_with: ID
+  couponId_ends_with: ID
+  couponId_not_ends_with: ID
+  couponName: String
+  couponName_not: String
+  couponName_in: [String!]
+  couponName_not_in: [String!]
+  couponName_lt: String
+  couponName_lte: String
+  couponName_gt: String
+  couponName_gte: String
+  couponName_contains: String
+  couponName_not_contains: String
+  couponName_starts_with: String
+  couponName_not_starts_with: String
+  couponName_ends_with: String
+  couponName_not_ends_with: String
+  couponDescription: String
+  couponDescription_not: String
+  couponDescription_in: [String!]
+  couponDescription_not_in: [String!]
+  couponDescription_lt: String
+  couponDescription_lte: String
+  couponDescription_gt: String
+  couponDescription_gte: String
+  couponDescription_contains: String
+  couponDescription_not_contains: String
+  couponDescription_starts_with: String
+  couponDescription_not_starts_with: String
+  couponDescription_ends_with: String
+  couponDescription_not_ends_with: String
+  couponAuthorId: String
+  couponAuthorId_not: String
+  couponAuthorId_in: [String!]
+  couponAuthorId_not_in: [String!]
+  couponAuthorId_lt: String
+  couponAuthorId_lte: String
+  couponAuthorId_gt: String
+  couponAuthorId_gte: String
+  couponAuthorId_contains: String
+  couponAuthorId_not_contains: String
+  couponAuthorId_starts_with: String
+  couponAuthorId_not_starts_with: String
+  couponAuthorId_ends_with: String
+  couponAuthorId_not_ends_with: String
+  couponType: Int
+  couponType_not: Int
+  couponType_in: [Int!]
+  couponType_not_in: [Int!]
+  couponType_lt: Int
+  couponType_lte: Int
+  couponType_gt: Int
+  couponType_gte: Int
+  couponValue: Int
+  couponValue_not: Int
+  couponValue_in: [Int!]
+  couponValue_not_in: [Int!]
+  couponValue_lt: Int
+  couponValue_lte: Int
+  couponValue_gt: Int
+  couponValue_gte: Int
+  couponQuantity: Int
+  couponQuantity_not: Int
+  couponQuantity_in: [Int!]
+  couponQuantity_not_in: [Int!]
+  couponQuantity_lt: Int
+  couponQuantity_lte: Int
+  couponQuantity_gt: Int
+  couponQuantity_gte: Int
+  couponStartDate: String
+  couponStartDate_not: String
+  couponStartDate_in: [String!]
+  couponStartDate_not_in: [String!]
+  couponStartDate_lt: String
+  couponStartDate_lte: String
+  couponStartDate_gt: String
+  couponStartDate_gte: String
+  couponStartDate_contains: String
+  couponStartDate_not_contains: String
+  couponStartDate_starts_with: String
+  couponStartDate_not_starts_with: String
+  couponStartDate_ends_with: String
+  couponStartDate_not_ends_with: String
+  couponEndDate: String
+  couponEndDate_not: String
+  couponEndDate_in: [String!]
+  couponEndDate_not_in: [String!]
+  couponEndDate_lt: String
+  couponEndDate_lte: String
+  couponEndDate_gt: String
+  couponEndDate_gte: String
+  couponEndDate_contains: String
+  couponEndDate_not_contains: String
+  couponEndDate_starts_with: String
+  couponEndDate_not_starts_with: String
+  couponEndDate_ends_with: String
+  couponEndDate_not_ends_with: String
+  couponRange: String
+  couponRange_not: String
+  couponRange_in: [String!]
+  couponRange_not_in: [String!]
+  couponRange_lt: String
+  couponRange_lte: String
+  couponRange_gt: String
+  couponRange_gte: String
+  couponRange_contains: String
+  couponRange_not_contains: String
+  couponRange_starts_with: String
+  couponRange_not_starts_with: String
+  couponRange_ends_with: String
+  couponRange_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [CouponScalarWhereInput!]
+  OR: [CouponScalarWhereInput!]
+  NOT: [CouponScalarWhereInput!]
+}
+
+type CouponSubscriptionPayload {
+  mutation: MutationType!
+  node: Coupon
+  updatedFields: [String!]
+  previousValues: CouponPreviousValues
+}
+
+input CouponSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: CouponWhereInput
+  AND: [CouponSubscriptionWhereInput!]
+  OR: [CouponSubscriptionWhereInput!]
+  NOT: [CouponSubscriptionWhereInput!]
+}
+
+input CouponUpdateInput {
+  couponName: String
+  couponDescription: String
+  couponAuthor: UserUpdateOneWithoutCoupons_makedInput
+  couponAuthorId: String
+  couponType: Int
+  couponValue: Int
+  couponQuantity: Int
+  couponStartDate: String
+  couponEndDate: String
+  couponRange: String
+  couponTarget: HotelUpdateManyWithoutCouponsAvailableInput
+}
+
+input CouponUpdateManyDataInput {
+  couponName: String
+  couponDescription: String
+  couponAuthorId: String
+  couponType: Int
+  couponValue: Int
+  couponQuantity: Int
+  couponStartDate: String
+  couponEndDate: String
+  couponRange: String
+}
+
+input CouponUpdateManyMutationInput {
+  couponName: String
+  couponDescription: String
+  couponAuthorId: String
+  couponType: Int
+  couponValue: Int
+  couponQuantity: Int
+  couponStartDate: String
+  couponEndDate: String
+  couponRange: String
+}
+
+input CouponUpdateManyWithoutCouponAuthorInput {
+  create: [CouponCreateWithoutCouponAuthorInput!]
+  delete: [CouponWhereUniqueInput!]
+  connect: [CouponWhereUniqueInput!]
+  set: [CouponWhereUniqueInput!]
+  disconnect: [CouponWhereUniqueInput!]
+  update: [CouponUpdateWithWhereUniqueWithoutCouponAuthorInput!]
+  upsert: [CouponUpsertWithWhereUniqueWithoutCouponAuthorInput!]
+  deleteMany: [CouponScalarWhereInput!]
+  updateMany: [CouponUpdateManyWithWhereNestedInput!]
+}
+
+input CouponUpdateManyWithoutCouponTargetInput {
+  create: [CouponCreateWithoutCouponTargetInput!]
+  delete: [CouponWhereUniqueInput!]
+  connect: [CouponWhereUniqueInput!]
+  set: [CouponWhereUniqueInput!]
+  disconnect: [CouponWhereUniqueInput!]
+  update: [CouponUpdateWithWhereUniqueWithoutCouponTargetInput!]
+  upsert: [CouponUpsertWithWhereUniqueWithoutCouponTargetInput!]
+  deleteMany: [CouponScalarWhereInput!]
+  updateMany: [CouponUpdateManyWithWhereNestedInput!]
+}
+
+input CouponUpdateManyWithWhereNestedInput {
+  where: CouponScalarWhereInput!
+  data: CouponUpdateManyDataInput!
+}
+
+input CouponUpdateWithoutCouponAuthorDataInput {
+  couponName: String
+  couponDescription: String
+  couponAuthorId: String
+  couponType: Int
+  couponValue: Int
+  couponQuantity: Int
+  couponStartDate: String
+  couponEndDate: String
+  couponRange: String
+  couponTarget: HotelUpdateManyWithoutCouponsAvailableInput
+}
+
+input CouponUpdateWithoutCouponTargetDataInput {
+  couponName: String
+  couponDescription: String
+  couponAuthor: UserUpdateOneWithoutCoupons_makedInput
+  couponAuthorId: String
+  couponType: Int
+  couponValue: Int
+  couponQuantity: Int
+  couponStartDate: String
+  couponEndDate: String
+  couponRange: String
+}
+
+input CouponUpdateWithWhereUniqueWithoutCouponAuthorInput {
+  where: CouponWhereUniqueInput!
+  data: CouponUpdateWithoutCouponAuthorDataInput!
+}
+
+input CouponUpdateWithWhereUniqueWithoutCouponTargetInput {
+  where: CouponWhereUniqueInput!
+  data: CouponUpdateWithoutCouponTargetDataInput!
+}
+
+input CouponUpsertWithWhereUniqueWithoutCouponAuthorInput {
+  where: CouponWhereUniqueInput!
+  update: CouponUpdateWithoutCouponAuthorDataInput!
+  create: CouponCreateWithoutCouponAuthorInput!
+}
+
+input CouponUpsertWithWhereUniqueWithoutCouponTargetInput {
+  where: CouponWhereUniqueInput!
+  update: CouponUpdateWithoutCouponTargetDataInput!
+  create: CouponCreateWithoutCouponTargetInput!
+}
+
+input CouponWhereInput {
+  couponId: ID
+  couponId_not: ID
+  couponId_in: [ID!]
+  couponId_not_in: [ID!]
+  couponId_lt: ID
+  couponId_lte: ID
+  couponId_gt: ID
+  couponId_gte: ID
+  couponId_contains: ID
+  couponId_not_contains: ID
+  couponId_starts_with: ID
+  couponId_not_starts_with: ID
+  couponId_ends_with: ID
+  couponId_not_ends_with: ID
+  couponName: String
+  couponName_not: String
+  couponName_in: [String!]
+  couponName_not_in: [String!]
+  couponName_lt: String
+  couponName_lte: String
+  couponName_gt: String
+  couponName_gte: String
+  couponName_contains: String
+  couponName_not_contains: String
+  couponName_starts_with: String
+  couponName_not_starts_with: String
+  couponName_ends_with: String
+  couponName_not_ends_with: String
+  couponDescription: String
+  couponDescription_not: String
+  couponDescription_in: [String!]
+  couponDescription_not_in: [String!]
+  couponDescription_lt: String
+  couponDescription_lte: String
+  couponDescription_gt: String
+  couponDescription_gte: String
+  couponDescription_contains: String
+  couponDescription_not_contains: String
+  couponDescription_starts_with: String
+  couponDescription_not_starts_with: String
+  couponDescription_ends_with: String
+  couponDescription_not_ends_with: String
+  couponAuthor: UserWhereInput
+  couponAuthorId: String
+  couponAuthorId_not: String
+  couponAuthorId_in: [String!]
+  couponAuthorId_not_in: [String!]
+  couponAuthorId_lt: String
+  couponAuthorId_lte: String
+  couponAuthorId_gt: String
+  couponAuthorId_gte: String
+  couponAuthorId_contains: String
+  couponAuthorId_not_contains: String
+  couponAuthorId_starts_with: String
+  couponAuthorId_not_starts_with: String
+  couponAuthorId_ends_with: String
+  couponAuthorId_not_ends_with: String
+  couponType: Int
+  couponType_not: Int
+  couponType_in: [Int!]
+  couponType_not_in: [Int!]
+  couponType_lt: Int
+  couponType_lte: Int
+  couponType_gt: Int
+  couponType_gte: Int
+  couponValue: Int
+  couponValue_not: Int
+  couponValue_in: [Int!]
+  couponValue_not_in: [Int!]
+  couponValue_lt: Int
+  couponValue_lte: Int
+  couponValue_gt: Int
+  couponValue_gte: Int
+  couponQuantity: Int
+  couponQuantity_not: Int
+  couponQuantity_in: [Int!]
+  couponQuantity_not_in: [Int!]
+  couponQuantity_lt: Int
+  couponQuantity_lte: Int
+  couponQuantity_gt: Int
+  couponQuantity_gte: Int
+  couponStartDate: String
+  couponStartDate_not: String
+  couponStartDate_in: [String!]
+  couponStartDate_not_in: [String!]
+  couponStartDate_lt: String
+  couponStartDate_lte: String
+  couponStartDate_gt: String
+  couponStartDate_gte: String
+  couponStartDate_contains: String
+  couponStartDate_not_contains: String
+  couponStartDate_starts_with: String
+  couponStartDate_not_starts_with: String
+  couponStartDate_ends_with: String
+  couponStartDate_not_ends_with: String
+  couponEndDate: String
+  couponEndDate_not: String
+  couponEndDate_in: [String!]
+  couponEndDate_not_in: [String!]
+  couponEndDate_lt: String
+  couponEndDate_lte: String
+  couponEndDate_gt: String
+  couponEndDate_gte: String
+  couponEndDate_contains: String
+  couponEndDate_not_contains: String
+  couponEndDate_starts_with: String
+  couponEndDate_not_starts_with: String
+  couponEndDate_ends_with: String
+  couponEndDate_not_ends_with: String
+  couponRange: String
+  couponRange_not: String
+  couponRange_in: [String!]
+  couponRange_not_in: [String!]
+  couponRange_lt: String
+  couponRange_lte: String
+  couponRange_gt: String
+  couponRange_gte: String
+  couponRange_contains: String
+  couponRange_not_contains: String
+  couponRange_starts_with: String
+  couponRange_not_starts_with: String
+  couponRange_ends_with: String
+  couponRange_not_ends_with: String
+  couponTarget_every: HotelWhereInput
+  couponTarget_some: HotelWhereInput
+  couponTarget_none: HotelWhereInput
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [CouponWhereInput!]
+  OR: [CouponWhereInput!]
+  NOT: [CouponWhereInput!]
+}
+
+input CouponWhereUniqueInput {
+  couponId: ID
+  couponName: String
+}
+
 scalar DateTime
 
 type Gallery {
   id: ID!
+  uid: String
   url: String
+  signedRequest: String
 }
 
 type GalleryConnection {
@@ -641,7 +1224,9 @@ type GalleryConnection {
 
 input GalleryCreateInput {
   id: ID
+  uid: String
   url: String
+  signedRequest: String
 }
 
 input GalleryCreateManyInput {
@@ -657,13 +1242,19 @@ type GalleryEdge {
 enum GalleryOrderByInput {
   id_ASC
   id_DESC
+  uid_ASC
+  uid_DESC
   url_ASC
   url_DESC
+  signedRequest_ASC
+  signedRequest_DESC
 }
 
 type GalleryPreviousValues {
   id: ID!
+  uid: String
   url: String
+  signedRequest: String
 }
 
 input GalleryScalarWhereInput {
@@ -681,6 +1272,20 @@ input GalleryScalarWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  uid: String
+  uid_not: String
+  uid_in: [String!]
+  uid_not_in: [String!]
+  uid_lt: String
+  uid_lte: String
+  uid_gt: String
+  uid_gte: String
+  uid_contains: String
+  uid_not_contains: String
+  uid_starts_with: String
+  uid_not_starts_with: String
+  uid_ends_with: String
+  uid_not_ends_with: String
   url: String
   url_not: String
   url_in: [String!]
@@ -695,6 +1300,20 @@ input GalleryScalarWhereInput {
   url_not_starts_with: String
   url_ends_with: String
   url_not_ends_with: String
+  signedRequest: String
+  signedRequest_not: String
+  signedRequest_in: [String!]
+  signedRequest_not_in: [String!]
+  signedRequest_lt: String
+  signedRequest_lte: String
+  signedRequest_gt: String
+  signedRequest_gte: String
+  signedRequest_contains: String
+  signedRequest_not_contains: String
+  signedRequest_starts_with: String
+  signedRequest_not_starts_with: String
+  signedRequest_ends_with: String
+  signedRequest_not_ends_with: String
   AND: [GalleryScalarWhereInput!]
   OR: [GalleryScalarWhereInput!]
   NOT: [GalleryScalarWhereInput!]
@@ -719,15 +1338,21 @@ input GallerySubscriptionWhereInput {
 }
 
 input GalleryUpdateDataInput {
+  uid: String
   url: String
+  signedRequest: String
 }
 
 input GalleryUpdateInput {
+  uid: String
   url: String
+  signedRequest: String
 }
 
 input GalleryUpdateManyDataInput {
+  uid: String
   url: String
+  signedRequest: String
 }
 
 input GalleryUpdateManyInput {
@@ -743,7 +1368,9 @@ input GalleryUpdateManyInput {
 }
 
 input GalleryUpdateManyMutationInput {
+  uid: String
   url: String
+  signedRequest: String
 }
 
 input GalleryUpdateManyWithWhereNestedInput {
@@ -777,6 +1404,20 @@ input GalleryWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  uid: String
+  uid_not: String
+  uid_in: [String!]
+  uid_not_in: [String!]
+  uid_lt: String
+  uid_lte: String
+  uid_gt: String
+  uid_gte: String
+  uid_contains: String
+  uid_not_contains: String
+  uid_starts_with: String
+  uid_not_starts_with: String
+  uid_ends_with: String
+  uid_not_ends_with: String
   url: String
   url_not: String
   url_in: [String!]
@@ -791,6 +1432,20 @@ input GalleryWhereInput {
   url_not_starts_with: String
   url_ends_with: String
   url_not_ends_with: String
+  signedRequest: String
+  signedRequest_not: String
+  signedRequest_in: [String!]
+  signedRequest_not_in: [String!]
+  signedRequest_lt: String
+  signedRequest_lte: String
+  signedRequest_gt: String
+  signedRequest_gte: String
+  signedRequest_contains: String
+  signedRequest_not_contains: String
+  signedRequest_starts_with: String
+  signedRequest_not_starts_with: String
+  signedRequest_ends_with: String
+  signedRequest_not_ends_with: String
   AND: [GalleryWhereInput!]
   OR: [GalleryWhereInput!]
   NOT: [GalleryWhereInput!]
@@ -803,13 +1458,17 @@ input GalleryWhereUniqueInput {
 type Hotel {
   id: ID!
   peopleLiked(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
+  peopleReviewed(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
+  couponsAvailable(where: CouponWhereInput, orderBy: CouponOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Coupon!]
   connectId: User
   agentId: String
+  agentEmail: String
+  agentName: String
   title: String!
   slug: String
   content: String
   status: String
-  price: String
+  price: Int
   isNegotiable: Boolean
   propertyType: String
   condition: String
@@ -822,6 +1481,7 @@ type Hotel {
   location(where: LocationWhereInput, orderBy: LocationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Location!]
   gallery(where: GalleryWhereInput, orderBy: GalleryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Gallery!]
   categories(where: CategoriesWhereInput, orderBy: CategoriesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Categories!]
+  reviews(where: ReviewsWhereInput, orderBy: ReviewsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Reviews!]
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -835,13 +1495,17 @@ type HotelConnection {
 input HotelCreateInput {
   id: ID
   peopleLiked: UserCreateManyWithoutFavourite_postInput
+  peopleReviewed: UserCreateManyWithoutReviewed_postInput
+  couponsAvailable: CouponCreateManyWithoutCouponTargetInput
   connectId: UserCreateOneWithoutListed_postsInput
   agentId: String
+  agentEmail: String
+  agentName: String
   title: String!
   slug: String
   content: String
   status: String
-  price: String
+  price: Int
   isNegotiable: Boolean
   propertyType: String
   condition: String
@@ -854,10 +1518,16 @@ input HotelCreateInput {
   location: LocationCreateManyInput
   gallery: GalleryCreateManyInput
   categories: CategoriesCreateManyInput
+  reviews: ReviewsCreateManyWithoutReviewedHotelInput
 }
 
 input HotelCreateManyWithoutConnectIdInput {
   create: [HotelCreateWithoutConnectIdInput!]
+  connect: [HotelWhereUniqueInput!]
+}
+
+input HotelCreateManyWithoutCouponsAvailableInput {
+  create: [HotelCreateWithoutCouponsAvailableInput!]
   connect: [HotelWhereUniqueInput!]
 }
 
@@ -866,15 +1536,29 @@ input HotelCreateManyWithoutPeopleLikedInput {
   connect: [HotelWhereUniqueInput!]
 }
 
+input HotelCreateManyWithoutPeopleReviewedInput {
+  create: [HotelCreateWithoutPeopleReviewedInput!]
+  connect: [HotelWhereUniqueInput!]
+}
+
+input HotelCreateOneWithoutReviewsInput {
+  create: HotelCreateWithoutReviewsInput
+  connect: HotelWhereUniqueInput
+}
+
 input HotelCreateWithoutConnectIdInput {
   id: ID
   peopleLiked: UserCreateManyWithoutFavourite_postInput
+  peopleReviewed: UserCreateManyWithoutReviewed_postInput
+  couponsAvailable: CouponCreateManyWithoutCouponTargetInput
   agentId: String
+  agentEmail: String
+  agentName: String
   title: String!
   slug: String
   content: String
   status: String
-  price: String
+  price: Int
   isNegotiable: Boolean
   propertyType: String
   condition: String
@@ -887,17 +1571,107 @@ input HotelCreateWithoutConnectIdInput {
   location: LocationCreateManyInput
   gallery: GalleryCreateManyInput
   categories: CategoriesCreateManyInput
+  reviews: ReviewsCreateManyWithoutReviewedHotelInput
 }
 
-input HotelCreateWithoutPeopleLikedInput {
+input HotelCreateWithoutCouponsAvailableInput {
   id: ID
+  peopleLiked: UserCreateManyWithoutFavourite_postInput
+  peopleReviewed: UserCreateManyWithoutReviewed_postInput
   connectId: UserCreateOneWithoutListed_postsInput
   agentId: String
+  agentEmail: String
+  agentName: String
   title: String!
   slug: String
   content: String
   status: String
-  price: String
+  price: Int
+  isNegotiable: Boolean
+  propertyType: String
+  condition: String
+  rating: Float
+  ratingCount: Int
+  contactNumber: String
+  termsAndCondition: String
+  amenities: AmenitiesCreateManyInput
+  image: ImageCreateOneInput
+  location: LocationCreateManyInput
+  gallery: GalleryCreateManyInput
+  categories: CategoriesCreateManyInput
+  reviews: ReviewsCreateManyWithoutReviewedHotelInput
+}
+
+input HotelCreateWithoutPeopleLikedInput {
+  id: ID
+  peopleReviewed: UserCreateManyWithoutReviewed_postInput
+  couponsAvailable: CouponCreateManyWithoutCouponTargetInput
+  connectId: UserCreateOneWithoutListed_postsInput
+  agentId: String
+  agentEmail: String
+  agentName: String
+  title: String!
+  slug: String
+  content: String
+  status: String
+  price: Int
+  isNegotiable: Boolean
+  propertyType: String
+  condition: String
+  rating: Float
+  ratingCount: Int
+  contactNumber: String
+  termsAndCondition: String
+  amenities: AmenitiesCreateManyInput
+  image: ImageCreateOneInput
+  location: LocationCreateManyInput
+  gallery: GalleryCreateManyInput
+  categories: CategoriesCreateManyInput
+  reviews: ReviewsCreateManyWithoutReviewedHotelInput
+}
+
+input HotelCreateWithoutPeopleReviewedInput {
+  id: ID
+  peopleLiked: UserCreateManyWithoutFavourite_postInput
+  couponsAvailable: CouponCreateManyWithoutCouponTargetInput
+  connectId: UserCreateOneWithoutListed_postsInput
+  agentId: String
+  agentEmail: String
+  agentName: String
+  title: String!
+  slug: String
+  content: String
+  status: String
+  price: Int
+  isNegotiable: Boolean
+  propertyType: String
+  condition: String
+  rating: Float
+  ratingCount: Int
+  contactNumber: String
+  termsAndCondition: String
+  amenities: AmenitiesCreateManyInput
+  image: ImageCreateOneInput
+  location: LocationCreateManyInput
+  gallery: GalleryCreateManyInput
+  categories: CategoriesCreateManyInput
+  reviews: ReviewsCreateManyWithoutReviewedHotelInput
+}
+
+input HotelCreateWithoutReviewsInput {
+  id: ID
+  peopleLiked: UserCreateManyWithoutFavourite_postInput
+  peopleReviewed: UserCreateManyWithoutReviewed_postInput
+  couponsAvailable: CouponCreateManyWithoutCouponTargetInput
+  connectId: UserCreateOneWithoutListed_postsInput
+  agentId: String
+  agentEmail: String
+  agentName: String
+  title: String!
+  slug: String
+  content: String
+  status: String
+  price: Int
   isNegotiable: Boolean
   propertyType: String
   condition: String
@@ -922,6 +1696,10 @@ enum HotelOrderByInput {
   id_DESC
   agentId_ASC
   agentId_DESC
+  agentEmail_ASC
+  agentEmail_DESC
+  agentName_ASC
+  agentName_DESC
   title_ASC
   title_DESC
   slug_ASC
@@ -955,11 +1733,13 @@ enum HotelOrderByInput {
 type HotelPreviousValues {
   id: ID!
   agentId: String
+  agentEmail: String
+  agentName: String
   title: String!
   slug: String
   content: String
   status: String
-  price: String
+  price: Int
   isNegotiable: Boolean
   propertyType: String
   condition: String
@@ -1000,6 +1780,34 @@ input HotelScalarWhereInput {
   agentId_not_starts_with: String
   agentId_ends_with: String
   agentId_not_ends_with: String
+  agentEmail: String
+  agentEmail_not: String
+  agentEmail_in: [String!]
+  agentEmail_not_in: [String!]
+  agentEmail_lt: String
+  agentEmail_lte: String
+  agentEmail_gt: String
+  agentEmail_gte: String
+  agentEmail_contains: String
+  agentEmail_not_contains: String
+  agentEmail_starts_with: String
+  agentEmail_not_starts_with: String
+  agentEmail_ends_with: String
+  agentEmail_not_ends_with: String
+  agentName: String
+  agentName_not: String
+  agentName_in: [String!]
+  agentName_not_in: [String!]
+  agentName_lt: String
+  agentName_lte: String
+  agentName_gt: String
+  agentName_gte: String
+  agentName_contains: String
+  agentName_not_contains: String
+  agentName_starts_with: String
+  agentName_not_starts_with: String
+  agentName_ends_with: String
+  agentName_not_ends_with: String
   title: String
   title_not: String
   title_in: [String!]
@@ -1056,20 +1864,14 @@ input HotelScalarWhereInput {
   status_not_starts_with: String
   status_ends_with: String
   status_not_ends_with: String
-  price: String
-  price_not: String
-  price_in: [String!]
-  price_not_in: [String!]
-  price_lt: String
-  price_lte: String
-  price_gt: String
-  price_gte: String
-  price_contains: String
-  price_not_contains: String
-  price_starts_with: String
-  price_not_starts_with: String
-  price_ends_with: String
-  price_not_ends_with: String
+  price: Int
+  price_not: Int
+  price_in: [Int!]
+  price_not_in: [Int!]
+  price_lt: Int
+  price_lte: Int
+  price_gt: Int
+  price_gte: Int
   isNegotiable: Boolean
   isNegotiable_not: Boolean
   propertyType: String
@@ -1185,13 +1987,17 @@ input HotelSubscriptionWhereInput {
 
 input HotelUpdateInput {
   peopleLiked: UserUpdateManyWithoutFavourite_postInput
+  peopleReviewed: UserUpdateManyWithoutReviewed_postInput
+  couponsAvailable: CouponUpdateManyWithoutCouponTargetInput
   connectId: UserUpdateOneWithoutListed_postsInput
   agentId: String
+  agentEmail: String
+  agentName: String
   title: String
   slug: String
   content: String
   status: String
-  price: String
+  price: Int
   isNegotiable: Boolean
   propertyType: String
   condition: String
@@ -1204,15 +2010,18 @@ input HotelUpdateInput {
   location: LocationUpdateManyInput
   gallery: GalleryUpdateManyInput
   categories: CategoriesUpdateManyInput
+  reviews: ReviewsUpdateManyWithoutReviewedHotelInput
 }
 
 input HotelUpdateManyDataInput {
   agentId: String
+  agentEmail: String
+  agentName: String
   title: String
   slug: String
   content: String
   status: String
-  price: String
+  price: Int
   isNegotiable: Boolean
   propertyType: String
   condition: String
@@ -1224,11 +2033,13 @@ input HotelUpdateManyDataInput {
 
 input HotelUpdateManyMutationInput {
   agentId: String
+  agentEmail: String
+  agentName: String
   title: String
   slug: String
   content: String
   status: String
-  price: String
+  price: Int
   isNegotiable: Boolean
   propertyType: String
   condition: String
@@ -1250,6 +2061,18 @@ input HotelUpdateManyWithoutConnectIdInput {
   updateMany: [HotelUpdateManyWithWhereNestedInput!]
 }
 
+input HotelUpdateManyWithoutCouponsAvailableInput {
+  create: [HotelCreateWithoutCouponsAvailableInput!]
+  delete: [HotelWhereUniqueInput!]
+  connect: [HotelWhereUniqueInput!]
+  set: [HotelWhereUniqueInput!]
+  disconnect: [HotelWhereUniqueInput!]
+  update: [HotelUpdateWithWhereUniqueWithoutCouponsAvailableInput!]
+  upsert: [HotelUpsertWithWhereUniqueWithoutCouponsAvailableInput!]
+  deleteMany: [HotelScalarWhereInput!]
+  updateMany: [HotelUpdateManyWithWhereNestedInput!]
+}
+
 input HotelUpdateManyWithoutPeopleLikedInput {
   create: [HotelCreateWithoutPeopleLikedInput!]
   delete: [HotelWhereUniqueInput!]
@@ -1262,19 +2085,44 @@ input HotelUpdateManyWithoutPeopleLikedInput {
   updateMany: [HotelUpdateManyWithWhereNestedInput!]
 }
 
+input HotelUpdateManyWithoutPeopleReviewedInput {
+  create: [HotelCreateWithoutPeopleReviewedInput!]
+  delete: [HotelWhereUniqueInput!]
+  connect: [HotelWhereUniqueInput!]
+  set: [HotelWhereUniqueInput!]
+  disconnect: [HotelWhereUniqueInput!]
+  update: [HotelUpdateWithWhereUniqueWithoutPeopleReviewedInput!]
+  upsert: [HotelUpsertWithWhereUniqueWithoutPeopleReviewedInput!]
+  deleteMany: [HotelScalarWhereInput!]
+  updateMany: [HotelUpdateManyWithWhereNestedInput!]
+}
+
 input HotelUpdateManyWithWhereNestedInput {
   where: HotelScalarWhereInput!
   data: HotelUpdateManyDataInput!
 }
 
+input HotelUpdateOneWithoutReviewsInput {
+  create: HotelCreateWithoutReviewsInput
+  update: HotelUpdateWithoutReviewsDataInput
+  upsert: HotelUpsertWithoutReviewsInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: HotelWhereUniqueInput
+}
+
 input HotelUpdateWithoutConnectIdDataInput {
   peopleLiked: UserUpdateManyWithoutFavourite_postInput
+  peopleReviewed: UserUpdateManyWithoutReviewed_postInput
+  couponsAvailable: CouponUpdateManyWithoutCouponTargetInput
   agentId: String
+  agentEmail: String
+  agentName: String
   title: String
   slug: String
   content: String
   status: String
-  price: String
+  price: Int
   isNegotiable: Boolean
   propertyType: String
   condition: String
@@ -1287,16 +2135,103 @@ input HotelUpdateWithoutConnectIdDataInput {
   location: LocationUpdateManyInput
   gallery: GalleryUpdateManyInput
   categories: CategoriesUpdateManyInput
+  reviews: ReviewsUpdateManyWithoutReviewedHotelInput
 }
 
-input HotelUpdateWithoutPeopleLikedDataInput {
+input HotelUpdateWithoutCouponsAvailableDataInput {
+  peopleLiked: UserUpdateManyWithoutFavourite_postInput
+  peopleReviewed: UserUpdateManyWithoutReviewed_postInput
   connectId: UserUpdateOneWithoutListed_postsInput
   agentId: String
+  agentEmail: String
+  agentName: String
   title: String
   slug: String
   content: String
   status: String
-  price: String
+  price: Int
+  isNegotiable: Boolean
+  propertyType: String
+  condition: String
+  rating: Float
+  ratingCount: Int
+  contactNumber: String
+  termsAndCondition: String
+  amenities: AmenitiesUpdateManyInput
+  image: ImageUpdateOneInput
+  location: LocationUpdateManyInput
+  gallery: GalleryUpdateManyInput
+  categories: CategoriesUpdateManyInput
+  reviews: ReviewsUpdateManyWithoutReviewedHotelInput
+}
+
+input HotelUpdateWithoutPeopleLikedDataInput {
+  peopleReviewed: UserUpdateManyWithoutReviewed_postInput
+  couponsAvailable: CouponUpdateManyWithoutCouponTargetInput
+  connectId: UserUpdateOneWithoutListed_postsInput
+  agentId: String
+  agentEmail: String
+  agentName: String
+  title: String
+  slug: String
+  content: String
+  status: String
+  price: Int
+  isNegotiable: Boolean
+  propertyType: String
+  condition: String
+  rating: Float
+  ratingCount: Int
+  contactNumber: String
+  termsAndCondition: String
+  amenities: AmenitiesUpdateManyInput
+  image: ImageUpdateOneInput
+  location: LocationUpdateManyInput
+  gallery: GalleryUpdateManyInput
+  categories: CategoriesUpdateManyInput
+  reviews: ReviewsUpdateManyWithoutReviewedHotelInput
+}
+
+input HotelUpdateWithoutPeopleReviewedDataInput {
+  peopleLiked: UserUpdateManyWithoutFavourite_postInput
+  couponsAvailable: CouponUpdateManyWithoutCouponTargetInput
+  connectId: UserUpdateOneWithoutListed_postsInput
+  agentId: String
+  agentEmail: String
+  agentName: String
+  title: String
+  slug: String
+  content: String
+  status: String
+  price: Int
+  isNegotiable: Boolean
+  propertyType: String
+  condition: String
+  rating: Float
+  ratingCount: Int
+  contactNumber: String
+  termsAndCondition: String
+  amenities: AmenitiesUpdateManyInput
+  image: ImageUpdateOneInput
+  location: LocationUpdateManyInput
+  gallery: GalleryUpdateManyInput
+  categories: CategoriesUpdateManyInput
+  reviews: ReviewsUpdateManyWithoutReviewedHotelInput
+}
+
+input HotelUpdateWithoutReviewsDataInput {
+  peopleLiked: UserUpdateManyWithoutFavourite_postInput
+  peopleReviewed: UserUpdateManyWithoutReviewed_postInput
+  couponsAvailable: CouponUpdateManyWithoutCouponTargetInput
+  connectId: UserUpdateOneWithoutListed_postsInput
+  agentId: String
+  agentEmail: String
+  agentName: String
+  title: String
+  slug: String
+  content: String
+  status: String
+  price: Int
   isNegotiable: Boolean
   propertyType: String
   condition: String
@@ -1316,9 +2251,24 @@ input HotelUpdateWithWhereUniqueWithoutConnectIdInput {
   data: HotelUpdateWithoutConnectIdDataInput!
 }
 
+input HotelUpdateWithWhereUniqueWithoutCouponsAvailableInput {
+  where: HotelWhereUniqueInput!
+  data: HotelUpdateWithoutCouponsAvailableDataInput!
+}
+
 input HotelUpdateWithWhereUniqueWithoutPeopleLikedInput {
   where: HotelWhereUniqueInput!
   data: HotelUpdateWithoutPeopleLikedDataInput!
+}
+
+input HotelUpdateWithWhereUniqueWithoutPeopleReviewedInput {
+  where: HotelWhereUniqueInput!
+  data: HotelUpdateWithoutPeopleReviewedDataInput!
+}
+
+input HotelUpsertWithoutReviewsInput {
+  update: HotelUpdateWithoutReviewsDataInput!
+  create: HotelCreateWithoutReviewsInput!
 }
 
 input HotelUpsertWithWhereUniqueWithoutConnectIdInput {
@@ -1327,10 +2277,22 @@ input HotelUpsertWithWhereUniqueWithoutConnectIdInput {
   create: HotelCreateWithoutConnectIdInput!
 }
 
+input HotelUpsertWithWhereUniqueWithoutCouponsAvailableInput {
+  where: HotelWhereUniqueInput!
+  update: HotelUpdateWithoutCouponsAvailableDataInput!
+  create: HotelCreateWithoutCouponsAvailableInput!
+}
+
 input HotelUpsertWithWhereUniqueWithoutPeopleLikedInput {
   where: HotelWhereUniqueInput!
   update: HotelUpdateWithoutPeopleLikedDataInput!
   create: HotelCreateWithoutPeopleLikedInput!
+}
+
+input HotelUpsertWithWhereUniqueWithoutPeopleReviewedInput {
+  where: HotelWhereUniqueInput!
+  update: HotelUpdateWithoutPeopleReviewedDataInput!
+  create: HotelCreateWithoutPeopleReviewedInput!
 }
 
 input HotelWhereInput {
@@ -1351,6 +2313,12 @@ input HotelWhereInput {
   peopleLiked_every: UserWhereInput
   peopleLiked_some: UserWhereInput
   peopleLiked_none: UserWhereInput
+  peopleReviewed_every: UserWhereInput
+  peopleReviewed_some: UserWhereInput
+  peopleReviewed_none: UserWhereInput
+  couponsAvailable_every: CouponWhereInput
+  couponsAvailable_some: CouponWhereInput
+  couponsAvailable_none: CouponWhereInput
   connectId: UserWhereInput
   agentId: String
   agentId_not: String
@@ -1366,6 +2334,34 @@ input HotelWhereInput {
   agentId_not_starts_with: String
   agentId_ends_with: String
   agentId_not_ends_with: String
+  agentEmail: String
+  agentEmail_not: String
+  agentEmail_in: [String!]
+  agentEmail_not_in: [String!]
+  agentEmail_lt: String
+  agentEmail_lte: String
+  agentEmail_gt: String
+  agentEmail_gte: String
+  agentEmail_contains: String
+  agentEmail_not_contains: String
+  agentEmail_starts_with: String
+  agentEmail_not_starts_with: String
+  agentEmail_ends_with: String
+  agentEmail_not_ends_with: String
+  agentName: String
+  agentName_not: String
+  agentName_in: [String!]
+  agentName_not_in: [String!]
+  agentName_lt: String
+  agentName_lte: String
+  agentName_gt: String
+  agentName_gte: String
+  agentName_contains: String
+  agentName_not_contains: String
+  agentName_starts_with: String
+  agentName_not_starts_with: String
+  agentName_ends_with: String
+  agentName_not_ends_with: String
   title: String
   title_not: String
   title_in: [String!]
@@ -1422,20 +2418,14 @@ input HotelWhereInput {
   status_not_starts_with: String
   status_ends_with: String
   status_not_ends_with: String
-  price: String
-  price_not: String
-  price_in: [String!]
-  price_not_in: [String!]
-  price_lt: String
-  price_lte: String
-  price_gt: String
-  price_gte: String
-  price_contains: String
-  price_not_contains: String
-  price_starts_with: String
-  price_not_starts_with: String
-  price_ends_with: String
-  price_not_ends_with: String
+  price: Int
+  price_not: Int
+  price_in: [Int!]
+  price_not_in: [Int!]
+  price_lt: Int
+  price_lte: Int
+  price_gt: Int
+  price_gte: Int
   isNegotiable: Boolean
   isNegotiable_not: Boolean
   propertyType: String
@@ -1523,6 +2513,9 @@ input HotelWhereInput {
   categories_every: CategoriesWhereInput
   categories_some: CategoriesWhereInput
   categories_none: CategoriesWhereInput
+  reviews_every: ReviewsWhereInput
+  reviews_some: ReviewsWhereInput
+  reviews_none: ReviewsWhereInput
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
@@ -1692,8 +2685,8 @@ input ImageWhereUniqueInput {
 
 type Location {
   id: ID!
-  lat: String
-  lng: String
+  lat: Float
+  lng: Float
   formattedAddress: String
   zipcode: String
   city: String
@@ -1711,8 +2704,8 @@ type LocationConnection {
 
 input LocationCreateInput {
   id: ID
-  lat: String
-  lng: String
+  lat: Float
+  lng: Float
   formattedAddress: String
   zipcode: String
   city: String
@@ -1762,8 +2755,8 @@ enum LocationOrderByInput {
 
 type LocationPreviousValues {
   id: ID!
-  lat: String
-  lng: String
+  lat: Float
+  lng: Float
   formattedAddress: String
   zipcode: String
   city: String
@@ -1788,34 +2781,22 @@ input LocationScalarWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  lat: String
-  lat_not: String
-  lat_in: [String!]
-  lat_not_in: [String!]
-  lat_lt: String
-  lat_lte: String
-  lat_gt: String
-  lat_gte: String
-  lat_contains: String
-  lat_not_contains: String
-  lat_starts_with: String
-  lat_not_starts_with: String
-  lat_ends_with: String
-  lat_not_ends_with: String
-  lng: String
-  lng_not: String
-  lng_in: [String!]
-  lng_not_in: [String!]
-  lng_lt: String
-  lng_lte: String
-  lng_gt: String
-  lng_gte: String
-  lng_contains: String
-  lng_not_contains: String
-  lng_starts_with: String
-  lng_not_starts_with: String
-  lng_ends_with: String
-  lng_not_ends_with: String
+  lat: Float
+  lat_not: Float
+  lat_in: [Float!]
+  lat_not_in: [Float!]
+  lat_lt: Float
+  lat_lte: Float
+  lat_gt: Float
+  lat_gte: Float
+  lng: Float
+  lng_not: Float
+  lng_in: [Float!]
+  lng_not_in: [Float!]
+  lng_lt: Float
+  lng_lte: Float
+  lng_gt: Float
+  lng_gte: Float
   formattedAddress: String
   formattedAddress_not: String
   formattedAddress_in: [String!]
@@ -1938,8 +2919,8 @@ input LocationSubscriptionWhereInput {
 }
 
 input LocationUpdateDataInput {
-  lat: String
-  lng: String
+  lat: Float
+  lng: Float
   formattedAddress: String
   zipcode: String
   city: String
@@ -1950,8 +2931,8 @@ input LocationUpdateDataInput {
 }
 
 input LocationUpdateInput {
-  lat: String
-  lng: String
+  lat: Float
+  lng: Float
   formattedAddress: String
   zipcode: String
   city: String
@@ -1962,8 +2943,8 @@ input LocationUpdateInput {
 }
 
 input LocationUpdateManyDataInput {
-  lat: String
-  lng: String
+  lat: Float
+  lng: Float
   formattedAddress: String
   zipcode: String
   city: String
@@ -1986,8 +2967,8 @@ input LocationUpdateManyInput {
 }
 
 input LocationUpdateManyMutationInput {
-  lat: String
-  lng: String
+  lat: Float
+  lng: Float
   formattedAddress: String
   zipcode: String
   city: String
@@ -2042,34 +3023,22 @@ input LocationWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  lat: String
-  lat_not: String
-  lat_in: [String!]
-  lat_not_in: [String!]
-  lat_lt: String
-  lat_lte: String
-  lat_gt: String
-  lat_gte: String
-  lat_contains: String
-  lat_not_contains: String
-  lat_starts_with: String
-  lat_not_starts_with: String
-  lat_ends_with: String
-  lat_not_ends_with: String
-  lng: String
-  lng_not: String
-  lng_in: [String!]
-  lng_not_in: [String!]
-  lng_lt: String
-  lng_lte: String
-  lng_gt: String
-  lng_gte: String
-  lng_contains: String
-  lng_not_contains: String
-  lng_starts_with: String
-  lng_not_starts_with: String
-  lng_ends_with: String
-  lng_not_ends_with: String
+  lat: Float
+  lat_not: Float
+  lat_in: [Float!]
+  lat_not_in: [Float!]
+  lat_lt: Float
+  lat_lte: Float
+  lat_gt: Float
+  lat_gte: Float
+  lng: Float
+  lng_not: Float
+  lng_in: [Float!]
+  lng_not_in: [Float!]
+  lng_lt: Float
+  lng_lte: Float
+  lng_gt: Float
+  lng_gte: Float
   formattedAddress: String
   formattedAddress_not: String
   formattedAddress_in: [String!]
@@ -2198,6 +3167,12 @@ type Mutation {
   upsertCategoryImages(where: CategoryImagesWhereUniqueInput!, create: CategoryImagesCreateInput!, update: CategoryImagesUpdateInput!): CategoryImages!
   deleteCategoryImages(where: CategoryImagesWhereUniqueInput!): CategoryImages
   deleteManyCategoryImageses(where: CategoryImagesWhereInput): BatchPayload!
+  createCoupon(data: CouponCreateInput!): Coupon!
+  updateCoupon(data: CouponUpdateInput!, where: CouponWhereUniqueInput!): Coupon
+  updateManyCoupons(data: CouponUpdateManyMutationInput!, where: CouponWhereInput): BatchPayload!
+  upsertCoupon(where: CouponWhereUniqueInput!, create: CouponCreateInput!, update: CouponUpdateInput!): Coupon!
+  deleteCoupon(where: CouponWhereUniqueInput!): Coupon
+  deleteManyCoupons(where: CouponWhereInput): BatchPayload!
   createGallery(data: GalleryCreateInput!): Gallery!
   updateGallery(data: GalleryUpdateInput!, where: GalleryWhereUniqueInput!): Gallery
   updateManyGalleries(data: GalleryUpdateManyMutationInput!, where: GalleryWhereInput): BatchPayload!
@@ -2222,12 +3197,48 @@ type Mutation {
   upsertLocation(where: LocationWhereUniqueInput!, create: LocationCreateInput!, update: LocationUpdateInput!): Location!
   deleteLocation(where: LocationWhereUniqueInput!): Location
   deleteManyLocations(where: LocationWhereInput): BatchPayload!
+  createNotification(data: NotificationCreateInput!): Notification!
+  updateNotification(data: NotificationUpdateInput!, where: NotificationWhereUniqueInput!): Notification
+  updateManyNotifications(data: NotificationUpdateManyMutationInput!, where: NotificationWhereInput): BatchPayload!
+  upsertNotification(where: NotificationWhereUniqueInput!, create: NotificationCreateInput!, update: NotificationUpdateInput!): Notification!
+  deleteNotification(where: NotificationWhereUniqueInput!): Notification
+  deleteManyNotifications(where: NotificationWhereInput): BatchPayload!
+  createReviewFields(data: ReviewFieldsCreateInput!): ReviewFields!
+  updateReviewFields(data: ReviewFieldsUpdateInput!, where: ReviewFieldsWhereUniqueInput!): ReviewFields
+  updateManyReviewFieldses(data: ReviewFieldsUpdateManyMutationInput!, where: ReviewFieldsWhereInput): BatchPayload!
+  upsertReviewFields(where: ReviewFieldsWhereUniqueInput!, create: ReviewFieldsCreateInput!, update: ReviewFieldsUpdateInput!): ReviewFields!
+  deleteReviewFields(where: ReviewFieldsWhereUniqueInput!): ReviewFields
+  deleteManyReviewFieldses(where: ReviewFieldsWhereInput): BatchPayload!
+  createReviewImages(data: ReviewImagesCreateInput!): ReviewImages!
+  updateReviewImages(data: ReviewImagesUpdateInput!, where: ReviewImagesWhereUniqueInput!): ReviewImages
+  updateManyReviewImageses(data: ReviewImagesUpdateManyMutationInput!, where: ReviewImagesWhereInput): BatchPayload!
+  upsertReviewImages(where: ReviewImagesWhereUniqueInput!, create: ReviewImagesCreateInput!, update: ReviewImagesUpdateInput!): ReviewImages!
+  deleteReviewImages(where: ReviewImagesWhereUniqueInput!): ReviewImages
+  deleteManyReviewImageses(where: ReviewImagesWhereInput): BatchPayload!
+  createReviewOptionals(data: ReviewOptionalsCreateInput!): ReviewOptionals!
+  updateReviewOptionals(data: ReviewOptionalsUpdateInput!, where: ReviewOptionalsWhereUniqueInput!): ReviewOptionals
+  updateManyReviewOptionalses(data: ReviewOptionalsUpdateManyMutationInput!, where: ReviewOptionalsWhereInput): BatchPayload!
+  upsertReviewOptionals(where: ReviewOptionalsWhereUniqueInput!, create: ReviewOptionalsCreateInput!, update: ReviewOptionalsUpdateInput!): ReviewOptionals!
+  deleteReviewOptionals(where: ReviewOptionalsWhereUniqueInput!): ReviewOptionals
+  deleteManyReviewOptionalses(where: ReviewOptionalsWhereInput): BatchPayload!
+  createReviews(data: ReviewsCreateInput!): Reviews!
+  updateReviews(data: ReviewsUpdateInput!, where: ReviewsWhereUniqueInput!): Reviews
+  updateManyReviewses(data: ReviewsUpdateManyMutationInput!, where: ReviewsWhereInput): BatchPayload!
+  upsertReviews(where: ReviewsWhereUniqueInput!, create: ReviewsCreateInput!, update: ReviewsUpdateInput!): Reviews!
+  deleteReviews(where: ReviewsWhereUniqueInput!): Reviews
+  deleteManyReviewses(where: ReviewsWhereInput): BatchPayload!
   createSocial(data: SocialCreateInput!): Social!
   updateSocial(data: SocialUpdateInput!, where: SocialWhereUniqueInput!): Social
   updateManySocials(data: SocialUpdateManyMutationInput!, where: SocialWhereInput): BatchPayload!
   upsertSocial(where: SocialWhereUniqueInput!, create: SocialCreateInput!, update: SocialUpdateInput!): Social!
   deleteSocial(where: SocialWhereUniqueInput!): Social
   deleteManySocials(where: SocialWhereInput): BatchPayload!
+  createTransaction(data: TransactionCreateInput!): Transaction!
+  updateTransaction(data: TransactionUpdateInput!, where: TransactionWhereUniqueInput!): Transaction
+  updateManyTransactions(data: TransactionUpdateManyMutationInput!, where: TransactionWhereInput): BatchPayload!
+  upsertTransaction(where: TransactionWhereUniqueInput!, create: TransactionCreateInput!, update: TransactionUpdateInput!): Transaction!
+  deleteTransaction(where: TransactionWhereUniqueInput!): Transaction
+  deleteManyTransactions(where: TransactionWhereInput): BatchPayload!
   createUser(data: UserCreateInput!): User!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
@@ -2244,6 +3255,491 @@ enum MutationType {
 
 interface Node {
   id: ID!
+}
+
+type Notification {
+  id: ID!
+  reviewAuthorName: String
+  reviewedHotelName: String
+  reviewTitle: String
+  reviewText: String
+  read: Boolean
+  old: Boolean
+  userNotificationId: String
+  peopleReviewedQuantity: Int
+  query: String
+  reviewAuthorProfilePic: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type NotificationConnection {
+  pageInfo: PageInfo!
+  edges: [NotificationEdge]!
+  aggregate: AggregateNotification!
+}
+
+input NotificationCreateInput {
+  id: ID
+  reviewAuthorName: String
+  reviewedHotelName: String
+  reviewTitle: String
+  reviewText: String
+  read: Boolean
+  old: Boolean
+  userNotificationId: String
+  peopleReviewedQuantity: Int
+  query: String
+  reviewAuthorProfilePic: String
+}
+
+input NotificationCreateManyInput {
+  create: [NotificationCreateInput!]
+  connect: [NotificationWhereUniqueInput!]
+}
+
+type NotificationEdge {
+  node: Notification!
+  cursor: String!
+}
+
+enum NotificationOrderByInput {
+  id_ASC
+  id_DESC
+  reviewAuthorName_ASC
+  reviewAuthorName_DESC
+  reviewedHotelName_ASC
+  reviewedHotelName_DESC
+  reviewTitle_ASC
+  reviewTitle_DESC
+  reviewText_ASC
+  reviewText_DESC
+  read_ASC
+  read_DESC
+  old_ASC
+  old_DESC
+  userNotificationId_ASC
+  userNotificationId_DESC
+  peopleReviewedQuantity_ASC
+  peopleReviewedQuantity_DESC
+  query_ASC
+  query_DESC
+  reviewAuthorProfilePic_ASC
+  reviewAuthorProfilePic_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type NotificationPreviousValues {
+  id: ID!
+  reviewAuthorName: String
+  reviewedHotelName: String
+  reviewTitle: String
+  reviewText: String
+  read: Boolean
+  old: Boolean
+  userNotificationId: String
+  peopleReviewedQuantity: Int
+  query: String
+  reviewAuthorProfilePic: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input NotificationScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  reviewAuthorName: String
+  reviewAuthorName_not: String
+  reviewAuthorName_in: [String!]
+  reviewAuthorName_not_in: [String!]
+  reviewAuthorName_lt: String
+  reviewAuthorName_lte: String
+  reviewAuthorName_gt: String
+  reviewAuthorName_gte: String
+  reviewAuthorName_contains: String
+  reviewAuthorName_not_contains: String
+  reviewAuthorName_starts_with: String
+  reviewAuthorName_not_starts_with: String
+  reviewAuthorName_ends_with: String
+  reviewAuthorName_not_ends_with: String
+  reviewedHotelName: String
+  reviewedHotelName_not: String
+  reviewedHotelName_in: [String!]
+  reviewedHotelName_not_in: [String!]
+  reviewedHotelName_lt: String
+  reviewedHotelName_lte: String
+  reviewedHotelName_gt: String
+  reviewedHotelName_gte: String
+  reviewedHotelName_contains: String
+  reviewedHotelName_not_contains: String
+  reviewedHotelName_starts_with: String
+  reviewedHotelName_not_starts_with: String
+  reviewedHotelName_ends_with: String
+  reviewedHotelName_not_ends_with: String
+  reviewTitle: String
+  reviewTitle_not: String
+  reviewTitle_in: [String!]
+  reviewTitle_not_in: [String!]
+  reviewTitle_lt: String
+  reviewTitle_lte: String
+  reviewTitle_gt: String
+  reviewTitle_gte: String
+  reviewTitle_contains: String
+  reviewTitle_not_contains: String
+  reviewTitle_starts_with: String
+  reviewTitle_not_starts_with: String
+  reviewTitle_ends_with: String
+  reviewTitle_not_ends_with: String
+  reviewText: String
+  reviewText_not: String
+  reviewText_in: [String!]
+  reviewText_not_in: [String!]
+  reviewText_lt: String
+  reviewText_lte: String
+  reviewText_gt: String
+  reviewText_gte: String
+  reviewText_contains: String
+  reviewText_not_contains: String
+  reviewText_starts_with: String
+  reviewText_not_starts_with: String
+  reviewText_ends_with: String
+  reviewText_not_ends_with: String
+  read: Boolean
+  read_not: Boolean
+  old: Boolean
+  old_not: Boolean
+  userNotificationId: String
+  userNotificationId_not: String
+  userNotificationId_in: [String!]
+  userNotificationId_not_in: [String!]
+  userNotificationId_lt: String
+  userNotificationId_lte: String
+  userNotificationId_gt: String
+  userNotificationId_gte: String
+  userNotificationId_contains: String
+  userNotificationId_not_contains: String
+  userNotificationId_starts_with: String
+  userNotificationId_not_starts_with: String
+  userNotificationId_ends_with: String
+  userNotificationId_not_ends_with: String
+  peopleReviewedQuantity: Int
+  peopleReviewedQuantity_not: Int
+  peopleReviewedQuantity_in: [Int!]
+  peopleReviewedQuantity_not_in: [Int!]
+  peopleReviewedQuantity_lt: Int
+  peopleReviewedQuantity_lte: Int
+  peopleReviewedQuantity_gt: Int
+  peopleReviewedQuantity_gte: Int
+  query: String
+  query_not: String
+  query_in: [String!]
+  query_not_in: [String!]
+  query_lt: String
+  query_lte: String
+  query_gt: String
+  query_gte: String
+  query_contains: String
+  query_not_contains: String
+  query_starts_with: String
+  query_not_starts_with: String
+  query_ends_with: String
+  query_not_ends_with: String
+  reviewAuthorProfilePic: String
+  reviewAuthorProfilePic_not: String
+  reviewAuthorProfilePic_in: [String!]
+  reviewAuthorProfilePic_not_in: [String!]
+  reviewAuthorProfilePic_lt: String
+  reviewAuthorProfilePic_lte: String
+  reviewAuthorProfilePic_gt: String
+  reviewAuthorProfilePic_gte: String
+  reviewAuthorProfilePic_contains: String
+  reviewAuthorProfilePic_not_contains: String
+  reviewAuthorProfilePic_starts_with: String
+  reviewAuthorProfilePic_not_starts_with: String
+  reviewAuthorProfilePic_ends_with: String
+  reviewAuthorProfilePic_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [NotificationScalarWhereInput!]
+  OR: [NotificationScalarWhereInput!]
+  NOT: [NotificationScalarWhereInput!]
+}
+
+type NotificationSubscriptionPayload {
+  mutation: MutationType!
+  node: Notification
+  updatedFields: [String!]
+  previousValues: NotificationPreviousValues
+}
+
+input NotificationSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: NotificationWhereInput
+  AND: [NotificationSubscriptionWhereInput!]
+  OR: [NotificationSubscriptionWhereInput!]
+  NOT: [NotificationSubscriptionWhereInput!]
+}
+
+input NotificationUpdateDataInput {
+  reviewAuthorName: String
+  reviewedHotelName: String
+  reviewTitle: String
+  reviewText: String
+  read: Boolean
+  old: Boolean
+  userNotificationId: String
+  peopleReviewedQuantity: Int
+  query: String
+  reviewAuthorProfilePic: String
+}
+
+input NotificationUpdateInput {
+  reviewAuthorName: String
+  reviewedHotelName: String
+  reviewTitle: String
+  reviewText: String
+  read: Boolean
+  old: Boolean
+  userNotificationId: String
+  peopleReviewedQuantity: Int
+  query: String
+  reviewAuthorProfilePic: String
+}
+
+input NotificationUpdateManyDataInput {
+  reviewAuthorName: String
+  reviewedHotelName: String
+  reviewTitle: String
+  reviewText: String
+  read: Boolean
+  old: Boolean
+  userNotificationId: String
+  peopleReviewedQuantity: Int
+  query: String
+  reviewAuthorProfilePic: String
+}
+
+input NotificationUpdateManyInput {
+  create: [NotificationCreateInput!]
+  update: [NotificationUpdateWithWhereUniqueNestedInput!]
+  upsert: [NotificationUpsertWithWhereUniqueNestedInput!]
+  delete: [NotificationWhereUniqueInput!]
+  connect: [NotificationWhereUniqueInput!]
+  set: [NotificationWhereUniqueInput!]
+  disconnect: [NotificationWhereUniqueInput!]
+  deleteMany: [NotificationScalarWhereInput!]
+  updateMany: [NotificationUpdateManyWithWhereNestedInput!]
+}
+
+input NotificationUpdateManyMutationInput {
+  reviewAuthorName: String
+  reviewedHotelName: String
+  reviewTitle: String
+  reviewText: String
+  read: Boolean
+  old: Boolean
+  userNotificationId: String
+  peopleReviewedQuantity: Int
+  query: String
+  reviewAuthorProfilePic: String
+}
+
+input NotificationUpdateManyWithWhereNestedInput {
+  where: NotificationScalarWhereInput!
+  data: NotificationUpdateManyDataInput!
+}
+
+input NotificationUpdateWithWhereUniqueNestedInput {
+  where: NotificationWhereUniqueInput!
+  data: NotificationUpdateDataInput!
+}
+
+input NotificationUpsertWithWhereUniqueNestedInput {
+  where: NotificationWhereUniqueInput!
+  update: NotificationUpdateDataInput!
+  create: NotificationCreateInput!
+}
+
+input NotificationWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  reviewAuthorName: String
+  reviewAuthorName_not: String
+  reviewAuthorName_in: [String!]
+  reviewAuthorName_not_in: [String!]
+  reviewAuthorName_lt: String
+  reviewAuthorName_lte: String
+  reviewAuthorName_gt: String
+  reviewAuthorName_gte: String
+  reviewAuthorName_contains: String
+  reviewAuthorName_not_contains: String
+  reviewAuthorName_starts_with: String
+  reviewAuthorName_not_starts_with: String
+  reviewAuthorName_ends_with: String
+  reviewAuthorName_not_ends_with: String
+  reviewedHotelName: String
+  reviewedHotelName_not: String
+  reviewedHotelName_in: [String!]
+  reviewedHotelName_not_in: [String!]
+  reviewedHotelName_lt: String
+  reviewedHotelName_lte: String
+  reviewedHotelName_gt: String
+  reviewedHotelName_gte: String
+  reviewedHotelName_contains: String
+  reviewedHotelName_not_contains: String
+  reviewedHotelName_starts_with: String
+  reviewedHotelName_not_starts_with: String
+  reviewedHotelName_ends_with: String
+  reviewedHotelName_not_ends_with: String
+  reviewTitle: String
+  reviewTitle_not: String
+  reviewTitle_in: [String!]
+  reviewTitle_not_in: [String!]
+  reviewTitle_lt: String
+  reviewTitle_lte: String
+  reviewTitle_gt: String
+  reviewTitle_gte: String
+  reviewTitle_contains: String
+  reviewTitle_not_contains: String
+  reviewTitle_starts_with: String
+  reviewTitle_not_starts_with: String
+  reviewTitle_ends_with: String
+  reviewTitle_not_ends_with: String
+  reviewText: String
+  reviewText_not: String
+  reviewText_in: [String!]
+  reviewText_not_in: [String!]
+  reviewText_lt: String
+  reviewText_lte: String
+  reviewText_gt: String
+  reviewText_gte: String
+  reviewText_contains: String
+  reviewText_not_contains: String
+  reviewText_starts_with: String
+  reviewText_not_starts_with: String
+  reviewText_ends_with: String
+  reviewText_not_ends_with: String
+  read: Boolean
+  read_not: Boolean
+  old: Boolean
+  old_not: Boolean
+  userNotificationId: String
+  userNotificationId_not: String
+  userNotificationId_in: [String!]
+  userNotificationId_not_in: [String!]
+  userNotificationId_lt: String
+  userNotificationId_lte: String
+  userNotificationId_gt: String
+  userNotificationId_gte: String
+  userNotificationId_contains: String
+  userNotificationId_not_contains: String
+  userNotificationId_starts_with: String
+  userNotificationId_not_starts_with: String
+  userNotificationId_ends_with: String
+  userNotificationId_not_ends_with: String
+  peopleReviewedQuantity: Int
+  peopleReviewedQuantity_not: Int
+  peopleReviewedQuantity_in: [Int!]
+  peopleReviewedQuantity_not_in: [Int!]
+  peopleReviewedQuantity_lt: Int
+  peopleReviewedQuantity_lte: Int
+  peopleReviewedQuantity_gt: Int
+  peopleReviewedQuantity_gte: Int
+  query: String
+  query_not: String
+  query_in: [String!]
+  query_not_in: [String!]
+  query_lt: String
+  query_lte: String
+  query_gt: String
+  query_gte: String
+  query_contains: String
+  query_not_contains: String
+  query_starts_with: String
+  query_not_starts_with: String
+  query_ends_with: String
+  query_not_ends_with: String
+  reviewAuthorProfilePic: String
+  reviewAuthorProfilePic_not: String
+  reviewAuthorProfilePic_in: [String!]
+  reviewAuthorProfilePic_not_in: [String!]
+  reviewAuthorProfilePic_lt: String
+  reviewAuthorProfilePic_lte: String
+  reviewAuthorProfilePic_gt: String
+  reviewAuthorProfilePic_gte: String
+  reviewAuthorProfilePic_contains: String
+  reviewAuthorProfilePic_not_contains: String
+  reviewAuthorProfilePic_starts_with: String
+  reviewAuthorProfilePic_not_starts_with: String
+  reviewAuthorProfilePic_ends_with: String
+  reviewAuthorProfilePic_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [NotificationWhereInput!]
+  OR: [NotificationWhereInput!]
+  NOT: [NotificationWhereInput!]
+}
+
+input NotificationWhereUniqueInput {
+  id: ID
 }
 
 type PageInfo {
@@ -2263,6 +3759,9 @@ type Query {
   categoryImages(where: CategoryImagesWhereUniqueInput!): CategoryImages
   categoryImageses(where: CategoryImagesWhereInput, orderBy: CategoryImagesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CategoryImages]!
   categoryImagesesConnection(where: CategoryImagesWhereInput, orderBy: CategoryImagesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CategoryImagesConnection!
+  coupon(where: CouponWhereUniqueInput!): Coupon
+  coupons(where: CouponWhereInput, orderBy: CouponOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Coupon]!
+  couponsConnection(where: CouponWhereInput, orderBy: CouponOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CouponConnection!
   gallery(where: GalleryWhereUniqueInput!): Gallery
   galleries(where: GalleryWhereInput, orderBy: GalleryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Gallery]!
   galleriesConnection(where: GalleryWhereInput, orderBy: GalleryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): GalleryConnection!
@@ -2275,20 +3774,1394 @@ type Query {
   location(where: LocationWhereUniqueInput!): Location
   locations(where: LocationWhereInput, orderBy: LocationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Location]!
   locationsConnection(where: LocationWhereInput, orderBy: LocationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): LocationConnection!
+  notification(where: NotificationWhereUniqueInput!): Notification
+  notifications(where: NotificationWhereInput, orderBy: NotificationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Notification]!
+  notificationsConnection(where: NotificationWhereInput, orderBy: NotificationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): NotificationConnection!
+  reviewFields(where: ReviewFieldsWhereUniqueInput!): ReviewFields
+  reviewFieldses(where: ReviewFieldsWhereInput, orderBy: ReviewFieldsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ReviewFields]!
+  reviewFieldsesConnection(where: ReviewFieldsWhereInput, orderBy: ReviewFieldsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ReviewFieldsConnection!
+  reviewImages(where: ReviewImagesWhereUniqueInput!): ReviewImages
+  reviewImageses(where: ReviewImagesWhereInput, orderBy: ReviewImagesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ReviewImages]!
+  reviewImagesesConnection(where: ReviewImagesWhereInput, orderBy: ReviewImagesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ReviewImagesConnection!
+  reviewOptionals(where: ReviewOptionalsWhereUniqueInput!): ReviewOptionals
+  reviewOptionalses(where: ReviewOptionalsWhereInput, orderBy: ReviewOptionalsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ReviewOptionals]!
+  reviewOptionalsesConnection(where: ReviewOptionalsWhereInput, orderBy: ReviewOptionalsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ReviewOptionalsConnection!
+  reviews(where: ReviewsWhereUniqueInput!): Reviews
+  reviewses(where: ReviewsWhereInput, orderBy: ReviewsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Reviews]!
+  reviewsesConnection(where: ReviewsWhereInput, orderBy: ReviewsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ReviewsConnection!
   social(where: SocialWhereUniqueInput!): Social
   socials(where: SocialWhereInput, orderBy: SocialOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Social]!
   socialsConnection(where: SocialWhereInput, orderBy: SocialOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): SocialConnection!
+  transaction(where: TransactionWhereUniqueInput!): Transaction
+  transactions(where: TransactionWhereInput, orderBy: TransactionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Transaction]!
+  transactionsConnection(where: TransactionWhereInput, orderBy: TransactionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TransactionConnection!
   user(where: UserWhereUniqueInput!): User
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
   node(id: ID!): Node
 }
 
+type ReviewFields {
+  id: ID!
+  rating: Int
+  ratingFieldName: String
+}
+
+type ReviewFieldsConnection {
+  pageInfo: PageInfo!
+  edges: [ReviewFieldsEdge]!
+  aggregate: AggregateReviewFields!
+}
+
+input ReviewFieldsCreateInput {
+  id: ID
+  rating: Int
+  ratingFieldName: String
+}
+
+input ReviewFieldsCreateManyInput {
+  create: [ReviewFieldsCreateInput!]
+  connect: [ReviewFieldsWhereUniqueInput!]
+}
+
+type ReviewFieldsEdge {
+  node: ReviewFields!
+  cursor: String!
+}
+
+enum ReviewFieldsOrderByInput {
+  id_ASC
+  id_DESC
+  rating_ASC
+  rating_DESC
+  ratingFieldName_ASC
+  ratingFieldName_DESC
+}
+
+type ReviewFieldsPreviousValues {
+  id: ID!
+  rating: Int
+  ratingFieldName: String
+}
+
+input ReviewFieldsScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  rating: Int
+  rating_not: Int
+  rating_in: [Int!]
+  rating_not_in: [Int!]
+  rating_lt: Int
+  rating_lte: Int
+  rating_gt: Int
+  rating_gte: Int
+  ratingFieldName: String
+  ratingFieldName_not: String
+  ratingFieldName_in: [String!]
+  ratingFieldName_not_in: [String!]
+  ratingFieldName_lt: String
+  ratingFieldName_lte: String
+  ratingFieldName_gt: String
+  ratingFieldName_gte: String
+  ratingFieldName_contains: String
+  ratingFieldName_not_contains: String
+  ratingFieldName_starts_with: String
+  ratingFieldName_not_starts_with: String
+  ratingFieldName_ends_with: String
+  ratingFieldName_not_ends_with: String
+  AND: [ReviewFieldsScalarWhereInput!]
+  OR: [ReviewFieldsScalarWhereInput!]
+  NOT: [ReviewFieldsScalarWhereInput!]
+}
+
+type ReviewFieldsSubscriptionPayload {
+  mutation: MutationType!
+  node: ReviewFields
+  updatedFields: [String!]
+  previousValues: ReviewFieldsPreviousValues
+}
+
+input ReviewFieldsSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ReviewFieldsWhereInput
+  AND: [ReviewFieldsSubscriptionWhereInput!]
+  OR: [ReviewFieldsSubscriptionWhereInput!]
+  NOT: [ReviewFieldsSubscriptionWhereInput!]
+}
+
+input ReviewFieldsUpdateDataInput {
+  rating: Int
+  ratingFieldName: String
+}
+
+input ReviewFieldsUpdateInput {
+  rating: Int
+  ratingFieldName: String
+}
+
+input ReviewFieldsUpdateManyDataInput {
+  rating: Int
+  ratingFieldName: String
+}
+
+input ReviewFieldsUpdateManyInput {
+  create: [ReviewFieldsCreateInput!]
+  update: [ReviewFieldsUpdateWithWhereUniqueNestedInput!]
+  upsert: [ReviewFieldsUpsertWithWhereUniqueNestedInput!]
+  delete: [ReviewFieldsWhereUniqueInput!]
+  connect: [ReviewFieldsWhereUniqueInput!]
+  set: [ReviewFieldsWhereUniqueInput!]
+  disconnect: [ReviewFieldsWhereUniqueInput!]
+  deleteMany: [ReviewFieldsScalarWhereInput!]
+  updateMany: [ReviewFieldsUpdateManyWithWhereNestedInput!]
+}
+
+input ReviewFieldsUpdateManyMutationInput {
+  rating: Int
+  ratingFieldName: String
+}
+
+input ReviewFieldsUpdateManyWithWhereNestedInput {
+  where: ReviewFieldsScalarWhereInput!
+  data: ReviewFieldsUpdateManyDataInput!
+}
+
+input ReviewFieldsUpdateWithWhereUniqueNestedInput {
+  where: ReviewFieldsWhereUniqueInput!
+  data: ReviewFieldsUpdateDataInput!
+}
+
+input ReviewFieldsUpsertWithWhereUniqueNestedInput {
+  where: ReviewFieldsWhereUniqueInput!
+  update: ReviewFieldsUpdateDataInput!
+  create: ReviewFieldsCreateInput!
+}
+
+input ReviewFieldsWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  rating: Int
+  rating_not: Int
+  rating_in: [Int!]
+  rating_not_in: [Int!]
+  rating_lt: Int
+  rating_lte: Int
+  rating_gt: Int
+  rating_gte: Int
+  ratingFieldName: String
+  ratingFieldName_not: String
+  ratingFieldName_in: [String!]
+  ratingFieldName_not_in: [String!]
+  ratingFieldName_lt: String
+  ratingFieldName_lte: String
+  ratingFieldName_gt: String
+  ratingFieldName_gte: String
+  ratingFieldName_contains: String
+  ratingFieldName_not_contains: String
+  ratingFieldName_starts_with: String
+  ratingFieldName_not_starts_with: String
+  ratingFieldName_ends_with: String
+  ratingFieldName_not_ends_with: String
+  AND: [ReviewFieldsWhereInput!]
+  OR: [ReviewFieldsWhereInput!]
+  NOT: [ReviewFieldsWhereInput!]
+}
+
+input ReviewFieldsWhereUniqueInput {
+  id: ID
+}
+
+type ReviewImages {
+  id: ID!
+  url: String
+}
+
+type ReviewImagesConnection {
+  pageInfo: PageInfo!
+  edges: [ReviewImagesEdge]!
+  aggregate: AggregateReviewImages!
+}
+
+input ReviewImagesCreateInput {
+  id: ID
+  url: String
+}
+
+input ReviewImagesCreateManyInput {
+  create: [ReviewImagesCreateInput!]
+  connect: [ReviewImagesWhereUniqueInput!]
+}
+
+type ReviewImagesEdge {
+  node: ReviewImages!
+  cursor: String!
+}
+
+enum ReviewImagesOrderByInput {
+  id_ASC
+  id_DESC
+  url_ASC
+  url_DESC
+}
+
+type ReviewImagesPreviousValues {
+  id: ID!
+  url: String
+}
+
+input ReviewImagesScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  url: String
+  url_not: String
+  url_in: [String!]
+  url_not_in: [String!]
+  url_lt: String
+  url_lte: String
+  url_gt: String
+  url_gte: String
+  url_contains: String
+  url_not_contains: String
+  url_starts_with: String
+  url_not_starts_with: String
+  url_ends_with: String
+  url_not_ends_with: String
+  AND: [ReviewImagesScalarWhereInput!]
+  OR: [ReviewImagesScalarWhereInput!]
+  NOT: [ReviewImagesScalarWhereInput!]
+}
+
+type ReviewImagesSubscriptionPayload {
+  mutation: MutationType!
+  node: ReviewImages
+  updatedFields: [String!]
+  previousValues: ReviewImagesPreviousValues
+}
+
+input ReviewImagesSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ReviewImagesWhereInput
+  AND: [ReviewImagesSubscriptionWhereInput!]
+  OR: [ReviewImagesSubscriptionWhereInput!]
+  NOT: [ReviewImagesSubscriptionWhereInput!]
+}
+
+input ReviewImagesUpdateDataInput {
+  url: String
+}
+
+input ReviewImagesUpdateInput {
+  url: String
+}
+
+input ReviewImagesUpdateManyDataInput {
+  url: String
+}
+
+input ReviewImagesUpdateManyInput {
+  create: [ReviewImagesCreateInput!]
+  update: [ReviewImagesUpdateWithWhereUniqueNestedInput!]
+  upsert: [ReviewImagesUpsertWithWhereUniqueNestedInput!]
+  delete: [ReviewImagesWhereUniqueInput!]
+  connect: [ReviewImagesWhereUniqueInput!]
+  set: [ReviewImagesWhereUniqueInput!]
+  disconnect: [ReviewImagesWhereUniqueInput!]
+  deleteMany: [ReviewImagesScalarWhereInput!]
+  updateMany: [ReviewImagesUpdateManyWithWhereNestedInput!]
+}
+
+input ReviewImagesUpdateManyMutationInput {
+  url: String
+}
+
+input ReviewImagesUpdateManyWithWhereNestedInput {
+  where: ReviewImagesScalarWhereInput!
+  data: ReviewImagesUpdateManyDataInput!
+}
+
+input ReviewImagesUpdateWithWhereUniqueNestedInput {
+  where: ReviewImagesWhereUniqueInput!
+  data: ReviewImagesUpdateDataInput!
+}
+
+input ReviewImagesUpsertWithWhereUniqueNestedInput {
+  where: ReviewImagesWhereUniqueInput!
+  update: ReviewImagesUpdateDataInput!
+  create: ReviewImagesCreateInput!
+}
+
+input ReviewImagesWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  url: String
+  url_not: String
+  url_in: [String!]
+  url_not_in: [String!]
+  url_lt: String
+  url_lte: String
+  url_gt: String
+  url_gte: String
+  url_contains: String
+  url_not_contains: String
+  url_starts_with: String
+  url_not_starts_with: String
+  url_ends_with: String
+  url_not_ends_with: String
+  AND: [ReviewImagesWhereInput!]
+  OR: [ReviewImagesWhereInput!]
+  NOT: [ReviewImagesWhereInput!]
+}
+
+input ReviewImagesWhereUniqueInput {
+  id: ID
+}
+
+type ReviewOptionals {
+  id: ID!
+  option: String
+  optionField: String
+}
+
+type ReviewOptionalsConnection {
+  pageInfo: PageInfo!
+  edges: [ReviewOptionalsEdge]!
+  aggregate: AggregateReviewOptionals!
+}
+
+input ReviewOptionalsCreateInput {
+  id: ID
+  option: String
+  optionField: String
+}
+
+input ReviewOptionalsCreateManyInput {
+  create: [ReviewOptionalsCreateInput!]
+  connect: [ReviewOptionalsWhereUniqueInput!]
+}
+
+type ReviewOptionalsEdge {
+  node: ReviewOptionals!
+  cursor: String!
+}
+
+enum ReviewOptionalsOrderByInput {
+  id_ASC
+  id_DESC
+  option_ASC
+  option_DESC
+  optionField_ASC
+  optionField_DESC
+}
+
+type ReviewOptionalsPreviousValues {
+  id: ID!
+  option: String
+  optionField: String
+}
+
+input ReviewOptionalsScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  option: String
+  option_not: String
+  option_in: [String!]
+  option_not_in: [String!]
+  option_lt: String
+  option_lte: String
+  option_gt: String
+  option_gte: String
+  option_contains: String
+  option_not_contains: String
+  option_starts_with: String
+  option_not_starts_with: String
+  option_ends_with: String
+  option_not_ends_with: String
+  optionField: String
+  optionField_not: String
+  optionField_in: [String!]
+  optionField_not_in: [String!]
+  optionField_lt: String
+  optionField_lte: String
+  optionField_gt: String
+  optionField_gte: String
+  optionField_contains: String
+  optionField_not_contains: String
+  optionField_starts_with: String
+  optionField_not_starts_with: String
+  optionField_ends_with: String
+  optionField_not_ends_with: String
+  AND: [ReviewOptionalsScalarWhereInput!]
+  OR: [ReviewOptionalsScalarWhereInput!]
+  NOT: [ReviewOptionalsScalarWhereInput!]
+}
+
+type ReviewOptionalsSubscriptionPayload {
+  mutation: MutationType!
+  node: ReviewOptionals
+  updatedFields: [String!]
+  previousValues: ReviewOptionalsPreviousValues
+}
+
+input ReviewOptionalsSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ReviewOptionalsWhereInput
+  AND: [ReviewOptionalsSubscriptionWhereInput!]
+  OR: [ReviewOptionalsSubscriptionWhereInput!]
+  NOT: [ReviewOptionalsSubscriptionWhereInput!]
+}
+
+input ReviewOptionalsUpdateDataInput {
+  option: String
+  optionField: String
+}
+
+input ReviewOptionalsUpdateInput {
+  option: String
+  optionField: String
+}
+
+input ReviewOptionalsUpdateManyDataInput {
+  option: String
+  optionField: String
+}
+
+input ReviewOptionalsUpdateManyInput {
+  create: [ReviewOptionalsCreateInput!]
+  update: [ReviewOptionalsUpdateWithWhereUniqueNestedInput!]
+  upsert: [ReviewOptionalsUpsertWithWhereUniqueNestedInput!]
+  delete: [ReviewOptionalsWhereUniqueInput!]
+  connect: [ReviewOptionalsWhereUniqueInput!]
+  set: [ReviewOptionalsWhereUniqueInput!]
+  disconnect: [ReviewOptionalsWhereUniqueInput!]
+  deleteMany: [ReviewOptionalsScalarWhereInput!]
+  updateMany: [ReviewOptionalsUpdateManyWithWhereNestedInput!]
+}
+
+input ReviewOptionalsUpdateManyMutationInput {
+  option: String
+  optionField: String
+}
+
+input ReviewOptionalsUpdateManyWithWhereNestedInput {
+  where: ReviewOptionalsScalarWhereInput!
+  data: ReviewOptionalsUpdateManyDataInput!
+}
+
+input ReviewOptionalsUpdateWithWhereUniqueNestedInput {
+  where: ReviewOptionalsWhereUniqueInput!
+  data: ReviewOptionalsUpdateDataInput!
+}
+
+input ReviewOptionalsUpsertWithWhereUniqueNestedInput {
+  where: ReviewOptionalsWhereUniqueInput!
+  update: ReviewOptionalsUpdateDataInput!
+  create: ReviewOptionalsCreateInput!
+}
+
+input ReviewOptionalsWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  option: String
+  option_not: String
+  option_in: [String!]
+  option_not_in: [String!]
+  option_lt: String
+  option_lte: String
+  option_gt: String
+  option_gte: String
+  option_contains: String
+  option_not_contains: String
+  option_starts_with: String
+  option_not_starts_with: String
+  option_ends_with: String
+  option_not_ends_with: String
+  optionField: String
+  optionField_not: String
+  optionField_in: [String!]
+  optionField_not_in: [String!]
+  optionField_lt: String
+  optionField_lte: String
+  optionField_gt: String
+  optionField_gte: String
+  optionField_contains: String
+  optionField_not_contains: String
+  optionField_starts_with: String
+  optionField_not_starts_with: String
+  optionField_ends_with: String
+  optionField_not_ends_with: String
+  AND: [ReviewOptionalsWhereInput!]
+  OR: [ReviewOptionalsWhereInput!]
+  NOT: [ReviewOptionalsWhereInput!]
+}
+
+input ReviewOptionalsWhereUniqueInput {
+  id: ID
+}
+
+type Reviews {
+  reviewID: ID!
+  reviewTitle: String
+  reviewText: String
+  sortOfTrip: String
+  reviewAuthorId: User
+  peopleLiked(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
+  peopleDisliked(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
+  reviewAuthorFirstName: String
+  reviewTips: String
+  reviewAuthorLastName: String
+  reviewAuthorEmail: String
+  reviewOverall: Float
+  reviewAuthorPic: String
+  reviewedHotel: Hotel
+  reviewedHotelId: ID
+  reviewPics(where: ReviewImagesWhereInput, orderBy: ReviewImagesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ReviewImages!]
+  reviewDate: DateTime!
+  reviewOptional(where: ReviewOptionalsWhereInput, orderBy: ReviewOptionalsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ReviewOptionals!]
+  reviewFields(where: ReviewFieldsWhereInput, orderBy: ReviewFieldsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ReviewFields!]
+}
+
+type ReviewsConnection {
+  pageInfo: PageInfo!
+  edges: [ReviewsEdge]!
+  aggregate: AggregateReviews!
+}
+
+input ReviewsCreateInput {
+  reviewID: ID
+  reviewTitle: String
+  reviewText: String
+  sortOfTrip: String
+  reviewAuthorId: UserCreateOneWithoutReviews_makedInput
+  peopleLiked: UserCreateManyWithoutReview_likedInput
+  peopleDisliked: UserCreateManyWithoutReview_dislikedInput
+  reviewAuthorFirstName: String
+  reviewTips: String
+  reviewAuthorLastName: String
+  reviewAuthorEmail: String
+  reviewOverall: Float
+  reviewAuthorPic: String
+  reviewedHotel: HotelCreateOneWithoutReviewsInput
+  reviewedHotelId: ID
+  reviewPics: ReviewImagesCreateManyInput
+  reviewOptional: ReviewOptionalsCreateManyInput
+  reviewFields: ReviewFieldsCreateManyInput
+}
+
+input ReviewsCreateManyWithoutPeopleDislikedInput {
+  create: [ReviewsCreateWithoutPeopleDislikedInput!]
+  connect: [ReviewsWhereUniqueInput!]
+}
+
+input ReviewsCreateManyWithoutPeopleLikedInput {
+  create: [ReviewsCreateWithoutPeopleLikedInput!]
+  connect: [ReviewsWhereUniqueInput!]
+}
+
+input ReviewsCreateManyWithoutReviewAuthorIdInput {
+  create: [ReviewsCreateWithoutReviewAuthorIdInput!]
+  connect: [ReviewsWhereUniqueInput!]
+}
+
+input ReviewsCreateManyWithoutReviewedHotelInput {
+  create: [ReviewsCreateWithoutReviewedHotelInput!]
+  connect: [ReviewsWhereUniqueInput!]
+}
+
+input ReviewsCreateWithoutPeopleDislikedInput {
+  reviewID: ID
+  reviewTitle: String
+  reviewText: String
+  sortOfTrip: String
+  reviewAuthorId: UserCreateOneWithoutReviews_makedInput
+  peopleLiked: UserCreateManyWithoutReview_likedInput
+  reviewAuthorFirstName: String
+  reviewTips: String
+  reviewAuthorLastName: String
+  reviewAuthorEmail: String
+  reviewOverall: Float
+  reviewAuthorPic: String
+  reviewedHotel: HotelCreateOneWithoutReviewsInput
+  reviewedHotelId: ID
+  reviewPics: ReviewImagesCreateManyInput
+  reviewOptional: ReviewOptionalsCreateManyInput
+  reviewFields: ReviewFieldsCreateManyInput
+}
+
+input ReviewsCreateWithoutPeopleLikedInput {
+  reviewID: ID
+  reviewTitle: String
+  reviewText: String
+  sortOfTrip: String
+  reviewAuthorId: UserCreateOneWithoutReviews_makedInput
+  peopleDisliked: UserCreateManyWithoutReview_dislikedInput
+  reviewAuthorFirstName: String
+  reviewTips: String
+  reviewAuthorLastName: String
+  reviewAuthorEmail: String
+  reviewOverall: Float
+  reviewAuthorPic: String
+  reviewedHotel: HotelCreateOneWithoutReviewsInput
+  reviewedHotelId: ID
+  reviewPics: ReviewImagesCreateManyInput
+  reviewOptional: ReviewOptionalsCreateManyInput
+  reviewFields: ReviewFieldsCreateManyInput
+}
+
+input ReviewsCreateWithoutReviewAuthorIdInput {
+  reviewID: ID
+  reviewTitle: String
+  reviewText: String
+  sortOfTrip: String
+  peopleLiked: UserCreateManyWithoutReview_likedInput
+  peopleDisliked: UserCreateManyWithoutReview_dislikedInput
+  reviewAuthorFirstName: String
+  reviewTips: String
+  reviewAuthorLastName: String
+  reviewAuthorEmail: String
+  reviewOverall: Float
+  reviewAuthorPic: String
+  reviewedHotel: HotelCreateOneWithoutReviewsInput
+  reviewedHotelId: ID
+  reviewPics: ReviewImagesCreateManyInput
+  reviewOptional: ReviewOptionalsCreateManyInput
+  reviewFields: ReviewFieldsCreateManyInput
+}
+
+input ReviewsCreateWithoutReviewedHotelInput {
+  reviewID: ID
+  reviewTitle: String
+  reviewText: String
+  sortOfTrip: String
+  reviewAuthorId: UserCreateOneWithoutReviews_makedInput
+  peopleLiked: UserCreateManyWithoutReview_likedInput
+  peopleDisliked: UserCreateManyWithoutReview_dislikedInput
+  reviewAuthorFirstName: String
+  reviewTips: String
+  reviewAuthorLastName: String
+  reviewAuthorEmail: String
+  reviewOverall: Float
+  reviewAuthorPic: String
+  reviewedHotelId: ID
+  reviewPics: ReviewImagesCreateManyInput
+  reviewOptional: ReviewOptionalsCreateManyInput
+  reviewFields: ReviewFieldsCreateManyInput
+}
+
+type ReviewsEdge {
+  node: Reviews!
+  cursor: String!
+}
+
+enum ReviewsOrderByInput {
+  reviewID_ASC
+  reviewID_DESC
+  reviewTitle_ASC
+  reviewTitle_DESC
+  reviewText_ASC
+  reviewText_DESC
+  sortOfTrip_ASC
+  sortOfTrip_DESC
+  reviewAuthorFirstName_ASC
+  reviewAuthorFirstName_DESC
+  reviewTips_ASC
+  reviewTips_DESC
+  reviewAuthorLastName_ASC
+  reviewAuthorLastName_DESC
+  reviewAuthorEmail_ASC
+  reviewAuthorEmail_DESC
+  reviewOverall_ASC
+  reviewOverall_DESC
+  reviewAuthorPic_ASC
+  reviewAuthorPic_DESC
+  reviewedHotelId_ASC
+  reviewedHotelId_DESC
+  reviewDate_ASC
+  reviewDate_DESC
+}
+
+type ReviewsPreviousValues {
+  reviewID: ID!
+  reviewTitle: String
+  reviewText: String
+  sortOfTrip: String
+  reviewAuthorFirstName: String
+  reviewTips: String
+  reviewAuthorLastName: String
+  reviewAuthorEmail: String
+  reviewOverall: Float
+  reviewAuthorPic: String
+  reviewedHotelId: ID
+  reviewDate: DateTime!
+}
+
+input ReviewsScalarWhereInput {
+  reviewID: ID
+  reviewID_not: ID
+  reviewID_in: [ID!]
+  reviewID_not_in: [ID!]
+  reviewID_lt: ID
+  reviewID_lte: ID
+  reviewID_gt: ID
+  reviewID_gte: ID
+  reviewID_contains: ID
+  reviewID_not_contains: ID
+  reviewID_starts_with: ID
+  reviewID_not_starts_with: ID
+  reviewID_ends_with: ID
+  reviewID_not_ends_with: ID
+  reviewTitle: String
+  reviewTitle_not: String
+  reviewTitle_in: [String!]
+  reviewTitle_not_in: [String!]
+  reviewTitle_lt: String
+  reviewTitle_lte: String
+  reviewTitle_gt: String
+  reviewTitle_gte: String
+  reviewTitle_contains: String
+  reviewTitle_not_contains: String
+  reviewTitle_starts_with: String
+  reviewTitle_not_starts_with: String
+  reviewTitle_ends_with: String
+  reviewTitle_not_ends_with: String
+  reviewText: String
+  reviewText_not: String
+  reviewText_in: [String!]
+  reviewText_not_in: [String!]
+  reviewText_lt: String
+  reviewText_lte: String
+  reviewText_gt: String
+  reviewText_gte: String
+  reviewText_contains: String
+  reviewText_not_contains: String
+  reviewText_starts_with: String
+  reviewText_not_starts_with: String
+  reviewText_ends_with: String
+  reviewText_not_ends_with: String
+  sortOfTrip: String
+  sortOfTrip_not: String
+  sortOfTrip_in: [String!]
+  sortOfTrip_not_in: [String!]
+  sortOfTrip_lt: String
+  sortOfTrip_lte: String
+  sortOfTrip_gt: String
+  sortOfTrip_gte: String
+  sortOfTrip_contains: String
+  sortOfTrip_not_contains: String
+  sortOfTrip_starts_with: String
+  sortOfTrip_not_starts_with: String
+  sortOfTrip_ends_with: String
+  sortOfTrip_not_ends_with: String
+  reviewAuthorFirstName: String
+  reviewAuthorFirstName_not: String
+  reviewAuthorFirstName_in: [String!]
+  reviewAuthorFirstName_not_in: [String!]
+  reviewAuthorFirstName_lt: String
+  reviewAuthorFirstName_lte: String
+  reviewAuthorFirstName_gt: String
+  reviewAuthorFirstName_gte: String
+  reviewAuthorFirstName_contains: String
+  reviewAuthorFirstName_not_contains: String
+  reviewAuthorFirstName_starts_with: String
+  reviewAuthorFirstName_not_starts_with: String
+  reviewAuthorFirstName_ends_with: String
+  reviewAuthorFirstName_not_ends_with: String
+  reviewTips: String
+  reviewTips_not: String
+  reviewTips_in: [String!]
+  reviewTips_not_in: [String!]
+  reviewTips_lt: String
+  reviewTips_lte: String
+  reviewTips_gt: String
+  reviewTips_gte: String
+  reviewTips_contains: String
+  reviewTips_not_contains: String
+  reviewTips_starts_with: String
+  reviewTips_not_starts_with: String
+  reviewTips_ends_with: String
+  reviewTips_not_ends_with: String
+  reviewAuthorLastName: String
+  reviewAuthorLastName_not: String
+  reviewAuthorLastName_in: [String!]
+  reviewAuthorLastName_not_in: [String!]
+  reviewAuthorLastName_lt: String
+  reviewAuthorLastName_lte: String
+  reviewAuthorLastName_gt: String
+  reviewAuthorLastName_gte: String
+  reviewAuthorLastName_contains: String
+  reviewAuthorLastName_not_contains: String
+  reviewAuthorLastName_starts_with: String
+  reviewAuthorLastName_not_starts_with: String
+  reviewAuthorLastName_ends_with: String
+  reviewAuthorLastName_not_ends_with: String
+  reviewAuthorEmail: String
+  reviewAuthorEmail_not: String
+  reviewAuthorEmail_in: [String!]
+  reviewAuthorEmail_not_in: [String!]
+  reviewAuthorEmail_lt: String
+  reviewAuthorEmail_lte: String
+  reviewAuthorEmail_gt: String
+  reviewAuthorEmail_gte: String
+  reviewAuthorEmail_contains: String
+  reviewAuthorEmail_not_contains: String
+  reviewAuthorEmail_starts_with: String
+  reviewAuthorEmail_not_starts_with: String
+  reviewAuthorEmail_ends_with: String
+  reviewAuthorEmail_not_ends_with: String
+  reviewOverall: Float
+  reviewOverall_not: Float
+  reviewOverall_in: [Float!]
+  reviewOverall_not_in: [Float!]
+  reviewOverall_lt: Float
+  reviewOverall_lte: Float
+  reviewOverall_gt: Float
+  reviewOverall_gte: Float
+  reviewAuthorPic: String
+  reviewAuthorPic_not: String
+  reviewAuthorPic_in: [String!]
+  reviewAuthorPic_not_in: [String!]
+  reviewAuthorPic_lt: String
+  reviewAuthorPic_lte: String
+  reviewAuthorPic_gt: String
+  reviewAuthorPic_gte: String
+  reviewAuthorPic_contains: String
+  reviewAuthorPic_not_contains: String
+  reviewAuthorPic_starts_with: String
+  reviewAuthorPic_not_starts_with: String
+  reviewAuthorPic_ends_with: String
+  reviewAuthorPic_not_ends_with: String
+  reviewedHotelId: ID
+  reviewedHotelId_not: ID
+  reviewedHotelId_in: [ID!]
+  reviewedHotelId_not_in: [ID!]
+  reviewedHotelId_lt: ID
+  reviewedHotelId_lte: ID
+  reviewedHotelId_gt: ID
+  reviewedHotelId_gte: ID
+  reviewedHotelId_contains: ID
+  reviewedHotelId_not_contains: ID
+  reviewedHotelId_starts_with: ID
+  reviewedHotelId_not_starts_with: ID
+  reviewedHotelId_ends_with: ID
+  reviewedHotelId_not_ends_with: ID
+  reviewDate: DateTime
+  reviewDate_not: DateTime
+  reviewDate_in: [DateTime!]
+  reviewDate_not_in: [DateTime!]
+  reviewDate_lt: DateTime
+  reviewDate_lte: DateTime
+  reviewDate_gt: DateTime
+  reviewDate_gte: DateTime
+  AND: [ReviewsScalarWhereInput!]
+  OR: [ReviewsScalarWhereInput!]
+  NOT: [ReviewsScalarWhereInput!]
+}
+
+type ReviewsSubscriptionPayload {
+  mutation: MutationType!
+  node: Reviews
+  updatedFields: [String!]
+  previousValues: ReviewsPreviousValues
+}
+
+input ReviewsSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ReviewsWhereInput
+  AND: [ReviewsSubscriptionWhereInput!]
+  OR: [ReviewsSubscriptionWhereInput!]
+  NOT: [ReviewsSubscriptionWhereInput!]
+}
+
+input ReviewsUpdateInput {
+  reviewTitle: String
+  reviewText: String
+  sortOfTrip: String
+  reviewAuthorId: UserUpdateOneWithoutReviews_makedInput
+  peopleLiked: UserUpdateManyWithoutReview_likedInput
+  peopleDisliked: UserUpdateManyWithoutReview_dislikedInput
+  reviewAuthorFirstName: String
+  reviewTips: String
+  reviewAuthorLastName: String
+  reviewAuthorEmail: String
+  reviewOverall: Float
+  reviewAuthorPic: String
+  reviewedHotel: HotelUpdateOneWithoutReviewsInput
+  reviewedHotelId: ID
+  reviewPics: ReviewImagesUpdateManyInput
+  reviewOptional: ReviewOptionalsUpdateManyInput
+  reviewFields: ReviewFieldsUpdateManyInput
+}
+
+input ReviewsUpdateManyDataInput {
+  reviewTitle: String
+  reviewText: String
+  sortOfTrip: String
+  reviewAuthorFirstName: String
+  reviewTips: String
+  reviewAuthorLastName: String
+  reviewAuthorEmail: String
+  reviewOverall: Float
+  reviewAuthorPic: String
+  reviewedHotelId: ID
+}
+
+input ReviewsUpdateManyMutationInput {
+  reviewTitle: String
+  reviewText: String
+  sortOfTrip: String
+  reviewAuthorFirstName: String
+  reviewTips: String
+  reviewAuthorLastName: String
+  reviewAuthorEmail: String
+  reviewOverall: Float
+  reviewAuthorPic: String
+  reviewedHotelId: ID
+}
+
+input ReviewsUpdateManyWithoutPeopleDislikedInput {
+  create: [ReviewsCreateWithoutPeopleDislikedInput!]
+  delete: [ReviewsWhereUniqueInput!]
+  connect: [ReviewsWhereUniqueInput!]
+  set: [ReviewsWhereUniqueInput!]
+  disconnect: [ReviewsWhereUniqueInput!]
+  update: [ReviewsUpdateWithWhereUniqueWithoutPeopleDislikedInput!]
+  upsert: [ReviewsUpsertWithWhereUniqueWithoutPeopleDislikedInput!]
+  deleteMany: [ReviewsScalarWhereInput!]
+  updateMany: [ReviewsUpdateManyWithWhereNestedInput!]
+}
+
+input ReviewsUpdateManyWithoutPeopleLikedInput {
+  create: [ReviewsCreateWithoutPeopleLikedInput!]
+  delete: [ReviewsWhereUniqueInput!]
+  connect: [ReviewsWhereUniqueInput!]
+  set: [ReviewsWhereUniqueInput!]
+  disconnect: [ReviewsWhereUniqueInput!]
+  update: [ReviewsUpdateWithWhereUniqueWithoutPeopleLikedInput!]
+  upsert: [ReviewsUpsertWithWhereUniqueWithoutPeopleLikedInput!]
+  deleteMany: [ReviewsScalarWhereInput!]
+  updateMany: [ReviewsUpdateManyWithWhereNestedInput!]
+}
+
+input ReviewsUpdateManyWithoutReviewAuthorIdInput {
+  create: [ReviewsCreateWithoutReviewAuthorIdInput!]
+  delete: [ReviewsWhereUniqueInput!]
+  connect: [ReviewsWhereUniqueInput!]
+  set: [ReviewsWhereUniqueInput!]
+  disconnect: [ReviewsWhereUniqueInput!]
+  update: [ReviewsUpdateWithWhereUniqueWithoutReviewAuthorIdInput!]
+  upsert: [ReviewsUpsertWithWhereUniqueWithoutReviewAuthorIdInput!]
+  deleteMany: [ReviewsScalarWhereInput!]
+  updateMany: [ReviewsUpdateManyWithWhereNestedInput!]
+}
+
+input ReviewsUpdateManyWithoutReviewedHotelInput {
+  create: [ReviewsCreateWithoutReviewedHotelInput!]
+  delete: [ReviewsWhereUniqueInput!]
+  connect: [ReviewsWhereUniqueInput!]
+  set: [ReviewsWhereUniqueInput!]
+  disconnect: [ReviewsWhereUniqueInput!]
+  update: [ReviewsUpdateWithWhereUniqueWithoutReviewedHotelInput!]
+  upsert: [ReviewsUpsertWithWhereUniqueWithoutReviewedHotelInput!]
+  deleteMany: [ReviewsScalarWhereInput!]
+  updateMany: [ReviewsUpdateManyWithWhereNestedInput!]
+}
+
+input ReviewsUpdateManyWithWhereNestedInput {
+  where: ReviewsScalarWhereInput!
+  data: ReviewsUpdateManyDataInput!
+}
+
+input ReviewsUpdateWithoutPeopleDislikedDataInput {
+  reviewTitle: String
+  reviewText: String
+  sortOfTrip: String
+  reviewAuthorId: UserUpdateOneWithoutReviews_makedInput
+  peopleLiked: UserUpdateManyWithoutReview_likedInput
+  reviewAuthorFirstName: String
+  reviewTips: String
+  reviewAuthorLastName: String
+  reviewAuthorEmail: String
+  reviewOverall: Float
+  reviewAuthorPic: String
+  reviewedHotel: HotelUpdateOneWithoutReviewsInput
+  reviewedHotelId: ID
+  reviewPics: ReviewImagesUpdateManyInput
+  reviewOptional: ReviewOptionalsUpdateManyInput
+  reviewFields: ReviewFieldsUpdateManyInput
+}
+
+input ReviewsUpdateWithoutPeopleLikedDataInput {
+  reviewTitle: String
+  reviewText: String
+  sortOfTrip: String
+  reviewAuthorId: UserUpdateOneWithoutReviews_makedInput
+  peopleDisliked: UserUpdateManyWithoutReview_dislikedInput
+  reviewAuthorFirstName: String
+  reviewTips: String
+  reviewAuthorLastName: String
+  reviewAuthorEmail: String
+  reviewOverall: Float
+  reviewAuthorPic: String
+  reviewedHotel: HotelUpdateOneWithoutReviewsInput
+  reviewedHotelId: ID
+  reviewPics: ReviewImagesUpdateManyInput
+  reviewOptional: ReviewOptionalsUpdateManyInput
+  reviewFields: ReviewFieldsUpdateManyInput
+}
+
+input ReviewsUpdateWithoutReviewAuthorIdDataInput {
+  reviewTitle: String
+  reviewText: String
+  sortOfTrip: String
+  peopleLiked: UserUpdateManyWithoutReview_likedInput
+  peopleDisliked: UserUpdateManyWithoutReview_dislikedInput
+  reviewAuthorFirstName: String
+  reviewTips: String
+  reviewAuthorLastName: String
+  reviewAuthorEmail: String
+  reviewOverall: Float
+  reviewAuthorPic: String
+  reviewedHotel: HotelUpdateOneWithoutReviewsInput
+  reviewedHotelId: ID
+  reviewPics: ReviewImagesUpdateManyInput
+  reviewOptional: ReviewOptionalsUpdateManyInput
+  reviewFields: ReviewFieldsUpdateManyInput
+}
+
+input ReviewsUpdateWithoutReviewedHotelDataInput {
+  reviewTitle: String
+  reviewText: String
+  sortOfTrip: String
+  reviewAuthorId: UserUpdateOneWithoutReviews_makedInput
+  peopleLiked: UserUpdateManyWithoutReview_likedInput
+  peopleDisliked: UserUpdateManyWithoutReview_dislikedInput
+  reviewAuthorFirstName: String
+  reviewTips: String
+  reviewAuthorLastName: String
+  reviewAuthorEmail: String
+  reviewOverall: Float
+  reviewAuthorPic: String
+  reviewedHotelId: ID
+  reviewPics: ReviewImagesUpdateManyInput
+  reviewOptional: ReviewOptionalsUpdateManyInput
+  reviewFields: ReviewFieldsUpdateManyInput
+}
+
+input ReviewsUpdateWithWhereUniqueWithoutPeopleDislikedInput {
+  where: ReviewsWhereUniqueInput!
+  data: ReviewsUpdateWithoutPeopleDislikedDataInput!
+}
+
+input ReviewsUpdateWithWhereUniqueWithoutPeopleLikedInput {
+  where: ReviewsWhereUniqueInput!
+  data: ReviewsUpdateWithoutPeopleLikedDataInput!
+}
+
+input ReviewsUpdateWithWhereUniqueWithoutReviewAuthorIdInput {
+  where: ReviewsWhereUniqueInput!
+  data: ReviewsUpdateWithoutReviewAuthorIdDataInput!
+}
+
+input ReviewsUpdateWithWhereUniqueWithoutReviewedHotelInput {
+  where: ReviewsWhereUniqueInput!
+  data: ReviewsUpdateWithoutReviewedHotelDataInput!
+}
+
+input ReviewsUpsertWithWhereUniqueWithoutPeopleDislikedInput {
+  where: ReviewsWhereUniqueInput!
+  update: ReviewsUpdateWithoutPeopleDislikedDataInput!
+  create: ReviewsCreateWithoutPeopleDislikedInput!
+}
+
+input ReviewsUpsertWithWhereUniqueWithoutPeopleLikedInput {
+  where: ReviewsWhereUniqueInput!
+  update: ReviewsUpdateWithoutPeopleLikedDataInput!
+  create: ReviewsCreateWithoutPeopleLikedInput!
+}
+
+input ReviewsUpsertWithWhereUniqueWithoutReviewAuthorIdInput {
+  where: ReviewsWhereUniqueInput!
+  update: ReviewsUpdateWithoutReviewAuthorIdDataInput!
+  create: ReviewsCreateWithoutReviewAuthorIdInput!
+}
+
+input ReviewsUpsertWithWhereUniqueWithoutReviewedHotelInput {
+  where: ReviewsWhereUniqueInput!
+  update: ReviewsUpdateWithoutReviewedHotelDataInput!
+  create: ReviewsCreateWithoutReviewedHotelInput!
+}
+
+input ReviewsWhereInput {
+  reviewID: ID
+  reviewID_not: ID
+  reviewID_in: [ID!]
+  reviewID_not_in: [ID!]
+  reviewID_lt: ID
+  reviewID_lte: ID
+  reviewID_gt: ID
+  reviewID_gte: ID
+  reviewID_contains: ID
+  reviewID_not_contains: ID
+  reviewID_starts_with: ID
+  reviewID_not_starts_with: ID
+  reviewID_ends_with: ID
+  reviewID_not_ends_with: ID
+  reviewTitle: String
+  reviewTitle_not: String
+  reviewTitle_in: [String!]
+  reviewTitle_not_in: [String!]
+  reviewTitle_lt: String
+  reviewTitle_lte: String
+  reviewTitle_gt: String
+  reviewTitle_gte: String
+  reviewTitle_contains: String
+  reviewTitle_not_contains: String
+  reviewTitle_starts_with: String
+  reviewTitle_not_starts_with: String
+  reviewTitle_ends_with: String
+  reviewTitle_not_ends_with: String
+  reviewText: String
+  reviewText_not: String
+  reviewText_in: [String!]
+  reviewText_not_in: [String!]
+  reviewText_lt: String
+  reviewText_lte: String
+  reviewText_gt: String
+  reviewText_gte: String
+  reviewText_contains: String
+  reviewText_not_contains: String
+  reviewText_starts_with: String
+  reviewText_not_starts_with: String
+  reviewText_ends_with: String
+  reviewText_not_ends_with: String
+  sortOfTrip: String
+  sortOfTrip_not: String
+  sortOfTrip_in: [String!]
+  sortOfTrip_not_in: [String!]
+  sortOfTrip_lt: String
+  sortOfTrip_lte: String
+  sortOfTrip_gt: String
+  sortOfTrip_gte: String
+  sortOfTrip_contains: String
+  sortOfTrip_not_contains: String
+  sortOfTrip_starts_with: String
+  sortOfTrip_not_starts_with: String
+  sortOfTrip_ends_with: String
+  sortOfTrip_not_ends_with: String
+  reviewAuthorId: UserWhereInput
+  peopleLiked_every: UserWhereInput
+  peopleLiked_some: UserWhereInput
+  peopleLiked_none: UserWhereInput
+  peopleDisliked_every: UserWhereInput
+  peopleDisliked_some: UserWhereInput
+  peopleDisliked_none: UserWhereInput
+  reviewAuthorFirstName: String
+  reviewAuthorFirstName_not: String
+  reviewAuthorFirstName_in: [String!]
+  reviewAuthorFirstName_not_in: [String!]
+  reviewAuthorFirstName_lt: String
+  reviewAuthorFirstName_lte: String
+  reviewAuthorFirstName_gt: String
+  reviewAuthorFirstName_gte: String
+  reviewAuthorFirstName_contains: String
+  reviewAuthorFirstName_not_contains: String
+  reviewAuthorFirstName_starts_with: String
+  reviewAuthorFirstName_not_starts_with: String
+  reviewAuthorFirstName_ends_with: String
+  reviewAuthorFirstName_not_ends_with: String
+  reviewTips: String
+  reviewTips_not: String
+  reviewTips_in: [String!]
+  reviewTips_not_in: [String!]
+  reviewTips_lt: String
+  reviewTips_lte: String
+  reviewTips_gt: String
+  reviewTips_gte: String
+  reviewTips_contains: String
+  reviewTips_not_contains: String
+  reviewTips_starts_with: String
+  reviewTips_not_starts_with: String
+  reviewTips_ends_with: String
+  reviewTips_not_ends_with: String
+  reviewAuthorLastName: String
+  reviewAuthorLastName_not: String
+  reviewAuthorLastName_in: [String!]
+  reviewAuthorLastName_not_in: [String!]
+  reviewAuthorLastName_lt: String
+  reviewAuthorLastName_lte: String
+  reviewAuthorLastName_gt: String
+  reviewAuthorLastName_gte: String
+  reviewAuthorLastName_contains: String
+  reviewAuthorLastName_not_contains: String
+  reviewAuthorLastName_starts_with: String
+  reviewAuthorLastName_not_starts_with: String
+  reviewAuthorLastName_ends_with: String
+  reviewAuthorLastName_not_ends_with: String
+  reviewAuthorEmail: String
+  reviewAuthorEmail_not: String
+  reviewAuthorEmail_in: [String!]
+  reviewAuthorEmail_not_in: [String!]
+  reviewAuthorEmail_lt: String
+  reviewAuthorEmail_lte: String
+  reviewAuthorEmail_gt: String
+  reviewAuthorEmail_gte: String
+  reviewAuthorEmail_contains: String
+  reviewAuthorEmail_not_contains: String
+  reviewAuthorEmail_starts_with: String
+  reviewAuthorEmail_not_starts_with: String
+  reviewAuthorEmail_ends_with: String
+  reviewAuthorEmail_not_ends_with: String
+  reviewOverall: Float
+  reviewOverall_not: Float
+  reviewOverall_in: [Float!]
+  reviewOverall_not_in: [Float!]
+  reviewOverall_lt: Float
+  reviewOverall_lte: Float
+  reviewOverall_gt: Float
+  reviewOverall_gte: Float
+  reviewAuthorPic: String
+  reviewAuthorPic_not: String
+  reviewAuthorPic_in: [String!]
+  reviewAuthorPic_not_in: [String!]
+  reviewAuthorPic_lt: String
+  reviewAuthorPic_lte: String
+  reviewAuthorPic_gt: String
+  reviewAuthorPic_gte: String
+  reviewAuthorPic_contains: String
+  reviewAuthorPic_not_contains: String
+  reviewAuthorPic_starts_with: String
+  reviewAuthorPic_not_starts_with: String
+  reviewAuthorPic_ends_with: String
+  reviewAuthorPic_not_ends_with: String
+  reviewedHotel: HotelWhereInput
+  reviewedHotelId: ID
+  reviewedHotelId_not: ID
+  reviewedHotelId_in: [ID!]
+  reviewedHotelId_not_in: [ID!]
+  reviewedHotelId_lt: ID
+  reviewedHotelId_lte: ID
+  reviewedHotelId_gt: ID
+  reviewedHotelId_gte: ID
+  reviewedHotelId_contains: ID
+  reviewedHotelId_not_contains: ID
+  reviewedHotelId_starts_with: ID
+  reviewedHotelId_not_starts_with: ID
+  reviewedHotelId_ends_with: ID
+  reviewedHotelId_not_ends_with: ID
+  reviewPics_every: ReviewImagesWhereInput
+  reviewPics_some: ReviewImagesWhereInput
+  reviewPics_none: ReviewImagesWhereInput
+  reviewDate: DateTime
+  reviewDate_not: DateTime
+  reviewDate_in: [DateTime!]
+  reviewDate_not_in: [DateTime!]
+  reviewDate_lt: DateTime
+  reviewDate_lte: DateTime
+  reviewDate_gt: DateTime
+  reviewDate_gte: DateTime
+  reviewOptional_every: ReviewOptionalsWhereInput
+  reviewOptional_some: ReviewOptionalsWhereInput
+  reviewOptional_none: ReviewOptionalsWhereInput
+  reviewFields_every: ReviewFieldsWhereInput
+  reviewFields_some: ReviewFieldsWhereInput
+  reviewFields_none: ReviewFieldsWhereInput
+  AND: [ReviewsWhereInput!]
+  OR: [ReviewsWhereInput!]
+  NOT: [ReviewsWhereInput!]
+}
+
+input ReviewsWhereUniqueInput {
+  reviewID: ID
+}
+
 type Social {
   id: ID!
   facebook: String
   twitter: String
-  linkedIN: String
+  linkedIn: String
   instagram: String
 }
 
@@ -2302,7 +5175,7 @@ input SocialCreateInput {
   id: ID
   facebook: String
   twitter: String
-  linkedIN: String
+  linkedIn: String
   instagram: String
 }
 
@@ -2323,8 +5196,8 @@ enum SocialOrderByInput {
   facebook_DESC
   twitter_ASC
   twitter_DESC
-  linkedIN_ASC
-  linkedIN_DESC
+  linkedIn_ASC
+  linkedIn_DESC
   instagram_ASC
   instagram_DESC
 }
@@ -2333,7 +5206,7 @@ type SocialPreviousValues {
   id: ID!
   facebook: String
   twitter: String
-  linkedIN: String
+  linkedIn: String
   instagram: String
 }
 
@@ -2358,21 +5231,21 @@ input SocialSubscriptionWhereInput {
 input SocialUpdateDataInput {
   facebook: String
   twitter: String
-  linkedIN: String
+  linkedIn: String
   instagram: String
 }
 
 input SocialUpdateInput {
   facebook: String
   twitter: String
-  linkedIN: String
+  linkedIn: String
   instagram: String
 }
 
 input SocialUpdateManyMutationInput {
   facebook: String
   twitter: String
-  linkedIN: String
+  linkedIn: String
   instagram: String
 }
 
@@ -2433,20 +5306,20 @@ input SocialWhereInput {
   twitter_not_starts_with: String
   twitter_ends_with: String
   twitter_not_ends_with: String
-  linkedIN: String
-  linkedIN_not: String
-  linkedIN_in: [String!]
-  linkedIN_not_in: [String!]
-  linkedIN_lt: String
-  linkedIN_lte: String
-  linkedIN_gt: String
-  linkedIN_gte: String
-  linkedIN_contains: String
-  linkedIN_not_contains: String
-  linkedIN_starts_with: String
-  linkedIN_not_starts_with: String
-  linkedIN_ends_with: String
-  linkedIN_not_ends_with: String
+  linkedIn: String
+  linkedIn_not: String
+  linkedIn_in: [String!]
+  linkedIn_not_in: [String!]
+  linkedIn_lt: String
+  linkedIn_lte: String
+  linkedIn_gt: String
+  linkedIn_gte: String
+  linkedIn_contains: String
+  linkedIn_not_contains: String
+  linkedIn_starts_with: String
+  linkedIn_not_starts_with: String
+  linkedIn_ends_with: String
+  linkedIn_not_ends_with: String
   instagram: String
   instagram_not: String
   instagram_in: [String!]
@@ -2474,12 +5347,1093 @@ type Subscription {
   amenities(where: AmenitiesSubscriptionWhereInput): AmenitiesSubscriptionPayload
   categories(where: CategoriesSubscriptionWhereInput): CategoriesSubscriptionPayload
   categoryImages(where: CategoryImagesSubscriptionWhereInput): CategoryImagesSubscriptionPayload
+  coupon(where: CouponSubscriptionWhereInput): CouponSubscriptionPayload
   gallery(where: GallerySubscriptionWhereInput): GallerySubscriptionPayload
   hotel(where: HotelSubscriptionWhereInput): HotelSubscriptionPayload
   image(where: ImageSubscriptionWhereInput): ImageSubscriptionPayload
   location(where: LocationSubscriptionWhereInput): LocationSubscriptionPayload
+  notification(where: NotificationSubscriptionWhereInput): NotificationSubscriptionPayload
+  reviewFields(where: ReviewFieldsSubscriptionWhereInput): ReviewFieldsSubscriptionPayload
+  reviewImages(where: ReviewImagesSubscriptionWhereInput): ReviewImagesSubscriptionPayload
+  reviewOptionals(where: ReviewOptionalsSubscriptionWhereInput): ReviewOptionalsSubscriptionPayload
+  reviews(where: ReviewsSubscriptionWhereInput): ReviewsSubscriptionPayload
   social(where: SocialSubscriptionWhereInput): SocialSubscriptionPayload
+  transaction(where: TransactionSubscriptionWhereInput): TransactionSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+}
+
+type Transaction {
+  TXID: ID!
+  transactionSecretKey: String
+  transactionHotelName: String
+  transactionHotelId: String
+  transactionHotelManager: User
+  transactionHotelManagerId: String
+  transactionHotelType: String
+  transactionPrice: Int
+  transactionAuthor: User
+  transactionAuthorId: String
+  transactionAuthorName: String
+  transactionAuthorEmail: String
+  transactionAuthorContactNumber: String
+  transactionAuthorSpecial: String
+  transactionAuthorNote: String
+  transactionLocationLat: Float
+  transactionLocationLng: Float
+  transactionLocationFormattedAddress: String
+  transactionRange: Int
+  transactionStatus: String
+  transactionCoupon: String
+  transactionCouponType: Int
+  transactionCouponValue: Int
+  transactionStartDate: String
+  transactionEndDate: String
+  transactionStripeId: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type TransactionConnection {
+  pageInfo: PageInfo!
+  edges: [TransactionEdge]!
+  aggregate: AggregateTransaction!
+}
+
+input TransactionCreateInput {
+  TXID: ID
+  transactionSecretKey: String
+  transactionHotelName: String
+  transactionHotelId: String
+  transactionHotelManager: UserCreateOneWithoutTransaction_hadInput
+  transactionHotelManagerId: String
+  transactionHotelType: String
+  transactionPrice: Int
+  transactionAuthor: UserCreateOneWithoutTransaction_makedInput
+  transactionAuthorId: String
+  transactionAuthorName: String
+  transactionAuthorEmail: String
+  transactionAuthorContactNumber: String
+  transactionAuthorSpecial: String
+  transactionAuthorNote: String
+  transactionLocationLat: Float
+  transactionLocationLng: Float
+  transactionLocationFormattedAddress: String
+  transactionRange: Int
+  transactionStatus: String
+  transactionCoupon: String
+  transactionCouponType: Int
+  transactionCouponValue: Int
+  transactionStartDate: String
+  transactionEndDate: String
+  transactionStripeId: String
+}
+
+input TransactionCreateManyWithoutTransactionAuthorInput {
+  create: [TransactionCreateWithoutTransactionAuthorInput!]
+  connect: [TransactionWhereUniqueInput!]
+}
+
+input TransactionCreateManyWithoutTransactionHotelManagerInput {
+  create: [TransactionCreateWithoutTransactionHotelManagerInput!]
+  connect: [TransactionWhereUniqueInput!]
+}
+
+input TransactionCreateWithoutTransactionAuthorInput {
+  TXID: ID
+  transactionSecretKey: String
+  transactionHotelName: String
+  transactionHotelId: String
+  transactionHotelManager: UserCreateOneWithoutTransaction_hadInput
+  transactionHotelManagerId: String
+  transactionHotelType: String
+  transactionPrice: Int
+  transactionAuthorId: String
+  transactionAuthorName: String
+  transactionAuthorEmail: String
+  transactionAuthorContactNumber: String
+  transactionAuthorSpecial: String
+  transactionAuthorNote: String
+  transactionLocationLat: Float
+  transactionLocationLng: Float
+  transactionLocationFormattedAddress: String
+  transactionRange: Int
+  transactionStatus: String
+  transactionCoupon: String
+  transactionCouponType: Int
+  transactionCouponValue: Int
+  transactionStartDate: String
+  transactionEndDate: String
+  transactionStripeId: String
+}
+
+input TransactionCreateWithoutTransactionHotelManagerInput {
+  TXID: ID
+  transactionSecretKey: String
+  transactionHotelName: String
+  transactionHotelId: String
+  transactionHotelManagerId: String
+  transactionHotelType: String
+  transactionPrice: Int
+  transactionAuthor: UserCreateOneWithoutTransaction_makedInput
+  transactionAuthorId: String
+  transactionAuthorName: String
+  transactionAuthorEmail: String
+  transactionAuthorContactNumber: String
+  transactionAuthorSpecial: String
+  transactionAuthorNote: String
+  transactionLocationLat: Float
+  transactionLocationLng: Float
+  transactionLocationFormattedAddress: String
+  transactionRange: Int
+  transactionStatus: String
+  transactionCoupon: String
+  transactionCouponType: Int
+  transactionCouponValue: Int
+  transactionStartDate: String
+  transactionEndDate: String
+  transactionStripeId: String
+}
+
+type TransactionEdge {
+  node: Transaction!
+  cursor: String!
+}
+
+enum TransactionOrderByInput {
+  TXID_ASC
+  TXID_DESC
+  transactionSecretKey_ASC
+  transactionSecretKey_DESC
+  transactionHotelName_ASC
+  transactionHotelName_DESC
+  transactionHotelId_ASC
+  transactionHotelId_DESC
+  transactionHotelManagerId_ASC
+  transactionHotelManagerId_DESC
+  transactionHotelType_ASC
+  transactionHotelType_DESC
+  transactionPrice_ASC
+  transactionPrice_DESC
+  transactionAuthorId_ASC
+  transactionAuthorId_DESC
+  transactionAuthorName_ASC
+  transactionAuthorName_DESC
+  transactionAuthorEmail_ASC
+  transactionAuthorEmail_DESC
+  transactionAuthorContactNumber_ASC
+  transactionAuthorContactNumber_DESC
+  transactionAuthorSpecial_ASC
+  transactionAuthorSpecial_DESC
+  transactionAuthorNote_ASC
+  transactionAuthorNote_DESC
+  transactionLocationLat_ASC
+  transactionLocationLat_DESC
+  transactionLocationLng_ASC
+  transactionLocationLng_DESC
+  transactionLocationFormattedAddress_ASC
+  transactionLocationFormattedAddress_DESC
+  transactionRange_ASC
+  transactionRange_DESC
+  transactionStatus_ASC
+  transactionStatus_DESC
+  transactionCoupon_ASC
+  transactionCoupon_DESC
+  transactionCouponType_ASC
+  transactionCouponType_DESC
+  transactionCouponValue_ASC
+  transactionCouponValue_DESC
+  transactionStartDate_ASC
+  transactionStartDate_DESC
+  transactionEndDate_ASC
+  transactionEndDate_DESC
+  transactionStripeId_ASC
+  transactionStripeId_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type TransactionPreviousValues {
+  TXID: ID!
+  transactionSecretKey: String
+  transactionHotelName: String
+  transactionHotelId: String
+  transactionHotelManagerId: String
+  transactionHotelType: String
+  transactionPrice: Int
+  transactionAuthorId: String
+  transactionAuthorName: String
+  transactionAuthorEmail: String
+  transactionAuthorContactNumber: String
+  transactionAuthorSpecial: String
+  transactionAuthorNote: String
+  transactionLocationLat: Float
+  transactionLocationLng: Float
+  transactionLocationFormattedAddress: String
+  transactionRange: Int
+  transactionStatus: String
+  transactionCoupon: String
+  transactionCouponType: Int
+  transactionCouponValue: Int
+  transactionStartDate: String
+  transactionEndDate: String
+  transactionStripeId: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input TransactionScalarWhereInput {
+  TXID: ID
+  TXID_not: ID
+  TXID_in: [ID!]
+  TXID_not_in: [ID!]
+  TXID_lt: ID
+  TXID_lte: ID
+  TXID_gt: ID
+  TXID_gte: ID
+  TXID_contains: ID
+  TXID_not_contains: ID
+  TXID_starts_with: ID
+  TXID_not_starts_with: ID
+  TXID_ends_with: ID
+  TXID_not_ends_with: ID
+  transactionSecretKey: String
+  transactionSecretKey_not: String
+  transactionSecretKey_in: [String!]
+  transactionSecretKey_not_in: [String!]
+  transactionSecretKey_lt: String
+  transactionSecretKey_lte: String
+  transactionSecretKey_gt: String
+  transactionSecretKey_gte: String
+  transactionSecretKey_contains: String
+  transactionSecretKey_not_contains: String
+  transactionSecretKey_starts_with: String
+  transactionSecretKey_not_starts_with: String
+  transactionSecretKey_ends_with: String
+  transactionSecretKey_not_ends_with: String
+  transactionHotelName: String
+  transactionHotelName_not: String
+  transactionHotelName_in: [String!]
+  transactionHotelName_not_in: [String!]
+  transactionHotelName_lt: String
+  transactionHotelName_lte: String
+  transactionHotelName_gt: String
+  transactionHotelName_gte: String
+  transactionHotelName_contains: String
+  transactionHotelName_not_contains: String
+  transactionHotelName_starts_with: String
+  transactionHotelName_not_starts_with: String
+  transactionHotelName_ends_with: String
+  transactionHotelName_not_ends_with: String
+  transactionHotelId: String
+  transactionHotelId_not: String
+  transactionHotelId_in: [String!]
+  transactionHotelId_not_in: [String!]
+  transactionHotelId_lt: String
+  transactionHotelId_lte: String
+  transactionHotelId_gt: String
+  transactionHotelId_gte: String
+  transactionHotelId_contains: String
+  transactionHotelId_not_contains: String
+  transactionHotelId_starts_with: String
+  transactionHotelId_not_starts_with: String
+  transactionHotelId_ends_with: String
+  transactionHotelId_not_ends_with: String
+  transactionHotelManagerId: String
+  transactionHotelManagerId_not: String
+  transactionHotelManagerId_in: [String!]
+  transactionHotelManagerId_not_in: [String!]
+  transactionHotelManagerId_lt: String
+  transactionHotelManagerId_lte: String
+  transactionHotelManagerId_gt: String
+  transactionHotelManagerId_gte: String
+  transactionHotelManagerId_contains: String
+  transactionHotelManagerId_not_contains: String
+  transactionHotelManagerId_starts_with: String
+  transactionHotelManagerId_not_starts_with: String
+  transactionHotelManagerId_ends_with: String
+  transactionHotelManagerId_not_ends_with: String
+  transactionHotelType: String
+  transactionHotelType_not: String
+  transactionHotelType_in: [String!]
+  transactionHotelType_not_in: [String!]
+  transactionHotelType_lt: String
+  transactionHotelType_lte: String
+  transactionHotelType_gt: String
+  transactionHotelType_gte: String
+  transactionHotelType_contains: String
+  transactionHotelType_not_contains: String
+  transactionHotelType_starts_with: String
+  transactionHotelType_not_starts_with: String
+  transactionHotelType_ends_with: String
+  transactionHotelType_not_ends_with: String
+  transactionPrice: Int
+  transactionPrice_not: Int
+  transactionPrice_in: [Int!]
+  transactionPrice_not_in: [Int!]
+  transactionPrice_lt: Int
+  transactionPrice_lte: Int
+  transactionPrice_gt: Int
+  transactionPrice_gte: Int
+  transactionAuthorId: String
+  transactionAuthorId_not: String
+  transactionAuthorId_in: [String!]
+  transactionAuthorId_not_in: [String!]
+  transactionAuthorId_lt: String
+  transactionAuthorId_lte: String
+  transactionAuthorId_gt: String
+  transactionAuthorId_gte: String
+  transactionAuthorId_contains: String
+  transactionAuthorId_not_contains: String
+  transactionAuthorId_starts_with: String
+  transactionAuthorId_not_starts_with: String
+  transactionAuthorId_ends_with: String
+  transactionAuthorId_not_ends_with: String
+  transactionAuthorName: String
+  transactionAuthorName_not: String
+  transactionAuthorName_in: [String!]
+  transactionAuthorName_not_in: [String!]
+  transactionAuthorName_lt: String
+  transactionAuthorName_lte: String
+  transactionAuthorName_gt: String
+  transactionAuthorName_gte: String
+  transactionAuthorName_contains: String
+  transactionAuthorName_not_contains: String
+  transactionAuthorName_starts_with: String
+  transactionAuthorName_not_starts_with: String
+  transactionAuthorName_ends_with: String
+  transactionAuthorName_not_ends_with: String
+  transactionAuthorEmail: String
+  transactionAuthorEmail_not: String
+  transactionAuthorEmail_in: [String!]
+  transactionAuthorEmail_not_in: [String!]
+  transactionAuthorEmail_lt: String
+  transactionAuthorEmail_lte: String
+  transactionAuthorEmail_gt: String
+  transactionAuthorEmail_gte: String
+  transactionAuthorEmail_contains: String
+  transactionAuthorEmail_not_contains: String
+  transactionAuthorEmail_starts_with: String
+  transactionAuthorEmail_not_starts_with: String
+  transactionAuthorEmail_ends_with: String
+  transactionAuthorEmail_not_ends_with: String
+  transactionAuthorContactNumber: String
+  transactionAuthorContactNumber_not: String
+  transactionAuthorContactNumber_in: [String!]
+  transactionAuthorContactNumber_not_in: [String!]
+  transactionAuthorContactNumber_lt: String
+  transactionAuthorContactNumber_lte: String
+  transactionAuthorContactNumber_gt: String
+  transactionAuthorContactNumber_gte: String
+  transactionAuthorContactNumber_contains: String
+  transactionAuthorContactNumber_not_contains: String
+  transactionAuthorContactNumber_starts_with: String
+  transactionAuthorContactNumber_not_starts_with: String
+  transactionAuthorContactNumber_ends_with: String
+  transactionAuthorContactNumber_not_ends_with: String
+  transactionAuthorSpecial: String
+  transactionAuthorSpecial_not: String
+  transactionAuthorSpecial_in: [String!]
+  transactionAuthorSpecial_not_in: [String!]
+  transactionAuthorSpecial_lt: String
+  transactionAuthorSpecial_lte: String
+  transactionAuthorSpecial_gt: String
+  transactionAuthorSpecial_gte: String
+  transactionAuthorSpecial_contains: String
+  transactionAuthorSpecial_not_contains: String
+  transactionAuthorSpecial_starts_with: String
+  transactionAuthorSpecial_not_starts_with: String
+  transactionAuthorSpecial_ends_with: String
+  transactionAuthorSpecial_not_ends_with: String
+  transactionAuthorNote: String
+  transactionAuthorNote_not: String
+  transactionAuthorNote_in: [String!]
+  transactionAuthorNote_not_in: [String!]
+  transactionAuthorNote_lt: String
+  transactionAuthorNote_lte: String
+  transactionAuthorNote_gt: String
+  transactionAuthorNote_gte: String
+  transactionAuthorNote_contains: String
+  transactionAuthorNote_not_contains: String
+  transactionAuthorNote_starts_with: String
+  transactionAuthorNote_not_starts_with: String
+  transactionAuthorNote_ends_with: String
+  transactionAuthorNote_not_ends_with: String
+  transactionLocationLat: Float
+  transactionLocationLat_not: Float
+  transactionLocationLat_in: [Float!]
+  transactionLocationLat_not_in: [Float!]
+  transactionLocationLat_lt: Float
+  transactionLocationLat_lte: Float
+  transactionLocationLat_gt: Float
+  transactionLocationLat_gte: Float
+  transactionLocationLng: Float
+  transactionLocationLng_not: Float
+  transactionLocationLng_in: [Float!]
+  transactionLocationLng_not_in: [Float!]
+  transactionLocationLng_lt: Float
+  transactionLocationLng_lte: Float
+  transactionLocationLng_gt: Float
+  transactionLocationLng_gte: Float
+  transactionLocationFormattedAddress: String
+  transactionLocationFormattedAddress_not: String
+  transactionLocationFormattedAddress_in: [String!]
+  transactionLocationFormattedAddress_not_in: [String!]
+  transactionLocationFormattedAddress_lt: String
+  transactionLocationFormattedAddress_lte: String
+  transactionLocationFormattedAddress_gt: String
+  transactionLocationFormattedAddress_gte: String
+  transactionLocationFormattedAddress_contains: String
+  transactionLocationFormattedAddress_not_contains: String
+  transactionLocationFormattedAddress_starts_with: String
+  transactionLocationFormattedAddress_not_starts_with: String
+  transactionLocationFormattedAddress_ends_with: String
+  transactionLocationFormattedAddress_not_ends_with: String
+  transactionRange: Int
+  transactionRange_not: Int
+  transactionRange_in: [Int!]
+  transactionRange_not_in: [Int!]
+  transactionRange_lt: Int
+  transactionRange_lte: Int
+  transactionRange_gt: Int
+  transactionRange_gte: Int
+  transactionStatus: String
+  transactionStatus_not: String
+  transactionStatus_in: [String!]
+  transactionStatus_not_in: [String!]
+  transactionStatus_lt: String
+  transactionStatus_lte: String
+  transactionStatus_gt: String
+  transactionStatus_gte: String
+  transactionStatus_contains: String
+  transactionStatus_not_contains: String
+  transactionStatus_starts_with: String
+  transactionStatus_not_starts_with: String
+  transactionStatus_ends_with: String
+  transactionStatus_not_ends_with: String
+  transactionCoupon: String
+  transactionCoupon_not: String
+  transactionCoupon_in: [String!]
+  transactionCoupon_not_in: [String!]
+  transactionCoupon_lt: String
+  transactionCoupon_lte: String
+  transactionCoupon_gt: String
+  transactionCoupon_gte: String
+  transactionCoupon_contains: String
+  transactionCoupon_not_contains: String
+  transactionCoupon_starts_with: String
+  transactionCoupon_not_starts_with: String
+  transactionCoupon_ends_with: String
+  transactionCoupon_not_ends_with: String
+  transactionCouponType: Int
+  transactionCouponType_not: Int
+  transactionCouponType_in: [Int!]
+  transactionCouponType_not_in: [Int!]
+  transactionCouponType_lt: Int
+  transactionCouponType_lte: Int
+  transactionCouponType_gt: Int
+  transactionCouponType_gte: Int
+  transactionCouponValue: Int
+  transactionCouponValue_not: Int
+  transactionCouponValue_in: [Int!]
+  transactionCouponValue_not_in: [Int!]
+  transactionCouponValue_lt: Int
+  transactionCouponValue_lte: Int
+  transactionCouponValue_gt: Int
+  transactionCouponValue_gte: Int
+  transactionStartDate: String
+  transactionStartDate_not: String
+  transactionStartDate_in: [String!]
+  transactionStartDate_not_in: [String!]
+  transactionStartDate_lt: String
+  transactionStartDate_lte: String
+  transactionStartDate_gt: String
+  transactionStartDate_gte: String
+  transactionStartDate_contains: String
+  transactionStartDate_not_contains: String
+  transactionStartDate_starts_with: String
+  transactionStartDate_not_starts_with: String
+  transactionStartDate_ends_with: String
+  transactionStartDate_not_ends_with: String
+  transactionEndDate: String
+  transactionEndDate_not: String
+  transactionEndDate_in: [String!]
+  transactionEndDate_not_in: [String!]
+  transactionEndDate_lt: String
+  transactionEndDate_lte: String
+  transactionEndDate_gt: String
+  transactionEndDate_gte: String
+  transactionEndDate_contains: String
+  transactionEndDate_not_contains: String
+  transactionEndDate_starts_with: String
+  transactionEndDate_not_starts_with: String
+  transactionEndDate_ends_with: String
+  transactionEndDate_not_ends_with: String
+  transactionStripeId: String
+  transactionStripeId_not: String
+  transactionStripeId_in: [String!]
+  transactionStripeId_not_in: [String!]
+  transactionStripeId_lt: String
+  transactionStripeId_lte: String
+  transactionStripeId_gt: String
+  transactionStripeId_gte: String
+  transactionStripeId_contains: String
+  transactionStripeId_not_contains: String
+  transactionStripeId_starts_with: String
+  transactionStripeId_not_starts_with: String
+  transactionStripeId_ends_with: String
+  transactionStripeId_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [TransactionScalarWhereInput!]
+  OR: [TransactionScalarWhereInput!]
+  NOT: [TransactionScalarWhereInput!]
+}
+
+type TransactionSubscriptionPayload {
+  mutation: MutationType!
+  node: Transaction
+  updatedFields: [String!]
+  previousValues: TransactionPreviousValues
+}
+
+input TransactionSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: TransactionWhereInput
+  AND: [TransactionSubscriptionWhereInput!]
+  OR: [TransactionSubscriptionWhereInput!]
+  NOT: [TransactionSubscriptionWhereInput!]
+}
+
+input TransactionUpdateInput {
+  transactionSecretKey: String
+  transactionHotelName: String
+  transactionHotelId: String
+  transactionHotelManager: UserUpdateOneWithoutTransaction_hadInput
+  transactionHotelManagerId: String
+  transactionHotelType: String
+  transactionPrice: Int
+  transactionAuthor: UserUpdateOneWithoutTransaction_makedInput
+  transactionAuthorId: String
+  transactionAuthorName: String
+  transactionAuthorEmail: String
+  transactionAuthorContactNumber: String
+  transactionAuthorSpecial: String
+  transactionAuthorNote: String
+  transactionLocationLat: Float
+  transactionLocationLng: Float
+  transactionLocationFormattedAddress: String
+  transactionRange: Int
+  transactionStatus: String
+  transactionCoupon: String
+  transactionCouponType: Int
+  transactionCouponValue: Int
+  transactionStartDate: String
+  transactionEndDate: String
+  transactionStripeId: String
+}
+
+input TransactionUpdateManyDataInput {
+  transactionSecretKey: String
+  transactionHotelName: String
+  transactionHotelId: String
+  transactionHotelManagerId: String
+  transactionHotelType: String
+  transactionPrice: Int
+  transactionAuthorId: String
+  transactionAuthorName: String
+  transactionAuthorEmail: String
+  transactionAuthorContactNumber: String
+  transactionAuthorSpecial: String
+  transactionAuthorNote: String
+  transactionLocationLat: Float
+  transactionLocationLng: Float
+  transactionLocationFormattedAddress: String
+  transactionRange: Int
+  transactionStatus: String
+  transactionCoupon: String
+  transactionCouponType: Int
+  transactionCouponValue: Int
+  transactionStartDate: String
+  transactionEndDate: String
+  transactionStripeId: String
+}
+
+input TransactionUpdateManyMutationInput {
+  transactionSecretKey: String
+  transactionHotelName: String
+  transactionHotelId: String
+  transactionHotelManagerId: String
+  transactionHotelType: String
+  transactionPrice: Int
+  transactionAuthorId: String
+  transactionAuthorName: String
+  transactionAuthorEmail: String
+  transactionAuthorContactNumber: String
+  transactionAuthorSpecial: String
+  transactionAuthorNote: String
+  transactionLocationLat: Float
+  transactionLocationLng: Float
+  transactionLocationFormattedAddress: String
+  transactionRange: Int
+  transactionStatus: String
+  transactionCoupon: String
+  transactionCouponType: Int
+  transactionCouponValue: Int
+  transactionStartDate: String
+  transactionEndDate: String
+  transactionStripeId: String
+}
+
+input TransactionUpdateManyWithoutTransactionAuthorInput {
+  create: [TransactionCreateWithoutTransactionAuthorInput!]
+  delete: [TransactionWhereUniqueInput!]
+  connect: [TransactionWhereUniqueInput!]
+  set: [TransactionWhereUniqueInput!]
+  disconnect: [TransactionWhereUniqueInput!]
+  update: [TransactionUpdateWithWhereUniqueWithoutTransactionAuthorInput!]
+  upsert: [TransactionUpsertWithWhereUniqueWithoutTransactionAuthorInput!]
+  deleteMany: [TransactionScalarWhereInput!]
+  updateMany: [TransactionUpdateManyWithWhereNestedInput!]
+}
+
+input TransactionUpdateManyWithoutTransactionHotelManagerInput {
+  create: [TransactionCreateWithoutTransactionHotelManagerInput!]
+  delete: [TransactionWhereUniqueInput!]
+  connect: [TransactionWhereUniqueInput!]
+  set: [TransactionWhereUniqueInput!]
+  disconnect: [TransactionWhereUniqueInput!]
+  update: [TransactionUpdateWithWhereUniqueWithoutTransactionHotelManagerInput!]
+  upsert: [TransactionUpsertWithWhereUniqueWithoutTransactionHotelManagerInput!]
+  deleteMany: [TransactionScalarWhereInput!]
+  updateMany: [TransactionUpdateManyWithWhereNestedInput!]
+}
+
+input TransactionUpdateManyWithWhereNestedInput {
+  where: TransactionScalarWhereInput!
+  data: TransactionUpdateManyDataInput!
+}
+
+input TransactionUpdateWithoutTransactionAuthorDataInput {
+  transactionSecretKey: String
+  transactionHotelName: String
+  transactionHotelId: String
+  transactionHotelManager: UserUpdateOneWithoutTransaction_hadInput
+  transactionHotelManagerId: String
+  transactionHotelType: String
+  transactionPrice: Int
+  transactionAuthorId: String
+  transactionAuthorName: String
+  transactionAuthorEmail: String
+  transactionAuthorContactNumber: String
+  transactionAuthorSpecial: String
+  transactionAuthorNote: String
+  transactionLocationLat: Float
+  transactionLocationLng: Float
+  transactionLocationFormattedAddress: String
+  transactionRange: Int
+  transactionStatus: String
+  transactionCoupon: String
+  transactionCouponType: Int
+  transactionCouponValue: Int
+  transactionStartDate: String
+  transactionEndDate: String
+  transactionStripeId: String
+}
+
+input TransactionUpdateWithoutTransactionHotelManagerDataInput {
+  transactionSecretKey: String
+  transactionHotelName: String
+  transactionHotelId: String
+  transactionHotelManagerId: String
+  transactionHotelType: String
+  transactionPrice: Int
+  transactionAuthor: UserUpdateOneWithoutTransaction_makedInput
+  transactionAuthorId: String
+  transactionAuthorName: String
+  transactionAuthorEmail: String
+  transactionAuthorContactNumber: String
+  transactionAuthorSpecial: String
+  transactionAuthorNote: String
+  transactionLocationLat: Float
+  transactionLocationLng: Float
+  transactionLocationFormattedAddress: String
+  transactionRange: Int
+  transactionStatus: String
+  transactionCoupon: String
+  transactionCouponType: Int
+  transactionCouponValue: Int
+  transactionStartDate: String
+  transactionEndDate: String
+  transactionStripeId: String
+}
+
+input TransactionUpdateWithWhereUniqueWithoutTransactionAuthorInput {
+  where: TransactionWhereUniqueInput!
+  data: TransactionUpdateWithoutTransactionAuthorDataInput!
+}
+
+input TransactionUpdateWithWhereUniqueWithoutTransactionHotelManagerInput {
+  where: TransactionWhereUniqueInput!
+  data: TransactionUpdateWithoutTransactionHotelManagerDataInput!
+}
+
+input TransactionUpsertWithWhereUniqueWithoutTransactionAuthorInput {
+  where: TransactionWhereUniqueInput!
+  update: TransactionUpdateWithoutTransactionAuthorDataInput!
+  create: TransactionCreateWithoutTransactionAuthorInput!
+}
+
+input TransactionUpsertWithWhereUniqueWithoutTransactionHotelManagerInput {
+  where: TransactionWhereUniqueInput!
+  update: TransactionUpdateWithoutTransactionHotelManagerDataInput!
+  create: TransactionCreateWithoutTransactionHotelManagerInput!
+}
+
+input TransactionWhereInput {
+  TXID: ID
+  TXID_not: ID
+  TXID_in: [ID!]
+  TXID_not_in: [ID!]
+  TXID_lt: ID
+  TXID_lte: ID
+  TXID_gt: ID
+  TXID_gte: ID
+  TXID_contains: ID
+  TXID_not_contains: ID
+  TXID_starts_with: ID
+  TXID_not_starts_with: ID
+  TXID_ends_with: ID
+  TXID_not_ends_with: ID
+  transactionSecretKey: String
+  transactionSecretKey_not: String
+  transactionSecretKey_in: [String!]
+  transactionSecretKey_not_in: [String!]
+  transactionSecretKey_lt: String
+  transactionSecretKey_lte: String
+  transactionSecretKey_gt: String
+  transactionSecretKey_gte: String
+  transactionSecretKey_contains: String
+  transactionSecretKey_not_contains: String
+  transactionSecretKey_starts_with: String
+  transactionSecretKey_not_starts_with: String
+  transactionSecretKey_ends_with: String
+  transactionSecretKey_not_ends_with: String
+  transactionHotelName: String
+  transactionHotelName_not: String
+  transactionHotelName_in: [String!]
+  transactionHotelName_not_in: [String!]
+  transactionHotelName_lt: String
+  transactionHotelName_lte: String
+  transactionHotelName_gt: String
+  transactionHotelName_gte: String
+  transactionHotelName_contains: String
+  transactionHotelName_not_contains: String
+  transactionHotelName_starts_with: String
+  transactionHotelName_not_starts_with: String
+  transactionHotelName_ends_with: String
+  transactionHotelName_not_ends_with: String
+  transactionHotelId: String
+  transactionHotelId_not: String
+  transactionHotelId_in: [String!]
+  transactionHotelId_not_in: [String!]
+  transactionHotelId_lt: String
+  transactionHotelId_lte: String
+  transactionHotelId_gt: String
+  transactionHotelId_gte: String
+  transactionHotelId_contains: String
+  transactionHotelId_not_contains: String
+  transactionHotelId_starts_with: String
+  transactionHotelId_not_starts_with: String
+  transactionHotelId_ends_with: String
+  transactionHotelId_not_ends_with: String
+  transactionHotelManager: UserWhereInput
+  transactionHotelManagerId: String
+  transactionHotelManagerId_not: String
+  transactionHotelManagerId_in: [String!]
+  transactionHotelManagerId_not_in: [String!]
+  transactionHotelManagerId_lt: String
+  transactionHotelManagerId_lte: String
+  transactionHotelManagerId_gt: String
+  transactionHotelManagerId_gte: String
+  transactionHotelManagerId_contains: String
+  transactionHotelManagerId_not_contains: String
+  transactionHotelManagerId_starts_with: String
+  transactionHotelManagerId_not_starts_with: String
+  transactionHotelManagerId_ends_with: String
+  transactionHotelManagerId_not_ends_with: String
+  transactionHotelType: String
+  transactionHotelType_not: String
+  transactionHotelType_in: [String!]
+  transactionHotelType_not_in: [String!]
+  transactionHotelType_lt: String
+  transactionHotelType_lte: String
+  transactionHotelType_gt: String
+  transactionHotelType_gte: String
+  transactionHotelType_contains: String
+  transactionHotelType_not_contains: String
+  transactionHotelType_starts_with: String
+  transactionHotelType_not_starts_with: String
+  transactionHotelType_ends_with: String
+  transactionHotelType_not_ends_with: String
+  transactionPrice: Int
+  transactionPrice_not: Int
+  transactionPrice_in: [Int!]
+  transactionPrice_not_in: [Int!]
+  transactionPrice_lt: Int
+  transactionPrice_lte: Int
+  transactionPrice_gt: Int
+  transactionPrice_gte: Int
+  transactionAuthor: UserWhereInput
+  transactionAuthorId: String
+  transactionAuthorId_not: String
+  transactionAuthorId_in: [String!]
+  transactionAuthorId_not_in: [String!]
+  transactionAuthorId_lt: String
+  transactionAuthorId_lte: String
+  transactionAuthorId_gt: String
+  transactionAuthorId_gte: String
+  transactionAuthorId_contains: String
+  transactionAuthorId_not_contains: String
+  transactionAuthorId_starts_with: String
+  transactionAuthorId_not_starts_with: String
+  transactionAuthorId_ends_with: String
+  transactionAuthorId_not_ends_with: String
+  transactionAuthorName: String
+  transactionAuthorName_not: String
+  transactionAuthorName_in: [String!]
+  transactionAuthorName_not_in: [String!]
+  transactionAuthorName_lt: String
+  transactionAuthorName_lte: String
+  transactionAuthorName_gt: String
+  transactionAuthorName_gte: String
+  transactionAuthorName_contains: String
+  transactionAuthorName_not_contains: String
+  transactionAuthorName_starts_with: String
+  transactionAuthorName_not_starts_with: String
+  transactionAuthorName_ends_with: String
+  transactionAuthorName_not_ends_with: String
+  transactionAuthorEmail: String
+  transactionAuthorEmail_not: String
+  transactionAuthorEmail_in: [String!]
+  transactionAuthorEmail_not_in: [String!]
+  transactionAuthorEmail_lt: String
+  transactionAuthorEmail_lte: String
+  transactionAuthorEmail_gt: String
+  transactionAuthorEmail_gte: String
+  transactionAuthorEmail_contains: String
+  transactionAuthorEmail_not_contains: String
+  transactionAuthorEmail_starts_with: String
+  transactionAuthorEmail_not_starts_with: String
+  transactionAuthorEmail_ends_with: String
+  transactionAuthorEmail_not_ends_with: String
+  transactionAuthorContactNumber: String
+  transactionAuthorContactNumber_not: String
+  transactionAuthorContactNumber_in: [String!]
+  transactionAuthorContactNumber_not_in: [String!]
+  transactionAuthorContactNumber_lt: String
+  transactionAuthorContactNumber_lte: String
+  transactionAuthorContactNumber_gt: String
+  transactionAuthorContactNumber_gte: String
+  transactionAuthorContactNumber_contains: String
+  transactionAuthorContactNumber_not_contains: String
+  transactionAuthorContactNumber_starts_with: String
+  transactionAuthorContactNumber_not_starts_with: String
+  transactionAuthorContactNumber_ends_with: String
+  transactionAuthorContactNumber_not_ends_with: String
+  transactionAuthorSpecial: String
+  transactionAuthorSpecial_not: String
+  transactionAuthorSpecial_in: [String!]
+  transactionAuthorSpecial_not_in: [String!]
+  transactionAuthorSpecial_lt: String
+  transactionAuthorSpecial_lte: String
+  transactionAuthorSpecial_gt: String
+  transactionAuthorSpecial_gte: String
+  transactionAuthorSpecial_contains: String
+  transactionAuthorSpecial_not_contains: String
+  transactionAuthorSpecial_starts_with: String
+  transactionAuthorSpecial_not_starts_with: String
+  transactionAuthorSpecial_ends_with: String
+  transactionAuthorSpecial_not_ends_with: String
+  transactionAuthorNote: String
+  transactionAuthorNote_not: String
+  transactionAuthorNote_in: [String!]
+  transactionAuthorNote_not_in: [String!]
+  transactionAuthorNote_lt: String
+  transactionAuthorNote_lte: String
+  transactionAuthorNote_gt: String
+  transactionAuthorNote_gte: String
+  transactionAuthorNote_contains: String
+  transactionAuthorNote_not_contains: String
+  transactionAuthorNote_starts_with: String
+  transactionAuthorNote_not_starts_with: String
+  transactionAuthorNote_ends_with: String
+  transactionAuthorNote_not_ends_with: String
+  transactionLocationLat: Float
+  transactionLocationLat_not: Float
+  transactionLocationLat_in: [Float!]
+  transactionLocationLat_not_in: [Float!]
+  transactionLocationLat_lt: Float
+  transactionLocationLat_lte: Float
+  transactionLocationLat_gt: Float
+  transactionLocationLat_gte: Float
+  transactionLocationLng: Float
+  transactionLocationLng_not: Float
+  transactionLocationLng_in: [Float!]
+  transactionLocationLng_not_in: [Float!]
+  transactionLocationLng_lt: Float
+  transactionLocationLng_lte: Float
+  transactionLocationLng_gt: Float
+  transactionLocationLng_gte: Float
+  transactionLocationFormattedAddress: String
+  transactionLocationFormattedAddress_not: String
+  transactionLocationFormattedAddress_in: [String!]
+  transactionLocationFormattedAddress_not_in: [String!]
+  transactionLocationFormattedAddress_lt: String
+  transactionLocationFormattedAddress_lte: String
+  transactionLocationFormattedAddress_gt: String
+  transactionLocationFormattedAddress_gte: String
+  transactionLocationFormattedAddress_contains: String
+  transactionLocationFormattedAddress_not_contains: String
+  transactionLocationFormattedAddress_starts_with: String
+  transactionLocationFormattedAddress_not_starts_with: String
+  transactionLocationFormattedAddress_ends_with: String
+  transactionLocationFormattedAddress_not_ends_with: String
+  transactionRange: Int
+  transactionRange_not: Int
+  transactionRange_in: [Int!]
+  transactionRange_not_in: [Int!]
+  transactionRange_lt: Int
+  transactionRange_lte: Int
+  transactionRange_gt: Int
+  transactionRange_gte: Int
+  transactionStatus: String
+  transactionStatus_not: String
+  transactionStatus_in: [String!]
+  transactionStatus_not_in: [String!]
+  transactionStatus_lt: String
+  transactionStatus_lte: String
+  transactionStatus_gt: String
+  transactionStatus_gte: String
+  transactionStatus_contains: String
+  transactionStatus_not_contains: String
+  transactionStatus_starts_with: String
+  transactionStatus_not_starts_with: String
+  transactionStatus_ends_with: String
+  transactionStatus_not_ends_with: String
+  transactionCoupon: String
+  transactionCoupon_not: String
+  transactionCoupon_in: [String!]
+  transactionCoupon_not_in: [String!]
+  transactionCoupon_lt: String
+  transactionCoupon_lte: String
+  transactionCoupon_gt: String
+  transactionCoupon_gte: String
+  transactionCoupon_contains: String
+  transactionCoupon_not_contains: String
+  transactionCoupon_starts_with: String
+  transactionCoupon_not_starts_with: String
+  transactionCoupon_ends_with: String
+  transactionCoupon_not_ends_with: String
+  transactionCouponType: Int
+  transactionCouponType_not: Int
+  transactionCouponType_in: [Int!]
+  transactionCouponType_not_in: [Int!]
+  transactionCouponType_lt: Int
+  transactionCouponType_lte: Int
+  transactionCouponType_gt: Int
+  transactionCouponType_gte: Int
+  transactionCouponValue: Int
+  transactionCouponValue_not: Int
+  transactionCouponValue_in: [Int!]
+  transactionCouponValue_not_in: [Int!]
+  transactionCouponValue_lt: Int
+  transactionCouponValue_lte: Int
+  transactionCouponValue_gt: Int
+  transactionCouponValue_gte: Int
+  transactionStartDate: String
+  transactionStartDate_not: String
+  transactionStartDate_in: [String!]
+  transactionStartDate_not_in: [String!]
+  transactionStartDate_lt: String
+  transactionStartDate_lte: String
+  transactionStartDate_gt: String
+  transactionStartDate_gte: String
+  transactionStartDate_contains: String
+  transactionStartDate_not_contains: String
+  transactionStartDate_starts_with: String
+  transactionStartDate_not_starts_with: String
+  transactionStartDate_ends_with: String
+  transactionStartDate_not_ends_with: String
+  transactionEndDate: String
+  transactionEndDate_not: String
+  transactionEndDate_in: [String!]
+  transactionEndDate_not_in: [String!]
+  transactionEndDate_lt: String
+  transactionEndDate_lte: String
+  transactionEndDate_gt: String
+  transactionEndDate_gte: String
+  transactionEndDate_contains: String
+  transactionEndDate_not_contains: String
+  transactionEndDate_starts_with: String
+  transactionEndDate_not_starts_with: String
+  transactionEndDate_ends_with: String
+  transactionEndDate_not_ends_with: String
+  transactionStripeId: String
+  transactionStripeId_not: String
+  transactionStripeId_in: [String!]
+  transactionStripeId_not_in: [String!]
+  transactionStripeId_lt: String
+  transactionStripeId_lte: String
+  transactionStripeId_gt: String
+  transactionStripeId_gte: String
+  transactionStripeId_contains: String
+  transactionStripeId_not_contains: String
+  transactionStripeId_starts_with: String
+  transactionStripeId_not_starts_with: String
+  transactionStripeId_ends_with: String
+  transactionStripeId_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [TransactionWhereInput!]
+  OR: [TransactionWhereInput!]
+  NOT: [TransactionWhereInput!]
+}
+
+input TransactionWhereUniqueInput {
+  TXID: ID
 }
 
 type User {
@@ -2489,17 +6443,30 @@ type User {
   username: String!
   password: String!
   email: String!
+  role: String
   cellNumber: String
+  profile_pic_main: String
+  cover_pic_main: String
   profile_pic(where: GalleryWhereInput, orderBy: GalleryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Gallery!]
   cover_pic(where: GalleryWhereInput, orderBy: GalleryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Gallery!]
   date_of_birth: String
   gender: String
   content: String
+  notification(where: NotificationWhereInput, orderBy: NotificationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Notification!]
+  unreadNotification: Int
   agent_location: Location
   gallery(where: GalleryWhereInput, orderBy: GalleryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Gallery!]
   social_profile: Social
+  reviews_maked(where: ReviewsWhereInput, orderBy: ReviewsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Reviews!]
   listed_posts(where: HotelWhereInput, orderBy: HotelOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Hotel!]
   favourite_post(where: HotelWhereInput, orderBy: HotelOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Hotel!]
+  reviewed_post(where: HotelWhereInput, orderBy: HotelOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Hotel!]
+  review_liked(where: ReviewsWhereInput, orderBy: ReviewsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Reviews!]
+  review_disliked(where: ReviewsWhereInput, orderBy: ReviewsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Reviews!]
+  stripeId: String
+  transaction_had(where: TransactionWhereInput, orderBy: TransactionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Transaction!]
+  transaction_maked(where: TransactionWhereInput, orderBy: TransactionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Transaction!]
+  coupons_maked(where: CouponWhereInput, orderBy: CouponOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Coupon!]
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -2517,17 +6484,30 @@ input UserCreateInput {
   username: String!
   password: String!
   email: String!
+  role: String
   cellNumber: String
+  profile_pic_main: String
+  cover_pic_main: String
   profile_pic: GalleryCreateManyInput
   cover_pic: GalleryCreateManyInput
   date_of_birth: String
   gender: String
   content: String
+  notification: NotificationCreateManyInput
+  unreadNotification: Int
   agent_location: LocationCreateOneInput
   gallery: GalleryCreateManyInput
   social_profile: SocialCreateOneInput
+  reviews_maked: ReviewsCreateManyWithoutReviewAuthorIdInput
   listed_posts: HotelCreateManyWithoutConnectIdInput
   favourite_post: HotelCreateManyWithoutPeopleLikedInput
+  reviewed_post: HotelCreateManyWithoutPeopleReviewedInput
+  review_liked: ReviewsCreateManyWithoutPeopleLikedInput
+  review_disliked: ReviewsCreateManyWithoutPeopleDislikedInput
+  stripeId: String
+  transaction_had: TransactionCreateManyWithoutTransactionHotelManagerInput
+  transaction_maked: TransactionCreateManyWithoutTransactionAuthorInput
+  coupons_maked: CouponCreateManyWithoutCouponAuthorInput
 }
 
 input UserCreateManyWithoutFavourite_postInput {
@@ -2535,9 +6515,76 @@ input UserCreateManyWithoutFavourite_postInput {
   connect: [UserWhereUniqueInput!]
 }
 
+input UserCreateManyWithoutReview_dislikedInput {
+  create: [UserCreateWithoutReview_dislikedInput!]
+  connect: [UserWhereUniqueInput!]
+}
+
+input UserCreateManyWithoutReview_likedInput {
+  create: [UserCreateWithoutReview_likedInput!]
+  connect: [UserWhereUniqueInput!]
+}
+
+input UserCreateManyWithoutReviewed_postInput {
+  create: [UserCreateWithoutReviewed_postInput!]
+  connect: [UserWhereUniqueInput!]
+}
+
+input UserCreateOneWithoutCoupons_makedInput {
+  create: UserCreateWithoutCoupons_makedInput
+  connect: UserWhereUniqueInput
+}
+
 input UserCreateOneWithoutListed_postsInput {
   create: UserCreateWithoutListed_postsInput
   connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutReviews_makedInput {
+  create: UserCreateWithoutReviews_makedInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutTransaction_hadInput {
+  create: UserCreateWithoutTransaction_hadInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutTransaction_makedInput {
+  create: UserCreateWithoutTransaction_makedInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutCoupons_makedInput {
+  id: ID
+  first_name: String!
+  last_name: String!
+  username: String!
+  password: String!
+  email: String!
+  role: String
+  cellNumber: String
+  profile_pic_main: String
+  cover_pic_main: String
+  profile_pic: GalleryCreateManyInput
+  cover_pic: GalleryCreateManyInput
+  date_of_birth: String
+  gender: String
+  content: String
+  notification: NotificationCreateManyInput
+  unreadNotification: Int
+  agent_location: LocationCreateOneInput
+  gallery: GalleryCreateManyInput
+  social_profile: SocialCreateOneInput
+  reviews_maked: ReviewsCreateManyWithoutReviewAuthorIdInput
+  listed_posts: HotelCreateManyWithoutConnectIdInput
+  favourite_post: HotelCreateManyWithoutPeopleLikedInput
+  reviewed_post: HotelCreateManyWithoutPeopleReviewedInput
+  review_liked: ReviewsCreateManyWithoutPeopleLikedInput
+  review_disliked: ReviewsCreateManyWithoutPeopleDislikedInput
+  stripeId: String
+  transaction_had: TransactionCreateManyWithoutTransactionHotelManagerInput
+  transaction_maked: TransactionCreateManyWithoutTransactionAuthorInput
 }
 
 input UserCreateWithoutFavourite_postInput {
@@ -2547,16 +6594,29 @@ input UserCreateWithoutFavourite_postInput {
   username: String!
   password: String!
   email: String!
+  role: String
   cellNumber: String
+  profile_pic_main: String
+  cover_pic_main: String
   profile_pic: GalleryCreateManyInput
   cover_pic: GalleryCreateManyInput
   date_of_birth: String
   gender: String
   content: String
+  notification: NotificationCreateManyInput
+  unreadNotification: Int
   agent_location: LocationCreateOneInput
   gallery: GalleryCreateManyInput
   social_profile: SocialCreateOneInput
+  reviews_maked: ReviewsCreateManyWithoutReviewAuthorIdInput
   listed_posts: HotelCreateManyWithoutConnectIdInput
+  reviewed_post: HotelCreateManyWithoutPeopleReviewedInput
+  review_liked: ReviewsCreateManyWithoutPeopleLikedInput
+  review_disliked: ReviewsCreateManyWithoutPeopleDislikedInput
+  stripeId: String
+  transaction_had: TransactionCreateManyWithoutTransactionHotelManagerInput
+  transaction_maked: TransactionCreateManyWithoutTransactionAuthorInput
+  coupons_maked: CouponCreateManyWithoutCouponAuthorInput
 }
 
 input UserCreateWithoutListed_postsInput {
@@ -2566,16 +6626,221 @@ input UserCreateWithoutListed_postsInput {
   username: String!
   password: String!
   email: String!
+  role: String
   cellNumber: String
+  profile_pic_main: String
+  cover_pic_main: String
   profile_pic: GalleryCreateManyInput
   cover_pic: GalleryCreateManyInput
   date_of_birth: String
   gender: String
   content: String
+  notification: NotificationCreateManyInput
+  unreadNotification: Int
   agent_location: LocationCreateOneInput
   gallery: GalleryCreateManyInput
   social_profile: SocialCreateOneInput
+  reviews_maked: ReviewsCreateManyWithoutReviewAuthorIdInput
   favourite_post: HotelCreateManyWithoutPeopleLikedInput
+  reviewed_post: HotelCreateManyWithoutPeopleReviewedInput
+  review_liked: ReviewsCreateManyWithoutPeopleLikedInput
+  review_disliked: ReviewsCreateManyWithoutPeopleDislikedInput
+  stripeId: String
+  transaction_had: TransactionCreateManyWithoutTransactionHotelManagerInput
+  transaction_maked: TransactionCreateManyWithoutTransactionAuthorInput
+  coupons_maked: CouponCreateManyWithoutCouponAuthorInput
+}
+
+input UserCreateWithoutReview_dislikedInput {
+  id: ID
+  first_name: String!
+  last_name: String!
+  username: String!
+  password: String!
+  email: String!
+  role: String
+  cellNumber: String
+  profile_pic_main: String
+  cover_pic_main: String
+  profile_pic: GalleryCreateManyInput
+  cover_pic: GalleryCreateManyInput
+  date_of_birth: String
+  gender: String
+  content: String
+  notification: NotificationCreateManyInput
+  unreadNotification: Int
+  agent_location: LocationCreateOneInput
+  gallery: GalleryCreateManyInput
+  social_profile: SocialCreateOneInput
+  reviews_maked: ReviewsCreateManyWithoutReviewAuthorIdInput
+  listed_posts: HotelCreateManyWithoutConnectIdInput
+  favourite_post: HotelCreateManyWithoutPeopleLikedInput
+  reviewed_post: HotelCreateManyWithoutPeopleReviewedInput
+  review_liked: ReviewsCreateManyWithoutPeopleLikedInput
+  stripeId: String
+  transaction_had: TransactionCreateManyWithoutTransactionHotelManagerInput
+  transaction_maked: TransactionCreateManyWithoutTransactionAuthorInput
+  coupons_maked: CouponCreateManyWithoutCouponAuthorInput
+}
+
+input UserCreateWithoutReview_likedInput {
+  id: ID
+  first_name: String!
+  last_name: String!
+  username: String!
+  password: String!
+  email: String!
+  role: String
+  cellNumber: String
+  profile_pic_main: String
+  cover_pic_main: String
+  profile_pic: GalleryCreateManyInput
+  cover_pic: GalleryCreateManyInput
+  date_of_birth: String
+  gender: String
+  content: String
+  notification: NotificationCreateManyInput
+  unreadNotification: Int
+  agent_location: LocationCreateOneInput
+  gallery: GalleryCreateManyInput
+  social_profile: SocialCreateOneInput
+  reviews_maked: ReviewsCreateManyWithoutReviewAuthorIdInput
+  listed_posts: HotelCreateManyWithoutConnectIdInput
+  favourite_post: HotelCreateManyWithoutPeopleLikedInput
+  reviewed_post: HotelCreateManyWithoutPeopleReviewedInput
+  review_disliked: ReviewsCreateManyWithoutPeopleDislikedInput
+  stripeId: String
+  transaction_had: TransactionCreateManyWithoutTransactionHotelManagerInput
+  transaction_maked: TransactionCreateManyWithoutTransactionAuthorInput
+  coupons_maked: CouponCreateManyWithoutCouponAuthorInput
+}
+
+input UserCreateWithoutReviewed_postInput {
+  id: ID
+  first_name: String!
+  last_name: String!
+  username: String!
+  password: String!
+  email: String!
+  role: String
+  cellNumber: String
+  profile_pic_main: String
+  cover_pic_main: String
+  profile_pic: GalleryCreateManyInput
+  cover_pic: GalleryCreateManyInput
+  date_of_birth: String
+  gender: String
+  content: String
+  notification: NotificationCreateManyInput
+  unreadNotification: Int
+  agent_location: LocationCreateOneInput
+  gallery: GalleryCreateManyInput
+  social_profile: SocialCreateOneInput
+  reviews_maked: ReviewsCreateManyWithoutReviewAuthorIdInput
+  listed_posts: HotelCreateManyWithoutConnectIdInput
+  favourite_post: HotelCreateManyWithoutPeopleLikedInput
+  review_liked: ReviewsCreateManyWithoutPeopleLikedInput
+  review_disliked: ReviewsCreateManyWithoutPeopleDislikedInput
+  stripeId: String
+  transaction_had: TransactionCreateManyWithoutTransactionHotelManagerInput
+  transaction_maked: TransactionCreateManyWithoutTransactionAuthorInput
+  coupons_maked: CouponCreateManyWithoutCouponAuthorInput
+}
+
+input UserCreateWithoutReviews_makedInput {
+  id: ID
+  first_name: String!
+  last_name: String!
+  username: String!
+  password: String!
+  email: String!
+  role: String
+  cellNumber: String
+  profile_pic_main: String
+  cover_pic_main: String
+  profile_pic: GalleryCreateManyInput
+  cover_pic: GalleryCreateManyInput
+  date_of_birth: String
+  gender: String
+  content: String
+  notification: NotificationCreateManyInput
+  unreadNotification: Int
+  agent_location: LocationCreateOneInput
+  gallery: GalleryCreateManyInput
+  social_profile: SocialCreateOneInput
+  listed_posts: HotelCreateManyWithoutConnectIdInput
+  favourite_post: HotelCreateManyWithoutPeopleLikedInput
+  reviewed_post: HotelCreateManyWithoutPeopleReviewedInput
+  review_liked: ReviewsCreateManyWithoutPeopleLikedInput
+  review_disliked: ReviewsCreateManyWithoutPeopleDislikedInput
+  stripeId: String
+  transaction_had: TransactionCreateManyWithoutTransactionHotelManagerInput
+  transaction_maked: TransactionCreateManyWithoutTransactionAuthorInput
+  coupons_maked: CouponCreateManyWithoutCouponAuthorInput
+}
+
+input UserCreateWithoutTransaction_hadInput {
+  id: ID
+  first_name: String!
+  last_name: String!
+  username: String!
+  password: String!
+  email: String!
+  role: String
+  cellNumber: String
+  profile_pic_main: String
+  cover_pic_main: String
+  profile_pic: GalleryCreateManyInput
+  cover_pic: GalleryCreateManyInput
+  date_of_birth: String
+  gender: String
+  content: String
+  notification: NotificationCreateManyInput
+  unreadNotification: Int
+  agent_location: LocationCreateOneInput
+  gallery: GalleryCreateManyInput
+  social_profile: SocialCreateOneInput
+  reviews_maked: ReviewsCreateManyWithoutReviewAuthorIdInput
+  listed_posts: HotelCreateManyWithoutConnectIdInput
+  favourite_post: HotelCreateManyWithoutPeopleLikedInput
+  reviewed_post: HotelCreateManyWithoutPeopleReviewedInput
+  review_liked: ReviewsCreateManyWithoutPeopleLikedInput
+  review_disliked: ReviewsCreateManyWithoutPeopleDislikedInput
+  stripeId: String
+  transaction_maked: TransactionCreateManyWithoutTransactionAuthorInput
+  coupons_maked: CouponCreateManyWithoutCouponAuthorInput
+}
+
+input UserCreateWithoutTransaction_makedInput {
+  id: ID
+  first_name: String!
+  last_name: String!
+  username: String!
+  password: String!
+  email: String!
+  role: String
+  cellNumber: String
+  profile_pic_main: String
+  cover_pic_main: String
+  profile_pic: GalleryCreateManyInput
+  cover_pic: GalleryCreateManyInput
+  date_of_birth: String
+  gender: String
+  content: String
+  notification: NotificationCreateManyInput
+  unreadNotification: Int
+  agent_location: LocationCreateOneInput
+  gallery: GalleryCreateManyInput
+  social_profile: SocialCreateOneInput
+  reviews_maked: ReviewsCreateManyWithoutReviewAuthorIdInput
+  listed_posts: HotelCreateManyWithoutConnectIdInput
+  favourite_post: HotelCreateManyWithoutPeopleLikedInput
+  reviewed_post: HotelCreateManyWithoutPeopleReviewedInput
+  review_liked: ReviewsCreateManyWithoutPeopleLikedInput
+  review_disliked: ReviewsCreateManyWithoutPeopleDislikedInput
+  stripeId: String
+  transaction_had: TransactionCreateManyWithoutTransactionHotelManagerInput
+  coupons_maked: CouponCreateManyWithoutCouponAuthorInput
 }
 
 type UserEdge {
@@ -2596,14 +6861,24 @@ enum UserOrderByInput {
   password_DESC
   email_ASC
   email_DESC
+  role_ASC
+  role_DESC
   cellNumber_ASC
   cellNumber_DESC
+  profile_pic_main_ASC
+  profile_pic_main_DESC
+  cover_pic_main_ASC
+  cover_pic_main_DESC
   date_of_birth_ASC
   date_of_birth_DESC
   gender_ASC
   gender_DESC
   content_ASC
   content_DESC
+  unreadNotification_ASC
+  unreadNotification_DESC
+  stripeId_ASC
+  stripeId_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -2617,10 +6892,15 @@ type UserPreviousValues {
   username: String!
   password: String!
   email: String!
+  role: String
   cellNumber: String
+  profile_pic_main: String
+  cover_pic_main: String
   date_of_birth: String
   gender: String
   content: String
+  unreadNotification: Int
+  stripeId: String
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -2710,6 +6990,20 @@ input UserScalarWhereInput {
   email_not_starts_with: String
   email_ends_with: String
   email_not_ends_with: String
+  role: String
+  role_not: String
+  role_in: [String!]
+  role_not_in: [String!]
+  role_lt: String
+  role_lte: String
+  role_gt: String
+  role_gte: String
+  role_contains: String
+  role_not_contains: String
+  role_starts_with: String
+  role_not_starts_with: String
+  role_ends_with: String
+  role_not_ends_with: String
   cellNumber: String
   cellNumber_not: String
   cellNumber_in: [String!]
@@ -2724,6 +7018,34 @@ input UserScalarWhereInput {
   cellNumber_not_starts_with: String
   cellNumber_ends_with: String
   cellNumber_not_ends_with: String
+  profile_pic_main: String
+  profile_pic_main_not: String
+  profile_pic_main_in: [String!]
+  profile_pic_main_not_in: [String!]
+  profile_pic_main_lt: String
+  profile_pic_main_lte: String
+  profile_pic_main_gt: String
+  profile_pic_main_gte: String
+  profile_pic_main_contains: String
+  profile_pic_main_not_contains: String
+  profile_pic_main_starts_with: String
+  profile_pic_main_not_starts_with: String
+  profile_pic_main_ends_with: String
+  profile_pic_main_not_ends_with: String
+  cover_pic_main: String
+  cover_pic_main_not: String
+  cover_pic_main_in: [String!]
+  cover_pic_main_not_in: [String!]
+  cover_pic_main_lt: String
+  cover_pic_main_lte: String
+  cover_pic_main_gt: String
+  cover_pic_main_gte: String
+  cover_pic_main_contains: String
+  cover_pic_main_not_contains: String
+  cover_pic_main_starts_with: String
+  cover_pic_main_not_starts_with: String
+  cover_pic_main_ends_with: String
+  cover_pic_main_not_ends_with: String
   date_of_birth: String
   date_of_birth_not: String
   date_of_birth_in: [String!]
@@ -2766,6 +7088,28 @@ input UserScalarWhereInput {
   content_not_starts_with: String
   content_ends_with: String
   content_not_ends_with: String
+  unreadNotification: Int
+  unreadNotification_not: Int
+  unreadNotification_in: [Int!]
+  unreadNotification_not_in: [Int!]
+  unreadNotification_lt: Int
+  unreadNotification_lte: Int
+  unreadNotification_gt: Int
+  unreadNotification_gte: Int
+  stripeId: String
+  stripeId_not: String
+  stripeId_in: [String!]
+  stripeId_not_in: [String!]
+  stripeId_lt: String
+  stripeId_lte: String
+  stripeId_gt: String
+  stripeId_gte: String
+  stripeId_contains: String
+  stripeId_not_contains: String
+  stripeId_starts_with: String
+  stripeId_not_starts_with: String
+  stripeId_ends_with: String
+  stripeId_not_ends_with: String
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
@@ -2811,17 +7155,30 @@ input UserUpdateInput {
   username: String
   password: String
   email: String
+  role: String
   cellNumber: String
+  profile_pic_main: String
+  cover_pic_main: String
   profile_pic: GalleryUpdateManyInput
   cover_pic: GalleryUpdateManyInput
   date_of_birth: String
   gender: String
   content: String
+  notification: NotificationUpdateManyInput
+  unreadNotification: Int
   agent_location: LocationUpdateOneInput
   gallery: GalleryUpdateManyInput
   social_profile: SocialUpdateOneInput
+  reviews_maked: ReviewsUpdateManyWithoutReviewAuthorIdInput
   listed_posts: HotelUpdateManyWithoutConnectIdInput
   favourite_post: HotelUpdateManyWithoutPeopleLikedInput
+  reviewed_post: HotelUpdateManyWithoutPeopleReviewedInput
+  review_liked: ReviewsUpdateManyWithoutPeopleLikedInput
+  review_disliked: ReviewsUpdateManyWithoutPeopleDislikedInput
+  stripeId: String
+  transaction_had: TransactionUpdateManyWithoutTransactionHotelManagerInput
+  transaction_maked: TransactionUpdateManyWithoutTransactionAuthorInput
+  coupons_maked: CouponUpdateManyWithoutCouponAuthorInput
 }
 
 input UserUpdateManyDataInput {
@@ -2830,10 +7187,15 @@ input UserUpdateManyDataInput {
   username: String
   password: String
   email: String
+  role: String
   cellNumber: String
+  profile_pic_main: String
+  cover_pic_main: String
   date_of_birth: String
   gender: String
   content: String
+  unreadNotification: Int
+  stripeId: String
 }
 
 input UserUpdateManyMutationInput {
@@ -2842,10 +7204,15 @@ input UserUpdateManyMutationInput {
   username: String
   password: String
   email: String
+  role: String
   cellNumber: String
+  profile_pic_main: String
+  cover_pic_main: String
   date_of_birth: String
   gender: String
   content: String
+  unreadNotification: Int
+  stripeId: String
 }
 
 input UserUpdateManyWithoutFavourite_postInput {
@@ -2860,9 +7227,54 @@ input UserUpdateManyWithoutFavourite_postInput {
   updateMany: [UserUpdateManyWithWhereNestedInput!]
 }
 
+input UserUpdateManyWithoutReview_dislikedInput {
+  create: [UserCreateWithoutReview_dislikedInput!]
+  delete: [UserWhereUniqueInput!]
+  connect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  update: [UserUpdateWithWhereUniqueWithoutReview_dislikedInput!]
+  upsert: [UserUpsertWithWhereUniqueWithoutReview_dislikedInput!]
+  deleteMany: [UserScalarWhereInput!]
+  updateMany: [UserUpdateManyWithWhereNestedInput!]
+}
+
+input UserUpdateManyWithoutReview_likedInput {
+  create: [UserCreateWithoutReview_likedInput!]
+  delete: [UserWhereUniqueInput!]
+  connect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  update: [UserUpdateWithWhereUniqueWithoutReview_likedInput!]
+  upsert: [UserUpsertWithWhereUniqueWithoutReview_likedInput!]
+  deleteMany: [UserScalarWhereInput!]
+  updateMany: [UserUpdateManyWithWhereNestedInput!]
+}
+
+input UserUpdateManyWithoutReviewed_postInput {
+  create: [UserCreateWithoutReviewed_postInput!]
+  delete: [UserWhereUniqueInput!]
+  connect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  update: [UserUpdateWithWhereUniqueWithoutReviewed_postInput!]
+  upsert: [UserUpsertWithWhereUniqueWithoutReviewed_postInput!]
+  deleteMany: [UserScalarWhereInput!]
+  updateMany: [UserUpdateManyWithWhereNestedInput!]
+}
+
 input UserUpdateManyWithWhereNestedInput {
   where: UserScalarWhereInput!
   data: UserUpdateManyDataInput!
+}
+
+input UserUpdateOneWithoutCoupons_makedInput {
+  create: UserCreateWithoutCoupons_makedInput
+  update: UserUpdateWithoutCoupons_makedDataInput
+  upsert: UserUpsertWithoutCoupons_makedInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: UserWhereUniqueInput
 }
 
 input UserUpdateOneWithoutListed_postsInput {
@@ -2874,22 +7286,93 @@ input UserUpdateOneWithoutListed_postsInput {
   connect: UserWhereUniqueInput
 }
 
+input UserUpdateOneWithoutReviews_makedInput {
+  create: UserCreateWithoutReviews_makedInput
+  update: UserUpdateWithoutReviews_makedDataInput
+  upsert: UserUpsertWithoutReviews_makedInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateOneWithoutTransaction_hadInput {
+  create: UserCreateWithoutTransaction_hadInput
+  update: UserUpdateWithoutTransaction_hadDataInput
+  upsert: UserUpsertWithoutTransaction_hadInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateOneWithoutTransaction_makedInput {
+  create: UserCreateWithoutTransaction_makedInput
+  update: UserUpdateWithoutTransaction_makedDataInput
+  upsert: UserUpsertWithoutTransaction_makedInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateWithoutCoupons_makedDataInput {
+  first_name: String
+  last_name: String
+  username: String
+  password: String
+  email: String
+  role: String
+  cellNumber: String
+  profile_pic_main: String
+  cover_pic_main: String
+  profile_pic: GalleryUpdateManyInput
+  cover_pic: GalleryUpdateManyInput
+  date_of_birth: String
+  gender: String
+  content: String
+  notification: NotificationUpdateManyInput
+  unreadNotification: Int
+  agent_location: LocationUpdateOneInput
+  gallery: GalleryUpdateManyInput
+  social_profile: SocialUpdateOneInput
+  reviews_maked: ReviewsUpdateManyWithoutReviewAuthorIdInput
+  listed_posts: HotelUpdateManyWithoutConnectIdInput
+  favourite_post: HotelUpdateManyWithoutPeopleLikedInput
+  reviewed_post: HotelUpdateManyWithoutPeopleReviewedInput
+  review_liked: ReviewsUpdateManyWithoutPeopleLikedInput
+  review_disliked: ReviewsUpdateManyWithoutPeopleDislikedInput
+  stripeId: String
+  transaction_had: TransactionUpdateManyWithoutTransactionHotelManagerInput
+  transaction_maked: TransactionUpdateManyWithoutTransactionAuthorInput
+}
+
 input UserUpdateWithoutFavourite_postDataInput {
   first_name: String
   last_name: String
   username: String
   password: String
   email: String
+  role: String
   cellNumber: String
+  profile_pic_main: String
+  cover_pic_main: String
   profile_pic: GalleryUpdateManyInput
   cover_pic: GalleryUpdateManyInput
   date_of_birth: String
   gender: String
   content: String
+  notification: NotificationUpdateManyInput
+  unreadNotification: Int
   agent_location: LocationUpdateOneInput
   gallery: GalleryUpdateManyInput
   social_profile: SocialUpdateOneInput
+  reviews_maked: ReviewsUpdateManyWithoutReviewAuthorIdInput
   listed_posts: HotelUpdateManyWithoutConnectIdInput
+  reviewed_post: HotelUpdateManyWithoutPeopleReviewedInput
+  review_liked: ReviewsUpdateManyWithoutPeopleLikedInput
+  review_disliked: ReviewsUpdateManyWithoutPeopleDislikedInput
+  stripeId: String
+  transaction_had: TransactionUpdateManyWithoutTransactionHotelManagerInput
+  transaction_maked: TransactionUpdateManyWithoutTransactionAuthorInput
+  coupons_maked: CouponUpdateManyWithoutCouponAuthorInput
 }
 
 input UserUpdateWithoutListed_postsDataInput {
@@ -2898,16 +7381,215 @@ input UserUpdateWithoutListed_postsDataInput {
   username: String
   password: String
   email: String
+  role: String
   cellNumber: String
+  profile_pic_main: String
+  cover_pic_main: String
   profile_pic: GalleryUpdateManyInput
   cover_pic: GalleryUpdateManyInput
   date_of_birth: String
   gender: String
   content: String
+  notification: NotificationUpdateManyInput
+  unreadNotification: Int
   agent_location: LocationUpdateOneInput
   gallery: GalleryUpdateManyInput
   social_profile: SocialUpdateOneInput
+  reviews_maked: ReviewsUpdateManyWithoutReviewAuthorIdInput
   favourite_post: HotelUpdateManyWithoutPeopleLikedInput
+  reviewed_post: HotelUpdateManyWithoutPeopleReviewedInput
+  review_liked: ReviewsUpdateManyWithoutPeopleLikedInput
+  review_disliked: ReviewsUpdateManyWithoutPeopleDislikedInput
+  stripeId: String
+  transaction_had: TransactionUpdateManyWithoutTransactionHotelManagerInput
+  transaction_maked: TransactionUpdateManyWithoutTransactionAuthorInput
+  coupons_maked: CouponUpdateManyWithoutCouponAuthorInput
+}
+
+input UserUpdateWithoutReview_dislikedDataInput {
+  first_name: String
+  last_name: String
+  username: String
+  password: String
+  email: String
+  role: String
+  cellNumber: String
+  profile_pic_main: String
+  cover_pic_main: String
+  profile_pic: GalleryUpdateManyInput
+  cover_pic: GalleryUpdateManyInput
+  date_of_birth: String
+  gender: String
+  content: String
+  notification: NotificationUpdateManyInput
+  unreadNotification: Int
+  agent_location: LocationUpdateOneInput
+  gallery: GalleryUpdateManyInput
+  social_profile: SocialUpdateOneInput
+  reviews_maked: ReviewsUpdateManyWithoutReviewAuthorIdInput
+  listed_posts: HotelUpdateManyWithoutConnectIdInput
+  favourite_post: HotelUpdateManyWithoutPeopleLikedInput
+  reviewed_post: HotelUpdateManyWithoutPeopleReviewedInput
+  review_liked: ReviewsUpdateManyWithoutPeopleLikedInput
+  stripeId: String
+  transaction_had: TransactionUpdateManyWithoutTransactionHotelManagerInput
+  transaction_maked: TransactionUpdateManyWithoutTransactionAuthorInput
+  coupons_maked: CouponUpdateManyWithoutCouponAuthorInput
+}
+
+input UserUpdateWithoutReview_likedDataInput {
+  first_name: String
+  last_name: String
+  username: String
+  password: String
+  email: String
+  role: String
+  cellNumber: String
+  profile_pic_main: String
+  cover_pic_main: String
+  profile_pic: GalleryUpdateManyInput
+  cover_pic: GalleryUpdateManyInput
+  date_of_birth: String
+  gender: String
+  content: String
+  notification: NotificationUpdateManyInput
+  unreadNotification: Int
+  agent_location: LocationUpdateOneInput
+  gallery: GalleryUpdateManyInput
+  social_profile: SocialUpdateOneInput
+  reviews_maked: ReviewsUpdateManyWithoutReviewAuthorIdInput
+  listed_posts: HotelUpdateManyWithoutConnectIdInput
+  favourite_post: HotelUpdateManyWithoutPeopleLikedInput
+  reviewed_post: HotelUpdateManyWithoutPeopleReviewedInput
+  review_disliked: ReviewsUpdateManyWithoutPeopleDislikedInput
+  stripeId: String
+  transaction_had: TransactionUpdateManyWithoutTransactionHotelManagerInput
+  transaction_maked: TransactionUpdateManyWithoutTransactionAuthorInput
+  coupons_maked: CouponUpdateManyWithoutCouponAuthorInput
+}
+
+input UserUpdateWithoutReviewed_postDataInput {
+  first_name: String
+  last_name: String
+  username: String
+  password: String
+  email: String
+  role: String
+  cellNumber: String
+  profile_pic_main: String
+  cover_pic_main: String
+  profile_pic: GalleryUpdateManyInput
+  cover_pic: GalleryUpdateManyInput
+  date_of_birth: String
+  gender: String
+  content: String
+  notification: NotificationUpdateManyInput
+  unreadNotification: Int
+  agent_location: LocationUpdateOneInput
+  gallery: GalleryUpdateManyInput
+  social_profile: SocialUpdateOneInput
+  reviews_maked: ReviewsUpdateManyWithoutReviewAuthorIdInput
+  listed_posts: HotelUpdateManyWithoutConnectIdInput
+  favourite_post: HotelUpdateManyWithoutPeopleLikedInput
+  review_liked: ReviewsUpdateManyWithoutPeopleLikedInput
+  review_disliked: ReviewsUpdateManyWithoutPeopleDislikedInput
+  stripeId: String
+  transaction_had: TransactionUpdateManyWithoutTransactionHotelManagerInput
+  transaction_maked: TransactionUpdateManyWithoutTransactionAuthorInput
+  coupons_maked: CouponUpdateManyWithoutCouponAuthorInput
+}
+
+input UserUpdateWithoutReviews_makedDataInput {
+  first_name: String
+  last_name: String
+  username: String
+  password: String
+  email: String
+  role: String
+  cellNumber: String
+  profile_pic_main: String
+  cover_pic_main: String
+  profile_pic: GalleryUpdateManyInput
+  cover_pic: GalleryUpdateManyInput
+  date_of_birth: String
+  gender: String
+  content: String
+  notification: NotificationUpdateManyInput
+  unreadNotification: Int
+  agent_location: LocationUpdateOneInput
+  gallery: GalleryUpdateManyInput
+  social_profile: SocialUpdateOneInput
+  listed_posts: HotelUpdateManyWithoutConnectIdInput
+  favourite_post: HotelUpdateManyWithoutPeopleLikedInput
+  reviewed_post: HotelUpdateManyWithoutPeopleReviewedInput
+  review_liked: ReviewsUpdateManyWithoutPeopleLikedInput
+  review_disliked: ReviewsUpdateManyWithoutPeopleDislikedInput
+  stripeId: String
+  transaction_had: TransactionUpdateManyWithoutTransactionHotelManagerInput
+  transaction_maked: TransactionUpdateManyWithoutTransactionAuthorInput
+  coupons_maked: CouponUpdateManyWithoutCouponAuthorInput
+}
+
+input UserUpdateWithoutTransaction_hadDataInput {
+  first_name: String
+  last_name: String
+  username: String
+  password: String
+  email: String
+  role: String
+  cellNumber: String
+  profile_pic_main: String
+  cover_pic_main: String
+  profile_pic: GalleryUpdateManyInput
+  cover_pic: GalleryUpdateManyInput
+  date_of_birth: String
+  gender: String
+  content: String
+  notification: NotificationUpdateManyInput
+  unreadNotification: Int
+  agent_location: LocationUpdateOneInput
+  gallery: GalleryUpdateManyInput
+  social_profile: SocialUpdateOneInput
+  reviews_maked: ReviewsUpdateManyWithoutReviewAuthorIdInput
+  listed_posts: HotelUpdateManyWithoutConnectIdInput
+  favourite_post: HotelUpdateManyWithoutPeopleLikedInput
+  reviewed_post: HotelUpdateManyWithoutPeopleReviewedInput
+  review_liked: ReviewsUpdateManyWithoutPeopleLikedInput
+  review_disliked: ReviewsUpdateManyWithoutPeopleDislikedInput
+  stripeId: String
+  transaction_maked: TransactionUpdateManyWithoutTransactionAuthorInput
+  coupons_maked: CouponUpdateManyWithoutCouponAuthorInput
+}
+
+input UserUpdateWithoutTransaction_makedDataInput {
+  first_name: String
+  last_name: String
+  username: String
+  password: String
+  email: String
+  role: String
+  cellNumber: String
+  profile_pic_main: String
+  cover_pic_main: String
+  profile_pic: GalleryUpdateManyInput
+  cover_pic: GalleryUpdateManyInput
+  date_of_birth: String
+  gender: String
+  content: String
+  notification: NotificationUpdateManyInput
+  unreadNotification: Int
+  agent_location: LocationUpdateOneInput
+  gallery: GalleryUpdateManyInput
+  social_profile: SocialUpdateOneInput
+  reviews_maked: ReviewsUpdateManyWithoutReviewAuthorIdInput
+  listed_posts: HotelUpdateManyWithoutConnectIdInput
+  favourite_post: HotelUpdateManyWithoutPeopleLikedInput
+  reviewed_post: HotelUpdateManyWithoutPeopleReviewedInput
+  review_liked: ReviewsUpdateManyWithoutPeopleLikedInput
+  review_disliked: ReviewsUpdateManyWithoutPeopleDislikedInput
+  stripeId: String
+  transaction_had: TransactionUpdateManyWithoutTransactionHotelManagerInput
+  coupons_maked: CouponUpdateManyWithoutCouponAuthorInput
 }
 
 input UserUpdateWithWhereUniqueWithoutFavourite_postInput {
@@ -2915,15 +7597,68 @@ input UserUpdateWithWhereUniqueWithoutFavourite_postInput {
   data: UserUpdateWithoutFavourite_postDataInput!
 }
 
+input UserUpdateWithWhereUniqueWithoutReview_dislikedInput {
+  where: UserWhereUniqueInput!
+  data: UserUpdateWithoutReview_dislikedDataInput!
+}
+
+input UserUpdateWithWhereUniqueWithoutReview_likedInput {
+  where: UserWhereUniqueInput!
+  data: UserUpdateWithoutReview_likedDataInput!
+}
+
+input UserUpdateWithWhereUniqueWithoutReviewed_postInput {
+  where: UserWhereUniqueInput!
+  data: UserUpdateWithoutReviewed_postDataInput!
+}
+
+input UserUpsertWithoutCoupons_makedInput {
+  update: UserUpdateWithoutCoupons_makedDataInput!
+  create: UserCreateWithoutCoupons_makedInput!
+}
+
 input UserUpsertWithoutListed_postsInput {
   update: UserUpdateWithoutListed_postsDataInput!
   create: UserCreateWithoutListed_postsInput!
+}
+
+input UserUpsertWithoutReviews_makedInput {
+  update: UserUpdateWithoutReviews_makedDataInput!
+  create: UserCreateWithoutReviews_makedInput!
+}
+
+input UserUpsertWithoutTransaction_hadInput {
+  update: UserUpdateWithoutTransaction_hadDataInput!
+  create: UserCreateWithoutTransaction_hadInput!
+}
+
+input UserUpsertWithoutTransaction_makedInput {
+  update: UserUpdateWithoutTransaction_makedDataInput!
+  create: UserCreateWithoutTransaction_makedInput!
 }
 
 input UserUpsertWithWhereUniqueWithoutFavourite_postInput {
   where: UserWhereUniqueInput!
   update: UserUpdateWithoutFavourite_postDataInput!
   create: UserCreateWithoutFavourite_postInput!
+}
+
+input UserUpsertWithWhereUniqueWithoutReview_dislikedInput {
+  where: UserWhereUniqueInput!
+  update: UserUpdateWithoutReview_dislikedDataInput!
+  create: UserCreateWithoutReview_dislikedInput!
+}
+
+input UserUpsertWithWhereUniqueWithoutReview_likedInput {
+  where: UserWhereUniqueInput!
+  update: UserUpdateWithoutReview_likedDataInput!
+  create: UserCreateWithoutReview_likedInput!
+}
+
+input UserUpsertWithWhereUniqueWithoutReviewed_postInput {
+  where: UserWhereUniqueInput!
+  update: UserUpdateWithoutReviewed_postDataInput!
+  create: UserCreateWithoutReviewed_postInput!
 }
 
 input UserWhereInput {
@@ -3011,6 +7746,20 @@ input UserWhereInput {
   email_not_starts_with: String
   email_ends_with: String
   email_not_ends_with: String
+  role: String
+  role_not: String
+  role_in: [String!]
+  role_not_in: [String!]
+  role_lt: String
+  role_lte: String
+  role_gt: String
+  role_gte: String
+  role_contains: String
+  role_not_contains: String
+  role_starts_with: String
+  role_not_starts_with: String
+  role_ends_with: String
+  role_not_ends_with: String
   cellNumber: String
   cellNumber_not: String
   cellNumber_in: [String!]
@@ -3025,6 +7774,34 @@ input UserWhereInput {
   cellNumber_not_starts_with: String
   cellNumber_ends_with: String
   cellNumber_not_ends_with: String
+  profile_pic_main: String
+  profile_pic_main_not: String
+  profile_pic_main_in: [String!]
+  profile_pic_main_not_in: [String!]
+  profile_pic_main_lt: String
+  profile_pic_main_lte: String
+  profile_pic_main_gt: String
+  profile_pic_main_gte: String
+  profile_pic_main_contains: String
+  profile_pic_main_not_contains: String
+  profile_pic_main_starts_with: String
+  profile_pic_main_not_starts_with: String
+  profile_pic_main_ends_with: String
+  profile_pic_main_not_ends_with: String
+  cover_pic_main: String
+  cover_pic_main_not: String
+  cover_pic_main_in: [String!]
+  cover_pic_main_not_in: [String!]
+  cover_pic_main_lt: String
+  cover_pic_main_lte: String
+  cover_pic_main_gt: String
+  cover_pic_main_gte: String
+  cover_pic_main_contains: String
+  cover_pic_main_not_contains: String
+  cover_pic_main_starts_with: String
+  cover_pic_main_not_starts_with: String
+  cover_pic_main_ends_with: String
+  cover_pic_main_not_ends_with: String
   profile_pic_every: GalleryWhereInput
   profile_pic_some: GalleryWhereInput
   profile_pic_none: GalleryWhereInput
@@ -3073,17 +7850,63 @@ input UserWhereInput {
   content_not_starts_with: String
   content_ends_with: String
   content_not_ends_with: String
+  notification_every: NotificationWhereInput
+  notification_some: NotificationWhereInput
+  notification_none: NotificationWhereInput
+  unreadNotification: Int
+  unreadNotification_not: Int
+  unreadNotification_in: [Int!]
+  unreadNotification_not_in: [Int!]
+  unreadNotification_lt: Int
+  unreadNotification_lte: Int
+  unreadNotification_gt: Int
+  unreadNotification_gte: Int
   agent_location: LocationWhereInput
   gallery_every: GalleryWhereInput
   gallery_some: GalleryWhereInput
   gallery_none: GalleryWhereInput
   social_profile: SocialWhereInput
+  reviews_maked_every: ReviewsWhereInput
+  reviews_maked_some: ReviewsWhereInput
+  reviews_maked_none: ReviewsWhereInput
   listed_posts_every: HotelWhereInput
   listed_posts_some: HotelWhereInput
   listed_posts_none: HotelWhereInput
   favourite_post_every: HotelWhereInput
   favourite_post_some: HotelWhereInput
   favourite_post_none: HotelWhereInput
+  reviewed_post_every: HotelWhereInput
+  reviewed_post_some: HotelWhereInput
+  reviewed_post_none: HotelWhereInput
+  review_liked_every: ReviewsWhereInput
+  review_liked_some: ReviewsWhereInput
+  review_liked_none: ReviewsWhereInput
+  review_disliked_every: ReviewsWhereInput
+  review_disliked_some: ReviewsWhereInput
+  review_disliked_none: ReviewsWhereInput
+  stripeId: String
+  stripeId_not: String
+  stripeId_in: [String!]
+  stripeId_not_in: [String!]
+  stripeId_lt: String
+  stripeId_lte: String
+  stripeId_gt: String
+  stripeId_gte: String
+  stripeId_contains: String
+  stripeId_not_contains: String
+  stripeId_starts_with: String
+  stripeId_not_starts_with: String
+  stripeId_ends_with: String
+  stripeId_not_ends_with: String
+  transaction_had_every: TransactionWhereInput
+  transaction_had_some: TransactionWhereInput
+  transaction_had_none: TransactionWhereInput
+  transaction_maked_every: TransactionWhereInput
+  transaction_maked_some: TransactionWhereInput
+  transaction_maked_none: TransactionWhereInput
+  coupons_maked_every: CouponWhereInput
+  coupons_maked_some: CouponWhereInput
+  coupons_maked_none: CouponWhereInput
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
