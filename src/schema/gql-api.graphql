@@ -1,10 +1,13 @@
+##GraphQL SDL
 type User {
   id: ID!
   first_name: String!
   last_name: String!
   username: String!
+  stripeId: String
   password: String!
   email: String!
+  role: String
   cellNumber: String
   profile_pic_main: String
   cover_pic_main: String
@@ -18,8 +21,15 @@ type User {
   social_profile: Social
   reviews_maked: [ReviewFields]
   listed_posts: [Hotel]
+  notification: [Notification]
+  unreadNotification: Int
   favourite_post: [Hotel]
   reviewed_post: [Hotel]
+  review_liked: [Reviews]
+  review_disliked: [Reviews]
+  transaction_had: [Transaction]
+  transaction_maked: [Transaction]
+  coupons_maked: [Coupon]
   createdAt: String!
   updatedAt: String!
 }
@@ -33,15 +43,16 @@ type Hotel {
   id: ID!
   peopleLiked: [User]
   peopleReviewed: [User]
+  couponsAvailable: [Coupon]
   connectId: User
   agentId: String
-  agentEmail: String 
+  agentEmail: String
   agentName: String
   title: String
   slug: String
   status: String
   content: String
-  price: String
+  price: Int
   isNegotiable: Boolean
   propertyType: String
   condition: String
@@ -59,10 +70,59 @@ type Hotel {
   updatedAt: String!
 }
 
+type Transaction {
+  TXID: ID!
+  transactionSecretKey: String
+  transactionHotelName: String
+  transactionHotelManager: User
+  transactionHotelManagerId: String
+  transactionHotelId: String
+  transactionHotelType: String
+  transactionPrice: Int
+  transactionAuthor: User
+  transactionAuthorId: String
+  transactionAuthorName: String
+  transactionAuthorEmail: String
+  transactionAuthorContactNumber: String
+  transactionAuthorSpecial: String ##Cho đủ field
+  transactionAuthorNote: String
+  transactionLocationLat: Float
+  transactionLocationLng: Float
+  transactionLocationFormattedAddress: String
+  transactionRange: Int
+  transactionStatus: String
+  transactionCoupon: String
+  transactionCouponType: Int
+  transactionCouponValue: Int
+  transactionStartDate: String
+  transactionEndDate: String
+  transactionStripeId: String
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Coupon {
+  couponId: ID!
+  couponName: String!
+  couponDescription: String
+  couponAuthor: User
+  couponAuthorId: String
+  couponType: Int
+  couponValue: Int
+  couponQuantity: Int
+  couponStartDate: String
+  couponEndDate: String
+  couponRange: Int
+  couponTarget: [Hotel]
+  createdAt: String!
+  updatedAt: String!
+}
 type Reviews {
   reviewID: ID!
   reviewTitle: String
   reviewText: String
+  peopleLiked: [User]
+  peopleDisliked: [User]
   reviewTips: String
   sortOfTrip: String
   reviewAuthorId: User
@@ -78,6 +138,8 @@ type Reviews {
   reviewDate: String
   reviewOptional: [ReviewOptionals]
   reviewFields: [ReviewFields]
+  createdAt: String!
+  updatedAt: String!
 }
 
 type ReviewOptionals {
@@ -163,9 +225,29 @@ type Query {
   favouritePostsHeart(id: ID!): User
   getUserInfo(id: ID!): User
   getUserGallery(id: ID!): User
-  getHotelInfo(id: ID!): Hotel
-  getHotelReviews(id: ID!): Hotel
   getUserReviews(id: ID!): User
+  getUserNotification(id: ID!): [Notification]
+  getUserUnreadNotification(id: ID!): User
+  getHotelInfo(id: ID!): Hotel
+  getHotelReviews(id: ID!): [Reviews] ## Nen tao them 1 folder model Review
+  getHotelCoupons(id: ID!): [Coupon]
+  getHotelManagerCoupons: [Coupon]
+  getReviewsLikeDislike(id: ID!): Reviews
+  getAllHotels(
+    location: LocationInput
+    type: String
+    search: SearchInput
+    amenities: AmenitiesSearchInput
+    property: [String]
+  ): [Hotel]
+  getFilteredHotels(
+    location: String
+    search: SearchInput
+    amenities: AmenitiesSearchInput
+    property: [String]
+  ): [Hotel]
+  getTransactionsHaving(orderBy: String): [Transaction]
+  getTransactionDetails(transactionSecretKey: String): [Transaction] ## Trả về Fragmentable Array
 }
 type Mutation {
   signup(signUpInput: SignUpInput): AuthPayload!
@@ -176,6 +258,10 @@ type Mutation {
     image: [ImageInput]
     categories: [CategoriesInput]
   ): Hotel!
+  sortHotel(type: String): [Hotel]
+  likeHotel(id: ID!): Hotel
+  dislikeHotel(id: ID!): Hotel
+  filterHotels(search: SearchInput, amenities: AmenitiesSearchInput): [Hotel]
   createLocation(location: LocationInput): Location!
   updateProfile(
     profile: UpdateProfileInput
@@ -189,10 +275,22 @@ type Mutation {
   updatePassword(password: UpdatePassword): User!
   forgetPassword(email: String): User
   sendContact(contact: ContactInput): User
-  likeHotel(id: ID!): Hotel
-  dislikeHotel(id: ID!): Hotel
   makeReviews(reviews: ReviewInput, hotelId: ID): Hotel
-  mockData(mock: MockInput): User
+  likeOrDislikeReview(id: ID!, type: Int): Reviews
+  checkNotification(id: ID!): User
+  readNotification(query: String): User
+  deleteAllNotifications(id: ID!): User
+  createTransaction(
+    transaction: TransactionInput
+    hotelId: String
+    userId: String
+    coupon: CouponCheckedPayload
+  ): Transaction ##userId có thể không có - không bắt login
+  createCoupon(coupon: CouponInput, hotelsId: [String], type: Int): [Coupon]
+  checkCoupon(hotelId: String, couponName: String): Coupon
+  processTransactions(id: [String], type: Int): Transaction
+  deleteCoupons(id: [String]): [Coupon]
+  updateStripeId(stripeId: String, type: String): User
 }
 input ReviewInput {
   reviewOverall: Float
@@ -263,16 +361,18 @@ input CategoriesInput {
 }
 input AddHotelInput {
   hotelName: String
-  pricePerNight: String
+  pricePerNight: Int
   hotelDetails: String
   guest: Int
-  beds: Int
+  rooms: Int
   price: Int
   # Co the khong can nhung nen ghi vo cho de hieu
   hotelPhotos: [ImageInput]
   location: [LocationInput]
   locationDescription: String
   contactNumber: String
+  propertyType: String
+  isNegotiable: Boolean
   wifiAvailability: Boolean
   airCondition: Boolean
   parking: Boolean
@@ -303,7 +403,53 @@ input ContactInput {
 input MockInput {
   title: [String]
 }
-# Realtime
+input AmenitiesSearchInput {
+  wifiAvailability: Boolean
+  poolAvailability: Boolean
+  parkingAvailability: Boolean
+  airCondition: Boolean
+  rooms: Int
+  guest: Int
+}
+input SearchInput {
+  minPrice: Int
+  maxPrice: Int
+}
+input TransactionInput {
+  transactionHotelName: String
+  transactionHotelManagerId: String
+  transactionHotelType: String
+  transactionPrice: Int
+  transactionAuthorName: String
+  transactionAuthorEmail: String
+  transactionAuthorContactNumber: String
+  transactionAuthorSpecial: String ##Cho đủ field
+  transactionAuthorNote: String
+  transactionLocationFormattedAddress: String
+  transactionLocationLat: Float
+  transactionLocationLng: Float
+  transactionRange: Int
+  transactionStartDate: String
+  transactionEndDate: String
+  transactionStripeId: String
+}
+input CouponInput {
+  couponName: String!
+  couponDescription: String
+  couponType: Int
+  couponValue: Int
+  couponQuantity: Int
+  couponStartDate: String
+  couponEndDate: String
+  couponRange: Int
+}
+input CouponCheckedPayload {
+  couponId: ID
+  couponName: String
+  couponValue: Int
+  couponType: Int
+}
+# Realtime Section
 type Query {
   noop: Boolean
 }
@@ -314,7 +460,11 @@ type Mutation {
 
 type Subscription {
   pong: Pong
-  notification(channelId: String): Message
+  unreadNotification(channelId: String): Unread
+  notificationBell(channelId: String): Notification
+  realtimeReviews(hotelId: String): Reviews
+  realtimeLikeDislike(reviewID: String): Reviews
+  realtimeNotiTransaction(userId: String): Notification
 }
 type Message {
   # Có thể cho user nếu muốn routing nữa
@@ -325,7 +475,26 @@ type Message {
   hotelManagerId: String
   reviewTitle: String
   reviewText: String
+  peopleReviewedQuanity: Int
   peopleReviewedArr: [User]
+}
+type Notification {
+  id: ID!
+  reviewAuthorName: String
+  reviewedHotelName: String
+  reviewTitle: String
+  reviewText: String
+  userNotificationId: String
+  peopleReviewedQuantity: Int
+  query: String
+  reviewAuthorProfilePic: String
+  read: Boolean
+  old: Boolean
+  createdAt: String!
+  updatedAt: String!
+}
+type Unread {
+  unreadNotification: Int
 }
 type Ping {
   id: ID
