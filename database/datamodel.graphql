@@ -5,46 +5,99 @@ type User {
   username: String!
   password: String!
   email: String! @unique
+  role: String
   cellNumber: String @defailt(value: "0000")
+  profile_pic_main: String
+  cover_pic_main: String
   profile_pic: [Gallery] @relation(link: INLINE, name: "Profile")
   cover_pic: [Gallery] @relation(link: INLINE, name: "Cover")
   date_of_birth: String
   gender: String
   content: String
+  notification: [Notification] @relation(link: INLINE, name: "Notification")
+  unreadNotification: Int @default(value: 0)
   agent_location: Location @relation(link: INLINE)
   gallery: [Gallery] @relation(link: INLINE, name: "User_gallery")
   social_profile: Social @relation(link: INLINE)
   # 1 field sử dụng cùng 1 model thì phải khai báo relation name để specify các loại relations
+  reviews_maked: [Reviews] @relation(name: "Reviews_maked")
   listed_posts: [Hotel] @relation(link: INLINE, name: "Hotel_created")
   favourite_post: [Hotel] @relation(link: INLINE, name: "Hotel_liked")
+  reviewed_post: [Hotel] @relation(link: INLINE, name: "Hotel_reviewed")
+  review_liked: [Reviews] @relation(name: "Review_liked")
+  review_disliked: [Reviews] @relation(name: "Review_disliked")
+  stripeId: String
+  transaction_had: [Transaction]
+    @relation(link: INLINE, name: "Transaction_had")
+  transaction_maked: [Transaction]
+    @relation(link: INLINE, name: "Transaction_maked")
+  coupons_maked: [Coupon] @relation(link: INLINE, name: "Coupon_maked")
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+type Transaction {
+  TXID: ID! @id
+  transactionSecretKey: String
+  transactionHotelName: String
+  transactionHotelId: String
+  transactionHotelManager: User @relation(name: "Transaction_had")
+  transactionHotelManagerId: String
+  transactionHotelType: String
+  transactionPrice: Int
+  transactionAuthor: User @relation(name: "Transaction_maked")
+  transactionAuthorId: String
+  transactionAuthorName: String
+  transactionAuthorEmail: String
+  transactionAuthorContactNumber: String
+  transactionAuthorSpecial: String ##Cho đủ field
+  transactionAuthorNote: String
+  transactionLocationLat: Float
+  transactionLocationLng: Float
+  transactionRoom: Int
+  transactionGuest: Int
+  transactionLocationFormattedAddress: String
+  transactionRange: Int
+  transactionStatus: String
+  transactionCoupon: String
+  transactionCouponType: Int
+  transactionCouponValue: Int
+  transactionStartDate: String
+  transactionEndDate: String
+  transactionStripeId: String
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
 
-type Social {
-  id: ID! @id
-  facebook: String
-  twitter: String
-  linkedIN: String
-  instagram: String
+type Coupon {
+  couponId: ID! @id
+  couponName: String! @unique
+  couponDescription: String
+  couponAuthor: User @relation(name: "Coupon_maked")
+  couponAuthorId: String
+  couponType: Int #1 là percent 2 là number
+  couponValue: Int
+  couponQuantity: Int
+  couponStartDate: String
+  couponEndDate: String
+  couponRange: String
+  couponTarget: [Hotel] @relation(link: INLINE, name: "Hotel_coupons")
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }
-
-enum Gender {
-  Male
-  Female
-  Other
-}
-
 type Hotel {
   id: ID! @id
   peopleLiked: [User] @relation(name: "Hotel_liked")
+  peopleReviewed: [User] @relation(name: "Hotel_reviewed")
+  couponsAvailable: [Coupon] @relation(name: "Hotel_coupons")
   connectId: User @relation(name: "Hotel_created")
   agentId: String
+  agentEmail: String
+  agentName: String
   title: String!
   slug: String
   content: String
   status: String @defailt(value: "Public")
-  price: String
+  price: Int
   isNegotiable: Boolean
   propertyType: String
   condition: String
@@ -57,8 +110,69 @@ type Hotel {
   location: [Location] @relation(link: INLINE)
   gallery: [Gallery] @relation(link: INLINE)
   categories: [Categories] @relation(link: INLINE)
+  reviews: [Reviews] @relation(link: INLINE, name: "Hotel_reivews")
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
+}
+type Notification {
+  id: ID! @id
+  reviewAuthorName: String
+  reviewedHotelName: String
+  reviewTitle: String
+  reviewText: String
+  read: Boolean @default(value: false)
+  old: Boolean @default(value: false)
+  userNotificationId: String ## vì ko cần lấy thêm thông tin user làm gì (đã có trong payload nên parse thẳng id)
+  peopleReviewedQuantity: Int
+  query: String
+  reviewAuthorProfilePic: String
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+type Reviews {
+  reviewID: ID! @id
+  reviewTitle: String
+  reviewText: String
+  sortOfTrip: String
+  reviewAuthorId: User @relation(link: INLINE, name: "Reviews_maked")
+  peopleLiked: [User] @relation(link: INLINE, name: "Review_liked")
+  peopleDisliked: [User] @relation(link: INLINE, name: "Review_disliked")
+  reviewAuthorFirstName: String
+  reviewTips: String
+  reviewAuthorLastName: String
+  reviewAuthorEmail: String
+  reviewOverall: Float
+  reviewAuthorPic: String
+  reviewedHotel: Hotel @relation(name: "Hotel_reivews")
+  reviewedHotelId: ID
+  reviewPics: [ReviewImages] @relation(link: INLINE)
+  reviewDate: DateTime! @createdAt
+  reviewOptional: [ReviewOptionals] @relation(link: INLINE)
+  reviewFields: [ReviewFields] @relation(link: INLINE)
+}
+
+type ReviewOptionals {
+  id: ID! @id
+  option: String
+  optionField: String
+}
+type ReviewFields {
+  id: ID! @id
+  rating: Int
+  ratingFieldName: String
+}
+type Social {
+  id: ID! @id
+  facebook: String
+  twitter: String
+  linkedIn: String
+  instagram: String
+}
+
+enum Gender {
+  Male
+  Female
+  Other
 }
 
 type Amenities {
@@ -81,15 +195,21 @@ type CategoryImages {
   id: ID! @id
   url: String
 }
-type Gallery {
+type ReviewImages {
   id: ID! @id
   url: String
+}
+type Gallery {
+  id: ID! @id
+  uid: String
+  url: String
+  signedRequest: String
 }
 
 type Location {
   id: ID! @id
-  lat: String
-  lng: String
+  lat: Float
+  lng: Float
   formattedAddress: String
   zipcode: String
   city: String
