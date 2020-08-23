@@ -5380,6 +5380,8 @@ type Transaction {
   transactionAuthorNote: String
   transactionLocationLat: Float
   transactionLocationLng: Float
+  transactionRoom: Int
+  transactionGuest: Int
   transactionLocationFormattedAddress: String
   transactionRange: Int
   transactionStatus: String
@@ -5417,6 +5419,8 @@ input TransactionCreateInput {
   transactionAuthorNote: String
   transactionLocationLat: Float
   transactionLocationLng: Float
+  transactionRoom: Int
+  transactionGuest: Int
   transactionLocationFormattedAddress: String
   transactionRange: Int
   transactionStatus: String
@@ -5455,6 +5459,8 @@ input TransactionCreateWithoutTransactionAuthorInput {
   transactionAuthorNote: String
   transactionLocationLat: Float
   transactionLocationLng: Float
+  transactionRoom: Int
+  transactionGuest: Int
   transactionLocationFormattedAddress: String
   transactionRange: Int
   transactionStatus: String
@@ -5483,6 +5489,8 @@ input TransactionCreateWithoutTransactionHotelManagerInput {
   transactionAuthorNote: String
   transactionLocationLat: Float
   transactionLocationLng: Float
+  transactionRoom: Int
+  transactionGuest: Int
   transactionLocationFormattedAddress: String
   transactionRange: Int
   transactionStatus: String
@@ -5530,6 +5538,10 @@ enum TransactionOrderByInput {
   transactionLocationLat_DESC
   transactionLocationLng_ASC
   transactionLocationLng_DESC
+  transactionRoom_ASC
+  transactionRoom_DESC
+  transactionGuest_ASC
+  transactionGuest_DESC
   transactionLocationFormattedAddress_ASC
   transactionLocationFormattedAddress_DESC
   transactionRange_ASC
@@ -5570,6 +5582,8 @@ type TransactionPreviousValues {
   transactionAuthorNote: String
   transactionLocationLat: Float
   transactionLocationLng: Float
+  transactionRoom: Int
+  transactionGuest: Int
   transactionLocationFormattedAddress: String
   transactionRange: Int
   transactionStatus: String
@@ -5776,6 +5790,22 @@ input TransactionScalarWhereInput {
   transactionLocationLng_lte: Float
   transactionLocationLng_gt: Float
   transactionLocationLng_gte: Float
+  transactionRoom: Int
+  transactionRoom_not: Int
+  transactionRoom_in: [Int!]
+  transactionRoom_not_in: [Int!]
+  transactionRoom_lt: Int
+  transactionRoom_lte: Int
+  transactionRoom_gt: Int
+  transactionRoom_gte: Int
+  transactionGuest: Int
+  transactionGuest_not: Int
+  transactionGuest_in: [Int!]
+  transactionGuest_not_in: [Int!]
+  transactionGuest_lt: Int
+  transactionGuest_lte: Int
+  transactionGuest_gt: Int
+  transactionGuest_gte: Int
   transactionLocationFormattedAddress: String
   transactionLocationFormattedAddress_not: String
   transactionLocationFormattedAddress_in: [String!]
@@ -5940,6 +5970,8 @@ input TransactionUpdateInput {
   transactionAuthorNote: String
   transactionLocationLat: Float
   transactionLocationLng: Float
+  transactionRoom: Int
+  transactionGuest: Int
   transactionLocationFormattedAddress: String
   transactionRange: Int
   transactionStatus: String
@@ -5966,6 +5998,8 @@ input TransactionUpdateManyDataInput {
   transactionAuthorNote: String
   transactionLocationLat: Float
   transactionLocationLng: Float
+  transactionRoom: Int
+  transactionGuest: Int
   transactionLocationFormattedAddress: String
   transactionRange: Int
   transactionStatus: String
@@ -5992,6 +6026,8 @@ input TransactionUpdateManyMutationInput {
   transactionAuthorNote: String
   transactionLocationLat: Float
   transactionLocationLng: Float
+  transactionRoom: Int
+  transactionGuest: Int
   transactionLocationFormattedAddress: String
   transactionRange: Int
   transactionStatus: String
@@ -6048,6 +6084,8 @@ input TransactionUpdateWithoutTransactionAuthorDataInput {
   transactionAuthorNote: String
   transactionLocationLat: Float
   transactionLocationLng: Float
+  transactionRoom: Int
+  transactionGuest: Int
   transactionLocationFormattedAddress: String
   transactionRange: Int
   transactionStatus: String
@@ -6075,6 +6113,8 @@ input TransactionUpdateWithoutTransactionHotelManagerDataInput {
   transactionAuthorNote: String
   transactionLocationLat: Float
   transactionLocationLng: Float
+  transactionRoom: Int
+  transactionGuest: Int
   transactionLocationFormattedAddress: String
   transactionRange: Int
   transactionStatus: String
@@ -6303,6 +6343,22 @@ input TransactionWhereInput {
   transactionLocationLng_lte: Float
   transactionLocationLng_gt: Float
   transactionLocationLng_gte: Float
+  transactionRoom: Int
+  transactionRoom_not: Int
+  transactionRoom_in: [Int!]
+  transactionRoom_not_in: [Int!]
+  transactionRoom_lt: Int
+  transactionRoom_lte: Int
+  transactionRoom_gt: Int
+  transactionRoom_gte: Int
+  transactionGuest: Int
+  transactionGuest_not: Int
+  transactionGuest_in: [Int!]
+  transactionGuest_not_in: [Int!]
+  transactionGuest_lt: Int
+  transactionGuest_lte: Int
+  transactionGuest_gt: Int
+  transactionGuest_gte: Int
   transactionLocationFormattedAddress: String
   transactionLocationFormattedAddress_not: String
   transactionLocationFormattedAddress_in: [String!]
