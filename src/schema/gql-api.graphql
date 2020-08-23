@@ -89,6 +89,8 @@ type Transaction {
   transactionLocationLat: Float
   transactionLocationLng: Float
   transactionLocationFormattedAddress: String
+  transactionRoom: Int
+  transactionGuest: Int
   transactionRange: Int
   transactionStatus: String
   transactionCoupon: String
@@ -201,6 +203,7 @@ type AuthPayload {
   last_name: String
   profile_pic_main: String
   cover_pic_main: String
+  role: String
 }
 type HotelPhotos {
   url: String!
@@ -248,6 +251,7 @@ type Query {
   ): [Hotel]
   getTransactionsHaving(orderBy: String): [Transaction]
   getTransactionDetails(transactionSecretKey: String): [Transaction] ## Trả về Fragmentable Array
+  getVendorStripeId(id: String): User
 }
 type Mutation {
   signup(signUpInput: SignUpInput): AuthPayload!
@@ -428,6 +432,8 @@ input TransactionInput {
   transactionLocationFormattedAddress: String
   transactionLocationLat: Float
   transactionLocationLng: Float
+  transactionRoom: Int
+  transactionGuest: Int
   transactionRange: Int
   transactionStartDate: String
   transactionEndDate: String
