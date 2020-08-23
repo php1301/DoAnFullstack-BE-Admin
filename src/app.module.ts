@@ -7,6 +7,7 @@ import { HotelModule } from './hotel/hotel.module';
 import { AuthModule } from './auth/auth.module';
 import { APP_PIPE } from '@nestjs/core';
 import { ConfigModule } from '@nestjs/config';
+import { ScheduleModule } from '@nestjs/schedule';
 import { UserModule } from './user/user.module';
 import { PubSub } from 'graphql-subscriptions';
 import { RedisPubSub } from 'graphql-redis-subscriptions';
@@ -17,6 +18,10 @@ import { PugAdapter } from '@nestjs-modules/mailer/dist/adapters/pug.adapter';
 import { PingPongModule } from './ping-pong/ping-pong.module';
 import { AwsService } from './aws/aws.service';
 import { UtilsModule } from './utils/utils.module';
+import { TransactionModule } from './transaction/transaction.module';
+import { StripeService } from './utils/stripe';
+import { CronService } from './cron/cron.service';
+import { CronModule } from './cron/cron.module';
 
 // Để validation work xuyên suốt app thì phải provide validation pipe
 @Module({
@@ -45,6 +50,7 @@ import { UtilsModule } from './utils/utils.module';
         },
       }),
     }),
+    ScheduleModule.forRoot(),
     ConfigModule.forRoot({
       envFilePath: './.env',
     }),
@@ -57,6 +63,8 @@ import { UtilsModule } from './utils/utils.module';
     UserModule,
     PingPongModule,
     UtilsModule,
+    TransactionModule,
+    CronModule,
   ],
   controllers: [AppController],
   providers: [
@@ -65,7 +73,8 @@ import { UtilsModule } from './utils/utils.module';
       useClass: ValidationPipe,
     },
     AwsService,
-   
+    StripeService,
+    CronService,
   ],
 })
 export class AppModule {}
