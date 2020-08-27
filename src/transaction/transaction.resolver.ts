@@ -1,6 +1,6 @@
-import { Resolver, Mutation, Args, Query } from '@nestjs/graphql';
+import { Resolver, Mutation, Args, Query, Subscription } from '@nestjs/graphql';
 import { SchedulerRegistry } from '@nestjs/schedule';
-import { UseGuards } from '@nestjs/common';
+import { UseGuards, Inject } from '@nestjs/common';
 import { v4 as uuidv4 } from 'uuid';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { MailService } from 'src/services/sendEmail';
@@ -8,15 +8,18 @@ import {
   TransactionInput,
   User,
   CouponCheckedPayload,
+  TransactionNotification,
 } from 'src/graphql.schema.generated';
 import { GqlUser } from 'src/shared/decorators/decorator';
 import { GqlAuthGuard } from 'src/auth/graphql-auth.guard';
+import { PubSubEngine } from 'graphql-subscriptions';
 
 @Resolver('Transaction')
 export class TransactionResolver {
   constructor(
     private readonly prisma: PrismaService,
     private readonly mailService: MailService,
+    @Inject('PUB_SUB') private pubSub: PubSubEngine,
     private schedulerRegistry: SchedulerRegistry,
   ) {}
   expire = coupon => {
@@ -75,11 +78,49 @@ export class TransactionResolver {
   async getTransactionDetails(
     @Args('transactionSecretKey') transactionSecretKey,
   ) {
-    return this.prisma.client.transactions({
-      where: {
-        transactionSecretKey,
-      },
-    });
+    const fragment = `fragment getTransactionDetailsFragment on Transaction{
+      transactionHotelManager{
+        first_name
+        last_name
+        email
+        cellNumber
+    }
+    transactionAuthorName
+    transactionHotelName
+    transactionLocationLat
+    transactionHotelType
+    transactionPrice
+    transactionLocationLng
+    transactionLocationFormattedAddress
+    transactionRoom
+    transactionGuest
+    transactionRange
+    transactionStatus
+    transactionCoupon
+    transactionCouponType
+    transactionCouponValue
+    transactionStartDate
+    transactionEndDate
+    }`;
+    return this.prisma.client
+      .transactions({
+        where: {
+          transactionSecretKey,
+        },
+      })
+      .$fragment(fragment);
+  }
+  @Query()
+  @UseGuards(GqlAuthGuard)
+  async getTotalUnreadTransactions(@GqlUser() user: User) {
+    const fragment = `fragment totalUnreadTransactions on User {
+      uncheckTransactions{
+        userUncheckTransactionsId
+        totalPrice
+        totalTransactions
+      }
+    }`;
+    return await this.prisma.client.user({ id: user.id }).$fragment(fragment);
   }
   @Mutation()
   async checkCoupon(@Args('hotelId') hotelId, @Args('couponName') couponName) {
@@ -195,7 +236,52 @@ export class TransactionResolver {
           date.getDate(),
         order_id: transactionPayload.transactionSecretKey,
       };
-      this.mailService.mockMailjet(dataMail);
+      // this.mailService.mockMailjet(dataMail);
+      const transactionNotiPayload = {
+        TXID: transactionPayload.TXID,
+        transactionPrice: transaction.transactionPrice,
+        transactionHotelManagerId: transaction.transactionHotelManagerId,
+      };
+      // Đáng lẽ nên refactor lại 1 loại form noti, truyền type là review, like, transaction
+      this.pubSub.publish('realtimeNotiTransaction', transactionNotiPayload);
+      const totalTransactions =
+        (await this.prisma.client
+          .user({
+            id: transaction.transactionHotelManagerId,
+          })
+          .uncheckTransactions()
+          .totalTransactions()) || 0;
+      const totalPrice =
+        (await this.prisma.client
+          .user({
+            id: transaction.transactionHotelManagerId,
+          })
+          .uncheckTransactions()
+          .totalPrice()) || 0;
+      console.log(totalTransactions);
+      console.log(totalPrice);
+      // upsert để tối ưu database storage
+      await this.prisma.client.updateUser({
+        where: {
+          id: transaction.transactionHotelManagerId,
+        },
+        data: {
+          uncheckTransactions: {
+            upsert: {
+              update: {
+                totalTransactions: totalTransactions + 1,
+                totalPrice: totalPrice + transaction.transactionPrice,
+              },
+              create: {
+                userUncheckTransactionsId:
+                  transaction.transactionHotelManagerId,
+                totalTransactions: totalTransactions + 1,
+                totalPrice: totalPrice + transaction.transactionPrice,
+              },
+            },
+          },
+        },
+      });
       return transactionPayload;
     }
 
@@ -263,9 +349,71 @@ export class TransactionResolver {
           date.getDate(),
         order_id: transactionPayload.transactionSecretKey,
       };
-      this.mailService.mockMailjet(dataMail);
+      // this.mailService.mockMailjet(dataMail);
+      const transactionNotiPayload = {
+        TXID: transactionPayload.TXID,
+        transactionPrice: transaction.transactionPrice,
+        transactionHotelManagerId: transaction.transactionHotelManagerId,
+      };
+      // Đáng lẽ nên refactor lại 1 loại form noti, truyền type là review, like, transaction
+      this.pubSub.publish('realtimeNotiTransaction', transactionNotiPayload);
+      const totalTransactions =
+        (await this.prisma.client
+          .user({
+            id: transaction.transactionHotelManagerId,
+          })
+          .uncheckTransactions()
+          .totalTransactions()) || 0;
+      const totalPrice =
+        (await this.prisma.client
+          .user({
+            id: transaction.transactionHotelManagerId,
+          })
+          .uncheckTransactions()
+          .totalPrice()) || 0;
+      console.log(totalTransactions);
+      console.log(totalPrice);
+      // upsert để tối ưu database storage
+      await this.prisma.client.updateUser({
+        where: {
+          id: transaction.transactionHotelManagerId,
+        },
+        data: {
+          uncheckTransactions: {
+            upsert: {
+              update: {
+                totalTransactions: totalTransactions + 1,
+                totalPrice: totalPrice + transaction.transactionPrice,
+              },
+              create: {
+                userUncheckTransactionsId:
+                  transaction.transactionHotelManagerId,
+                totalTransactions: totalTransactions + 1,
+                totalPrice: totalPrice + transaction.transactionPrice,
+              },
+            },
+          },
+        },
+      });
       return transactionPayload;
     }
+  }
+  @Mutation()
+  @UseGuards(GqlAuthGuard)
+  async updateTotalUnreadTransactions(@GqlUser() user: User) {
+    return this.prisma.client.updateUser({
+      where: {
+        id: user.id,
+      },
+      data: {
+        uncheckTransactions: {
+          update: {
+            totalPrice: 0,
+            totalTransactions: 0,
+          },
+        },
+      },
+    });
   }
   @UseGuards(GqlAuthGuard)
   @Mutation()
@@ -307,5 +455,13 @@ export class TransactionResolver {
         couponId: i,
       });
     });
+  }
+  @Subscription(returns => TransactionNotification, {
+    resolve: payloads => payloads,
+    filter: (payloads, variables) =>
+      payloads.transactionHotelManagerId === variables.userId,
+  })
+  realtimeNotificationTransaction() {
+    return this.pubSub.asyncIterator('realtimeNotiTransaction');
   }
 }
