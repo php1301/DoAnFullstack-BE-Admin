@@ -11,10 +11,12 @@ import {
   AddHotelInput,
   LocationInput,
   ImageInput,
-  CategoriesInput,
+  // CategoriesInput,
   User,
   Hotel,
-  Reviews,
+  // Reviews,
+  SearchInput,
+  AmenitiesSearchInput,
 } from 'src/graphql.schema.generated';
 import { UseGuards } from '@nestjs/common';
 import { GqlAuthGuard } from 'src/auth/graphql-auth.guard';
@@ -202,9 +204,231 @@ export class HotelResolver {
   }
   @Query()
   async getHotelReviews(@Args('id') id) {
-    return this.prisma.client.hotel({ id }).reviews();
-  }
+    const fragment = `fragment getHotelReviews on Reviews
+    {
+      reviewTitle
+      reviewedHotelId
+      reviewID
+      reviewText
+      peopleLiked {
+        id
+      }
+      peopleDisliked {
+        id
+      }
+      sortOfTrip
+      reviewAuthorEmail
+      reviewOverall
+      reviewTips
+      reviewAuthorPic
+      reviewPics{
+        url
+      }
+      reviewDate
+      reviewOptional{
+        option
+        optionField
+      }
+      reviewFields{
+        rating
+        ratingFieldName
+      }
+      reviewAuthorFirstName
+      reviewAuthorLastName
+      reviewAuthorId
+      {
+        id
+        first_name
+        last_name
+        username
+        password
+        email
+        cellNumber
+        profile_pic
+        {
+          id
+          url
+        }
+        cover_pic
+        {
+          id
+          url
+        }
+        date_of_birth
+        gender
+        content
+        agent_location{
+          id
+          lat
+          lng
+          formattedAddress
+          zipcode
+          city
+          state_long
+          state_short
+          country_long
+          country_short
+        }
+        gallery
+        {
+          id
+          url
+        }
+        social_profile{
+          id
+          facebook
+          twitter
+          linkedIn
+          instagram
+        }
 
+        createdAt
+        updatedAt
+      }
+    }`;
+    return this.prisma.client
+      .hotel({ id })
+      .reviews({ orderBy: 'reviewDate_DESC' })
+      .$fragment(fragment);
+  }
+  @Query()
+  async getAllHotels(
+    @Args('type') type,
+    @Args('search') search: SearchInput,
+    @Args('amenities') amenities: AmenitiesSearchInput,
+    @Args('property') property: string[],
+    @Args('location') location: LocationInput,
+  ) {
+    console.log('location');
+    console.log(location);
+    console.log('query');
+    console.log(type);
+    console.log('search');
+    console.log(search);
+    console.log('amenities');
+    console.log(amenities);
+    JSON.stringify(amenities) === '{}' ? (amenities = undefined) : amenities;
+    console.log(amenities);
+    console.log('property');
+    console.log(property);
+    JSON.stringify(property) === '{}' || JSON.stringify(property) === '[]'
+      ? (property = undefined)
+      : property;
+    console.log(property);
+    return this.prisma.client.hotels({
+      where: {
+        amenities_some: {
+          wifiAvailability: amenities && amenities.wifiAvailability,
+          parkingAvailability: amenities && amenities.parkingAvailability,
+          poolAvailability: amenities && amenities.poolAvailability,
+          airCondition: amenities && amenities.airCondition,
+          bedRoom: amenities && amenities.rooms,
+          guestRoom: amenities && amenities.guest,
+        },
+        location_some: {
+          // formattedAddress_contains: location.formattedAddress,
+          // city_contains: location.city,
+          // state_short_contains: location.state_short,
+          country_long_contains: location && location.country_long,
+          country_short_contains: location && location.country_short,
+        },
+        propertyType_in: property,
+        AND: [
+          {
+            price_gte: search && search.minPrice,
+          },
+          {
+            price_lte: search && search.maxPrice,
+          },
+        ],
+      },
+      orderBy: type,
+    });
+  }
+  @Query()
+  async getHotelCoupons(@Args('id') id) {
+    const fragment = `fragment getHotelCoupons on Hotel {
+      couponId
+      couponName
+      couponDescription
+      couponAuthor{
+        email
+      }
+      couponAuthorId
+      couponType
+      couponValue
+      couponQuantity
+      couponStartDate
+      couponEndDate
+      couponTarget{
+        id
+        slug
+        title
+      }
+      createdAt
+      updatedAt
+    }`;
+    return this.prisma.client
+      .hotel({ id })
+      .couponsAvailable({ orderBy: 'createdAt_DESC' })
+      .$fragment(fragment);
+  }
+  @Query()
+  @UseGuards(GqlAuthGuard)
+  async getHotelManagerCoupons(@GqlUser() user: User) {
+    const fragment = `fragment getHotelManagerCouponsFrag on User{
+      couponId
+      couponName
+      couponDescription
+      couponType
+      couponValue
+      couponQuantity
+      couponStartDate
+      couponEndDate
+      couponRange
+      couponTarget{
+        slug
+        id
+      }
+      createdAt
+      updatedAt
+    }`;
+    return this.prisma.client
+      .user({ id: user.id })
+      .coupons_maked({
+        orderBy: 'createdAt_DESC',
+      })
+      .$fragment(fragment);
+  }
+  // Test riêng filter
+  @Query()
+  async getFilteredHotels(
+    @Args('search') search: SearchInput,
+    @Args('amenities') amenities: AmenitiesSearchInput,
+    @Args('property') property: string[],
+  ) {
+    return this.prisma.client.hotels({
+      where: {
+        amenities_some: {
+          wifiAvailability: amenities && amenities.wifiAvailability,
+          parkingAvailability: amenities && amenities.parkingAvailability,
+          poolAvailability: amenities && amenities.poolAvailability,
+          airCondition: amenities && amenities.airCondition,
+          bedRoom: amenities && amenities.rooms,
+          guestRoom: amenities && amenities.guest,
+        },
+        propertyType_in: property,
+        AND: [
+          {
+            price_gte: search && search.minPrice,
+          },
+          {
+            price_lte: search && search.maxPrice,
+          },
+        ],
+      },
+    });
+  }
   @Mutation()
   //   Bóc data từ Input và gọi ORM.createHotel và gán cho các key trong model của prisma
   @UseGuards(GqlAuthGuard)
@@ -233,8 +457,8 @@ export class HotelResolver {
     items: LocationInput[],
     @Args('image')
     imageItems: ImageInput[],
-    @Args('categories')
-    categoryItems: CategoriesInput[],
+    // @Args('categories')
+    // categoryItems: CategoriesInput[],
   ) {
     // console.log(user.id);
     // console.log(imageItems);
@@ -292,5 +516,15 @@ export class HotelResolver {
       // },
     });
     return newHotel;
+  }
+  @Mutation()
+  async sortHotel(@Args('type') type) {
+    return this.prisma.client.hotels({ orderBy: type });
+  }
+  @Mutation()
+  async filterHotels() // @Args('search') search: SearchInput,
+  // @Args('amenities') amenities: AmenitiesSearchInput,
+  {
+    return this.prisma.client.hotels();
   }
 }
