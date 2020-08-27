@@ -6,20 +6,23 @@ head
     .col-xs-12.col-sm-6.col-md-4.text-center
       h3 Reset Password
       h2 #{email}
-  .row
-    .col-xs-12.col-sm-6.col-md-4.extra-padding
-      label.idleLabel(for='newPassword') New Password
-      .input-group
-        input#newPassword.form-control.isRequired(type='password' name='newPassword' title='enter your new password' maxlength='50')
-        span.input-group-addon(title='Invalid password')
-          i.fa.fa-lg.fa-fw.fa-times.text-danger
-  .row
-    .col-xs-12.col-sm-6.col-md-4.extra-padding
-      label.idleLabel(for='newPasswordConfirm') Verify password
-      .input-group
-        input#newPasswordConfirm.form-control.isRequired(type='password' name='newPasswordConfirm')
-        span.input-group-addon(title='Passwords match')
-          i.fa.fa-lg.fa-fw.fa-check.text-success
+      h2 DO NOT GIVE THIS LINK TO ANYONE
+      h2 Your password reset link: 
+      <a href="http://localhost:3002/change-password?code=#{code}&e=#{email}">http://localhost:3002/change-password?code=#{code}</a>
+  //- .row
+  //-   .col-xs-12.col-sm-6.col-md-4.extra-padding
+  //-     label.idleLabel(for='newPassword') New Password
+  //-     .input-group
+  //-       input#newPassword.form-control.isRequired(type='password' name='newPassword' title='enter your new password' maxlength='50')
+  //-       span.input-group-addon(title='Invalid password')
+  //-         i.fa.fa-lg.fa-fw.fa-times.text-danger
+  //- .row
+  //-   .col-xs-12.col-sm-6.col-md-4.extra-padding
+  //-     label.idleLabel(for='newPasswordConfirm') Verify password
+  //-     .input-group
+  //-       input#newPasswordConfirm.form-control.isRequired(type='password' name='newPasswordConfirm')
+  //-       span.input-group-addon(title='Passwords match')
+  //-         i.fa.fa-lg.fa-fw.fa-check.text-success
 style.
   textarea {
   resize: none;
