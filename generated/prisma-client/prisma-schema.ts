@@ -62,6 +62,10 @@ type AggregateTransaction {
   count: Int!
 }
 
+type AggregateUncheckTransactions {
+  count: Int!
+}
+
 type AggregateUser {
   count: Int!
 }
@@ -3239,6 +3243,12 @@ type Mutation {
   upsertTransaction(where: TransactionWhereUniqueInput!, create: TransactionCreateInput!, update: TransactionUpdateInput!): Transaction!
   deleteTransaction(where: TransactionWhereUniqueInput!): Transaction
   deleteManyTransactions(where: TransactionWhereInput): BatchPayload!
+  createUncheckTransactions(data: UncheckTransactionsCreateInput!): UncheckTransactions!
+  updateUncheckTransactions(data: UncheckTransactionsUpdateInput!, where: UncheckTransactionsWhereUniqueInput!): UncheckTransactions
+  updateManyUncheckTransactionses(data: UncheckTransactionsUpdateManyMutationInput!, where: UncheckTransactionsWhereInput): BatchPayload!
+  upsertUncheckTransactions(where: UncheckTransactionsWhereUniqueInput!, create: UncheckTransactionsCreateInput!, update: UncheckTransactionsUpdateInput!): UncheckTransactions!
+  deleteUncheckTransactions(where: UncheckTransactionsWhereUniqueInput!): UncheckTransactions
+  deleteManyUncheckTransactionses(where: UncheckTransactionsWhereInput): BatchPayload!
   createUser(data: UserCreateInput!): User!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
@@ -3795,6 +3805,9 @@ type Query {
   transaction(where: TransactionWhereUniqueInput!): Transaction
   transactions(where: TransactionWhereInput, orderBy: TransactionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Transaction]!
   transactionsConnection(where: TransactionWhereInput, orderBy: TransactionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TransactionConnection!
+  uncheckTransactions(where: UncheckTransactionsWhereUniqueInput!): UncheckTransactions
+  uncheckTransactionses(where: UncheckTransactionsWhereInput, orderBy: UncheckTransactionsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [UncheckTransactions]!
+  uncheckTransactionsesConnection(where: UncheckTransactionsWhereInput, orderBy: UncheckTransactionsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UncheckTransactionsConnection!
   user(where: UserWhereUniqueInput!): User
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
@@ -5359,6 +5372,7 @@ type Subscription {
   reviews(where: ReviewsSubscriptionWhereInput): ReviewsSubscriptionPayload
   social(where: SocialSubscriptionWhereInput): SocialSubscriptionPayload
   transaction(where: TransactionSubscriptionWhereInput): TransactionSubscriptionPayload
+  uncheckTransactions(where: UncheckTransactionsSubscriptionWhereInput): UncheckTransactionsSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
 }
 
@@ -6492,6 +6506,169 @@ input TransactionWhereUniqueInput {
   TXID: ID
 }
 
+type UncheckTransactions {
+  id: ID!
+  userUncheckTransactionsId: String
+  userUncheckTransactions: User
+  totalPrice: Int
+  totalTransactions: Int
+}
+
+type UncheckTransactionsConnection {
+  pageInfo: PageInfo!
+  edges: [UncheckTransactionsEdge]!
+  aggregate: AggregateUncheckTransactions!
+}
+
+input UncheckTransactionsCreateInput {
+  id: ID
+  userUncheckTransactionsId: String
+  userUncheckTransactions: UserCreateOneWithoutUncheckTransactionsInput
+  totalPrice: Int
+  totalTransactions: Int
+}
+
+input UncheckTransactionsCreateOneWithoutUserUncheckTransactionsInput {
+  create: UncheckTransactionsCreateWithoutUserUncheckTransactionsInput
+  connect: UncheckTransactionsWhereUniqueInput
+}
+
+input UncheckTransactionsCreateWithoutUserUncheckTransactionsInput {
+  id: ID
+  userUncheckTransactionsId: String
+  totalPrice: Int
+  totalTransactions: Int
+}
+
+type UncheckTransactionsEdge {
+  node: UncheckTransactions!
+  cursor: String!
+}
+
+enum UncheckTransactionsOrderByInput {
+  id_ASC
+  id_DESC
+  userUncheckTransactionsId_ASC
+  userUncheckTransactionsId_DESC
+  totalPrice_ASC
+  totalPrice_DESC
+  totalTransactions_ASC
+  totalTransactions_DESC
+}
+
+type UncheckTransactionsPreviousValues {
+  id: ID!
+  userUncheckTransactionsId: String
+  totalPrice: Int
+  totalTransactions: Int
+}
+
+type UncheckTransactionsSubscriptionPayload {
+  mutation: MutationType!
+  node: UncheckTransactions
+  updatedFields: [String!]
+  previousValues: UncheckTransactionsPreviousValues
+}
+
+input UncheckTransactionsSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: UncheckTransactionsWhereInput
+  AND: [UncheckTransactionsSubscriptionWhereInput!]
+  OR: [UncheckTransactionsSubscriptionWhereInput!]
+  NOT: [UncheckTransactionsSubscriptionWhereInput!]
+}
+
+input UncheckTransactionsUpdateInput {
+  userUncheckTransactionsId: String
+  userUncheckTransactions: UserUpdateOneWithoutUncheckTransactionsInput
+  totalPrice: Int
+  totalTransactions: Int
+}
+
+input UncheckTransactionsUpdateManyMutationInput {
+  userUncheckTransactionsId: String
+  totalPrice: Int
+  totalTransactions: Int
+}
+
+input UncheckTransactionsUpdateOneWithoutUserUncheckTransactionsInput {
+  create: UncheckTransactionsCreateWithoutUserUncheckTransactionsInput
+  update: UncheckTransactionsUpdateWithoutUserUncheckTransactionsDataInput
+  upsert: UncheckTransactionsUpsertWithoutUserUncheckTransactionsInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: UncheckTransactionsWhereUniqueInput
+}
+
+input UncheckTransactionsUpdateWithoutUserUncheckTransactionsDataInput {
+  userUncheckTransactionsId: String
+  totalPrice: Int
+  totalTransactions: Int
+}
+
+input UncheckTransactionsUpsertWithoutUserUncheckTransactionsInput {
+  update: UncheckTransactionsUpdateWithoutUserUncheckTransactionsDataInput!
+  create: UncheckTransactionsCreateWithoutUserUncheckTransactionsInput!
+}
+
+input UncheckTransactionsWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  userUncheckTransactionsId: String
+  userUncheckTransactionsId_not: String
+  userUncheckTransactionsId_in: [String!]
+  userUncheckTransactionsId_not_in: [String!]
+  userUncheckTransactionsId_lt: String
+  userUncheckTransactionsId_lte: String
+  userUncheckTransactionsId_gt: String
+  userUncheckTransactionsId_gte: String
+  userUncheckTransactionsId_contains: String
+  userUncheckTransactionsId_not_contains: String
+  userUncheckTransactionsId_starts_with: String
+  userUncheckTransactionsId_not_starts_with: String
+  userUncheckTransactionsId_ends_with: String
+  userUncheckTransactionsId_not_ends_with: String
+  userUncheckTransactions: UserWhereInput
+  totalPrice: Int
+  totalPrice_not: Int
+  totalPrice_in: [Int!]
+  totalPrice_not_in: [Int!]
+  totalPrice_lt: Int
+  totalPrice_lte: Int
+  totalPrice_gt: Int
+  totalPrice_gte: Int
+  totalTransactions: Int
+  totalTransactions_not: Int
+  totalTransactions_in: [Int!]
+  totalTransactions_not_in: [Int!]
+  totalTransactions_lt: Int
+  totalTransactions_lte: Int
+  totalTransactions_gt: Int
+  totalTransactions_gte: Int
+  AND: [UncheckTransactionsWhereInput!]
+  OR: [UncheckTransactionsWhereInput!]
+  NOT: [UncheckTransactionsWhereInput!]
+}
+
+input UncheckTransactionsWhereUniqueInput {
+  id: ID
+}
+
 type User {
   id: ID!
   first_name: String!
@@ -6523,6 +6700,7 @@ type User {
   transaction_had(where: TransactionWhereInput, orderBy: TransactionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Transaction!]
   transaction_maked(where: TransactionWhereInput, orderBy: TransactionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Transaction!]
   coupons_maked(where: CouponWhereInput, orderBy: CouponOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Coupon!]
+  uncheckTransactions: UncheckTransactions
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -6564,6 +6742,7 @@ input UserCreateInput {
   transaction_had: TransactionCreateManyWithoutTransactionHotelManagerInput
   transaction_maked: TransactionCreateManyWithoutTransactionAuthorInput
   coupons_maked: CouponCreateManyWithoutCouponAuthorInput
+  uncheckTransactions: UncheckTransactionsCreateOneWithoutUserUncheckTransactionsInput
 }
 
 input UserCreateManyWithoutFavourite_postInput {
@@ -6611,6 +6790,11 @@ input UserCreateOneWithoutTransaction_makedInput {
   connect: UserWhereUniqueInput
 }
 
+input UserCreateOneWithoutUncheckTransactionsInput {
+  create: UserCreateWithoutUncheckTransactionsInput
+  connect: UserWhereUniqueInput
+}
+
 input UserCreateWithoutCoupons_makedInput {
   id: ID
   first_name: String!
@@ -6641,6 +6825,7 @@ input UserCreateWithoutCoupons_makedInput {
   stripeId: String
   transaction_had: TransactionCreateManyWithoutTransactionHotelManagerInput
   transaction_maked: TransactionCreateManyWithoutTransactionAuthorInput
+  uncheckTransactions: UncheckTransactionsCreateOneWithoutUserUncheckTransactionsInput
 }
 
 input UserCreateWithoutFavourite_postInput {
@@ -6673,6 +6858,7 @@ input UserCreateWithoutFavourite_postInput {
   transaction_had: TransactionCreateManyWithoutTransactionHotelManagerInput
   transaction_maked: TransactionCreateManyWithoutTransactionAuthorInput
   coupons_maked: CouponCreateManyWithoutCouponAuthorInput
+  uncheckTransactions: UncheckTransactionsCreateOneWithoutUserUncheckTransactionsInput
 }
 
 input UserCreateWithoutListed_postsInput {
@@ -6705,6 +6891,7 @@ input UserCreateWithoutListed_postsInput {
   transaction_had: TransactionCreateManyWithoutTransactionHotelManagerInput
   transaction_maked: TransactionCreateManyWithoutTransactionAuthorInput
   coupons_maked: CouponCreateManyWithoutCouponAuthorInput
+  uncheckTransactions: UncheckTransactionsCreateOneWithoutUserUncheckTransactionsInput
 }
 
 input UserCreateWithoutReview_dislikedInput {
@@ -6737,6 +6924,7 @@ input UserCreateWithoutReview_dislikedInput {
   transaction_had: TransactionCreateManyWithoutTransactionHotelManagerInput
   transaction_maked: TransactionCreateManyWithoutTransactionAuthorInput
   coupons_maked: CouponCreateManyWithoutCouponAuthorInput
+  uncheckTransactions: UncheckTransactionsCreateOneWithoutUserUncheckTransactionsInput
 }
 
 input UserCreateWithoutReview_likedInput {
@@ -6769,6 +6957,7 @@ input UserCreateWithoutReview_likedInput {
   transaction_had: TransactionCreateManyWithoutTransactionHotelManagerInput
   transaction_maked: TransactionCreateManyWithoutTransactionAuthorInput
   coupons_maked: CouponCreateManyWithoutCouponAuthorInput
+  uncheckTransactions: UncheckTransactionsCreateOneWithoutUserUncheckTransactionsInput
 }
 
 input UserCreateWithoutReviewed_postInput {
@@ -6801,6 +6990,7 @@ input UserCreateWithoutReviewed_postInput {
   transaction_had: TransactionCreateManyWithoutTransactionHotelManagerInput
   transaction_maked: TransactionCreateManyWithoutTransactionAuthorInput
   coupons_maked: CouponCreateManyWithoutCouponAuthorInput
+  uncheckTransactions: UncheckTransactionsCreateOneWithoutUserUncheckTransactionsInput
 }
 
 input UserCreateWithoutReviews_makedInput {
@@ -6833,6 +7023,7 @@ input UserCreateWithoutReviews_makedInput {
   transaction_had: TransactionCreateManyWithoutTransactionHotelManagerInput
   transaction_maked: TransactionCreateManyWithoutTransactionAuthorInput
   coupons_maked: CouponCreateManyWithoutCouponAuthorInput
+  uncheckTransactions: UncheckTransactionsCreateOneWithoutUserUncheckTransactionsInput
 }
 
 input UserCreateWithoutTransaction_hadInput {
@@ -6865,6 +7056,7 @@ input UserCreateWithoutTransaction_hadInput {
   stripeId: String
   transaction_maked: TransactionCreateManyWithoutTransactionAuthorInput
   coupons_maked: CouponCreateManyWithoutCouponAuthorInput
+  uncheckTransactions: UncheckTransactionsCreateOneWithoutUserUncheckTransactionsInput
 }
 
 input UserCreateWithoutTransaction_makedInput {
@@ -6896,6 +7088,40 @@ input UserCreateWithoutTransaction_makedInput {
   review_disliked: ReviewsCreateManyWithoutPeopleDislikedInput
   stripeId: String
   transaction_had: TransactionCreateManyWithoutTransactionHotelManagerInput
+  coupons_maked: CouponCreateManyWithoutCouponAuthorInput
+  uncheckTransactions: UncheckTransactionsCreateOneWithoutUserUncheckTransactionsInput
+}
+
+input UserCreateWithoutUncheckTransactionsInput {
+  id: ID
+  first_name: String!
+  last_name: String!
+  username: String!
+  password: String!
+  email: String!
+  role: String
+  cellNumber: String
+  profile_pic_main: String
+  cover_pic_main: String
+  profile_pic: GalleryCreateManyInput
+  cover_pic: GalleryCreateManyInput
+  date_of_birth: String
+  gender: String
+  content: String
+  notification: NotificationCreateManyInput
+  unreadNotification: Int
+  agent_location: LocationCreateOneInput
+  gallery: GalleryCreateManyInput
+  social_profile: SocialCreateOneInput
+  reviews_maked: ReviewsCreateManyWithoutReviewAuthorIdInput
+  listed_posts: HotelCreateManyWithoutConnectIdInput
+  favourite_post: HotelCreateManyWithoutPeopleLikedInput
+  reviewed_post: HotelCreateManyWithoutPeopleReviewedInput
+  review_liked: ReviewsCreateManyWithoutPeopleLikedInput
+  review_disliked: ReviewsCreateManyWithoutPeopleDislikedInput
+  stripeId: String
+  transaction_had: TransactionCreateManyWithoutTransactionHotelManagerInput
+  transaction_maked: TransactionCreateManyWithoutTransactionAuthorInput
   coupons_maked: CouponCreateManyWithoutCouponAuthorInput
 }
 
@@ -7235,6 +7461,7 @@ input UserUpdateInput {
   transaction_had: TransactionUpdateManyWithoutTransactionHotelManagerInput
   transaction_maked: TransactionUpdateManyWithoutTransactionAuthorInput
   coupons_maked: CouponUpdateManyWithoutCouponAuthorInput
+  uncheckTransactions: UncheckTransactionsUpdateOneWithoutUserUncheckTransactionsInput
 }
 
 input UserUpdateManyDataInput {
@@ -7369,6 +7596,15 @@ input UserUpdateOneWithoutTransaction_makedInput {
   connect: UserWhereUniqueInput
 }
 
+input UserUpdateOneWithoutUncheckTransactionsInput {
+  create: UserCreateWithoutUncheckTransactionsInput
+  update: UserUpdateWithoutUncheckTransactionsDataInput
+  upsert: UserUpsertWithoutUncheckTransactionsInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: UserWhereUniqueInput
+}
+
 input UserUpdateWithoutCoupons_makedDataInput {
   first_name: String
   last_name: String
@@ -7398,6 +7634,7 @@ input UserUpdateWithoutCoupons_makedDataInput {
   stripeId: String
   transaction_had: TransactionUpdateManyWithoutTransactionHotelManagerInput
   transaction_maked: TransactionUpdateManyWithoutTransactionAuthorInput
+  uncheckTransactions: UncheckTransactionsUpdateOneWithoutUserUncheckTransactionsInput
 }
 
 input UserUpdateWithoutFavourite_postDataInput {
@@ -7429,6 +7666,7 @@ input UserUpdateWithoutFavourite_postDataInput {
   transaction_had: TransactionUpdateManyWithoutTransactionHotelManagerInput
   transaction_maked: TransactionUpdateManyWithoutTransactionAuthorInput
   coupons_maked: CouponUpdateManyWithoutCouponAuthorInput
+  uncheckTransactions: UncheckTransactionsUpdateOneWithoutUserUncheckTransactionsInput
 }
 
 input UserUpdateWithoutListed_postsDataInput {
@@ -7460,6 +7698,7 @@ input UserUpdateWithoutListed_postsDataInput {
   transaction_had: TransactionUpdateManyWithoutTransactionHotelManagerInput
   transaction_maked: TransactionUpdateManyWithoutTransactionAuthorInput
   coupons_maked: CouponUpdateManyWithoutCouponAuthorInput
+  uncheckTransactions: UncheckTransactionsUpdateOneWithoutUserUncheckTransactionsInput
 }
 
 input UserUpdateWithoutReview_dislikedDataInput {
@@ -7491,6 +7730,7 @@ input UserUpdateWithoutReview_dislikedDataInput {
   transaction_had: TransactionUpdateManyWithoutTransactionHotelManagerInput
   transaction_maked: TransactionUpdateManyWithoutTransactionAuthorInput
   coupons_maked: CouponUpdateManyWithoutCouponAuthorInput
+  uncheckTransactions: UncheckTransactionsUpdateOneWithoutUserUncheckTransactionsInput
 }
 
 input UserUpdateWithoutReview_likedDataInput {
@@ -7522,6 +7762,7 @@ input UserUpdateWithoutReview_likedDataInput {
   transaction_had: TransactionUpdateManyWithoutTransactionHotelManagerInput
   transaction_maked: TransactionUpdateManyWithoutTransactionAuthorInput
   coupons_maked: CouponUpdateManyWithoutCouponAuthorInput
+  uncheckTransactions: UncheckTransactionsUpdateOneWithoutUserUncheckTransactionsInput
 }
 
 input UserUpdateWithoutReviewed_postDataInput {
@@ -7553,6 +7794,7 @@ input UserUpdateWithoutReviewed_postDataInput {
   transaction_had: TransactionUpdateManyWithoutTransactionHotelManagerInput
   transaction_maked: TransactionUpdateManyWithoutTransactionAuthorInput
   coupons_maked: CouponUpdateManyWithoutCouponAuthorInput
+  uncheckTransactions: UncheckTransactionsUpdateOneWithoutUserUncheckTransactionsInput
 }
 
 input UserUpdateWithoutReviews_makedDataInput {
@@ -7584,6 +7826,7 @@ input UserUpdateWithoutReviews_makedDataInput {
   transaction_had: TransactionUpdateManyWithoutTransactionHotelManagerInput
   transaction_maked: TransactionUpdateManyWithoutTransactionAuthorInput
   coupons_maked: CouponUpdateManyWithoutCouponAuthorInput
+  uncheckTransactions: UncheckTransactionsUpdateOneWithoutUserUncheckTransactionsInput
 }
 
 input UserUpdateWithoutTransaction_hadDataInput {
@@ -7615,6 +7858,7 @@ input UserUpdateWithoutTransaction_hadDataInput {
   stripeId: String
   transaction_maked: TransactionUpdateManyWithoutTransactionAuthorInput
   coupons_maked: CouponUpdateManyWithoutCouponAuthorInput
+  uncheckTransactions: UncheckTransactionsUpdateOneWithoutUserUncheckTransactionsInput
 }
 
 input UserUpdateWithoutTransaction_makedDataInput {
@@ -7645,6 +7889,39 @@ input UserUpdateWithoutTransaction_makedDataInput {
   review_disliked: ReviewsUpdateManyWithoutPeopleDislikedInput
   stripeId: String
   transaction_had: TransactionUpdateManyWithoutTransactionHotelManagerInput
+  coupons_maked: CouponUpdateManyWithoutCouponAuthorInput
+  uncheckTransactions: UncheckTransactionsUpdateOneWithoutUserUncheckTransactionsInput
+}
+
+input UserUpdateWithoutUncheckTransactionsDataInput {
+  first_name: String
+  last_name: String
+  username: String
+  password: String
+  email: String
+  role: String
+  cellNumber: String
+  profile_pic_main: String
+  cover_pic_main: String
+  profile_pic: GalleryUpdateManyInput
+  cover_pic: GalleryUpdateManyInput
+  date_of_birth: String
+  gender: String
+  content: String
+  notification: NotificationUpdateManyInput
+  unreadNotification: Int
+  agent_location: LocationUpdateOneInput
+  gallery: GalleryUpdateManyInput
+  social_profile: SocialUpdateOneInput
+  reviews_maked: ReviewsUpdateManyWithoutReviewAuthorIdInput
+  listed_posts: HotelUpdateManyWithoutConnectIdInput
+  favourite_post: HotelUpdateManyWithoutPeopleLikedInput
+  reviewed_post: HotelUpdateManyWithoutPeopleReviewedInput
+  review_liked: ReviewsUpdateManyWithoutPeopleLikedInput
+  review_disliked: ReviewsUpdateManyWithoutPeopleDislikedInput
+  stripeId: String
+  transaction_had: TransactionUpdateManyWithoutTransactionHotelManagerInput
+  transaction_maked: TransactionUpdateManyWithoutTransactionAuthorInput
   coupons_maked: CouponUpdateManyWithoutCouponAuthorInput
 }
 
@@ -7691,6 +7968,11 @@ input UserUpsertWithoutTransaction_hadInput {
 input UserUpsertWithoutTransaction_makedInput {
   update: UserUpdateWithoutTransaction_makedDataInput!
   create: UserCreateWithoutTransaction_makedInput!
+}
+
+input UserUpsertWithoutUncheckTransactionsInput {
+  update: UserUpdateWithoutUncheckTransactionsDataInput!
+  create: UserCreateWithoutUncheckTransactionsInput!
 }
 
 input UserUpsertWithWhereUniqueWithoutFavourite_postInput {
@@ -7963,6 +8245,7 @@ input UserWhereInput {
   coupons_maked_every: CouponWhereInput
   coupons_maked_some: CouponWhereInput
   coupons_maked_none: CouponWhereInput
+  uncheckTransactions: UncheckTransactionsWhereInput
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]

@@ -19,11 +19,21 @@ export interface Exists {
   amenities: (where?: AmenitiesWhereInput) => Promise<boolean>;
   categories: (where?: CategoriesWhereInput) => Promise<boolean>;
   categoryImages: (where?: CategoryImagesWhereInput) => Promise<boolean>;
+  coupon: (where?: CouponWhereInput) => Promise<boolean>;
   gallery: (where?: GalleryWhereInput) => Promise<boolean>;
   hotel: (where?: HotelWhereInput) => Promise<boolean>;
   image: (where?: ImageWhereInput) => Promise<boolean>;
   location: (where?: LocationWhereInput) => Promise<boolean>;
+  notification: (where?: NotificationWhereInput) => Promise<boolean>;
+  reviewFields: (where?: ReviewFieldsWhereInput) => Promise<boolean>;
+  reviewImages: (where?: ReviewImagesWhereInput) => Promise<boolean>;
+  reviewOptionals: (where?: ReviewOptionalsWhereInput) => Promise<boolean>;
+  reviews: (where?: ReviewsWhereInput) => Promise<boolean>;
   social: (where?: SocialWhereInput) => Promise<boolean>;
+  transaction: (where?: TransactionWhereInput) => Promise<boolean>;
+  uncheckTransactions: (
+    where?: UncheckTransactionsWhereInput
+  ) => Promise<boolean>;
   user: (where?: UserWhereInput) => Promise<boolean>;
 }
 
@@ -105,6 +115,25 @@ export interface Prisma {
     first?: Int;
     last?: Int;
   }) => CategoryImagesConnectionPromise;
+  coupon: (where: CouponWhereUniqueInput) => CouponNullablePromise;
+  coupons: (args?: {
+    where?: CouponWhereInput;
+    orderBy?: CouponOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Coupon>;
+  couponsConnection: (args?: {
+    where?: CouponWhereInput;
+    orderBy?: CouponOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => CouponConnectionPromise;
   gallery: (where: GalleryWhereUniqueInput) => GalleryNullablePromise;
   galleries: (args?: {
     where?: GalleryWhereInput;
@@ -181,6 +210,109 @@ export interface Prisma {
     first?: Int;
     last?: Int;
   }) => LocationConnectionPromise;
+  notification: (
+    where: NotificationWhereUniqueInput
+  ) => NotificationNullablePromise;
+  notifications: (args?: {
+    where?: NotificationWhereInput;
+    orderBy?: NotificationOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Notification>;
+  notificationsConnection: (args?: {
+    where?: NotificationWhereInput;
+    orderBy?: NotificationOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => NotificationConnectionPromise;
+  reviewFields: (
+    where: ReviewFieldsWhereUniqueInput
+  ) => ReviewFieldsNullablePromise;
+  reviewFieldses: (args?: {
+    where?: ReviewFieldsWhereInput;
+    orderBy?: ReviewFieldsOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<ReviewFields>;
+  reviewFieldsesConnection: (args?: {
+    where?: ReviewFieldsWhereInput;
+    orderBy?: ReviewFieldsOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => ReviewFieldsConnectionPromise;
+  reviewImages: (
+    where: ReviewImagesWhereUniqueInput
+  ) => ReviewImagesNullablePromise;
+  reviewImageses: (args?: {
+    where?: ReviewImagesWhereInput;
+    orderBy?: ReviewImagesOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<ReviewImages>;
+  reviewImagesesConnection: (args?: {
+    where?: ReviewImagesWhereInput;
+    orderBy?: ReviewImagesOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => ReviewImagesConnectionPromise;
+  reviewOptionals: (
+    where: ReviewOptionalsWhereUniqueInput
+  ) => ReviewOptionalsNullablePromise;
+  reviewOptionalses: (args?: {
+    where?: ReviewOptionalsWhereInput;
+    orderBy?: ReviewOptionalsOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<ReviewOptionals>;
+  reviewOptionalsesConnection: (args?: {
+    where?: ReviewOptionalsWhereInput;
+    orderBy?: ReviewOptionalsOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => ReviewOptionalsConnectionPromise;
+  reviews: (where: ReviewsWhereUniqueInput) => ReviewsNullablePromise;
+  reviewses: (args?: {
+    where?: ReviewsWhereInput;
+    orderBy?: ReviewsOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Reviews>;
+  reviewsesConnection: (args?: {
+    where?: ReviewsWhereInput;
+    orderBy?: ReviewsOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => ReviewsConnectionPromise;
   social: (where: SocialWhereUniqueInput) => SocialNullablePromise;
   socials: (args?: {
     where?: SocialWhereInput;
@@ -200,6 +332,48 @@ export interface Prisma {
     first?: Int;
     last?: Int;
   }) => SocialConnectionPromise;
+  transaction: (
+    where: TransactionWhereUniqueInput
+  ) => TransactionNullablePromise;
+  transactions: (args?: {
+    where?: TransactionWhereInput;
+    orderBy?: TransactionOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Transaction>;
+  transactionsConnection: (args?: {
+    where?: TransactionWhereInput;
+    orderBy?: TransactionOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => TransactionConnectionPromise;
+  uncheckTransactions: (
+    where: UncheckTransactionsWhereUniqueInput
+  ) => UncheckTransactionsNullablePromise;
+  uncheckTransactionses: (args?: {
+    where?: UncheckTransactionsWhereInput;
+    orderBy?: UncheckTransactionsOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<UncheckTransactions>;
+  uncheckTransactionsesConnection: (args?: {
+    where?: UncheckTransactionsWhereInput;
+    orderBy?: UncheckTransactionsOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => UncheckTransactionsConnectionPromise;
   user: (where: UserWhereUniqueInput) => UserNullablePromise;
   users: (args?: {
     where?: UserWhereInput;
@@ -279,6 +453,22 @@ export interface Prisma {
   deleteManyCategoryImageses: (
     where?: CategoryImagesWhereInput
   ) => BatchPayloadPromise;
+  createCoupon: (data: CouponCreateInput) => CouponPromise;
+  updateCoupon: (args: {
+    data: CouponUpdateInput;
+    where: CouponWhereUniqueInput;
+  }) => CouponPromise;
+  updateManyCoupons: (args: {
+    data: CouponUpdateManyMutationInput;
+    where?: CouponWhereInput;
+  }) => BatchPayloadPromise;
+  upsertCoupon: (args: {
+    where: CouponWhereUniqueInput;
+    create: CouponCreateInput;
+    update: CouponUpdateInput;
+  }) => CouponPromise;
+  deleteCoupon: (where: CouponWhereUniqueInput) => CouponPromise;
+  deleteManyCoupons: (where?: CouponWhereInput) => BatchPayloadPromise;
   createGallery: (data: GalleryCreateInput) => GalleryPromise;
   updateGallery: (args: {
     data: GalleryUpdateInput;
@@ -343,6 +533,104 @@ export interface Prisma {
   }) => LocationPromise;
   deleteLocation: (where: LocationWhereUniqueInput) => LocationPromise;
   deleteManyLocations: (where?: LocationWhereInput) => BatchPayloadPromise;
+  createNotification: (data: NotificationCreateInput) => NotificationPromise;
+  updateNotification: (args: {
+    data: NotificationUpdateInput;
+    where: NotificationWhereUniqueInput;
+  }) => NotificationPromise;
+  updateManyNotifications: (args: {
+    data: NotificationUpdateManyMutationInput;
+    where?: NotificationWhereInput;
+  }) => BatchPayloadPromise;
+  upsertNotification: (args: {
+    where: NotificationWhereUniqueInput;
+    create: NotificationCreateInput;
+    update: NotificationUpdateInput;
+  }) => NotificationPromise;
+  deleteNotification: (
+    where: NotificationWhereUniqueInput
+  ) => NotificationPromise;
+  deleteManyNotifications: (
+    where?: NotificationWhereInput
+  ) => BatchPayloadPromise;
+  createReviewFields: (data: ReviewFieldsCreateInput) => ReviewFieldsPromise;
+  updateReviewFields: (args: {
+    data: ReviewFieldsUpdateInput;
+    where: ReviewFieldsWhereUniqueInput;
+  }) => ReviewFieldsPromise;
+  updateManyReviewFieldses: (args: {
+    data: ReviewFieldsUpdateManyMutationInput;
+    where?: ReviewFieldsWhereInput;
+  }) => BatchPayloadPromise;
+  upsertReviewFields: (args: {
+    where: ReviewFieldsWhereUniqueInput;
+    create: ReviewFieldsCreateInput;
+    update: ReviewFieldsUpdateInput;
+  }) => ReviewFieldsPromise;
+  deleteReviewFields: (
+    where: ReviewFieldsWhereUniqueInput
+  ) => ReviewFieldsPromise;
+  deleteManyReviewFieldses: (
+    where?: ReviewFieldsWhereInput
+  ) => BatchPayloadPromise;
+  createReviewImages: (data: ReviewImagesCreateInput) => ReviewImagesPromise;
+  updateReviewImages: (args: {
+    data: ReviewImagesUpdateInput;
+    where: ReviewImagesWhereUniqueInput;
+  }) => ReviewImagesPromise;
+  updateManyReviewImageses: (args: {
+    data: ReviewImagesUpdateManyMutationInput;
+    where?: ReviewImagesWhereInput;
+  }) => BatchPayloadPromise;
+  upsertReviewImages: (args: {
+    where: ReviewImagesWhereUniqueInput;
+    create: ReviewImagesCreateInput;
+    update: ReviewImagesUpdateInput;
+  }) => ReviewImagesPromise;
+  deleteReviewImages: (
+    where: ReviewImagesWhereUniqueInput
+  ) => ReviewImagesPromise;
+  deleteManyReviewImageses: (
+    where?: ReviewImagesWhereInput
+  ) => BatchPayloadPromise;
+  createReviewOptionals: (
+    data: ReviewOptionalsCreateInput
+  ) => ReviewOptionalsPromise;
+  updateReviewOptionals: (args: {
+    data: ReviewOptionalsUpdateInput;
+    where: ReviewOptionalsWhereUniqueInput;
+  }) => ReviewOptionalsPromise;
+  updateManyReviewOptionalses: (args: {
+    data: ReviewOptionalsUpdateManyMutationInput;
+    where?: ReviewOptionalsWhereInput;
+  }) => BatchPayloadPromise;
+  upsertReviewOptionals: (args: {
+    where: ReviewOptionalsWhereUniqueInput;
+    create: ReviewOptionalsCreateInput;
+    update: ReviewOptionalsUpdateInput;
+  }) => ReviewOptionalsPromise;
+  deleteReviewOptionals: (
+    where: ReviewOptionalsWhereUniqueInput
+  ) => ReviewOptionalsPromise;
+  deleteManyReviewOptionalses: (
+    where?: ReviewOptionalsWhereInput
+  ) => BatchPayloadPromise;
+  createReviews: (data: ReviewsCreateInput) => ReviewsPromise;
+  updateReviews: (args: {
+    data: ReviewsUpdateInput;
+    where: ReviewsWhereUniqueInput;
+  }) => ReviewsPromise;
+  updateManyReviewses: (args: {
+    data: ReviewsUpdateManyMutationInput;
+    where?: ReviewsWhereInput;
+  }) => BatchPayloadPromise;
+  upsertReviews: (args: {
+    where: ReviewsWhereUniqueInput;
+    create: ReviewsCreateInput;
+    update: ReviewsUpdateInput;
+  }) => ReviewsPromise;
+  deleteReviews: (where: ReviewsWhereUniqueInput) => ReviewsPromise;
+  deleteManyReviewses: (where?: ReviewsWhereInput) => BatchPayloadPromise;
   createSocial: (data: SocialCreateInput) => SocialPromise;
   updateSocial: (args: {
     data: SocialUpdateInput;
@@ -359,6 +647,46 @@ export interface Prisma {
   }) => SocialPromise;
   deleteSocial: (where: SocialWhereUniqueInput) => SocialPromise;
   deleteManySocials: (where?: SocialWhereInput) => BatchPayloadPromise;
+  createTransaction: (data: TransactionCreateInput) => TransactionPromise;
+  updateTransaction: (args: {
+    data: TransactionUpdateInput;
+    where: TransactionWhereUniqueInput;
+  }) => TransactionPromise;
+  updateManyTransactions: (args: {
+    data: TransactionUpdateManyMutationInput;
+    where?: TransactionWhereInput;
+  }) => BatchPayloadPromise;
+  upsertTransaction: (args: {
+    where: TransactionWhereUniqueInput;
+    create: TransactionCreateInput;
+    update: TransactionUpdateInput;
+  }) => TransactionPromise;
+  deleteTransaction: (where: TransactionWhereUniqueInput) => TransactionPromise;
+  deleteManyTransactions: (
+    where?: TransactionWhereInput
+  ) => BatchPayloadPromise;
+  createUncheckTransactions: (
+    data: UncheckTransactionsCreateInput
+  ) => UncheckTransactionsPromise;
+  updateUncheckTransactions: (args: {
+    data: UncheckTransactionsUpdateInput;
+    where: UncheckTransactionsWhereUniqueInput;
+  }) => UncheckTransactionsPromise;
+  updateManyUncheckTransactionses: (args: {
+    data: UncheckTransactionsUpdateManyMutationInput;
+    where?: UncheckTransactionsWhereInput;
+  }) => BatchPayloadPromise;
+  upsertUncheckTransactions: (args: {
+    where: UncheckTransactionsWhereUniqueInput;
+    create: UncheckTransactionsCreateInput;
+    update: UncheckTransactionsUpdateInput;
+  }) => UncheckTransactionsPromise;
+  deleteUncheckTransactions: (
+    where: UncheckTransactionsWhereUniqueInput
+  ) => UncheckTransactionsPromise;
+  deleteManyUncheckTransactionses: (
+    where?: UncheckTransactionsWhereInput
+  ) => BatchPayloadPromise;
   createUser: (data: UserCreateInput) => UserPromise;
   updateUser: (args: {
     data: UserUpdateInput;
@@ -393,6 +721,9 @@ export interface Subscription {
   categoryImages: (
     where?: CategoryImagesSubscriptionWhereInput
   ) => CategoryImagesSubscriptionPayloadSubscription;
+  coupon: (
+    where?: CouponSubscriptionWhereInput
+  ) => CouponSubscriptionPayloadSubscription;
   gallery: (
     where?: GallerySubscriptionWhereInput
   ) => GallerySubscriptionPayloadSubscription;
@@ -405,9 +736,30 @@ export interface Subscription {
   location: (
     where?: LocationSubscriptionWhereInput
   ) => LocationSubscriptionPayloadSubscription;
+  notification: (
+    where?: NotificationSubscriptionWhereInput
+  ) => NotificationSubscriptionPayloadSubscription;
+  reviewFields: (
+    where?: ReviewFieldsSubscriptionWhereInput
+  ) => ReviewFieldsSubscriptionPayloadSubscription;
+  reviewImages: (
+    where?: ReviewImagesSubscriptionWhereInput
+  ) => ReviewImagesSubscriptionPayloadSubscription;
+  reviewOptionals: (
+    where?: ReviewOptionalsSubscriptionWhereInput
+  ) => ReviewOptionalsSubscriptionPayloadSubscription;
+  reviews: (
+    where?: ReviewsSubscriptionWhereInput
+  ) => ReviewsSubscriptionPayloadSubscription;
   social: (
     where?: SocialSubscriptionWhereInput
   ) => SocialSubscriptionPayloadSubscription;
+  transaction: (
+    where?: TransactionSubscriptionWhereInput
+  ) => TransactionSubscriptionPayloadSubscription;
+  uncheckTransactions: (
+    where?: UncheckTransactionsSubscriptionWhereInput
+  ) => UncheckTransactionsSubscriptionPayloadSubscription;
   user: (
     where?: UserSubscriptionWhereInput
   ) => UserSubscriptionPayloadSubscription;
@@ -453,7 +805,69 @@ export type CategoryImagesOrderByInput =
   | "url_ASC"
   | "url_DESC";
 
-export type GalleryOrderByInput = "id_ASC" | "id_DESC" | "url_ASC" | "url_DESC";
+export type GalleryOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "uid_ASC"
+  | "uid_DESC"
+  | "url_ASC"
+  | "url_DESC"
+  | "signedRequest_ASC"
+  | "signedRequest_DESC";
+
+export type NotificationOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "reviewAuthorName_ASC"
+  | "reviewAuthorName_DESC"
+  | "reviewedHotelName_ASC"
+  | "reviewedHotelName_DESC"
+  | "reviewTitle_ASC"
+  | "reviewTitle_DESC"
+  | "reviewText_ASC"
+  | "reviewText_DESC"
+  | "read_ASC"
+  | "read_DESC"
+  | "old_ASC"
+  | "old_DESC"
+  | "userNotificationId_ASC"
+  | "userNotificationId_DESC"
+  | "peopleReviewedQuantity_ASC"
+  | "peopleReviewedQuantity_DESC"
+  | "query_ASC"
+  | "query_DESC"
+  | "reviewAuthorProfilePic_ASC"
+  | "reviewAuthorProfilePic_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type ReviewsOrderByInput =
+  | "reviewID_ASC"
+  | "reviewID_DESC"
+  | "reviewTitle_ASC"
+  | "reviewTitle_DESC"
+  | "reviewText_ASC"
+  | "reviewText_DESC"
+  | "sortOfTrip_ASC"
+  | "sortOfTrip_DESC"
+  | "reviewAuthorFirstName_ASC"
+  | "reviewAuthorFirstName_DESC"
+  | "reviewTips_ASC"
+  | "reviewTips_DESC"
+  | "reviewAuthorLastName_ASC"
+  | "reviewAuthorLastName_DESC"
+  | "reviewAuthorEmail_ASC"
+  | "reviewAuthorEmail_DESC"
+  | "reviewOverall_ASC"
+  | "reviewOverall_DESC"
+  | "reviewAuthorPic_ASC"
+  | "reviewAuthorPic_DESC"
+  | "reviewedHotelId_ASC"
+  | "reviewedHotelId_DESC"
+  | "reviewDate_ASC"
+  | "reviewDate_DESC";
 
 export type UserOrderByInput =
   | "id_ASC"
@@ -468,24 +882,108 @@ export type UserOrderByInput =
   | "password_DESC"
   | "email_ASC"
   | "email_DESC"
+  | "role_ASC"
+  | "role_DESC"
   | "cellNumber_ASC"
   | "cellNumber_DESC"
+  | "profile_pic_main_ASC"
+  | "profile_pic_main_DESC"
+  | "cover_pic_main_ASC"
+  | "cover_pic_main_DESC"
   | "date_of_birth_ASC"
   | "date_of_birth_DESC"
   | "gender_ASC"
   | "gender_DESC"
   | "content_ASC"
   | "content_DESC"
+  | "unreadNotification_ASC"
+  | "unreadNotification_DESC"
+  | "stripeId_ASC"
+  | "stripeId_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
   | "updatedAt_DESC";
+
+export type CouponOrderByInput =
+  | "couponId_ASC"
+  | "couponId_DESC"
+  | "couponName_ASC"
+  | "couponName_DESC"
+  | "couponDescription_ASC"
+  | "couponDescription_DESC"
+  | "couponAuthorId_ASC"
+  | "couponAuthorId_DESC"
+  | "couponType_ASC"
+  | "couponType_DESC"
+  | "couponValue_ASC"
+  | "couponValue_DESC"
+  | "couponQuantity_ASC"
+  | "couponQuantity_DESC"
+  | "couponStartDate_ASC"
+  | "couponStartDate_DESC"
+  | "couponEndDate_ASC"
+  | "couponEndDate_DESC"
+  | "couponRange_ASC"
+  | "couponRange_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type LocationOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "lat_ASC"
+  | "lat_DESC"
+  | "lng_ASC"
+  | "lng_DESC"
+  | "formattedAddress_ASC"
+  | "formattedAddress_DESC"
+  | "zipcode_ASC"
+  | "zipcode_DESC"
+  | "city_ASC"
+  | "city_DESC"
+  | "state_long_ASC"
+  | "state_long_DESC"
+  | "state_short_ASC"
+  | "state_short_DESC"
+  | "country_long_ASC"
+  | "country_long_DESC"
+  | "country_short_ASC"
+  | "country_short_DESC";
+
+export type ReviewImagesOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "url_ASC"
+  | "url_DESC";
+
+export type ReviewOptionalsOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "option_ASC"
+  | "option_DESC"
+  | "optionField_ASC"
+  | "optionField_DESC";
+
+export type ReviewFieldsOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "rating_ASC"
+  | "rating_DESC"
+  | "ratingFieldName_ASC"
+  | "ratingFieldName_DESC";
 
 export type HotelOrderByInput =
   | "id_ASC"
   | "id_DESC"
   | "agentId_ASC"
   | "agentId_DESC"
+  | "agentEmail_ASC"
+  | "agentEmail_DESC"
+  | "agentName_ASC"
+  | "agentName_DESC"
   | "title_ASC"
   | "title_DESC"
   | "slug_ASC"
@@ -515,27 +1013,63 @@ export type HotelOrderByInput =
   | "updatedAt_ASC"
   | "updatedAt_DESC";
 
-export type LocationOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "lat_ASC"
-  | "lat_DESC"
-  | "lng_ASC"
-  | "lng_DESC"
-  | "formattedAddress_ASC"
-  | "formattedAddress_DESC"
-  | "zipcode_ASC"
-  | "zipcode_DESC"
-  | "city_ASC"
-  | "city_DESC"
-  | "state_long_ASC"
-  | "state_long_DESC"
-  | "state_short_ASC"
-  | "state_short_DESC"
-  | "country_long_ASC"
-  | "country_long_DESC"
-  | "country_short_ASC"
-  | "country_short_DESC";
+export type TransactionOrderByInput =
+  | "TXID_ASC"
+  | "TXID_DESC"
+  | "transactionSecretKey_ASC"
+  | "transactionSecretKey_DESC"
+  | "transactionHotelName_ASC"
+  | "transactionHotelName_DESC"
+  | "transactionHotelId_ASC"
+  | "transactionHotelId_DESC"
+  | "transactionHotelManagerId_ASC"
+  | "transactionHotelManagerId_DESC"
+  | "transactionHotelType_ASC"
+  | "transactionHotelType_DESC"
+  | "transactionPrice_ASC"
+  | "transactionPrice_DESC"
+  | "transactionAuthorId_ASC"
+  | "transactionAuthorId_DESC"
+  | "transactionAuthorName_ASC"
+  | "transactionAuthorName_DESC"
+  | "transactionAuthorEmail_ASC"
+  | "transactionAuthorEmail_DESC"
+  | "transactionAuthorContactNumber_ASC"
+  | "transactionAuthorContactNumber_DESC"
+  | "transactionAuthorSpecial_ASC"
+  | "transactionAuthorSpecial_DESC"
+  | "transactionAuthorNote_ASC"
+  | "transactionAuthorNote_DESC"
+  | "transactionLocationLat_ASC"
+  | "transactionLocationLat_DESC"
+  | "transactionLocationLng_ASC"
+  | "transactionLocationLng_DESC"
+  | "transactionRoom_ASC"
+  | "transactionRoom_DESC"
+  | "transactionGuest_ASC"
+  | "transactionGuest_DESC"
+  | "transactionLocationFormattedAddress_ASC"
+  | "transactionLocationFormattedAddress_DESC"
+  | "transactionRange_ASC"
+  | "transactionRange_DESC"
+  | "transactionStatus_ASC"
+  | "transactionStatus_DESC"
+  | "transactionCoupon_ASC"
+  | "transactionCoupon_DESC"
+  | "transactionCouponType_ASC"
+  | "transactionCouponType_DESC"
+  | "transactionCouponValue_ASC"
+  | "transactionCouponValue_DESC"
+  | "transactionStartDate_ASC"
+  | "transactionStartDate_DESC"
+  | "transactionEndDate_ASC"
+  | "transactionEndDate_DESC"
+  | "transactionStripeId_ASC"
+  | "transactionStripeId_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
 
 export type ImageOrderByInput =
   | "id_ASC"
@@ -552,10 +1086,20 @@ export type SocialOrderByInput =
   | "facebook_DESC"
   | "twitter_ASC"
   | "twitter_DESC"
-  | "linkedIN_ASC"
-  | "linkedIN_DESC"
+  | "linkedIn_ASC"
+  | "linkedIn_DESC"
   | "instagram_ASC"
   | "instagram_DESC";
+
+export type UncheckTransactionsOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "userUncheckTransactionsId_ASC"
+  | "userUncheckTransactionsId_DESC"
+  | "totalPrice_ASC"
+  | "totalPrice_DESC"
+  | "totalTransactions_ASC"
+  | "totalTransactions_DESC";
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
@@ -700,8 +1244,9 @@ export type CategoryImagesWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
-export type GalleryWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
+export type CouponWhereUniqueInput = AtLeastOne<{
+  couponId: Maybe<ID_Input>;
+  couponName?: Maybe<string>;
 }>;
 
 export interface GalleryWhereInput {
@@ -719,6 +1264,20 @@ export interface GalleryWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
+  uid?: Maybe<string>;
+  uid_not?: Maybe<string>;
+  uid_in?: Maybe<string[] | string>;
+  uid_not_in?: Maybe<string[] | string>;
+  uid_lt?: Maybe<string>;
+  uid_lte?: Maybe<string>;
+  uid_gt?: Maybe<string>;
+  uid_gte?: Maybe<string>;
+  uid_contains?: Maybe<string>;
+  uid_not_contains?: Maybe<string>;
+  uid_starts_with?: Maybe<string>;
+  uid_not_starts_with?: Maybe<string>;
+  uid_ends_with?: Maybe<string>;
+  uid_not_ends_with?: Maybe<string>;
   url?: Maybe<string>;
   url_not?: Maybe<string>;
   url_in?: Maybe<string[] | string>;
@@ -733,14 +1292,349 @@ export interface GalleryWhereInput {
   url_not_starts_with?: Maybe<string>;
   url_ends_with?: Maybe<string>;
   url_not_ends_with?: Maybe<string>;
+  signedRequest?: Maybe<string>;
+  signedRequest_not?: Maybe<string>;
+  signedRequest_in?: Maybe<string[] | string>;
+  signedRequest_not_in?: Maybe<string[] | string>;
+  signedRequest_lt?: Maybe<string>;
+  signedRequest_lte?: Maybe<string>;
+  signedRequest_gt?: Maybe<string>;
+  signedRequest_gte?: Maybe<string>;
+  signedRequest_contains?: Maybe<string>;
+  signedRequest_not_contains?: Maybe<string>;
+  signedRequest_starts_with?: Maybe<string>;
+  signedRequest_not_starts_with?: Maybe<string>;
+  signedRequest_ends_with?: Maybe<string>;
+  signedRequest_not_ends_with?: Maybe<string>;
   AND?: Maybe<GalleryWhereInput[] | GalleryWhereInput>;
   OR?: Maybe<GalleryWhereInput[] | GalleryWhereInput>;
   NOT?: Maybe<GalleryWhereInput[] | GalleryWhereInput>;
 }
 
-export type HotelWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
+export interface NotificationWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  reviewAuthorName?: Maybe<string>;
+  reviewAuthorName_not?: Maybe<string>;
+  reviewAuthorName_in?: Maybe<string[] | string>;
+  reviewAuthorName_not_in?: Maybe<string[] | string>;
+  reviewAuthorName_lt?: Maybe<string>;
+  reviewAuthorName_lte?: Maybe<string>;
+  reviewAuthorName_gt?: Maybe<string>;
+  reviewAuthorName_gte?: Maybe<string>;
+  reviewAuthorName_contains?: Maybe<string>;
+  reviewAuthorName_not_contains?: Maybe<string>;
+  reviewAuthorName_starts_with?: Maybe<string>;
+  reviewAuthorName_not_starts_with?: Maybe<string>;
+  reviewAuthorName_ends_with?: Maybe<string>;
+  reviewAuthorName_not_ends_with?: Maybe<string>;
+  reviewedHotelName?: Maybe<string>;
+  reviewedHotelName_not?: Maybe<string>;
+  reviewedHotelName_in?: Maybe<string[] | string>;
+  reviewedHotelName_not_in?: Maybe<string[] | string>;
+  reviewedHotelName_lt?: Maybe<string>;
+  reviewedHotelName_lte?: Maybe<string>;
+  reviewedHotelName_gt?: Maybe<string>;
+  reviewedHotelName_gte?: Maybe<string>;
+  reviewedHotelName_contains?: Maybe<string>;
+  reviewedHotelName_not_contains?: Maybe<string>;
+  reviewedHotelName_starts_with?: Maybe<string>;
+  reviewedHotelName_not_starts_with?: Maybe<string>;
+  reviewedHotelName_ends_with?: Maybe<string>;
+  reviewedHotelName_not_ends_with?: Maybe<string>;
+  reviewTitle?: Maybe<string>;
+  reviewTitle_not?: Maybe<string>;
+  reviewTitle_in?: Maybe<string[] | string>;
+  reviewTitle_not_in?: Maybe<string[] | string>;
+  reviewTitle_lt?: Maybe<string>;
+  reviewTitle_lte?: Maybe<string>;
+  reviewTitle_gt?: Maybe<string>;
+  reviewTitle_gte?: Maybe<string>;
+  reviewTitle_contains?: Maybe<string>;
+  reviewTitle_not_contains?: Maybe<string>;
+  reviewTitle_starts_with?: Maybe<string>;
+  reviewTitle_not_starts_with?: Maybe<string>;
+  reviewTitle_ends_with?: Maybe<string>;
+  reviewTitle_not_ends_with?: Maybe<string>;
+  reviewText?: Maybe<string>;
+  reviewText_not?: Maybe<string>;
+  reviewText_in?: Maybe<string[] | string>;
+  reviewText_not_in?: Maybe<string[] | string>;
+  reviewText_lt?: Maybe<string>;
+  reviewText_lte?: Maybe<string>;
+  reviewText_gt?: Maybe<string>;
+  reviewText_gte?: Maybe<string>;
+  reviewText_contains?: Maybe<string>;
+  reviewText_not_contains?: Maybe<string>;
+  reviewText_starts_with?: Maybe<string>;
+  reviewText_not_starts_with?: Maybe<string>;
+  reviewText_ends_with?: Maybe<string>;
+  reviewText_not_ends_with?: Maybe<string>;
+  read?: Maybe<boolean>;
+  read_not?: Maybe<boolean>;
+  old?: Maybe<boolean>;
+  old_not?: Maybe<boolean>;
+  userNotificationId?: Maybe<string>;
+  userNotificationId_not?: Maybe<string>;
+  userNotificationId_in?: Maybe<string[] | string>;
+  userNotificationId_not_in?: Maybe<string[] | string>;
+  userNotificationId_lt?: Maybe<string>;
+  userNotificationId_lte?: Maybe<string>;
+  userNotificationId_gt?: Maybe<string>;
+  userNotificationId_gte?: Maybe<string>;
+  userNotificationId_contains?: Maybe<string>;
+  userNotificationId_not_contains?: Maybe<string>;
+  userNotificationId_starts_with?: Maybe<string>;
+  userNotificationId_not_starts_with?: Maybe<string>;
+  userNotificationId_ends_with?: Maybe<string>;
+  userNotificationId_not_ends_with?: Maybe<string>;
+  peopleReviewedQuantity?: Maybe<Int>;
+  peopleReviewedQuantity_not?: Maybe<Int>;
+  peopleReviewedQuantity_in?: Maybe<Int[] | Int>;
+  peopleReviewedQuantity_not_in?: Maybe<Int[] | Int>;
+  peopleReviewedQuantity_lt?: Maybe<Int>;
+  peopleReviewedQuantity_lte?: Maybe<Int>;
+  peopleReviewedQuantity_gt?: Maybe<Int>;
+  peopleReviewedQuantity_gte?: Maybe<Int>;
+  query?: Maybe<string>;
+  query_not?: Maybe<string>;
+  query_in?: Maybe<string[] | string>;
+  query_not_in?: Maybe<string[] | string>;
+  query_lt?: Maybe<string>;
+  query_lte?: Maybe<string>;
+  query_gt?: Maybe<string>;
+  query_gte?: Maybe<string>;
+  query_contains?: Maybe<string>;
+  query_not_contains?: Maybe<string>;
+  query_starts_with?: Maybe<string>;
+  query_not_starts_with?: Maybe<string>;
+  query_ends_with?: Maybe<string>;
+  query_not_ends_with?: Maybe<string>;
+  reviewAuthorProfilePic?: Maybe<string>;
+  reviewAuthorProfilePic_not?: Maybe<string>;
+  reviewAuthorProfilePic_in?: Maybe<string[] | string>;
+  reviewAuthorProfilePic_not_in?: Maybe<string[] | string>;
+  reviewAuthorProfilePic_lt?: Maybe<string>;
+  reviewAuthorProfilePic_lte?: Maybe<string>;
+  reviewAuthorProfilePic_gt?: Maybe<string>;
+  reviewAuthorProfilePic_gte?: Maybe<string>;
+  reviewAuthorProfilePic_contains?: Maybe<string>;
+  reviewAuthorProfilePic_not_contains?: Maybe<string>;
+  reviewAuthorProfilePic_starts_with?: Maybe<string>;
+  reviewAuthorProfilePic_not_starts_with?: Maybe<string>;
+  reviewAuthorProfilePic_ends_with?: Maybe<string>;
+  reviewAuthorProfilePic_not_ends_with?: Maybe<string>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<NotificationWhereInput[] | NotificationWhereInput>;
+  OR?: Maybe<NotificationWhereInput[] | NotificationWhereInput>;
+  NOT?: Maybe<NotificationWhereInput[] | NotificationWhereInput>;
+}
+
+export interface ReviewsWhereInput {
+  reviewID?: Maybe<ID_Input>;
+  reviewID_not?: Maybe<ID_Input>;
+  reviewID_in?: Maybe<ID_Input[] | ID_Input>;
+  reviewID_not_in?: Maybe<ID_Input[] | ID_Input>;
+  reviewID_lt?: Maybe<ID_Input>;
+  reviewID_lte?: Maybe<ID_Input>;
+  reviewID_gt?: Maybe<ID_Input>;
+  reviewID_gte?: Maybe<ID_Input>;
+  reviewID_contains?: Maybe<ID_Input>;
+  reviewID_not_contains?: Maybe<ID_Input>;
+  reviewID_starts_with?: Maybe<ID_Input>;
+  reviewID_not_starts_with?: Maybe<ID_Input>;
+  reviewID_ends_with?: Maybe<ID_Input>;
+  reviewID_not_ends_with?: Maybe<ID_Input>;
+  reviewTitle?: Maybe<string>;
+  reviewTitle_not?: Maybe<string>;
+  reviewTitle_in?: Maybe<string[] | string>;
+  reviewTitle_not_in?: Maybe<string[] | string>;
+  reviewTitle_lt?: Maybe<string>;
+  reviewTitle_lte?: Maybe<string>;
+  reviewTitle_gt?: Maybe<string>;
+  reviewTitle_gte?: Maybe<string>;
+  reviewTitle_contains?: Maybe<string>;
+  reviewTitle_not_contains?: Maybe<string>;
+  reviewTitle_starts_with?: Maybe<string>;
+  reviewTitle_not_starts_with?: Maybe<string>;
+  reviewTitle_ends_with?: Maybe<string>;
+  reviewTitle_not_ends_with?: Maybe<string>;
+  reviewText?: Maybe<string>;
+  reviewText_not?: Maybe<string>;
+  reviewText_in?: Maybe<string[] | string>;
+  reviewText_not_in?: Maybe<string[] | string>;
+  reviewText_lt?: Maybe<string>;
+  reviewText_lte?: Maybe<string>;
+  reviewText_gt?: Maybe<string>;
+  reviewText_gte?: Maybe<string>;
+  reviewText_contains?: Maybe<string>;
+  reviewText_not_contains?: Maybe<string>;
+  reviewText_starts_with?: Maybe<string>;
+  reviewText_not_starts_with?: Maybe<string>;
+  reviewText_ends_with?: Maybe<string>;
+  reviewText_not_ends_with?: Maybe<string>;
+  sortOfTrip?: Maybe<string>;
+  sortOfTrip_not?: Maybe<string>;
+  sortOfTrip_in?: Maybe<string[] | string>;
+  sortOfTrip_not_in?: Maybe<string[] | string>;
+  sortOfTrip_lt?: Maybe<string>;
+  sortOfTrip_lte?: Maybe<string>;
+  sortOfTrip_gt?: Maybe<string>;
+  sortOfTrip_gte?: Maybe<string>;
+  sortOfTrip_contains?: Maybe<string>;
+  sortOfTrip_not_contains?: Maybe<string>;
+  sortOfTrip_starts_with?: Maybe<string>;
+  sortOfTrip_not_starts_with?: Maybe<string>;
+  sortOfTrip_ends_with?: Maybe<string>;
+  sortOfTrip_not_ends_with?: Maybe<string>;
+  reviewAuthorId?: Maybe<UserWhereInput>;
+  peopleLiked_every?: Maybe<UserWhereInput>;
+  peopleLiked_some?: Maybe<UserWhereInput>;
+  peopleLiked_none?: Maybe<UserWhereInput>;
+  peopleDisliked_every?: Maybe<UserWhereInput>;
+  peopleDisliked_some?: Maybe<UserWhereInput>;
+  peopleDisliked_none?: Maybe<UserWhereInput>;
+  reviewAuthorFirstName?: Maybe<string>;
+  reviewAuthorFirstName_not?: Maybe<string>;
+  reviewAuthorFirstName_in?: Maybe<string[] | string>;
+  reviewAuthorFirstName_not_in?: Maybe<string[] | string>;
+  reviewAuthorFirstName_lt?: Maybe<string>;
+  reviewAuthorFirstName_lte?: Maybe<string>;
+  reviewAuthorFirstName_gt?: Maybe<string>;
+  reviewAuthorFirstName_gte?: Maybe<string>;
+  reviewAuthorFirstName_contains?: Maybe<string>;
+  reviewAuthorFirstName_not_contains?: Maybe<string>;
+  reviewAuthorFirstName_starts_with?: Maybe<string>;
+  reviewAuthorFirstName_not_starts_with?: Maybe<string>;
+  reviewAuthorFirstName_ends_with?: Maybe<string>;
+  reviewAuthorFirstName_not_ends_with?: Maybe<string>;
+  reviewTips?: Maybe<string>;
+  reviewTips_not?: Maybe<string>;
+  reviewTips_in?: Maybe<string[] | string>;
+  reviewTips_not_in?: Maybe<string[] | string>;
+  reviewTips_lt?: Maybe<string>;
+  reviewTips_lte?: Maybe<string>;
+  reviewTips_gt?: Maybe<string>;
+  reviewTips_gte?: Maybe<string>;
+  reviewTips_contains?: Maybe<string>;
+  reviewTips_not_contains?: Maybe<string>;
+  reviewTips_starts_with?: Maybe<string>;
+  reviewTips_not_starts_with?: Maybe<string>;
+  reviewTips_ends_with?: Maybe<string>;
+  reviewTips_not_ends_with?: Maybe<string>;
+  reviewAuthorLastName?: Maybe<string>;
+  reviewAuthorLastName_not?: Maybe<string>;
+  reviewAuthorLastName_in?: Maybe<string[] | string>;
+  reviewAuthorLastName_not_in?: Maybe<string[] | string>;
+  reviewAuthorLastName_lt?: Maybe<string>;
+  reviewAuthorLastName_lte?: Maybe<string>;
+  reviewAuthorLastName_gt?: Maybe<string>;
+  reviewAuthorLastName_gte?: Maybe<string>;
+  reviewAuthorLastName_contains?: Maybe<string>;
+  reviewAuthorLastName_not_contains?: Maybe<string>;
+  reviewAuthorLastName_starts_with?: Maybe<string>;
+  reviewAuthorLastName_not_starts_with?: Maybe<string>;
+  reviewAuthorLastName_ends_with?: Maybe<string>;
+  reviewAuthorLastName_not_ends_with?: Maybe<string>;
+  reviewAuthorEmail?: Maybe<string>;
+  reviewAuthorEmail_not?: Maybe<string>;
+  reviewAuthorEmail_in?: Maybe<string[] | string>;
+  reviewAuthorEmail_not_in?: Maybe<string[] | string>;
+  reviewAuthorEmail_lt?: Maybe<string>;
+  reviewAuthorEmail_lte?: Maybe<string>;
+  reviewAuthorEmail_gt?: Maybe<string>;
+  reviewAuthorEmail_gte?: Maybe<string>;
+  reviewAuthorEmail_contains?: Maybe<string>;
+  reviewAuthorEmail_not_contains?: Maybe<string>;
+  reviewAuthorEmail_starts_with?: Maybe<string>;
+  reviewAuthorEmail_not_starts_with?: Maybe<string>;
+  reviewAuthorEmail_ends_with?: Maybe<string>;
+  reviewAuthorEmail_not_ends_with?: Maybe<string>;
+  reviewOverall?: Maybe<Float>;
+  reviewOverall_not?: Maybe<Float>;
+  reviewOverall_in?: Maybe<Float[] | Float>;
+  reviewOverall_not_in?: Maybe<Float[] | Float>;
+  reviewOverall_lt?: Maybe<Float>;
+  reviewOverall_lte?: Maybe<Float>;
+  reviewOverall_gt?: Maybe<Float>;
+  reviewOverall_gte?: Maybe<Float>;
+  reviewAuthorPic?: Maybe<string>;
+  reviewAuthorPic_not?: Maybe<string>;
+  reviewAuthorPic_in?: Maybe<string[] | string>;
+  reviewAuthorPic_not_in?: Maybe<string[] | string>;
+  reviewAuthorPic_lt?: Maybe<string>;
+  reviewAuthorPic_lte?: Maybe<string>;
+  reviewAuthorPic_gt?: Maybe<string>;
+  reviewAuthorPic_gte?: Maybe<string>;
+  reviewAuthorPic_contains?: Maybe<string>;
+  reviewAuthorPic_not_contains?: Maybe<string>;
+  reviewAuthorPic_starts_with?: Maybe<string>;
+  reviewAuthorPic_not_starts_with?: Maybe<string>;
+  reviewAuthorPic_ends_with?: Maybe<string>;
+  reviewAuthorPic_not_ends_with?: Maybe<string>;
+  reviewedHotel?: Maybe<HotelWhereInput>;
+  reviewedHotelId?: Maybe<ID_Input>;
+  reviewedHotelId_not?: Maybe<ID_Input>;
+  reviewedHotelId_in?: Maybe<ID_Input[] | ID_Input>;
+  reviewedHotelId_not_in?: Maybe<ID_Input[] | ID_Input>;
+  reviewedHotelId_lt?: Maybe<ID_Input>;
+  reviewedHotelId_lte?: Maybe<ID_Input>;
+  reviewedHotelId_gt?: Maybe<ID_Input>;
+  reviewedHotelId_gte?: Maybe<ID_Input>;
+  reviewedHotelId_contains?: Maybe<ID_Input>;
+  reviewedHotelId_not_contains?: Maybe<ID_Input>;
+  reviewedHotelId_starts_with?: Maybe<ID_Input>;
+  reviewedHotelId_not_starts_with?: Maybe<ID_Input>;
+  reviewedHotelId_ends_with?: Maybe<ID_Input>;
+  reviewedHotelId_not_ends_with?: Maybe<ID_Input>;
+  reviewPics_every?: Maybe<ReviewImagesWhereInput>;
+  reviewPics_some?: Maybe<ReviewImagesWhereInput>;
+  reviewPics_none?: Maybe<ReviewImagesWhereInput>;
+  reviewDate?: Maybe<DateTimeInput>;
+  reviewDate_not?: Maybe<DateTimeInput>;
+  reviewDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  reviewDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  reviewDate_lt?: Maybe<DateTimeInput>;
+  reviewDate_lte?: Maybe<DateTimeInput>;
+  reviewDate_gt?: Maybe<DateTimeInput>;
+  reviewDate_gte?: Maybe<DateTimeInput>;
+  reviewOptional_every?: Maybe<ReviewOptionalsWhereInput>;
+  reviewOptional_some?: Maybe<ReviewOptionalsWhereInput>;
+  reviewOptional_none?: Maybe<ReviewOptionalsWhereInput>;
+  reviewFields_every?: Maybe<ReviewFieldsWhereInput>;
+  reviewFields_some?: Maybe<ReviewFieldsWhereInput>;
+  reviewFields_none?: Maybe<ReviewFieldsWhereInput>;
+  AND?: Maybe<ReviewsWhereInput[] | ReviewsWhereInput>;
+  OR?: Maybe<ReviewsWhereInput[] | ReviewsWhereInput>;
+  NOT?: Maybe<ReviewsWhereInput[] | ReviewsWhereInput>;
+}
 
 export interface UserWhereInput {
   id?: Maybe<ID_Input>;
@@ -827,6 +1721,20 @@ export interface UserWhereInput {
   email_not_starts_with?: Maybe<string>;
   email_ends_with?: Maybe<string>;
   email_not_ends_with?: Maybe<string>;
+  role?: Maybe<string>;
+  role_not?: Maybe<string>;
+  role_in?: Maybe<string[] | string>;
+  role_not_in?: Maybe<string[] | string>;
+  role_lt?: Maybe<string>;
+  role_lte?: Maybe<string>;
+  role_gt?: Maybe<string>;
+  role_gte?: Maybe<string>;
+  role_contains?: Maybe<string>;
+  role_not_contains?: Maybe<string>;
+  role_starts_with?: Maybe<string>;
+  role_not_starts_with?: Maybe<string>;
+  role_ends_with?: Maybe<string>;
+  role_not_ends_with?: Maybe<string>;
   cellNumber?: Maybe<string>;
   cellNumber_not?: Maybe<string>;
   cellNumber_in?: Maybe<string[] | string>;
@@ -841,6 +1749,34 @@ export interface UserWhereInput {
   cellNumber_not_starts_with?: Maybe<string>;
   cellNumber_ends_with?: Maybe<string>;
   cellNumber_not_ends_with?: Maybe<string>;
+  profile_pic_main?: Maybe<string>;
+  profile_pic_main_not?: Maybe<string>;
+  profile_pic_main_in?: Maybe<string[] | string>;
+  profile_pic_main_not_in?: Maybe<string[] | string>;
+  profile_pic_main_lt?: Maybe<string>;
+  profile_pic_main_lte?: Maybe<string>;
+  profile_pic_main_gt?: Maybe<string>;
+  profile_pic_main_gte?: Maybe<string>;
+  profile_pic_main_contains?: Maybe<string>;
+  profile_pic_main_not_contains?: Maybe<string>;
+  profile_pic_main_starts_with?: Maybe<string>;
+  profile_pic_main_not_starts_with?: Maybe<string>;
+  profile_pic_main_ends_with?: Maybe<string>;
+  profile_pic_main_not_ends_with?: Maybe<string>;
+  cover_pic_main?: Maybe<string>;
+  cover_pic_main_not?: Maybe<string>;
+  cover_pic_main_in?: Maybe<string[] | string>;
+  cover_pic_main_not_in?: Maybe<string[] | string>;
+  cover_pic_main_lt?: Maybe<string>;
+  cover_pic_main_lte?: Maybe<string>;
+  cover_pic_main_gt?: Maybe<string>;
+  cover_pic_main_gte?: Maybe<string>;
+  cover_pic_main_contains?: Maybe<string>;
+  cover_pic_main_not_contains?: Maybe<string>;
+  cover_pic_main_starts_with?: Maybe<string>;
+  cover_pic_main_not_starts_with?: Maybe<string>;
+  cover_pic_main_ends_with?: Maybe<string>;
+  cover_pic_main_not_ends_with?: Maybe<string>;
   profile_pic_every?: Maybe<GalleryWhereInput>;
   profile_pic_some?: Maybe<GalleryWhereInput>;
   profile_pic_none?: Maybe<GalleryWhereInput>;
@@ -889,17 +1825,64 @@ export interface UserWhereInput {
   content_not_starts_with?: Maybe<string>;
   content_ends_with?: Maybe<string>;
   content_not_ends_with?: Maybe<string>;
+  notification_every?: Maybe<NotificationWhereInput>;
+  notification_some?: Maybe<NotificationWhereInput>;
+  notification_none?: Maybe<NotificationWhereInput>;
+  unreadNotification?: Maybe<Int>;
+  unreadNotification_not?: Maybe<Int>;
+  unreadNotification_in?: Maybe<Int[] | Int>;
+  unreadNotification_not_in?: Maybe<Int[] | Int>;
+  unreadNotification_lt?: Maybe<Int>;
+  unreadNotification_lte?: Maybe<Int>;
+  unreadNotification_gt?: Maybe<Int>;
+  unreadNotification_gte?: Maybe<Int>;
   agent_location?: Maybe<LocationWhereInput>;
   gallery_every?: Maybe<GalleryWhereInput>;
   gallery_some?: Maybe<GalleryWhereInput>;
   gallery_none?: Maybe<GalleryWhereInput>;
   social_profile?: Maybe<SocialWhereInput>;
+  reviews_maked_every?: Maybe<ReviewsWhereInput>;
+  reviews_maked_some?: Maybe<ReviewsWhereInput>;
+  reviews_maked_none?: Maybe<ReviewsWhereInput>;
   listed_posts_every?: Maybe<HotelWhereInput>;
   listed_posts_some?: Maybe<HotelWhereInput>;
   listed_posts_none?: Maybe<HotelWhereInput>;
   favourite_post_every?: Maybe<HotelWhereInput>;
   favourite_post_some?: Maybe<HotelWhereInput>;
   favourite_post_none?: Maybe<HotelWhereInput>;
+  reviewed_post_every?: Maybe<HotelWhereInput>;
+  reviewed_post_some?: Maybe<HotelWhereInput>;
+  reviewed_post_none?: Maybe<HotelWhereInput>;
+  review_liked_every?: Maybe<ReviewsWhereInput>;
+  review_liked_some?: Maybe<ReviewsWhereInput>;
+  review_liked_none?: Maybe<ReviewsWhereInput>;
+  review_disliked_every?: Maybe<ReviewsWhereInput>;
+  review_disliked_some?: Maybe<ReviewsWhereInput>;
+  review_disliked_none?: Maybe<ReviewsWhereInput>;
+  stripeId?: Maybe<string>;
+  stripeId_not?: Maybe<string>;
+  stripeId_in?: Maybe<string[] | string>;
+  stripeId_not_in?: Maybe<string[] | string>;
+  stripeId_lt?: Maybe<string>;
+  stripeId_lte?: Maybe<string>;
+  stripeId_gt?: Maybe<string>;
+  stripeId_gte?: Maybe<string>;
+  stripeId_contains?: Maybe<string>;
+  stripeId_not_contains?: Maybe<string>;
+  stripeId_starts_with?: Maybe<string>;
+  stripeId_not_starts_with?: Maybe<string>;
+  stripeId_ends_with?: Maybe<string>;
+  stripeId_not_ends_with?: Maybe<string>;
+  transaction_had_every?: Maybe<TransactionWhereInput>;
+  transaction_had_some?: Maybe<TransactionWhereInput>;
+  transaction_had_none?: Maybe<TransactionWhereInput>;
+  transaction_maked_every?: Maybe<TransactionWhereInput>;
+  transaction_maked_some?: Maybe<TransactionWhereInput>;
+  transaction_maked_none?: Maybe<TransactionWhereInput>;
+  coupons_maked_every?: Maybe<CouponWhereInput>;
+  coupons_maked_some?: Maybe<CouponWhereInput>;
+  coupons_maked_none?: Maybe<CouponWhereInput>;
+  uncheckTransactions?: Maybe<UncheckTransactionsWhereInput>;
   createdAt?: Maybe<DateTimeInput>;
   createdAt_not?: Maybe<DateTimeInput>;
   createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
@@ -936,34 +1919,22 @@ export interface LocationWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  lat?: Maybe<string>;
-  lat_not?: Maybe<string>;
-  lat_in?: Maybe<string[] | string>;
-  lat_not_in?: Maybe<string[] | string>;
-  lat_lt?: Maybe<string>;
-  lat_lte?: Maybe<string>;
-  lat_gt?: Maybe<string>;
-  lat_gte?: Maybe<string>;
-  lat_contains?: Maybe<string>;
-  lat_not_contains?: Maybe<string>;
-  lat_starts_with?: Maybe<string>;
-  lat_not_starts_with?: Maybe<string>;
-  lat_ends_with?: Maybe<string>;
-  lat_not_ends_with?: Maybe<string>;
-  lng?: Maybe<string>;
-  lng_not?: Maybe<string>;
-  lng_in?: Maybe<string[] | string>;
-  lng_not_in?: Maybe<string[] | string>;
-  lng_lt?: Maybe<string>;
-  lng_lte?: Maybe<string>;
-  lng_gt?: Maybe<string>;
-  lng_gte?: Maybe<string>;
-  lng_contains?: Maybe<string>;
-  lng_not_contains?: Maybe<string>;
-  lng_starts_with?: Maybe<string>;
-  lng_not_starts_with?: Maybe<string>;
-  lng_ends_with?: Maybe<string>;
-  lng_not_ends_with?: Maybe<string>;
+  lat?: Maybe<Float>;
+  lat_not?: Maybe<Float>;
+  lat_in?: Maybe<Float[] | Float>;
+  lat_not_in?: Maybe<Float[] | Float>;
+  lat_lt?: Maybe<Float>;
+  lat_lte?: Maybe<Float>;
+  lat_gt?: Maybe<Float>;
+  lat_gte?: Maybe<Float>;
+  lng?: Maybe<Float>;
+  lng_not?: Maybe<Float>;
+  lng_in?: Maybe<Float[] | Float>;
+  lng_not_in?: Maybe<Float[] | Float>;
+  lng_lt?: Maybe<Float>;
+  lng_lte?: Maybe<Float>;
+  lng_gt?: Maybe<Float>;
+  lng_gte?: Maybe<Float>;
   formattedAddress?: Maybe<string>;
   formattedAddress_not?: Maybe<string>;
   formattedAddress_in?: Maybe<string[] | string>;
@@ -1110,20 +2081,20 @@ export interface SocialWhereInput {
   twitter_not_starts_with?: Maybe<string>;
   twitter_ends_with?: Maybe<string>;
   twitter_not_ends_with?: Maybe<string>;
-  linkedIN?: Maybe<string>;
-  linkedIN_not?: Maybe<string>;
-  linkedIN_in?: Maybe<string[] | string>;
-  linkedIN_not_in?: Maybe<string[] | string>;
-  linkedIN_lt?: Maybe<string>;
-  linkedIN_lte?: Maybe<string>;
-  linkedIN_gt?: Maybe<string>;
-  linkedIN_gte?: Maybe<string>;
-  linkedIN_contains?: Maybe<string>;
-  linkedIN_not_contains?: Maybe<string>;
-  linkedIN_starts_with?: Maybe<string>;
-  linkedIN_not_starts_with?: Maybe<string>;
-  linkedIN_ends_with?: Maybe<string>;
-  linkedIN_not_ends_with?: Maybe<string>;
+  linkedIn?: Maybe<string>;
+  linkedIn_not?: Maybe<string>;
+  linkedIn_in?: Maybe<string[] | string>;
+  linkedIn_not_in?: Maybe<string[] | string>;
+  linkedIn_lt?: Maybe<string>;
+  linkedIn_lte?: Maybe<string>;
+  linkedIn_gt?: Maybe<string>;
+  linkedIn_gte?: Maybe<string>;
+  linkedIn_contains?: Maybe<string>;
+  linkedIn_not_contains?: Maybe<string>;
+  linkedIn_starts_with?: Maybe<string>;
+  linkedIn_not_starts_with?: Maybe<string>;
+  linkedIn_ends_with?: Maybe<string>;
+  linkedIn_not_ends_with?: Maybe<string>;
   instagram?: Maybe<string>;
   instagram_not?: Maybe<string>;
   instagram_in?: Maybe<string[] | string>;
@@ -1161,6 +2132,12 @@ export interface HotelWhereInput {
   peopleLiked_every?: Maybe<UserWhereInput>;
   peopleLiked_some?: Maybe<UserWhereInput>;
   peopleLiked_none?: Maybe<UserWhereInput>;
+  peopleReviewed_every?: Maybe<UserWhereInput>;
+  peopleReviewed_some?: Maybe<UserWhereInput>;
+  peopleReviewed_none?: Maybe<UserWhereInput>;
+  couponsAvailable_every?: Maybe<CouponWhereInput>;
+  couponsAvailable_some?: Maybe<CouponWhereInput>;
+  couponsAvailable_none?: Maybe<CouponWhereInput>;
   connectId?: Maybe<UserWhereInput>;
   agentId?: Maybe<string>;
   agentId_not?: Maybe<string>;
@@ -1176,6 +2153,34 @@ export interface HotelWhereInput {
   agentId_not_starts_with?: Maybe<string>;
   agentId_ends_with?: Maybe<string>;
   agentId_not_ends_with?: Maybe<string>;
+  agentEmail?: Maybe<string>;
+  agentEmail_not?: Maybe<string>;
+  agentEmail_in?: Maybe<string[] | string>;
+  agentEmail_not_in?: Maybe<string[] | string>;
+  agentEmail_lt?: Maybe<string>;
+  agentEmail_lte?: Maybe<string>;
+  agentEmail_gt?: Maybe<string>;
+  agentEmail_gte?: Maybe<string>;
+  agentEmail_contains?: Maybe<string>;
+  agentEmail_not_contains?: Maybe<string>;
+  agentEmail_starts_with?: Maybe<string>;
+  agentEmail_not_starts_with?: Maybe<string>;
+  agentEmail_ends_with?: Maybe<string>;
+  agentEmail_not_ends_with?: Maybe<string>;
+  agentName?: Maybe<string>;
+  agentName_not?: Maybe<string>;
+  agentName_in?: Maybe<string[] | string>;
+  agentName_not_in?: Maybe<string[] | string>;
+  agentName_lt?: Maybe<string>;
+  agentName_lte?: Maybe<string>;
+  agentName_gt?: Maybe<string>;
+  agentName_gte?: Maybe<string>;
+  agentName_contains?: Maybe<string>;
+  agentName_not_contains?: Maybe<string>;
+  agentName_starts_with?: Maybe<string>;
+  agentName_not_starts_with?: Maybe<string>;
+  agentName_ends_with?: Maybe<string>;
+  agentName_not_ends_with?: Maybe<string>;
   title?: Maybe<string>;
   title_not?: Maybe<string>;
   title_in?: Maybe<string[] | string>;
@@ -1232,20 +2237,14 @@ export interface HotelWhereInput {
   status_not_starts_with?: Maybe<string>;
   status_ends_with?: Maybe<string>;
   status_not_ends_with?: Maybe<string>;
-  price?: Maybe<string>;
-  price_not?: Maybe<string>;
-  price_in?: Maybe<string[] | string>;
-  price_not_in?: Maybe<string[] | string>;
-  price_lt?: Maybe<string>;
-  price_lte?: Maybe<string>;
-  price_gt?: Maybe<string>;
-  price_gte?: Maybe<string>;
-  price_contains?: Maybe<string>;
-  price_not_contains?: Maybe<string>;
-  price_starts_with?: Maybe<string>;
-  price_not_starts_with?: Maybe<string>;
-  price_ends_with?: Maybe<string>;
-  price_not_ends_with?: Maybe<string>;
+  price?: Maybe<Int>;
+  price_not?: Maybe<Int>;
+  price_in?: Maybe<Int[] | Int>;
+  price_not_in?: Maybe<Int[] | Int>;
+  price_lt?: Maybe<Int>;
+  price_lte?: Maybe<Int>;
+  price_gt?: Maybe<Int>;
+  price_gte?: Maybe<Int>;
   isNegotiable?: Maybe<boolean>;
   isNegotiable_not?: Maybe<boolean>;
   propertyType?: Maybe<string>;
@@ -1333,6 +2332,9 @@ export interface HotelWhereInput {
   categories_every?: Maybe<CategoriesWhereInput>;
   categories_some?: Maybe<CategoriesWhereInput>;
   categories_none?: Maybe<CategoriesWhereInput>;
+  reviews_every?: Maybe<ReviewsWhereInput>;
+  reviews_some?: Maybe<ReviewsWhereInput>;
+  reviews_none?: Maybe<ReviewsWhereInput>;
   createdAt?: Maybe<DateTimeInput>;
   createdAt_not?: Maybe<DateTimeInput>;
   createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
@@ -1352,6 +2354,154 @@ export interface HotelWhereInput {
   AND?: Maybe<HotelWhereInput[] | HotelWhereInput>;
   OR?: Maybe<HotelWhereInput[] | HotelWhereInput>;
   NOT?: Maybe<HotelWhereInput[] | HotelWhereInput>;
+}
+
+export interface CouponWhereInput {
+  couponId?: Maybe<ID_Input>;
+  couponId_not?: Maybe<ID_Input>;
+  couponId_in?: Maybe<ID_Input[] | ID_Input>;
+  couponId_not_in?: Maybe<ID_Input[] | ID_Input>;
+  couponId_lt?: Maybe<ID_Input>;
+  couponId_lte?: Maybe<ID_Input>;
+  couponId_gt?: Maybe<ID_Input>;
+  couponId_gte?: Maybe<ID_Input>;
+  couponId_contains?: Maybe<ID_Input>;
+  couponId_not_contains?: Maybe<ID_Input>;
+  couponId_starts_with?: Maybe<ID_Input>;
+  couponId_not_starts_with?: Maybe<ID_Input>;
+  couponId_ends_with?: Maybe<ID_Input>;
+  couponId_not_ends_with?: Maybe<ID_Input>;
+  couponName?: Maybe<string>;
+  couponName_not?: Maybe<string>;
+  couponName_in?: Maybe<string[] | string>;
+  couponName_not_in?: Maybe<string[] | string>;
+  couponName_lt?: Maybe<string>;
+  couponName_lte?: Maybe<string>;
+  couponName_gt?: Maybe<string>;
+  couponName_gte?: Maybe<string>;
+  couponName_contains?: Maybe<string>;
+  couponName_not_contains?: Maybe<string>;
+  couponName_starts_with?: Maybe<string>;
+  couponName_not_starts_with?: Maybe<string>;
+  couponName_ends_with?: Maybe<string>;
+  couponName_not_ends_with?: Maybe<string>;
+  couponDescription?: Maybe<string>;
+  couponDescription_not?: Maybe<string>;
+  couponDescription_in?: Maybe<string[] | string>;
+  couponDescription_not_in?: Maybe<string[] | string>;
+  couponDescription_lt?: Maybe<string>;
+  couponDescription_lte?: Maybe<string>;
+  couponDescription_gt?: Maybe<string>;
+  couponDescription_gte?: Maybe<string>;
+  couponDescription_contains?: Maybe<string>;
+  couponDescription_not_contains?: Maybe<string>;
+  couponDescription_starts_with?: Maybe<string>;
+  couponDescription_not_starts_with?: Maybe<string>;
+  couponDescription_ends_with?: Maybe<string>;
+  couponDescription_not_ends_with?: Maybe<string>;
+  couponAuthor?: Maybe<UserWhereInput>;
+  couponAuthorId?: Maybe<string>;
+  couponAuthorId_not?: Maybe<string>;
+  couponAuthorId_in?: Maybe<string[] | string>;
+  couponAuthorId_not_in?: Maybe<string[] | string>;
+  couponAuthorId_lt?: Maybe<string>;
+  couponAuthorId_lte?: Maybe<string>;
+  couponAuthorId_gt?: Maybe<string>;
+  couponAuthorId_gte?: Maybe<string>;
+  couponAuthorId_contains?: Maybe<string>;
+  couponAuthorId_not_contains?: Maybe<string>;
+  couponAuthorId_starts_with?: Maybe<string>;
+  couponAuthorId_not_starts_with?: Maybe<string>;
+  couponAuthorId_ends_with?: Maybe<string>;
+  couponAuthorId_not_ends_with?: Maybe<string>;
+  couponType?: Maybe<Int>;
+  couponType_not?: Maybe<Int>;
+  couponType_in?: Maybe<Int[] | Int>;
+  couponType_not_in?: Maybe<Int[] | Int>;
+  couponType_lt?: Maybe<Int>;
+  couponType_lte?: Maybe<Int>;
+  couponType_gt?: Maybe<Int>;
+  couponType_gte?: Maybe<Int>;
+  couponValue?: Maybe<Int>;
+  couponValue_not?: Maybe<Int>;
+  couponValue_in?: Maybe<Int[] | Int>;
+  couponValue_not_in?: Maybe<Int[] | Int>;
+  couponValue_lt?: Maybe<Int>;
+  couponValue_lte?: Maybe<Int>;
+  couponValue_gt?: Maybe<Int>;
+  couponValue_gte?: Maybe<Int>;
+  couponQuantity?: Maybe<Int>;
+  couponQuantity_not?: Maybe<Int>;
+  couponQuantity_in?: Maybe<Int[] | Int>;
+  couponQuantity_not_in?: Maybe<Int[] | Int>;
+  couponQuantity_lt?: Maybe<Int>;
+  couponQuantity_lte?: Maybe<Int>;
+  couponQuantity_gt?: Maybe<Int>;
+  couponQuantity_gte?: Maybe<Int>;
+  couponStartDate?: Maybe<string>;
+  couponStartDate_not?: Maybe<string>;
+  couponStartDate_in?: Maybe<string[] | string>;
+  couponStartDate_not_in?: Maybe<string[] | string>;
+  couponStartDate_lt?: Maybe<string>;
+  couponStartDate_lte?: Maybe<string>;
+  couponStartDate_gt?: Maybe<string>;
+  couponStartDate_gte?: Maybe<string>;
+  couponStartDate_contains?: Maybe<string>;
+  couponStartDate_not_contains?: Maybe<string>;
+  couponStartDate_starts_with?: Maybe<string>;
+  couponStartDate_not_starts_with?: Maybe<string>;
+  couponStartDate_ends_with?: Maybe<string>;
+  couponStartDate_not_ends_with?: Maybe<string>;
+  couponEndDate?: Maybe<string>;
+  couponEndDate_not?: Maybe<string>;
+  couponEndDate_in?: Maybe<string[] | string>;
+  couponEndDate_not_in?: Maybe<string[] | string>;
+  couponEndDate_lt?: Maybe<string>;
+  couponEndDate_lte?: Maybe<string>;
+  couponEndDate_gt?: Maybe<string>;
+  couponEndDate_gte?: Maybe<string>;
+  couponEndDate_contains?: Maybe<string>;
+  couponEndDate_not_contains?: Maybe<string>;
+  couponEndDate_starts_with?: Maybe<string>;
+  couponEndDate_not_starts_with?: Maybe<string>;
+  couponEndDate_ends_with?: Maybe<string>;
+  couponEndDate_not_ends_with?: Maybe<string>;
+  couponRange?: Maybe<string>;
+  couponRange_not?: Maybe<string>;
+  couponRange_in?: Maybe<string[] | string>;
+  couponRange_not_in?: Maybe<string[] | string>;
+  couponRange_lt?: Maybe<string>;
+  couponRange_lte?: Maybe<string>;
+  couponRange_gt?: Maybe<string>;
+  couponRange_gte?: Maybe<string>;
+  couponRange_contains?: Maybe<string>;
+  couponRange_not_contains?: Maybe<string>;
+  couponRange_starts_with?: Maybe<string>;
+  couponRange_not_starts_with?: Maybe<string>;
+  couponRange_ends_with?: Maybe<string>;
+  couponRange_not_ends_with?: Maybe<string>;
+  couponTarget_every?: Maybe<HotelWhereInput>;
+  couponTarget_some?: Maybe<HotelWhereInput>;
+  couponTarget_none?: Maybe<HotelWhereInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<CouponWhereInput[] | CouponWhereInput>;
+  OR?: Maybe<CouponWhereInput[] | CouponWhereInput>;
+  NOT?: Maybe<CouponWhereInput[] | CouponWhereInput>;
 }
 
 export interface ImageWhereInput {
@@ -1402,6 +2552,529 @@ export interface ImageWhereInput {
   NOT?: Maybe<ImageWhereInput[] | ImageWhereInput>;
 }
 
+export interface TransactionWhereInput {
+  TXID?: Maybe<ID_Input>;
+  TXID_not?: Maybe<ID_Input>;
+  TXID_in?: Maybe<ID_Input[] | ID_Input>;
+  TXID_not_in?: Maybe<ID_Input[] | ID_Input>;
+  TXID_lt?: Maybe<ID_Input>;
+  TXID_lte?: Maybe<ID_Input>;
+  TXID_gt?: Maybe<ID_Input>;
+  TXID_gte?: Maybe<ID_Input>;
+  TXID_contains?: Maybe<ID_Input>;
+  TXID_not_contains?: Maybe<ID_Input>;
+  TXID_starts_with?: Maybe<ID_Input>;
+  TXID_not_starts_with?: Maybe<ID_Input>;
+  TXID_ends_with?: Maybe<ID_Input>;
+  TXID_not_ends_with?: Maybe<ID_Input>;
+  transactionSecretKey?: Maybe<string>;
+  transactionSecretKey_not?: Maybe<string>;
+  transactionSecretKey_in?: Maybe<string[] | string>;
+  transactionSecretKey_not_in?: Maybe<string[] | string>;
+  transactionSecretKey_lt?: Maybe<string>;
+  transactionSecretKey_lte?: Maybe<string>;
+  transactionSecretKey_gt?: Maybe<string>;
+  transactionSecretKey_gte?: Maybe<string>;
+  transactionSecretKey_contains?: Maybe<string>;
+  transactionSecretKey_not_contains?: Maybe<string>;
+  transactionSecretKey_starts_with?: Maybe<string>;
+  transactionSecretKey_not_starts_with?: Maybe<string>;
+  transactionSecretKey_ends_with?: Maybe<string>;
+  transactionSecretKey_not_ends_with?: Maybe<string>;
+  transactionHotelName?: Maybe<string>;
+  transactionHotelName_not?: Maybe<string>;
+  transactionHotelName_in?: Maybe<string[] | string>;
+  transactionHotelName_not_in?: Maybe<string[] | string>;
+  transactionHotelName_lt?: Maybe<string>;
+  transactionHotelName_lte?: Maybe<string>;
+  transactionHotelName_gt?: Maybe<string>;
+  transactionHotelName_gte?: Maybe<string>;
+  transactionHotelName_contains?: Maybe<string>;
+  transactionHotelName_not_contains?: Maybe<string>;
+  transactionHotelName_starts_with?: Maybe<string>;
+  transactionHotelName_not_starts_with?: Maybe<string>;
+  transactionHotelName_ends_with?: Maybe<string>;
+  transactionHotelName_not_ends_with?: Maybe<string>;
+  transactionHotelId?: Maybe<string>;
+  transactionHotelId_not?: Maybe<string>;
+  transactionHotelId_in?: Maybe<string[] | string>;
+  transactionHotelId_not_in?: Maybe<string[] | string>;
+  transactionHotelId_lt?: Maybe<string>;
+  transactionHotelId_lte?: Maybe<string>;
+  transactionHotelId_gt?: Maybe<string>;
+  transactionHotelId_gte?: Maybe<string>;
+  transactionHotelId_contains?: Maybe<string>;
+  transactionHotelId_not_contains?: Maybe<string>;
+  transactionHotelId_starts_with?: Maybe<string>;
+  transactionHotelId_not_starts_with?: Maybe<string>;
+  transactionHotelId_ends_with?: Maybe<string>;
+  transactionHotelId_not_ends_with?: Maybe<string>;
+  transactionHotelManager?: Maybe<UserWhereInput>;
+  transactionHotelManagerId?: Maybe<string>;
+  transactionHotelManagerId_not?: Maybe<string>;
+  transactionHotelManagerId_in?: Maybe<string[] | string>;
+  transactionHotelManagerId_not_in?: Maybe<string[] | string>;
+  transactionHotelManagerId_lt?: Maybe<string>;
+  transactionHotelManagerId_lte?: Maybe<string>;
+  transactionHotelManagerId_gt?: Maybe<string>;
+  transactionHotelManagerId_gte?: Maybe<string>;
+  transactionHotelManagerId_contains?: Maybe<string>;
+  transactionHotelManagerId_not_contains?: Maybe<string>;
+  transactionHotelManagerId_starts_with?: Maybe<string>;
+  transactionHotelManagerId_not_starts_with?: Maybe<string>;
+  transactionHotelManagerId_ends_with?: Maybe<string>;
+  transactionHotelManagerId_not_ends_with?: Maybe<string>;
+  transactionHotelType?: Maybe<string>;
+  transactionHotelType_not?: Maybe<string>;
+  transactionHotelType_in?: Maybe<string[] | string>;
+  transactionHotelType_not_in?: Maybe<string[] | string>;
+  transactionHotelType_lt?: Maybe<string>;
+  transactionHotelType_lte?: Maybe<string>;
+  transactionHotelType_gt?: Maybe<string>;
+  transactionHotelType_gte?: Maybe<string>;
+  transactionHotelType_contains?: Maybe<string>;
+  transactionHotelType_not_contains?: Maybe<string>;
+  transactionHotelType_starts_with?: Maybe<string>;
+  transactionHotelType_not_starts_with?: Maybe<string>;
+  transactionHotelType_ends_with?: Maybe<string>;
+  transactionHotelType_not_ends_with?: Maybe<string>;
+  transactionPrice?: Maybe<Int>;
+  transactionPrice_not?: Maybe<Int>;
+  transactionPrice_in?: Maybe<Int[] | Int>;
+  transactionPrice_not_in?: Maybe<Int[] | Int>;
+  transactionPrice_lt?: Maybe<Int>;
+  transactionPrice_lte?: Maybe<Int>;
+  transactionPrice_gt?: Maybe<Int>;
+  transactionPrice_gte?: Maybe<Int>;
+  transactionAuthor?: Maybe<UserWhereInput>;
+  transactionAuthorId?: Maybe<string>;
+  transactionAuthorId_not?: Maybe<string>;
+  transactionAuthorId_in?: Maybe<string[] | string>;
+  transactionAuthorId_not_in?: Maybe<string[] | string>;
+  transactionAuthorId_lt?: Maybe<string>;
+  transactionAuthorId_lte?: Maybe<string>;
+  transactionAuthorId_gt?: Maybe<string>;
+  transactionAuthorId_gte?: Maybe<string>;
+  transactionAuthorId_contains?: Maybe<string>;
+  transactionAuthorId_not_contains?: Maybe<string>;
+  transactionAuthorId_starts_with?: Maybe<string>;
+  transactionAuthorId_not_starts_with?: Maybe<string>;
+  transactionAuthorId_ends_with?: Maybe<string>;
+  transactionAuthorId_not_ends_with?: Maybe<string>;
+  transactionAuthorName?: Maybe<string>;
+  transactionAuthorName_not?: Maybe<string>;
+  transactionAuthorName_in?: Maybe<string[] | string>;
+  transactionAuthorName_not_in?: Maybe<string[] | string>;
+  transactionAuthorName_lt?: Maybe<string>;
+  transactionAuthorName_lte?: Maybe<string>;
+  transactionAuthorName_gt?: Maybe<string>;
+  transactionAuthorName_gte?: Maybe<string>;
+  transactionAuthorName_contains?: Maybe<string>;
+  transactionAuthorName_not_contains?: Maybe<string>;
+  transactionAuthorName_starts_with?: Maybe<string>;
+  transactionAuthorName_not_starts_with?: Maybe<string>;
+  transactionAuthorName_ends_with?: Maybe<string>;
+  transactionAuthorName_not_ends_with?: Maybe<string>;
+  transactionAuthorEmail?: Maybe<string>;
+  transactionAuthorEmail_not?: Maybe<string>;
+  transactionAuthorEmail_in?: Maybe<string[] | string>;
+  transactionAuthorEmail_not_in?: Maybe<string[] | string>;
+  transactionAuthorEmail_lt?: Maybe<string>;
+  transactionAuthorEmail_lte?: Maybe<string>;
+  transactionAuthorEmail_gt?: Maybe<string>;
+  transactionAuthorEmail_gte?: Maybe<string>;
+  transactionAuthorEmail_contains?: Maybe<string>;
+  transactionAuthorEmail_not_contains?: Maybe<string>;
+  transactionAuthorEmail_starts_with?: Maybe<string>;
+  transactionAuthorEmail_not_starts_with?: Maybe<string>;
+  transactionAuthorEmail_ends_with?: Maybe<string>;
+  transactionAuthorEmail_not_ends_with?: Maybe<string>;
+  transactionAuthorContactNumber?: Maybe<string>;
+  transactionAuthorContactNumber_not?: Maybe<string>;
+  transactionAuthorContactNumber_in?: Maybe<string[] | string>;
+  transactionAuthorContactNumber_not_in?: Maybe<string[] | string>;
+  transactionAuthorContactNumber_lt?: Maybe<string>;
+  transactionAuthorContactNumber_lte?: Maybe<string>;
+  transactionAuthorContactNumber_gt?: Maybe<string>;
+  transactionAuthorContactNumber_gte?: Maybe<string>;
+  transactionAuthorContactNumber_contains?: Maybe<string>;
+  transactionAuthorContactNumber_not_contains?: Maybe<string>;
+  transactionAuthorContactNumber_starts_with?: Maybe<string>;
+  transactionAuthorContactNumber_not_starts_with?: Maybe<string>;
+  transactionAuthorContactNumber_ends_with?: Maybe<string>;
+  transactionAuthorContactNumber_not_ends_with?: Maybe<string>;
+  transactionAuthorSpecial?: Maybe<string>;
+  transactionAuthorSpecial_not?: Maybe<string>;
+  transactionAuthorSpecial_in?: Maybe<string[] | string>;
+  transactionAuthorSpecial_not_in?: Maybe<string[] | string>;
+  transactionAuthorSpecial_lt?: Maybe<string>;
+  transactionAuthorSpecial_lte?: Maybe<string>;
+  transactionAuthorSpecial_gt?: Maybe<string>;
+  transactionAuthorSpecial_gte?: Maybe<string>;
+  transactionAuthorSpecial_contains?: Maybe<string>;
+  transactionAuthorSpecial_not_contains?: Maybe<string>;
+  transactionAuthorSpecial_starts_with?: Maybe<string>;
+  transactionAuthorSpecial_not_starts_with?: Maybe<string>;
+  transactionAuthorSpecial_ends_with?: Maybe<string>;
+  transactionAuthorSpecial_not_ends_with?: Maybe<string>;
+  transactionAuthorNote?: Maybe<string>;
+  transactionAuthorNote_not?: Maybe<string>;
+  transactionAuthorNote_in?: Maybe<string[] | string>;
+  transactionAuthorNote_not_in?: Maybe<string[] | string>;
+  transactionAuthorNote_lt?: Maybe<string>;
+  transactionAuthorNote_lte?: Maybe<string>;
+  transactionAuthorNote_gt?: Maybe<string>;
+  transactionAuthorNote_gte?: Maybe<string>;
+  transactionAuthorNote_contains?: Maybe<string>;
+  transactionAuthorNote_not_contains?: Maybe<string>;
+  transactionAuthorNote_starts_with?: Maybe<string>;
+  transactionAuthorNote_not_starts_with?: Maybe<string>;
+  transactionAuthorNote_ends_with?: Maybe<string>;
+  transactionAuthorNote_not_ends_with?: Maybe<string>;
+  transactionLocationLat?: Maybe<Float>;
+  transactionLocationLat_not?: Maybe<Float>;
+  transactionLocationLat_in?: Maybe<Float[] | Float>;
+  transactionLocationLat_not_in?: Maybe<Float[] | Float>;
+  transactionLocationLat_lt?: Maybe<Float>;
+  transactionLocationLat_lte?: Maybe<Float>;
+  transactionLocationLat_gt?: Maybe<Float>;
+  transactionLocationLat_gte?: Maybe<Float>;
+  transactionLocationLng?: Maybe<Float>;
+  transactionLocationLng_not?: Maybe<Float>;
+  transactionLocationLng_in?: Maybe<Float[] | Float>;
+  transactionLocationLng_not_in?: Maybe<Float[] | Float>;
+  transactionLocationLng_lt?: Maybe<Float>;
+  transactionLocationLng_lte?: Maybe<Float>;
+  transactionLocationLng_gt?: Maybe<Float>;
+  transactionLocationLng_gte?: Maybe<Float>;
+  transactionRoom?: Maybe<Int>;
+  transactionRoom_not?: Maybe<Int>;
+  transactionRoom_in?: Maybe<Int[] | Int>;
+  transactionRoom_not_in?: Maybe<Int[] | Int>;
+  transactionRoom_lt?: Maybe<Int>;
+  transactionRoom_lte?: Maybe<Int>;
+  transactionRoom_gt?: Maybe<Int>;
+  transactionRoom_gte?: Maybe<Int>;
+  transactionGuest?: Maybe<Int>;
+  transactionGuest_not?: Maybe<Int>;
+  transactionGuest_in?: Maybe<Int[] | Int>;
+  transactionGuest_not_in?: Maybe<Int[] | Int>;
+  transactionGuest_lt?: Maybe<Int>;
+  transactionGuest_lte?: Maybe<Int>;
+  transactionGuest_gt?: Maybe<Int>;
+  transactionGuest_gte?: Maybe<Int>;
+  transactionLocationFormattedAddress?: Maybe<string>;
+  transactionLocationFormattedAddress_not?: Maybe<string>;
+  transactionLocationFormattedAddress_in?: Maybe<string[] | string>;
+  transactionLocationFormattedAddress_not_in?: Maybe<string[] | string>;
+  transactionLocationFormattedAddress_lt?: Maybe<string>;
+  transactionLocationFormattedAddress_lte?: Maybe<string>;
+  transactionLocationFormattedAddress_gt?: Maybe<string>;
+  transactionLocationFormattedAddress_gte?: Maybe<string>;
+  transactionLocationFormattedAddress_contains?: Maybe<string>;
+  transactionLocationFormattedAddress_not_contains?: Maybe<string>;
+  transactionLocationFormattedAddress_starts_with?: Maybe<string>;
+  transactionLocationFormattedAddress_not_starts_with?: Maybe<string>;
+  transactionLocationFormattedAddress_ends_with?: Maybe<string>;
+  transactionLocationFormattedAddress_not_ends_with?: Maybe<string>;
+  transactionRange?: Maybe<Int>;
+  transactionRange_not?: Maybe<Int>;
+  transactionRange_in?: Maybe<Int[] | Int>;
+  transactionRange_not_in?: Maybe<Int[] | Int>;
+  transactionRange_lt?: Maybe<Int>;
+  transactionRange_lte?: Maybe<Int>;
+  transactionRange_gt?: Maybe<Int>;
+  transactionRange_gte?: Maybe<Int>;
+  transactionStatus?: Maybe<string>;
+  transactionStatus_not?: Maybe<string>;
+  transactionStatus_in?: Maybe<string[] | string>;
+  transactionStatus_not_in?: Maybe<string[] | string>;
+  transactionStatus_lt?: Maybe<string>;
+  transactionStatus_lte?: Maybe<string>;
+  transactionStatus_gt?: Maybe<string>;
+  transactionStatus_gte?: Maybe<string>;
+  transactionStatus_contains?: Maybe<string>;
+  transactionStatus_not_contains?: Maybe<string>;
+  transactionStatus_starts_with?: Maybe<string>;
+  transactionStatus_not_starts_with?: Maybe<string>;
+  transactionStatus_ends_with?: Maybe<string>;
+  transactionStatus_not_ends_with?: Maybe<string>;
+  transactionCoupon?: Maybe<string>;
+  transactionCoupon_not?: Maybe<string>;
+  transactionCoupon_in?: Maybe<string[] | string>;
+  transactionCoupon_not_in?: Maybe<string[] | string>;
+  transactionCoupon_lt?: Maybe<string>;
+  transactionCoupon_lte?: Maybe<string>;
+  transactionCoupon_gt?: Maybe<string>;
+  transactionCoupon_gte?: Maybe<string>;
+  transactionCoupon_contains?: Maybe<string>;
+  transactionCoupon_not_contains?: Maybe<string>;
+  transactionCoupon_starts_with?: Maybe<string>;
+  transactionCoupon_not_starts_with?: Maybe<string>;
+  transactionCoupon_ends_with?: Maybe<string>;
+  transactionCoupon_not_ends_with?: Maybe<string>;
+  transactionCouponType?: Maybe<Int>;
+  transactionCouponType_not?: Maybe<Int>;
+  transactionCouponType_in?: Maybe<Int[] | Int>;
+  transactionCouponType_not_in?: Maybe<Int[] | Int>;
+  transactionCouponType_lt?: Maybe<Int>;
+  transactionCouponType_lte?: Maybe<Int>;
+  transactionCouponType_gt?: Maybe<Int>;
+  transactionCouponType_gte?: Maybe<Int>;
+  transactionCouponValue?: Maybe<Int>;
+  transactionCouponValue_not?: Maybe<Int>;
+  transactionCouponValue_in?: Maybe<Int[] | Int>;
+  transactionCouponValue_not_in?: Maybe<Int[] | Int>;
+  transactionCouponValue_lt?: Maybe<Int>;
+  transactionCouponValue_lte?: Maybe<Int>;
+  transactionCouponValue_gt?: Maybe<Int>;
+  transactionCouponValue_gte?: Maybe<Int>;
+  transactionStartDate?: Maybe<string>;
+  transactionStartDate_not?: Maybe<string>;
+  transactionStartDate_in?: Maybe<string[] | string>;
+  transactionStartDate_not_in?: Maybe<string[] | string>;
+  transactionStartDate_lt?: Maybe<string>;
+  transactionStartDate_lte?: Maybe<string>;
+  transactionStartDate_gt?: Maybe<string>;
+  transactionStartDate_gte?: Maybe<string>;
+  transactionStartDate_contains?: Maybe<string>;
+  transactionStartDate_not_contains?: Maybe<string>;
+  transactionStartDate_starts_with?: Maybe<string>;
+  transactionStartDate_not_starts_with?: Maybe<string>;
+  transactionStartDate_ends_with?: Maybe<string>;
+  transactionStartDate_not_ends_with?: Maybe<string>;
+  transactionEndDate?: Maybe<string>;
+  transactionEndDate_not?: Maybe<string>;
+  transactionEndDate_in?: Maybe<string[] | string>;
+  transactionEndDate_not_in?: Maybe<string[] | string>;
+  transactionEndDate_lt?: Maybe<string>;
+  transactionEndDate_lte?: Maybe<string>;
+  transactionEndDate_gt?: Maybe<string>;
+  transactionEndDate_gte?: Maybe<string>;
+  transactionEndDate_contains?: Maybe<string>;
+  transactionEndDate_not_contains?: Maybe<string>;
+  transactionEndDate_starts_with?: Maybe<string>;
+  transactionEndDate_not_starts_with?: Maybe<string>;
+  transactionEndDate_ends_with?: Maybe<string>;
+  transactionEndDate_not_ends_with?: Maybe<string>;
+  transactionStripeId?: Maybe<string>;
+  transactionStripeId_not?: Maybe<string>;
+  transactionStripeId_in?: Maybe<string[] | string>;
+  transactionStripeId_not_in?: Maybe<string[] | string>;
+  transactionStripeId_lt?: Maybe<string>;
+  transactionStripeId_lte?: Maybe<string>;
+  transactionStripeId_gt?: Maybe<string>;
+  transactionStripeId_gte?: Maybe<string>;
+  transactionStripeId_contains?: Maybe<string>;
+  transactionStripeId_not_contains?: Maybe<string>;
+  transactionStripeId_starts_with?: Maybe<string>;
+  transactionStripeId_not_starts_with?: Maybe<string>;
+  transactionStripeId_ends_with?: Maybe<string>;
+  transactionStripeId_not_ends_with?: Maybe<string>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<TransactionWhereInput[] | TransactionWhereInput>;
+  OR?: Maybe<TransactionWhereInput[] | TransactionWhereInput>;
+  NOT?: Maybe<TransactionWhereInput[] | TransactionWhereInput>;
+}
+
+export interface UncheckTransactionsWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  userUncheckTransactionsId?: Maybe<string>;
+  userUncheckTransactionsId_not?: Maybe<string>;
+  userUncheckTransactionsId_in?: Maybe<string[] | string>;
+  userUncheckTransactionsId_not_in?: Maybe<string[] | string>;
+  userUncheckTransactionsId_lt?: Maybe<string>;
+  userUncheckTransactionsId_lte?: Maybe<string>;
+  userUncheckTransactionsId_gt?: Maybe<string>;
+  userUncheckTransactionsId_gte?: Maybe<string>;
+  userUncheckTransactionsId_contains?: Maybe<string>;
+  userUncheckTransactionsId_not_contains?: Maybe<string>;
+  userUncheckTransactionsId_starts_with?: Maybe<string>;
+  userUncheckTransactionsId_not_starts_with?: Maybe<string>;
+  userUncheckTransactionsId_ends_with?: Maybe<string>;
+  userUncheckTransactionsId_not_ends_with?: Maybe<string>;
+  userUncheckTransactions?: Maybe<UserWhereInput>;
+  totalPrice?: Maybe<Int>;
+  totalPrice_not?: Maybe<Int>;
+  totalPrice_in?: Maybe<Int[] | Int>;
+  totalPrice_not_in?: Maybe<Int[] | Int>;
+  totalPrice_lt?: Maybe<Int>;
+  totalPrice_lte?: Maybe<Int>;
+  totalPrice_gt?: Maybe<Int>;
+  totalPrice_gte?: Maybe<Int>;
+  totalTransactions?: Maybe<Int>;
+  totalTransactions_not?: Maybe<Int>;
+  totalTransactions_in?: Maybe<Int[] | Int>;
+  totalTransactions_not_in?: Maybe<Int[] | Int>;
+  totalTransactions_lt?: Maybe<Int>;
+  totalTransactions_lte?: Maybe<Int>;
+  totalTransactions_gt?: Maybe<Int>;
+  totalTransactions_gte?: Maybe<Int>;
+  AND?: Maybe<UncheckTransactionsWhereInput[] | UncheckTransactionsWhereInput>;
+  OR?: Maybe<UncheckTransactionsWhereInput[] | UncheckTransactionsWhereInput>;
+  NOT?: Maybe<UncheckTransactionsWhereInput[] | UncheckTransactionsWhereInput>;
+}
+
+export interface ReviewImagesWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  url?: Maybe<string>;
+  url_not?: Maybe<string>;
+  url_in?: Maybe<string[] | string>;
+  url_not_in?: Maybe<string[] | string>;
+  url_lt?: Maybe<string>;
+  url_lte?: Maybe<string>;
+  url_gt?: Maybe<string>;
+  url_gte?: Maybe<string>;
+  url_contains?: Maybe<string>;
+  url_not_contains?: Maybe<string>;
+  url_starts_with?: Maybe<string>;
+  url_not_starts_with?: Maybe<string>;
+  url_ends_with?: Maybe<string>;
+  url_not_ends_with?: Maybe<string>;
+  AND?: Maybe<ReviewImagesWhereInput[] | ReviewImagesWhereInput>;
+  OR?: Maybe<ReviewImagesWhereInput[] | ReviewImagesWhereInput>;
+  NOT?: Maybe<ReviewImagesWhereInput[] | ReviewImagesWhereInput>;
+}
+
+export interface ReviewOptionalsWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  option?: Maybe<string>;
+  option_not?: Maybe<string>;
+  option_in?: Maybe<string[] | string>;
+  option_not_in?: Maybe<string[] | string>;
+  option_lt?: Maybe<string>;
+  option_lte?: Maybe<string>;
+  option_gt?: Maybe<string>;
+  option_gte?: Maybe<string>;
+  option_contains?: Maybe<string>;
+  option_not_contains?: Maybe<string>;
+  option_starts_with?: Maybe<string>;
+  option_not_starts_with?: Maybe<string>;
+  option_ends_with?: Maybe<string>;
+  option_not_ends_with?: Maybe<string>;
+  optionField?: Maybe<string>;
+  optionField_not?: Maybe<string>;
+  optionField_in?: Maybe<string[] | string>;
+  optionField_not_in?: Maybe<string[] | string>;
+  optionField_lt?: Maybe<string>;
+  optionField_lte?: Maybe<string>;
+  optionField_gt?: Maybe<string>;
+  optionField_gte?: Maybe<string>;
+  optionField_contains?: Maybe<string>;
+  optionField_not_contains?: Maybe<string>;
+  optionField_starts_with?: Maybe<string>;
+  optionField_not_starts_with?: Maybe<string>;
+  optionField_ends_with?: Maybe<string>;
+  optionField_not_ends_with?: Maybe<string>;
+  AND?: Maybe<ReviewOptionalsWhereInput[] | ReviewOptionalsWhereInput>;
+  OR?: Maybe<ReviewOptionalsWhereInput[] | ReviewOptionalsWhereInput>;
+  NOT?: Maybe<ReviewOptionalsWhereInput[] | ReviewOptionalsWhereInput>;
+}
+
+export interface ReviewFieldsWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  rating?: Maybe<Int>;
+  rating_not?: Maybe<Int>;
+  rating_in?: Maybe<Int[] | Int>;
+  rating_not_in?: Maybe<Int[] | Int>;
+  rating_lt?: Maybe<Int>;
+  rating_lte?: Maybe<Int>;
+  rating_gt?: Maybe<Int>;
+  rating_gte?: Maybe<Int>;
+  ratingFieldName?: Maybe<string>;
+  ratingFieldName_not?: Maybe<string>;
+  ratingFieldName_in?: Maybe<string[] | string>;
+  ratingFieldName_not_in?: Maybe<string[] | string>;
+  ratingFieldName_lt?: Maybe<string>;
+  ratingFieldName_lte?: Maybe<string>;
+  ratingFieldName_gt?: Maybe<string>;
+  ratingFieldName_gte?: Maybe<string>;
+  ratingFieldName_contains?: Maybe<string>;
+  ratingFieldName_not_contains?: Maybe<string>;
+  ratingFieldName_starts_with?: Maybe<string>;
+  ratingFieldName_not_starts_with?: Maybe<string>;
+  ratingFieldName_ends_with?: Maybe<string>;
+  ratingFieldName_not_ends_with?: Maybe<string>;
+  AND?: Maybe<ReviewFieldsWhereInput[] | ReviewFieldsWhereInput>;
+  OR?: Maybe<ReviewFieldsWhereInput[] | ReviewFieldsWhereInput>;
+  NOT?: Maybe<ReviewFieldsWhereInput[] | ReviewFieldsWhereInput>;
+}
+
+export type GalleryWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export type HotelWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
 export type ImageWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
@@ -1410,7 +3083,35 @@ export type LocationWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
+export type NotificationWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export type ReviewFieldsWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export type ReviewImagesWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export type ReviewOptionalsWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export type ReviewsWhereUniqueInput = AtLeastOne<{
+  reviewID: Maybe<ID_Input>;
+}>;
+
 export type SocialWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export type TransactionWhereUniqueInput = AtLeastOne<{
+  TXID: Maybe<ID_Input>;
+}>;
+
+export type UncheckTransactionsWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
@@ -1504,73 +3205,94 @@ export interface CategoryImagesUpdateManyMutationInput {
   url?: Maybe<string>;
 }
 
-export interface GalleryCreateInput {
-  id?: Maybe<ID_Input>;
-  url?: Maybe<string>;
+export interface CouponCreateInput {
+  couponId?: Maybe<ID_Input>;
+  couponName: string;
+  couponDescription?: Maybe<string>;
+  couponAuthor?: Maybe<UserCreateOneWithoutCoupons_makedInput>;
+  couponAuthorId?: Maybe<string>;
+  couponType?: Maybe<Int>;
+  couponValue?: Maybe<Int>;
+  couponQuantity?: Maybe<Int>;
+  couponStartDate?: Maybe<string>;
+  couponEndDate?: Maybe<string>;
+  couponRange?: Maybe<string>;
+  couponTarget?: Maybe<HotelCreateManyWithoutCouponsAvailableInput>;
 }
 
-export interface GalleryUpdateInput {
-  url?: Maybe<string>;
+export interface UserCreateOneWithoutCoupons_makedInput {
+  create?: Maybe<UserCreateWithoutCoupons_makedInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
 }
 
-export interface GalleryUpdateManyMutationInput {
-  url?: Maybe<string>;
-}
-
-export interface HotelCreateInput {
-  id?: Maybe<ID_Input>;
-  peopleLiked?: Maybe<UserCreateManyWithoutFavourite_postInput>;
-  connectId?: Maybe<UserCreateOneWithoutListed_postsInput>;
-  agentId?: Maybe<string>;
-  title: string;
-  slug?: Maybe<string>;
-  content?: Maybe<string>;
-  status?: Maybe<string>;
-  price?: Maybe<string>;
-  isNegotiable?: Maybe<boolean>;
-  propertyType?: Maybe<string>;
-  condition?: Maybe<string>;
-  rating?: Maybe<Float>;
-  ratingCount?: Maybe<Int>;
-  contactNumber?: Maybe<string>;
-  termsAndCondition?: Maybe<string>;
-  amenities?: Maybe<AmenitiesCreateManyInput>;
-  image?: Maybe<ImageCreateOneInput>;
-  location?: Maybe<LocationCreateManyInput>;
-  gallery?: Maybe<GalleryCreateManyInput>;
-  categories?: Maybe<CategoriesCreateManyInput>;
-}
-
-export interface UserCreateManyWithoutFavourite_postInput {
-  create?: Maybe<
-    | UserCreateWithoutFavourite_postInput[]
-    | UserCreateWithoutFavourite_postInput
-  >;
-  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-}
-
-export interface UserCreateWithoutFavourite_postInput {
+export interface UserCreateWithoutCoupons_makedInput {
   id?: Maybe<ID_Input>;
   first_name: string;
   last_name: string;
   username: string;
   password: string;
   email: string;
+  role?: Maybe<string>;
   cellNumber?: Maybe<string>;
+  profile_pic_main?: Maybe<string>;
+  cover_pic_main?: Maybe<string>;
   profile_pic?: Maybe<GalleryCreateManyInput>;
   cover_pic?: Maybe<GalleryCreateManyInput>;
   date_of_birth?: Maybe<string>;
   gender?: Maybe<string>;
   content?: Maybe<string>;
+  notification?: Maybe<NotificationCreateManyInput>;
+  unreadNotification?: Maybe<Int>;
   agent_location?: Maybe<LocationCreateOneInput>;
   gallery?: Maybe<GalleryCreateManyInput>;
   social_profile?: Maybe<SocialCreateOneInput>;
+  reviews_maked?: Maybe<ReviewsCreateManyWithoutReviewAuthorIdInput>;
   listed_posts?: Maybe<HotelCreateManyWithoutConnectIdInput>;
+  favourite_post?: Maybe<HotelCreateManyWithoutPeopleLikedInput>;
+  reviewed_post?: Maybe<HotelCreateManyWithoutPeopleReviewedInput>;
+  review_liked?: Maybe<ReviewsCreateManyWithoutPeopleLikedInput>;
+  review_disliked?: Maybe<ReviewsCreateManyWithoutPeopleDislikedInput>;
+  stripeId?: Maybe<string>;
+  transaction_had?: Maybe<
+    TransactionCreateManyWithoutTransactionHotelManagerInput
+  >;
+  transaction_maked?: Maybe<TransactionCreateManyWithoutTransactionAuthorInput>;
+  uncheckTransactions?: Maybe<
+    UncheckTransactionsCreateOneWithoutUserUncheckTransactionsInput
+  >;
 }
 
 export interface GalleryCreateManyInput {
   create?: Maybe<GalleryCreateInput[] | GalleryCreateInput>;
   connect?: Maybe<GalleryWhereUniqueInput[] | GalleryWhereUniqueInput>;
+}
+
+export interface GalleryCreateInput {
+  id?: Maybe<ID_Input>;
+  uid?: Maybe<string>;
+  url?: Maybe<string>;
+  signedRequest?: Maybe<string>;
+}
+
+export interface NotificationCreateManyInput {
+  create?: Maybe<NotificationCreateInput[] | NotificationCreateInput>;
+  connect?: Maybe<
+    NotificationWhereUniqueInput[] | NotificationWhereUniqueInput
+  >;
+}
+
+export interface NotificationCreateInput {
+  id?: Maybe<ID_Input>;
+  reviewAuthorName?: Maybe<string>;
+  reviewedHotelName?: Maybe<string>;
+  reviewTitle?: Maybe<string>;
+  reviewText?: Maybe<string>;
+  read?: Maybe<boolean>;
+  old?: Maybe<boolean>;
+  userNotificationId?: Maybe<string>;
+  peopleReviewedQuantity?: Maybe<Int>;
+  query?: Maybe<string>;
+  reviewAuthorProfilePic?: Maybe<string>;
 }
 
 export interface LocationCreateOneInput {
@@ -1580,8 +3302,8 @@ export interface LocationCreateOneInput {
 
 export interface LocationCreateInput {
   id?: Maybe<ID_Input>;
-  lat?: Maybe<string>;
-  lng?: Maybe<string>;
+  lat?: Maybe<Float>;
+  lng?: Maybe<Float>;
   formattedAddress?: Maybe<string>;
   zipcode?: Maybe<string>;
   city?: Maybe<string>;
@@ -1600,8 +3322,80 @@ export interface SocialCreateInput {
   id?: Maybe<ID_Input>;
   facebook?: Maybe<string>;
   twitter?: Maybe<string>;
-  linkedIN?: Maybe<string>;
+  linkedIn?: Maybe<string>;
   instagram?: Maybe<string>;
+}
+
+export interface ReviewsCreateManyWithoutReviewAuthorIdInput {
+  create?: Maybe<
+    | ReviewsCreateWithoutReviewAuthorIdInput[]
+    | ReviewsCreateWithoutReviewAuthorIdInput
+  >;
+  connect?: Maybe<ReviewsWhereUniqueInput[] | ReviewsWhereUniqueInput>;
+}
+
+export interface ReviewsCreateWithoutReviewAuthorIdInput {
+  reviewID?: Maybe<ID_Input>;
+  reviewTitle?: Maybe<string>;
+  reviewText?: Maybe<string>;
+  sortOfTrip?: Maybe<string>;
+  peopleLiked?: Maybe<UserCreateManyWithoutReview_likedInput>;
+  peopleDisliked?: Maybe<UserCreateManyWithoutReview_dislikedInput>;
+  reviewAuthorFirstName?: Maybe<string>;
+  reviewTips?: Maybe<string>;
+  reviewAuthorLastName?: Maybe<string>;
+  reviewAuthorEmail?: Maybe<string>;
+  reviewOverall?: Maybe<Float>;
+  reviewAuthorPic?: Maybe<string>;
+  reviewedHotel?: Maybe<HotelCreateOneWithoutReviewsInput>;
+  reviewedHotelId?: Maybe<ID_Input>;
+  reviewPics?: Maybe<ReviewImagesCreateManyInput>;
+  reviewOptional?: Maybe<ReviewOptionalsCreateManyInput>;
+  reviewFields?: Maybe<ReviewFieldsCreateManyInput>;
+}
+
+export interface UserCreateManyWithoutReview_likedInput {
+  create?: Maybe<
+    UserCreateWithoutReview_likedInput[] | UserCreateWithoutReview_likedInput
+  >;
+  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+}
+
+export interface UserCreateWithoutReview_likedInput {
+  id?: Maybe<ID_Input>;
+  first_name: string;
+  last_name: string;
+  username: string;
+  password: string;
+  email: string;
+  role?: Maybe<string>;
+  cellNumber?: Maybe<string>;
+  profile_pic_main?: Maybe<string>;
+  cover_pic_main?: Maybe<string>;
+  profile_pic?: Maybe<GalleryCreateManyInput>;
+  cover_pic?: Maybe<GalleryCreateManyInput>;
+  date_of_birth?: Maybe<string>;
+  gender?: Maybe<string>;
+  content?: Maybe<string>;
+  notification?: Maybe<NotificationCreateManyInput>;
+  unreadNotification?: Maybe<Int>;
+  agent_location?: Maybe<LocationCreateOneInput>;
+  gallery?: Maybe<GalleryCreateManyInput>;
+  social_profile?: Maybe<SocialCreateOneInput>;
+  reviews_maked?: Maybe<ReviewsCreateManyWithoutReviewAuthorIdInput>;
+  listed_posts?: Maybe<HotelCreateManyWithoutConnectIdInput>;
+  favourite_post?: Maybe<HotelCreateManyWithoutPeopleLikedInput>;
+  reviewed_post?: Maybe<HotelCreateManyWithoutPeopleReviewedInput>;
+  review_disliked?: Maybe<ReviewsCreateManyWithoutPeopleDislikedInput>;
+  stripeId?: Maybe<string>;
+  transaction_had?: Maybe<
+    TransactionCreateManyWithoutTransactionHotelManagerInput
+  >;
+  transaction_maked?: Maybe<TransactionCreateManyWithoutTransactionAuthorInput>;
+  coupons_maked?: Maybe<CouponCreateManyWithoutCouponAuthorInput>;
+  uncheckTransactions?: Maybe<
+    UncheckTransactionsCreateOneWithoutUserUncheckTransactionsInput
+  >;
 }
 
 export interface HotelCreateManyWithoutConnectIdInput {
@@ -1614,12 +3408,372 @@ export interface HotelCreateManyWithoutConnectIdInput {
 export interface HotelCreateWithoutConnectIdInput {
   id?: Maybe<ID_Input>;
   peopleLiked?: Maybe<UserCreateManyWithoutFavourite_postInput>;
+  peopleReviewed?: Maybe<UserCreateManyWithoutReviewed_postInput>;
+  couponsAvailable?: Maybe<CouponCreateManyWithoutCouponTargetInput>;
   agentId?: Maybe<string>;
+  agentEmail?: Maybe<string>;
+  agentName?: Maybe<string>;
   title: string;
   slug?: Maybe<string>;
   content?: Maybe<string>;
   status?: Maybe<string>;
-  price?: Maybe<string>;
+  price?: Maybe<Int>;
+  isNegotiable?: Maybe<boolean>;
+  propertyType?: Maybe<string>;
+  condition?: Maybe<string>;
+  rating?: Maybe<Float>;
+  ratingCount?: Maybe<Int>;
+  contactNumber?: Maybe<string>;
+  termsAndCondition?: Maybe<string>;
+  amenities?: Maybe<AmenitiesCreateManyInput>;
+  image?: Maybe<ImageCreateOneInput>;
+  location?: Maybe<LocationCreateManyInput>;
+  gallery?: Maybe<GalleryCreateManyInput>;
+  categories?: Maybe<CategoriesCreateManyInput>;
+  reviews?: Maybe<ReviewsCreateManyWithoutReviewedHotelInput>;
+}
+
+export interface UserCreateManyWithoutFavourite_postInput {
+  create?: Maybe<
+    | UserCreateWithoutFavourite_postInput[]
+    | UserCreateWithoutFavourite_postInput
+  >;
+  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+}
+
+export interface UserCreateWithoutFavourite_postInput {
+  id?: Maybe<ID_Input>;
+  first_name: string;
+  last_name: string;
+  username: string;
+  password: string;
+  email: string;
+  role?: Maybe<string>;
+  cellNumber?: Maybe<string>;
+  profile_pic_main?: Maybe<string>;
+  cover_pic_main?: Maybe<string>;
+  profile_pic?: Maybe<GalleryCreateManyInput>;
+  cover_pic?: Maybe<GalleryCreateManyInput>;
+  date_of_birth?: Maybe<string>;
+  gender?: Maybe<string>;
+  content?: Maybe<string>;
+  notification?: Maybe<NotificationCreateManyInput>;
+  unreadNotification?: Maybe<Int>;
+  agent_location?: Maybe<LocationCreateOneInput>;
+  gallery?: Maybe<GalleryCreateManyInput>;
+  social_profile?: Maybe<SocialCreateOneInput>;
+  reviews_maked?: Maybe<ReviewsCreateManyWithoutReviewAuthorIdInput>;
+  listed_posts?: Maybe<HotelCreateManyWithoutConnectIdInput>;
+  reviewed_post?: Maybe<HotelCreateManyWithoutPeopleReviewedInput>;
+  review_liked?: Maybe<ReviewsCreateManyWithoutPeopleLikedInput>;
+  review_disliked?: Maybe<ReviewsCreateManyWithoutPeopleDislikedInput>;
+  stripeId?: Maybe<string>;
+  transaction_had?: Maybe<
+    TransactionCreateManyWithoutTransactionHotelManagerInput
+  >;
+  transaction_maked?: Maybe<TransactionCreateManyWithoutTransactionAuthorInput>;
+  coupons_maked?: Maybe<CouponCreateManyWithoutCouponAuthorInput>;
+  uncheckTransactions?: Maybe<
+    UncheckTransactionsCreateOneWithoutUserUncheckTransactionsInput
+  >;
+}
+
+export interface HotelCreateManyWithoutPeopleReviewedInput {
+  create?: Maybe<
+    | HotelCreateWithoutPeopleReviewedInput[]
+    | HotelCreateWithoutPeopleReviewedInput
+  >;
+  connect?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
+}
+
+export interface HotelCreateWithoutPeopleReviewedInput {
+  id?: Maybe<ID_Input>;
+  peopleLiked?: Maybe<UserCreateManyWithoutFavourite_postInput>;
+  couponsAvailable?: Maybe<CouponCreateManyWithoutCouponTargetInput>;
+  connectId?: Maybe<UserCreateOneWithoutListed_postsInput>;
+  agentId?: Maybe<string>;
+  agentEmail?: Maybe<string>;
+  agentName?: Maybe<string>;
+  title: string;
+  slug?: Maybe<string>;
+  content?: Maybe<string>;
+  status?: Maybe<string>;
+  price?: Maybe<Int>;
+  isNegotiable?: Maybe<boolean>;
+  propertyType?: Maybe<string>;
+  condition?: Maybe<string>;
+  rating?: Maybe<Float>;
+  ratingCount?: Maybe<Int>;
+  contactNumber?: Maybe<string>;
+  termsAndCondition?: Maybe<string>;
+  amenities?: Maybe<AmenitiesCreateManyInput>;
+  image?: Maybe<ImageCreateOneInput>;
+  location?: Maybe<LocationCreateManyInput>;
+  gallery?: Maybe<GalleryCreateManyInput>;
+  categories?: Maybe<CategoriesCreateManyInput>;
+  reviews?: Maybe<ReviewsCreateManyWithoutReviewedHotelInput>;
+}
+
+export interface CouponCreateManyWithoutCouponTargetInput {
+  create?: Maybe<
+    | CouponCreateWithoutCouponTargetInput[]
+    | CouponCreateWithoutCouponTargetInput
+  >;
+  connect?: Maybe<CouponWhereUniqueInput[] | CouponWhereUniqueInput>;
+}
+
+export interface CouponCreateWithoutCouponTargetInput {
+  couponId?: Maybe<ID_Input>;
+  couponName: string;
+  couponDescription?: Maybe<string>;
+  couponAuthor?: Maybe<UserCreateOneWithoutCoupons_makedInput>;
+  couponAuthorId?: Maybe<string>;
+  couponType?: Maybe<Int>;
+  couponValue?: Maybe<Int>;
+  couponQuantity?: Maybe<Int>;
+  couponStartDate?: Maybe<string>;
+  couponEndDate?: Maybe<string>;
+  couponRange?: Maybe<string>;
+}
+
+export interface UserCreateOneWithoutListed_postsInput {
+  create?: Maybe<UserCreateWithoutListed_postsInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserCreateWithoutListed_postsInput {
+  id?: Maybe<ID_Input>;
+  first_name: string;
+  last_name: string;
+  username: string;
+  password: string;
+  email: string;
+  role?: Maybe<string>;
+  cellNumber?: Maybe<string>;
+  profile_pic_main?: Maybe<string>;
+  cover_pic_main?: Maybe<string>;
+  profile_pic?: Maybe<GalleryCreateManyInput>;
+  cover_pic?: Maybe<GalleryCreateManyInput>;
+  date_of_birth?: Maybe<string>;
+  gender?: Maybe<string>;
+  content?: Maybe<string>;
+  notification?: Maybe<NotificationCreateManyInput>;
+  unreadNotification?: Maybe<Int>;
+  agent_location?: Maybe<LocationCreateOneInput>;
+  gallery?: Maybe<GalleryCreateManyInput>;
+  social_profile?: Maybe<SocialCreateOneInput>;
+  reviews_maked?: Maybe<ReviewsCreateManyWithoutReviewAuthorIdInput>;
+  favourite_post?: Maybe<HotelCreateManyWithoutPeopleLikedInput>;
+  reviewed_post?: Maybe<HotelCreateManyWithoutPeopleReviewedInput>;
+  review_liked?: Maybe<ReviewsCreateManyWithoutPeopleLikedInput>;
+  review_disliked?: Maybe<ReviewsCreateManyWithoutPeopleDislikedInput>;
+  stripeId?: Maybe<string>;
+  transaction_had?: Maybe<
+    TransactionCreateManyWithoutTransactionHotelManagerInput
+  >;
+  transaction_maked?: Maybe<TransactionCreateManyWithoutTransactionAuthorInput>;
+  coupons_maked?: Maybe<CouponCreateManyWithoutCouponAuthorInput>;
+  uncheckTransactions?: Maybe<
+    UncheckTransactionsCreateOneWithoutUserUncheckTransactionsInput
+  >;
+}
+
+export interface HotelCreateManyWithoutPeopleLikedInput {
+  create?: Maybe<
+    HotelCreateWithoutPeopleLikedInput[] | HotelCreateWithoutPeopleLikedInput
+  >;
+  connect?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
+}
+
+export interface HotelCreateWithoutPeopleLikedInput {
+  id?: Maybe<ID_Input>;
+  peopleReviewed?: Maybe<UserCreateManyWithoutReviewed_postInput>;
+  couponsAvailable?: Maybe<CouponCreateManyWithoutCouponTargetInput>;
+  connectId?: Maybe<UserCreateOneWithoutListed_postsInput>;
+  agentId?: Maybe<string>;
+  agentEmail?: Maybe<string>;
+  agentName?: Maybe<string>;
+  title: string;
+  slug?: Maybe<string>;
+  content?: Maybe<string>;
+  status?: Maybe<string>;
+  price?: Maybe<Int>;
+  isNegotiable?: Maybe<boolean>;
+  propertyType?: Maybe<string>;
+  condition?: Maybe<string>;
+  rating?: Maybe<Float>;
+  ratingCount?: Maybe<Int>;
+  contactNumber?: Maybe<string>;
+  termsAndCondition?: Maybe<string>;
+  amenities?: Maybe<AmenitiesCreateManyInput>;
+  image?: Maybe<ImageCreateOneInput>;
+  location?: Maybe<LocationCreateManyInput>;
+  gallery?: Maybe<GalleryCreateManyInput>;
+  categories?: Maybe<CategoriesCreateManyInput>;
+  reviews?: Maybe<ReviewsCreateManyWithoutReviewedHotelInput>;
+}
+
+export interface UserCreateManyWithoutReviewed_postInput {
+  create?: Maybe<
+    UserCreateWithoutReviewed_postInput[] | UserCreateWithoutReviewed_postInput
+  >;
+  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+}
+
+export interface UserCreateWithoutReviewed_postInput {
+  id?: Maybe<ID_Input>;
+  first_name: string;
+  last_name: string;
+  username: string;
+  password: string;
+  email: string;
+  role?: Maybe<string>;
+  cellNumber?: Maybe<string>;
+  profile_pic_main?: Maybe<string>;
+  cover_pic_main?: Maybe<string>;
+  profile_pic?: Maybe<GalleryCreateManyInput>;
+  cover_pic?: Maybe<GalleryCreateManyInput>;
+  date_of_birth?: Maybe<string>;
+  gender?: Maybe<string>;
+  content?: Maybe<string>;
+  notification?: Maybe<NotificationCreateManyInput>;
+  unreadNotification?: Maybe<Int>;
+  agent_location?: Maybe<LocationCreateOneInput>;
+  gallery?: Maybe<GalleryCreateManyInput>;
+  social_profile?: Maybe<SocialCreateOneInput>;
+  reviews_maked?: Maybe<ReviewsCreateManyWithoutReviewAuthorIdInput>;
+  listed_posts?: Maybe<HotelCreateManyWithoutConnectIdInput>;
+  favourite_post?: Maybe<HotelCreateManyWithoutPeopleLikedInput>;
+  review_liked?: Maybe<ReviewsCreateManyWithoutPeopleLikedInput>;
+  review_disliked?: Maybe<ReviewsCreateManyWithoutPeopleDislikedInput>;
+  stripeId?: Maybe<string>;
+  transaction_had?: Maybe<
+    TransactionCreateManyWithoutTransactionHotelManagerInput
+  >;
+  transaction_maked?: Maybe<TransactionCreateManyWithoutTransactionAuthorInput>;
+  coupons_maked?: Maybe<CouponCreateManyWithoutCouponAuthorInput>;
+  uncheckTransactions?: Maybe<
+    UncheckTransactionsCreateOneWithoutUserUncheckTransactionsInput
+  >;
+}
+
+export interface ReviewsCreateManyWithoutPeopleLikedInput {
+  create?: Maybe<
+    | ReviewsCreateWithoutPeopleLikedInput[]
+    | ReviewsCreateWithoutPeopleLikedInput
+  >;
+  connect?: Maybe<ReviewsWhereUniqueInput[] | ReviewsWhereUniqueInput>;
+}
+
+export interface ReviewsCreateWithoutPeopleLikedInput {
+  reviewID?: Maybe<ID_Input>;
+  reviewTitle?: Maybe<string>;
+  reviewText?: Maybe<string>;
+  sortOfTrip?: Maybe<string>;
+  reviewAuthorId?: Maybe<UserCreateOneWithoutReviews_makedInput>;
+  peopleDisliked?: Maybe<UserCreateManyWithoutReview_dislikedInput>;
+  reviewAuthorFirstName?: Maybe<string>;
+  reviewTips?: Maybe<string>;
+  reviewAuthorLastName?: Maybe<string>;
+  reviewAuthorEmail?: Maybe<string>;
+  reviewOverall?: Maybe<Float>;
+  reviewAuthorPic?: Maybe<string>;
+  reviewedHotel?: Maybe<HotelCreateOneWithoutReviewsInput>;
+  reviewedHotelId?: Maybe<ID_Input>;
+  reviewPics?: Maybe<ReviewImagesCreateManyInput>;
+  reviewOptional?: Maybe<ReviewOptionalsCreateManyInput>;
+  reviewFields?: Maybe<ReviewFieldsCreateManyInput>;
+}
+
+export interface UserCreateOneWithoutReviews_makedInput {
+  create?: Maybe<UserCreateWithoutReviews_makedInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserCreateWithoutReviews_makedInput {
+  id?: Maybe<ID_Input>;
+  first_name: string;
+  last_name: string;
+  username: string;
+  password: string;
+  email: string;
+  role?: Maybe<string>;
+  cellNumber?: Maybe<string>;
+  profile_pic_main?: Maybe<string>;
+  cover_pic_main?: Maybe<string>;
+  profile_pic?: Maybe<GalleryCreateManyInput>;
+  cover_pic?: Maybe<GalleryCreateManyInput>;
+  date_of_birth?: Maybe<string>;
+  gender?: Maybe<string>;
+  content?: Maybe<string>;
+  notification?: Maybe<NotificationCreateManyInput>;
+  unreadNotification?: Maybe<Int>;
+  agent_location?: Maybe<LocationCreateOneInput>;
+  gallery?: Maybe<GalleryCreateManyInput>;
+  social_profile?: Maybe<SocialCreateOneInput>;
+  listed_posts?: Maybe<HotelCreateManyWithoutConnectIdInput>;
+  favourite_post?: Maybe<HotelCreateManyWithoutPeopleLikedInput>;
+  reviewed_post?: Maybe<HotelCreateManyWithoutPeopleReviewedInput>;
+  review_liked?: Maybe<ReviewsCreateManyWithoutPeopleLikedInput>;
+  review_disliked?: Maybe<ReviewsCreateManyWithoutPeopleDislikedInput>;
+  stripeId?: Maybe<string>;
+  transaction_had?: Maybe<
+    TransactionCreateManyWithoutTransactionHotelManagerInput
+  >;
+  transaction_maked?: Maybe<TransactionCreateManyWithoutTransactionAuthorInput>;
+  coupons_maked?: Maybe<CouponCreateManyWithoutCouponAuthorInput>;
+  uncheckTransactions?: Maybe<
+    UncheckTransactionsCreateOneWithoutUserUncheckTransactionsInput
+  >;
+}
+
+export interface ReviewsCreateManyWithoutPeopleDislikedInput {
+  create?: Maybe<
+    | ReviewsCreateWithoutPeopleDislikedInput[]
+    | ReviewsCreateWithoutPeopleDislikedInput
+  >;
+  connect?: Maybe<ReviewsWhereUniqueInput[] | ReviewsWhereUniqueInput>;
+}
+
+export interface ReviewsCreateWithoutPeopleDislikedInput {
+  reviewID?: Maybe<ID_Input>;
+  reviewTitle?: Maybe<string>;
+  reviewText?: Maybe<string>;
+  sortOfTrip?: Maybe<string>;
+  reviewAuthorId?: Maybe<UserCreateOneWithoutReviews_makedInput>;
+  peopleLiked?: Maybe<UserCreateManyWithoutReview_likedInput>;
+  reviewAuthorFirstName?: Maybe<string>;
+  reviewTips?: Maybe<string>;
+  reviewAuthorLastName?: Maybe<string>;
+  reviewAuthorEmail?: Maybe<string>;
+  reviewOverall?: Maybe<Float>;
+  reviewAuthorPic?: Maybe<string>;
+  reviewedHotel?: Maybe<HotelCreateOneWithoutReviewsInput>;
+  reviewedHotelId?: Maybe<ID_Input>;
+  reviewPics?: Maybe<ReviewImagesCreateManyInput>;
+  reviewOptional?: Maybe<ReviewOptionalsCreateManyInput>;
+  reviewFields?: Maybe<ReviewFieldsCreateManyInput>;
+}
+
+export interface HotelCreateOneWithoutReviewsInput {
+  create?: Maybe<HotelCreateWithoutReviewsInput>;
+  connect?: Maybe<HotelWhereUniqueInput>;
+}
+
+export interface HotelCreateWithoutReviewsInput {
+  id?: Maybe<ID_Input>;
+  peopleLiked?: Maybe<UserCreateManyWithoutFavourite_postInput>;
+  peopleReviewed?: Maybe<UserCreateManyWithoutReviewed_postInput>;
+  couponsAvailable?: Maybe<CouponCreateManyWithoutCouponTargetInput>;
+  connectId?: Maybe<UserCreateOneWithoutListed_postsInput>;
+  agentId?: Maybe<string>;
+  agentEmail?: Maybe<string>;
+  agentName?: Maybe<string>;
+  title: string;
+  slug?: Maybe<string>;
+  content?: Maybe<string>;
+  status?: Maybe<string>;
+  price?: Maybe<Int>;
   isNegotiable?: Maybe<boolean>;
   propertyType?: Maybe<string>;
   condition?: Maybe<string>;
@@ -1660,46 +3814,167 @@ export interface CategoriesCreateManyInput {
   connect?: Maybe<CategoriesWhereUniqueInput[] | CategoriesWhereUniqueInput>;
 }
 
-export interface UserCreateOneWithoutListed_postsInput {
-  create?: Maybe<UserCreateWithoutListed_postsInput>;
+export interface ReviewImagesCreateManyInput {
+  create?: Maybe<ReviewImagesCreateInput[] | ReviewImagesCreateInput>;
+  connect?: Maybe<
+    ReviewImagesWhereUniqueInput[] | ReviewImagesWhereUniqueInput
+  >;
+}
+
+export interface ReviewImagesCreateInput {
+  id?: Maybe<ID_Input>;
+  url?: Maybe<string>;
+}
+
+export interface ReviewOptionalsCreateManyInput {
+  create?: Maybe<ReviewOptionalsCreateInput[] | ReviewOptionalsCreateInput>;
+  connect?: Maybe<
+    ReviewOptionalsWhereUniqueInput[] | ReviewOptionalsWhereUniqueInput
+  >;
+}
+
+export interface ReviewOptionalsCreateInput {
+  id?: Maybe<ID_Input>;
+  option?: Maybe<string>;
+  optionField?: Maybe<string>;
+}
+
+export interface ReviewFieldsCreateManyInput {
+  create?: Maybe<ReviewFieldsCreateInput[] | ReviewFieldsCreateInput>;
+  connect?: Maybe<
+    ReviewFieldsWhereUniqueInput[] | ReviewFieldsWhereUniqueInput
+  >;
+}
+
+export interface ReviewFieldsCreateInput {
+  id?: Maybe<ID_Input>;
+  rating?: Maybe<Int>;
+  ratingFieldName?: Maybe<string>;
+}
+
+export interface TransactionCreateManyWithoutTransactionHotelManagerInput {
+  create?: Maybe<
+    | TransactionCreateWithoutTransactionHotelManagerInput[]
+    | TransactionCreateWithoutTransactionHotelManagerInput
+  >;
+  connect?: Maybe<TransactionWhereUniqueInput[] | TransactionWhereUniqueInput>;
+}
+
+export interface TransactionCreateWithoutTransactionHotelManagerInput {
+  TXID?: Maybe<ID_Input>;
+  transactionSecretKey?: Maybe<string>;
+  transactionHotelName?: Maybe<string>;
+  transactionHotelId?: Maybe<string>;
+  transactionHotelManagerId?: Maybe<string>;
+  transactionHotelType?: Maybe<string>;
+  transactionPrice?: Maybe<Int>;
+  transactionAuthor?: Maybe<UserCreateOneWithoutTransaction_makedInput>;
+  transactionAuthorId?: Maybe<string>;
+  transactionAuthorName?: Maybe<string>;
+  transactionAuthorEmail?: Maybe<string>;
+  transactionAuthorContactNumber?: Maybe<string>;
+  transactionAuthorSpecial?: Maybe<string>;
+  transactionAuthorNote?: Maybe<string>;
+  transactionLocationLat?: Maybe<Float>;
+  transactionLocationLng?: Maybe<Float>;
+  transactionRoom?: Maybe<Int>;
+  transactionGuest?: Maybe<Int>;
+  transactionLocationFormattedAddress?: Maybe<string>;
+  transactionRange?: Maybe<Int>;
+  transactionStatus?: Maybe<string>;
+  transactionCoupon?: Maybe<string>;
+  transactionCouponType?: Maybe<Int>;
+  transactionCouponValue?: Maybe<Int>;
+  transactionStartDate?: Maybe<string>;
+  transactionEndDate?: Maybe<string>;
+  transactionStripeId?: Maybe<string>;
+}
+
+export interface UserCreateOneWithoutTransaction_makedInput {
+  create?: Maybe<UserCreateWithoutTransaction_makedInput>;
   connect?: Maybe<UserWhereUniqueInput>;
 }
 
-export interface UserCreateWithoutListed_postsInput {
+export interface UserCreateWithoutTransaction_makedInput {
   id?: Maybe<ID_Input>;
   first_name: string;
   last_name: string;
   username: string;
   password: string;
   email: string;
+  role?: Maybe<string>;
   cellNumber?: Maybe<string>;
+  profile_pic_main?: Maybe<string>;
+  cover_pic_main?: Maybe<string>;
   profile_pic?: Maybe<GalleryCreateManyInput>;
   cover_pic?: Maybe<GalleryCreateManyInput>;
   date_of_birth?: Maybe<string>;
   gender?: Maybe<string>;
   content?: Maybe<string>;
+  notification?: Maybe<NotificationCreateManyInput>;
+  unreadNotification?: Maybe<Int>;
   agent_location?: Maybe<LocationCreateOneInput>;
   gallery?: Maybe<GalleryCreateManyInput>;
   social_profile?: Maybe<SocialCreateOneInput>;
+  reviews_maked?: Maybe<ReviewsCreateManyWithoutReviewAuthorIdInput>;
+  listed_posts?: Maybe<HotelCreateManyWithoutConnectIdInput>;
   favourite_post?: Maybe<HotelCreateManyWithoutPeopleLikedInput>;
+  reviewed_post?: Maybe<HotelCreateManyWithoutPeopleReviewedInput>;
+  review_liked?: Maybe<ReviewsCreateManyWithoutPeopleLikedInput>;
+  review_disliked?: Maybe<ReviewsCreateManyWithoutPeopleDislikedInput>;
+  stripeId?: Maybe<string>;
+  transaction_had?: Maybe<
+    TransactionCreateManyWithoutTransactionHotelManagerInput
+  >;
+  coupons_maked?: Maybe<CouponCreateManyWithoutCouponAuthorInput>;
+  uncheckTransactions?: Maybe<
+    UncheckTransactionsCreateOneWithoutUserUncheckTransactionsInput
+  >;
 }
 
-export interface HotelCreateManyWithoutPeopleLikedInput {
+export interface CouponCreateManyWithoutCouponAuthorInput {
   create?: Maybe<
-    HotelCreateWithoutPeopleLikedInput[] | HotelCreateWithoutPeopleLikedInput
+    | CouponCreateWithoutCouponAuthorInput[]
+    | CouponCreateWithoutCouponAuthorInput
+  >;
+  connect?: Maybe<CouponWhereUniqueInput[] | CouponWhereUniqueInput>;
+}
+
+export interface CouponCreateWithoutCouponAuthorInput {
+  couponId?: Maybe<ID_Input>;
+  couponName: string;
+  couponDescription?: Maybe<string>;
+  couponAuthorId?: Maybe<string>;
+  couponType?: Maybe<Int>;
+  couponValue?: Maybe<Int>;
+  couponQuantity?: Maybe<Int>;
+  couponStartDate?: Maybe<string>;
+  couponEndDate?: Maybe<string>;
+  couponRange?: Maybe<string>;
+  couponTarget?: Maybe<HotelCreateManyWithoutCouponsAvailableInput>;
+}
+
+export interface HotelCreateManyWithoutCouponsAvailableInput {
+  create?: Maybe<
+    | HotelCreateWithoutCouponsAvailableInput[]
+    | HotelCreateWithoutCouponsAvailableInput
   >;
   connect?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
 }
 
-export interface HotelCreateWithoutPeopleLikedInput {
+export interface HotelCreateWithoutCouponsAvailableInput {
   id?: Maybe<ID_Input>;
+  peopleLiked?: Maybe<UserCreateManyWithoutFavourite_postInput>;
+  peopleReviewed?: Maybe<UserCreateManyWithoutReviewed_postInput>;
   connectId?: Maybe<UserCreateOneWithoutListed_postsInput>;
   agentId?: Maybe<string>;
+  agentEmail?: Maybe<string>;
+  agentName?: Maybe<string>;
   title: string;
   slug?: Maybe<string>;
   content?: Maybe<string>;
   status?: Maybe<string>;
-  price?: Maybe<string>;
+  price?: Maybe<Int>;
   isNegotiable?: Maybe<boolean>;
   propertyType?: Maybe<string>;
   condition?: Maybe<string>;
@@ -1712,17 +3987,754 @@ export interface HotelCreateWithoutPeopleLikedInput {
   location?: Maybe<LocationCreateManyInput>;
   gallery?: Maybe<GalleryCreateManyInput>;
   categories?: Maybe<CategoriesCreateManyInput>;
+  reviews?: Maybe<ReviewsCreateManyWithoutReviewedHotelInput>;
 }
 
-export interface HotelUpdateInput {
+export interface ReviewsCreateManyWithoutReviewedHotelInput {
+  create?: Maybe<
+    | ReviewsCreateWithoutReviewedHotelInput[]
+    | ReviewsCreateWithoutReviewedHotelInput
+  >;
+  connect?: Maybe<ReviewsWhereUniqueInput[] | ReviewsWhereUniqueInput>;
+}
+
+export interface ReviewsCreateWithoutReviewedHotelInput {
+  reviewID?: Maybe<ID_Input>;
+  reviewTitle?: Maybe<string>;
+  reviewText?: Maybe<string>;
+  sortOfTrip?: Maybe<string>;
+  reviewAuthorId?: Maybe<UserCreateOneWithoutReviews_makedInput>;
+  peopleLiked?: Maybe<UserCreateManyWithoutReview_likedInput>;
+  peopleDisliked?: Maybe<UserCreateManyWithoutReview_dislikedInput>;
+  reviewAuthorFirstName?: Maybe<string>;
+  reviewTips?: Maybe<string>;
+  reviewAuthorLastName?: Maybe<string>;
+  reviewAuthorEmail?: Maybe<string>;
+  reviewOverall?: Maybe<Float>;
+  reviewAuthorPic?: Maybe<string>;
+  reviewedHotelId?: Maybe<ID_Input>;
+  reviewPics?: Maybe<ReviewImagesCreateManyInput>;
+  reviewOptional?: Maybe<ReviewOptionalsCreateManyInput>;
+  reviewFields?: Maybe<ReviewFieldsCreateManyInput>;
+}
+
+export interface UserCreateManyWithoutReview_dislikedInput {
+  create?: Maybe<
+    | UserCreateWithoutReview_dislikedInput[]
+    | UserCreateWithoutReview_dislikedInput
+  >;
+  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+}
+
+export interface UserCreateWithoutReview_dislikedInput {
+  id?: Maybe<ID_Input>;
+  first_name: string;
+  last_name: string;
+  username: string;
+  password: string;
+  email: string;
+  role?: Maybe<string>;
+  cellNumber?: Maybe<string>;
+  profile_pic_main?: Maybe<string>;
+  cover_pic_main?: Maybe<string>;
+  profile_pic?: Maybe<GalleryCreateManyInput>;
+  cover_pic?: Maybe<GalleryCreateManyInput>;
+  date_of_birth?: Maybe<string>;
+  gender?: Maybe<string>;
+  content?: Maybe<string>;
+  notification?: Maybe<NotificationCreateManyInput>;
+  unreadNotification?: Maybe<Int>;
+  agent_location?: Maybe<LocationCreateOneInput>;
+  gallery?: Maybe<GalleryCreateManyInput>;
+  social_profile?: Maybe<SocialCreateOneInput>;
+  reviews_maked?: Maybe<ReviewsCreateManyWithoutReviewAuthorIdInput>;
+  listed_posts?: Maybe<HotelCreateManyWithoutConnectIdInput>;
+  favourite_post?: Maybe<HotelCreateManyWithoutPeopleLikedInput>;
+  reviewed_post?: Maybe<HotelCreateManyWithoutPeopleReviewedInput>;
+  review_liked?: Maybe<ReviewsCreateManyWithoutPeopleLikedInput>;
+  stripeId?: Maybe<string>;
+  transaction_had?: Maybe<
+    TransactionCreateManyWithoutTransactionHotelManagerInput
+  >;
+  transaction_maked?: Maybe<TransactionCreateManyWithoutTransactionAuthorInput>;
+  coupons_maked?: Maybe<CouponCreateManyWithoutCouponAuthorInput>;
+  uncheckTransactions?: Maybe<
+    UncheckTransactionsCreateOneWithoutUserUncheckTransactionsInput
+  >;
+}
+
+export interface TransactionCreateManyWithoutTransactionAuthorInput {
+  create?: Maybe<
+    | TransactionCreateWithoutTransactionAuthorInput[]
+    | TransactionCreateWithoutTransactionAuthorInput
+  >;
+  connect?: Maybe<TransactionWhereUniqueInput[] | TransactionWhereUniqueInput>;
+}
+
+export interface TransactionCreateWithoutTransactionAuthorInput {
+  TXID?: Maybe<ID_Input>;
+  transactionSecretKey?: Maybe<string>;
+  transactionHotelName?: Maybe<string>;
+  transactionHotelId?: Maybe<string>;
+  transactionHotelManager?: Maybe<UserCreateOneWithoutTransaction_hadInput>;
+  transactionHotelManagerId?: Maybe<string>;
+  transactionHotelType?: Maybe<string>;
+  transactionPrice?: Maybe<Int>;
+  transactionAuthorId?: Maybe<string>;
+  transactionAuthorName?: Maybe<string>;
+  transactionAuthorEmail?: Maybe<string>;
+  transactionAuthorContactNumber?: Maybe<string>;
+  transactionAuthorSpecial?: Maybe<string>;
+  transactionAuthorNote?: Maybe<string>;
+  transactionLocationLat?: Maybe<Float>;
+  transactionLocationLng?: Maybe<Float>;
+  transactionRoom?: Maybe<Int>;
+  transactionGuest?: Maybe<Int>;
+  transactionLocationFormattedAddress?: Maybe<string>;
+  transactionRange?: Maybe<Int>;
+  transactionStatus?: Maybe<string>;
+  transactionCoupon?: Maybe<string>;
+  transactionCouponType?: Maybe<Int>;
+  transactionCouponValue?: Maybe<Int>;
+  transactionStartDate?: Maybe<string>;
+  transactionEndDate?: Maybe<string>;
+  transactionStripeId?: Maybe<string>;
+}
+
+export interface UserCreateOneWithoutTransaction_hadInput {
+  create?: Maybe<UserCreateWithoutTransaction_hadInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserCreateWithoutTransaction_hadInput {
+  id?: Maybe<ID_Input>;
+  first_name: string;
+  last_name: string;
+  username: string;
+  password: string;
+  email: string;
+  role?: Maybe<string>;
+  cellNumber?: Maybe<string>;
+  profile_pic_main?: Maybe<string>;
+  cover_pic_main?: Maybe<string>;
+  profile_pic?: Maybe<GalleryCreateManyInput>;
+  cover_pic?: Maybe<GalleryCreateManyInput>;
+  date_of_birth?: Maybe<string>;
+  gender?: Maybe<string>;
+  content?: Maybe<string>;
+  notification?: Maybe<NotificationCreateManyInput>;
+  unreadNotification?: Maybe<Int>;
+  agent_location?: Maybe<LocationCreateOneInput>;
+  gallery?: Maybe<GalleryCreateManyInput>;
+  social_profile?: Maybe<SocialCreateOneInput>;
+  reviews_maked?: Maybe<ReviewsCreateManyWithoutReviewAuthorIdInput>;
+  listed_posts?: Maybe<HotelCreateManyWithoutConnectIdInput>;
+  favourite_post?: Maybe<HotelCreateManyWithoutPeopleLikedInput>;
+  reviewed_post?: Maybe<HotelCreateManyWithoutPeopleReviewedInput>;
+  review_liked?: Maybe<ReviewsCreateManyWithoutPeopleLikedInput>;
+  review_disliked?: Maybe<ReviewsCreateManyWithoutPeopleDislikedInput>;
+  stripeId?: Maybe<string>;
+  transaction_maked?: Maybe<TransactionCreateManyWithoutTransactionAuthorInput>;
+  coupons_maked?: Maybe<CouponCreateManyWithoutCouponAuthorInput>;
+  uncheckTransactions?: Maybe<
+    UncheckTransactionsCreateOneWithoutUserUncheckTransactionsInput
+  >;
+}
+
+export interface UncheckTransactionsCreateOneWithoutUserUncheckTransactionsInput {
+  create?: Maybe<UncheckTransactionsCreateWithoutUserUncheckTransactionsInput>;
+  connect?: Maybe<UncheckTransactionsWhereUniqueInput>;
+}
+
+export interface UncheckTransactionsCreateWithoutUserUncheckTransactionsInput {
+  id?: Maybe<ID_Input>;
+  userUncheckTransactionsId?: Maybe<string>;
+  totalPrice?: Maybe<Int>;
+  totalTransactions?: Maybe<Int>;
+}
+
+export interface CouponUpdateInput {
+  couponName?: Maybe<string>;
+  couponDescription?: Maybe<string>;
+  couponAuthor?: Maybe<UserUpdateOneWithoutCoupons_makedInput>;
+  couponAuthorId?: Maybe<string>;
+  couponType?: Maybe<Int>;
+  couponValue?: Maybe<Int>;
+  couponQuantity?: Maybe<Int>;
+  couponStartDate?: Maybe<string>;
+  couponEndDate?: Maybe<string>;
+  couponRange?: Maybe<string>;
+  couponTarget?: Maybe<HotelUpdateManyWithoutCouponsAvailableInput>;
+}
+
+export interface UserUpdateOneWithoutCoupons_makedInput {
+  create?: Maybe<UserCreateWithoutCoupons_makedInput>;
+  update?: Maybe<UserUpdateWithoutCoupons_makedDataInput>;
+  upsert?: Maybe<UserUpsertWithoutCoupons_makedInput>;
+  delete?: Maybe<boolean>;
+  disconnect?: Maybe<boolean>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserUpdateWithoutCoupons_makedDataInput {
+  first_name?: Maybe<string>;
+  last_name?: Maybe<string>;
+  username?: Maybe<string>;
+  password?: Maybe<string>;
+  email?: Maybe<string>;
+  role?: Maybe<string>;
+  cellNumber?: Maybe<string>;
+  profile_pic_main?: Maybe<string>;
+  cover_pic_main?: Maybe<string>;
+  profile_pic?: Maybe<GalleryUpdateManyInput>;
+  cover_pic?: Maybe<GalleryUpdateManyInput>;
+  date_of_birth?: Maybe<string>;
+  gender?: Maybe<string>;
+  content?: Maybe<string>;
+  notification?: Maybe<NotificationUpdateManyInput>;
+  unreadNotification?: Maybe<Int>;
+  agent_location?: Maybe<LocationUpdateOneInput>;
+  gallery?: Maybe<GalleryUpdateManyInput>;
+  social_profile?: Maybe<SocialUpdateOneInput>;
+  reviews_maked?: Maybe<ReviewsUpdateManyWithoutReviewAuthorIdInput>;
+  listed_posts?: Maybe<HotelUpdateManyWithoutConnectIdInput>;
+  favourite_post?: Maybe<HotelUpdateManyWithoutPeopleLikedInput>;
+  reviewed_post?: Maybe<HotelUpdateManyWithoutPeopleReviewedInput>;
+  review_liked?: Maybe<ReviewsUpdateManyWithoutPeopleLikedInput>;
+  review_disliked?: Maybe<ReviewsUpdateManyWithoutPeopleDislikedInput>;
+  stripeId?: Maybe<string>;
+  transaction_had?: Maybe<
+    TransactionUpdateManyWithoutTransactionHotelManagerInput
+  >;
+  transaction_maked?: Maybe<TransactionUpdateManyWithoutTransactionAuthorInput>;
+  uncheckTransactions?: Maybe<
+    UncheckTransactionsUpdateOneWithoutUserUncheckTransactionsInput
+  >;
+}
+
+export interface GalleryUpdateManyInput {
+  create?: Maybe<GalleryCreateInput[] | GalleryCreateInput>;
+  update?: Maybe<
+    | GalleryUpdateWithWhereUniqueNestedInput[]
+    | GalleryUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | GalleryUpsertWithWhereUniqueNestedInput[]
+    | GalleryUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<GalleryWhereUniqueInput[] | GalleryWhereUniqueInput>;
+  connect?: Maybe<GalleryWhereUniqueInput[] | GalleryWhereUniqueInput>;
+  set?: Maybe<GalleryWhereUniqueInput[] | GalleryWhereUniqueInput>;
+  disconnect?: Maybe<GalleryWhereUniqueInput[] | GalleryWhereUniqueInput>;
+  deleteMany?: Maybe<GalleryScalarWhereInput[] | GalleryScalarWhereInput>;
+  updateMany?: Maybe<
+    | GalleryUpdateManyWithWhereNestedInput[]
+    | GalleryUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface GalleryUpdateWithWhereUniqueNestedInput {
+  where: GalleryWhereUniqueInput;
+  data: GalleryUpdateDataInput;
+}
+
+export interface GalleryUpdateDataInput {
+  uid?: Maybe<string>;
+  url?: Maybe<string>;
+  signedRequest?: Maybe<string>;
+}
+
+export interface GalleryUpsertWithWhereUniqueNestedInput {
+  where: GalleryWhereUniqueInput;
+  update: GalleryUpdateDataInput;
+  create: GalleryCreateInput;
+}
+
+export interface GalleryScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  uid?: Maybe<string>;
+  uid_not?: Maybe<string>;
+  uid_in?: Maybe<string[] | string>;
+  uid_not_in?: Maybe<string[] | string>;
+  uid_lt?: Maybe<string>;
+  uid_lte?: Maybe<string>;
+  uid_gt?: Maybe<string>;
+  uid_gte?: Maybe<string>;
+  uid_contains?: Maybe<string>;
+  uid_not_contains?: Maybe<string>;
+  uid_starts_with?: Maybe<string>;
+  uid_not_starts_with?: Maybe<string>;
+  uid_ends_with?: Maybe<string>;
+  uid_not_ends_with?: Maybe<string>;
+  url?: Maybe<string>;
+  url_not?: Maybe<string>;
+  url_in?: Maybe<string[] | string>;
+  url_not_in?: Maybe<string[] | string>;
+  url_lt?: Maybe<string>;
+  url_lte?: Maybe<string>;
+  url_gt?: Maybe<string>;
+  url_gte?: Maybe<string>;
+  url_contains?: Maybe<string>;
+  url_not_contains?: Maybe<string>;
+  url_starts_with?: Maybe<string>;
+  url_not_starts_with?: Maybe<string>;
+  url_ends_with?: Maybe<string>;
+  url_not_ends_with?: Maybe<string>;
+  signedRequest?: Maybe<string>;
+  signedRequest_not?: Maybe<string>;
+  signedRequest_in?: Maybe<string[] | string>;
+  signedRequest_not_in?: Maybe<string[] | string>;
+  signedRequest_lt?: Maybe<string>;
+  signedRequest_lte?: Maybe<string>;
+  signedRequest_gt?: Maybe<string>;
+  signedRequest_gte?: Maybe<string>;
+  signedRequest_contains?: Maybe<string>;
+  signedRequest_not_contains?: Maybe<string>;
+  signedRequest_starts_with?: Maybe<string>;
+  signedRequest_not_starts_with?: Maybe<string>;
+  signedRequest_ends_with?: Maybe<string>;
+  signedRequest_not_ends_with?: Maybe<string>;
+  AND?: Maybe<GalleryScalarWhereInput[] | GalleryScalarWhereInput>;
+  OR?: Maybe<GalleryScalarWhereInput[] | GalleryScalarWhereInput>;
+  NOT?: Maybe<GalleryScalarWhereInput[] | GalleryScalarWhereInput>;
+}
+
+export interface GalleryUpdateManyWithWhereNestedInput {
+  where: GalleryScalarWhereInput;
+  data: GalleryUpdateManyDataInput;
+}
+
+export interface GalleryUpdateManyDataInput {
+  uid?: Maybe<string>;
+  url?: Maybe<string>;
+  signedRequest?: Maybe<string>;
+}
+
+export interface NotificationUpdateManyInput {
+  create?: Maybe<NotificationCreateInput[] | NotificationCreateInput>;
+  update?: Maybe<
+    | NotificationUpdateWithWhereUniqueNestedInput[]
+    | NotificationUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | NotificationUpsertWithWhereUniqueNestedInput[]
+    | NotificationUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<NotificationWhereUniqueInput[] | NotificationWhereUniqueInput>;
+  connect?: Maybe<
+    NotificationWhereUniqueInput[] | NotificationWhereUniqueInput
+  >;
+  set?: Maybe<NotificationWhereUniqueInput[] | NotificationWhereUniqueInput>;
+  disconnect?: Maybe<
+    NotificationWhereUniqueInput[] | NotificationWhereUniqueInput
+  >;
+  deleteMany?: Maybe<
+    NotificationScalarWhereInput[] | NotificationScalarWhereInput
+  >;
+  updateMany?: Maybe<
+    | NotificationUpdateManyWithWhereNestedInput[]
+    | NotificationUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface NotificationUpdateWithWhereUniqueNestedInput {
+  where: NotificationWhereUniqueInput;
+  data: NotificationUpdateDataInput;
+}
+
+export interface NotificationUpdateDataInput {
+  reviewAuthorName?: Maybe<string>;
+  reviewedHotelName?: Maybe<string>;
+  reviewTitle?: Maybe<string>;
+  reviewText?: Maybe<string>;
+  read?: Maybe<boolean>;
+  old?: Maybe<boolean>;
+  userNotificationId?: Maybe<string>;
+  peopleReviewedQuantity?: Maybe<Int>;
+  query?: Maybe<string>;
+  reviewAuthorProfilePic?: Maybe<string>;
+}
+
+export interface NotificationUpsertWithWhereUniqueNestedInput {
+  where: NotificationWhereUniqueInput;
+  update: NotificationUpdateDataInput;
+  create: NotificationCreateInput;
+}
+
+export interface NotificationScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  reviewAuthorName?: Maybe<string>;
+  reviewAuthorName_not?: Maybe<string>;
+  reviewAuthorName_in?: Maybe<string[] | string>;
+  reviewAuthorName_not_in?: Maybe<string[] | string>;
+  reviewAuthorName_lt?: Maybe<string>;
+  reviewAuthorName_lte?: Maybe<string>;
+  reviewAuthorName_gt?: Maybe<string>;
+  reviewAuthorName_gte?: Maybe<string>;
+  reviewAuthorName_contains?: Maybe<string>;
+  reviewAuthorName_not_contains?: Maybe<string>;
+  reviewAuthorName_starts_with?: Maybe<string>;
+  reviewAuthorName_not_starts_with?: Maybe<string>;
+  reviewAuthorName_ends_with?: Maybe<string>;
+  reviewAuthorName_not_ends_with?: Maybe<string>;
+  reviewedHotelName?: Maybe<string>;
+  reviewedHotelName_not?: Maybe<string>;
+  reviewedHotelName_in?: Maybe<string[] | string>;
+  reviewedHotelName_not_in?: Maybe<string[] | string>;
+  reviewedHotelName_lt?: Maybe<string>;
+  reviewedHotelName_lte?: Maybe<string>;
+  reviewedHotelName_gt?: Maybe<string>;
+  reviewedHotelName_gte?: Maybe<string>;
+  reviewedHotelName_contains?: Maybe<string>;
+  reviewedHotelName_not_contains?: Maybe<string>;
+  reviewedHotelName_starts_with?: Maybe<string>;
+  reviewedHotelName_not_starts_with?: Maybe<string>;
+  reviewedHotelName_ends_with?: Maybe<string>;
+  reviewedHotelName_not_ends_with?: Maybe<string>;
+  reviewTitle?: Maybe<string>;
+  reviewTitle_not?: Maybe<string>;
+  reviewTitle_in?: Maybe<string[] | string>;
+  reviewTitle_not_in?: Maybe<string[] | string>;
+  reviewTitle_lt?: Maybe<string>;
+  reviewTitle_lte?: Maybe<string>;
+  reviewTitle_gt?: Maybe<string>;
+  reviewTitle_gte?: Maybe<string>;
+  reviewTitle_contains?: Maybe<string>;
+  reviewTitle_not_contains?: Maybe<string>;
+  reviewTitle_starts_with?: Maybe<string>;
+  reviewTitle_not_starts_with?: Maybe<string>;
+  reviewTitle_ends_with?: Maybe<string>;
+  reviewTitle_not_ends_with?: Maybe<string>;
+  reviewText?: Maybe<string>;
+  reviewText_not?: Maybe<string>;
+  reviewText_in?: Maybe<string[] | string>;
+  reviewText_not_in?: Maybe<string[] | string>;
+  reviewText_lt?: Maybe<string>;
+  reviewText_lte?: Maybe<string>;
+  reviewText_gt?: Maybe<string>;
+  reviewText_gte?: Maybe<string>;
+  reviewText_contains?: Maybe<string>;
+  reviewText_not_contains?: Maybe<string>;
+  reviewText_starts_with?: Maybe<string>;
+  reviewText_not_starts_with?: Maybe<string>;
+  reviewText_ends_with?: Maybe<string>;
+  reviewText_not_ends_with?: Maybe<string>;
+  read?: Maybe<boolean>;
+  read_not?: Maybe<boolean>;
+  old?: Maybe<boolean>;
+  old_not?: Maybe<boolean>;
+  userNotificationId?: Maybe<string>;
+  userNotificationId_not?: Maybe<string>;
+  userNotificationId_in?: Maybe<string[] | string>;
+  userNotificationId_not_in?: Maybe<string[] | string>;
+  userNotificationId_lt?: Maybe<string>;
+  userNotificationId_lte?: Maybe<string>;
+  userNotificationId_gt?: Maybe<string>;
+  userNotificationId_gte?: Maybe<string>;
+  userNotificationId_contains?: Maybe<string>;
+  userNotificationId_not_contains?: Maybe<string>;
+  userNotificationId_starts_with?: Maybe<string>;
+  userNotificationId_not_starts_with?: Maybe<string>;
+  userNotificationId_ends_with?: Maybe<string>;
+  userNotificationId_not_ends_with?: Maybe<string>;
+  peopleReviewedQuantity?: Maybe<Int>;
+  peopleReviewedQuantity_not?: Maybe<Int>;
+  peopleReviewedQuantity_in?: Maybe<Int[] | Int>;
+  peopleReviewedQuantity_not_in?: Maybe<Int[] | Int>;
+  peopleReviewedQuantity_lt?: Maybe<Int>;
+  peopleReviewedQuantity_lte?: Maybe<Int>;
+  peopleReviewedQuantity_gt?: Maybe<Int>;
+  peopleReviewedQuantity_gte?: Maybe<Int>;
+  query?: Maybe<string>;
+  query_not?: Maybe<string>;
+  query_in?: Maybe<string[] | string>;
+  query_not_in?: Maybe<string[] | string>;
+  query_lt?: Maybe<string>;
+  query_lte?: Maybe<string>;
+  query_gt?: Maybe<string>;
+  query_gte?: Maybe<string>;
+  query_contains?: Maybe<string>;
+  query_not_contains?: Maybe<string>;
+  query_starts_with?: Maybe<string>;
+  query_not_starts_with?: Maybe<string>;
+  query_ends_with?: Maybe<string>;
+  query_not_ends_with?: Maybe<string>;
+  reviewAuthorProfilePic?: Maybe<string>;
+  reviewAuthorProfilePic_not?: Maybe<string>;
+  reviewAuthorProfilePic_in?: Maybe<string[] | string>;
+  reviewAuthorProfilePic_not_in?: Maybe<string[] | string>;
+  reviewAuthorProfilePic_lt?: Maybe<string>;
+  reviewAuthorProfilePic_lte?: Maybe<string>;
+  reviewAuthorProfilePic_gt?: Maybe<string>;
+  reviewAuthorProfilePic_gte?: Maybe<string>;
+  reviewAuthorProfilePic_contains?: Maybe<string>;
+  reviewAuthorProfilePic_not_contains?: Maybe<string>;
+  reviewAuthorProfilePic_starts_with?: Maybe<string>;
+  reviewAuthorProfilePic_not_starts_with?: Maybe<string>;
+  reviewAuthorProfilePic_ends_with?: Maybe<string>;
+  reviewAuthorProfilePic_not_ends_with?: Maybe<string>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<NotificationScalarWhereInput[] | NotificationScalarWhereInput>;
+  OR?: Maybe<NotificationScalarWhereInput[] | NotificationScalarWhereInput>;
+  NOT?: Maybe<NotificationScalarWhereInput[] | NotificationScalarWhereInput>;
+}
+
+export interface NotificationUpdateManyWithWhereNestedInput {
+  where: NotificationScalarWhereInput;
+  data: NotificationUpdateManyDataInput;
+}
+
+export interface NotificationUpdateManyDataInput {
+  reviewAuthorName?: Maybe<string>;
+  reviewedHotelName?: Maybe<string>;
+  reviewTitle?: Maybe<string>;
+  reviewText?: Maybe<string>;
+  read?: Maybe<boolean>;
+  old?: Maybe<boolean>;
+  userNotificationId?: Maybe<string>;
+  peopleReviewedQuantity?: Maybe<Int>;
+  query?: Maybe<string>;
+  reviewAuthorProfilePic?: Maybe<string>;
+}
+
+export interface LocationUpdateOneInput {
+  create?: Maybe<LocationCreateInput>;
+  update?: Maybe<LocationUpdateDataInput>;
+  upsert?: Maybe<LocationUpsertNestedInput>;
+  delete?: Maybe<boolean>;
+  disconnect?: Maybe<boolean>;
+  connect?: Maybe<LocationWhereUniqueInput>;
+}
+
+export interface LocationUpdateDataInput {
+  lat?: Maybe<Float>;
+  lng?: Maybe<Float>;
+  formattedAddress?: Maybe<string>;
+  zipcode?: Maybe<string>;
+  city?: Maybe<string>;
+  state_long?: Maybe<string>;
+  state_short?: Maybe<string>;
+  country_long?: Maybe<string>;
+  country_short?: Maybe<string>;
+}
+
+export interface LocationUpsertNestedInput {
+  update: LocationUpdateDataInput;
+  create: LocationCreateInput;
+}
+
+export interface SocialUpdateOneInput {
+  create?: Maybe<SocialCreateInput>;
+  update?: Maybe<SocialUpdateDataInput>;
+  upsert?: Maybe<SocialUpsertNestedInput>;
+  delete?: Maybe<boolean>;
+  disconnect?: Maybe<boolean>;
+  connect?: Maybe<SocialWhereUniqueInput>;
+}
+
+export interface SocialUpdateDataInput {
+  facebook?: Maybe<string>;
+  twitter?: Maybe<string>;
+  linkedIn?: Maybe<string>;
+  instagram?: Maybe<string>;
+}
+
+export interface SocialUpsertNestedInput {
+  update: SocialUpdateDataInput;
+  create: SocialCreateInput;
+}
+
+export interface ReviewsUpdateManyWithoutReviewAuthorIdInput {
+  create?: Maybe<
+    | ReviewsCreateWithoutReviewAuthorIdInput[]
+    | ReviewsCreateWithoutReviewAuthorIdInput
+  >;
+  delete?: Maybe<ReviewsWhereUniqueInput[] | ReviewsWhereUniqueInput>;
+  connect?: Maybe<ReviewsWhereUniqueInput[] | ReviewsWhereUniqueInput>;
+  set?: Maybe<ReviewsWhereUniqueInput[] | ReviewsWhereUniqueInput>;
+  disconnect?: Maybe<ReviewsWhereUniqueInput[] | ReviewsWhereUniqueInput>;
+  update?: Maybe<
+    | ReviewsUpdateWithWhereUniqueWithoutReviewAuthorIdInput[]
+    | ReviewsUpdateWithWhereUniqueWithoutReviewAuthorIdInput
+  >;
+  upsert?: Maybe<
+    | ReviewsUpsertWithWhereUniqueWithoutReviewAuthorIdInput[]
+    | ReviewsUpsertWithWhereUniqueWithoutReviewAuthorIdInput
+  >;
+  deleteMany?: Maybe<ReviewsScalarWhereInput[] | ReviewsScalarWhereInput>;
+  updateMany?: Maybe<
+    | ReviewsUpdateManyWithWhereNestedInput[]
+    | ReviewsUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface ReviewsUpdateWithWhereUniqueWithoutReviewAuthorIdInput {
+  where: ReviewsWhereUniqueInput;
+  data: ReviewsUpdateWithoutReviewAuthorIdDataInput;
+}
+
+export interface ReviewsUpdateWithoutReviewAuthorIdDataInput {
+  reviewTitle?: Maybe<string>;
+  reviewText?: Maybe<string>;
+  sortOfTrip?: Maybe<string>;
+  peopleLiked?: Maybe<UserUpdateManyWithoutReview_likedInput>;
+  peopleDisliked?: Maybe<UserUpdateManyWithoutReview_dislikedInput>;
+  reviewAuthorFirstName?: Maybe<string>;
+  reviewTips?: Maybe<string>;
+  reviewAuthorLastName?: Maybe<string>;
+  reviewAuthorEmail?: Maybe<string>;
+  reviewOverall?: Maybe<Float>;
+  reviewAuthorPic?: Maybe<string>;
+  reviewedHotel?: Maybe<HotelUpdateOneWithoutReviewsInput>;
+  reviewedHotelId?: Maybe<ID_Input>;
+  reviewPics?: Maybe<ReviewImagesUpdateManyInput>;
+  reviewOptional?: Maybe<ReviewOptionalsUpdateManyInput>;
+  reviewFields?: Maybe<ReviewFieldsUpdateManyInput>;
+}
+
+export interface UserUpdateManyWithoutReview_likedInput {
+  create?: Maybe<
+    UserCreateWithoutReview_likedInput[] | UserCreateWithoutReview_likedInput
+  >;
+  delete?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  set?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  disconnect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  update?: Maybe<
+    | UserUpdateWithWhereUniqueWithoutReview_likedInput[]
+    | UserUpdateWithWhereUniqueWithoutReview_likedInput
+  >;
+  upsert?: Maybe<
+    | UserUpsertWithWhereUniqueWithoutReview_likedInput[]
+    | UserUpsertWithWhereUniqueWithoutReview_likedInput
+  >;
+  deleteMany?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+  updateMany?: Maybe<
+    UserUpdateManyWithWhereNestedInput[] | UserUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface UserUpdateWithWhereUniqueWithoutReview_likedInput {
+  where: UserWhereUniqueInput;
+  data: UserUpdateWithoutReview_likedDataInput;
+}
+
+export interface UserUpdateWithoutReview_likedDataInput {
+  first_name?: Maybe<string>;
+  last_name?: Maybe<string>;
+  username?: Maybe<string>;
+  password?: Maybe<string>;
+  email?: Maybe<string>;
+  role?: Maybe<string>;
+  cellNumber?: Maybe<string>;
+  profile_pic_main?: Maybe<string>;
+  cover_pic_main?: Maybe<string>;
+  profile_pic?: Maybe<GalleryUpdateManyInput>;
+  cover_pic?: Maybe<GalleryUpdateManyInput>;
+  date_of_birth?: Maybe<string>;
+  gender?: Maybe<string>;
+  content?: Maybe<string>;
+  notification?: Maybe<NotificationUpdateManyInput>;
+  unreadNotification?: Maybe<Int>;
+  agent_location?: Maybe<LocationUpdateOneInput>;
+  gallery?: Maybe<GalleryUpdateManyInput>;
+  social_profile?: Maybe<SocialUpdateOneInput>;
+  reviews_maked?: Maybe<ReviewsUpdateManyWithoutReviewAuthorIdInput>;
+  listed_posts?: Maybe<HotelUpdateManyWithoutConnectIdInput>;
+  favourite_post?: Maybe<HotelUpdateManyWithoutPeopleLikedInput>;
+  reviewed_post?: Maybe<HotelUpdateManyWithoutPeopleReviewedInput>;
+  review_disliked?: Maybe<ReviewsUpdateManyWithoutPeopleDislikedInput>;
+  stripeId?: Maybe<string>;
+  transaction_had?: Maybe<
+    TransactionUpdateManyWithoutTransactionHotelManagerInput
+  >;
+  transaction_maked?: Maybe<TransactionUpdateManyWithoutTransactionAuthorInput>;
+  coupons_maked?: Maybe<CouponUpdateManyWithoutCouponAuthorInput>;
+  uncheckTransactions?: Maybe<
+    UncheckTransactionsUpdateOneWithoutUserUncheckTransactionsInput
+  >;
+}
+
+export interface HotelUpdateManyWithoutConnectIdInput {
+  create?: Maybe<
+    HotelCreateWithoutConnectIdInput[] | HotelCreateWithoutConnectIdInput
+  >;
+  delete?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
+  connect?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
+  set?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
+  disconnect?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
+  update?: Maybe<
+    | HotelUpdateWithWhereUniqueWithoutConnectIdInput[]
+    | HotelUpdateWithWhereUniqueWithoutConnectIdInput
+  >;
+  upsert?: Maybe<
+    | HotelUpsertWithWhereUniqueWithoutConnectIdInput[]
+    | HotelUpsertWithWhereUniqueWithoutConnectIdInput
+  >;
+  deleteMany?: Maybe<HotelScalarWhereInput[] | HotelScalarWhereInput>;
+  updateMany?: Maybe<
+    HotelUpdateManyWithWhereNestedInput[] | HotelUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface HotelUpdateWithWhereUniqueWithoutConnectIdInput {
+  where: HotelWhereUniqueInput;
+  data: HotelUpdateWithoutConnectIdDataInput;
+}
+
+export interface HotelUpdateWithoutConnectIdDataInput {
   peopleLiked?: Maybe<UserUpdateManyWithoutFavourite_postInput>;
-  connectId?: Maybe<UserUpdateOneWithoutListed_postsInput>;
+  peopleReviewed?: Maybe<UserUpdateManyWithoutReviewed_postInput>;
+  couponsAvailable?: Maybe<CouponUpdateManyWithoutCouponTargetInput>;
   agentId?: Maybe<string>;
+  agentEmail?: Maybe<string>;
+  agentName?: Maybe<string>;
   title?: Maybe<string>;
   slug?: Maybe<string>;
   content?: Maybe<string>;
   status?: Maybe<string>;
-  price?: Maybe<string>;
+  price?: Maybe<Int>;
   isNegotiable?: Maybe<boolean>;
   propertyType?: Maybe<string>;
   condition?: Maybe<string>;
@@ -1735,6 +4747,7 @@ export interface HotelUpdateInput {
   location?: Maybe<LocationUpdateManyInput>;
   gallery?: Maybe<GalleryUpdateManyInput>;
   categories?: Maybe<CategoriesUpdateManyInput>;
+  reviews?: Maybe<ReviewsUpdateManyWithoutReviewedHotelInput>;
 }
 
 export interface UserUpdateManyWithoutFavourite_postInput {
@@ -1771,159 +4784,52 @@ export interface UserUpdateWithoutFavourite_postDataInput {
   username?: Maybe<string>;
   password?: Maybe<string>;
   email?: Maybe<string>;
+  role?: Maybe<string>;
   cellNumber?: Maybe<string>;
+  profile_pic_main?: Maybe<string>;
+  cover_pic_main?: Maybe<string>;
   profile_pic?: Maybe<GalleryUpdateManyInput>;
   cover_pic?: Maybe<GalleryUpdateManyInput>;
   date_of_birth?: Maybe<string>;
   gender?: Maybe<string>;
   content?: Maybe<string>;
+  notification?: Maybe<NotificationUpdateManyInput>;
+  unreadNotification?: Maybe<Int>;
   agent_location?: Maybe<LocationUpdateOneInput>;
   gallery?: Maybe<GalleryUpdateManyInput>;
   social_profile?: Maybe<SocialUpdateOneInput>;
+  reviews_maked?: Maybe<ReviewsUpdateManyWithoutReviewAuthorIdInput>;
   listed_posts?: Maybe<HotelUpdateManyWithoutConnectIdInput>;
-}
-
-export interface GalleryUpdateManyInput {
-  create?: Maybe<GalleryCreateInput[] | GalleryCreateInput>;
-  update?: Maybe<
-    | GalleryUpdateWithWhereUniqueNestedInput[]
-    | GalleryUpdateWithWhereUniqueNestedInput
+  reviewed_post?: Maybe<HotelUpdateManyWithoutPeopleReviewedInput>;
+  review_liked?: Maybe<ReviewsUpdateManyWithoutPeopleLikedInput>;
+  review_disliked?: Maybe<ReviewsUpdateManyWithoutPeopleDislikedInput>;
+  stripeId?: Maybe<string>;
+  transaction_had?: Maybe<
+    TransactionUpdateManyWithoutTransactionHotelManagerInput
   >;
-  upsert?: Maybe<
-    | GalleryUpsertWithWhereUniqueNestedInput[]
-    | GalleryUpsertWithWhereUniqueNestedInput
-  >;
-  delete?: Maybe<GalleryWhereUniqueInput[] | GalleryWhereUniqueInput>;
-  connect?: Maybe<GalleryWhereUniqueInput[] | GalleryWhereUniqueInput>;
-  set?: Maybe<GalleryWhereUniqueInput[] | GalleryWhereUniqueInput>;
-  disconnect?: Maybe<GalleryWhereUniqueInput[] | GalleryWhereUniqueInput>;
-  deleteMany?: Maybe<GalleryScalarWhereInput[] | GalleryScalarWhereInput>;
-  updateMany?: Maybe<
-    | GalleryUpdateManyWithWhereNestedInput[]
-    | GalleryUpdateManyWithWhereNestedInput
+  transaction_maked?: Maybe<TransactionUpdateManyWithoutTransactionAuthorInput>;
+  coupons_maked?: Maybe<CouponUpdateManyWithoutCouponAuthorInput>;
+  uncheckTransactions?: Maybe<
+    UncheckTransactionsUpdateOneWithoutUserUncheckTransactionsInput
   >;
 }
 
-export interface GalleryUpdateWithWhereUniqueNestedInput {
-  where: GalleryWhereUniqueInput;
-  data: GalleryUpdateDataInput;
-}
-
-export interface GalleryUpdateDataInput {
-  url?: Maybe<string>;
-}
-
-export interface GalleryUpsertWithWhereUniqueNestedInput {
-  where: GalleryWhereUniqueInput;
-  update: GalleryUpdateDataInput;
-  create: GalleryCreateInput;
-}
-
-export interface GalleryScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  url?: Maybe<string>;
-  url_not?: Maybe<string>;
-  url_in?: Maybe<string[] | string>;
-  url_not_in?: Maybe<string[] | string>;
-  url_lt?: Maybe<string>;
-  url_lte?: Maybe<string>;
-  url_gt?: Maybe<string>;
-  url_gte?: Maybe<string>;
-  url_contains?: Maybe<string>;
-  url_not_contains?: Maybe<string>;
-  url_starts_with?: Maybe<string>;
-  url_not_starts_with?: Maybe<string>;
-  url_ends_with?: Maybe<string>;
-  url_not_ends_with?: Maybe<string>;
-  AND?: Maybe<GalleryScalarWhereInput[] | GalleryScalarWhereInput>;
-  OR?: Maybe<GalleryScalarWhereInput[] | GalleryScalarWhereInput>;
-  NOT?: Maybe<GalleryScalarWhereInput[] | GalleryScalarWhereInput>;
-}
-
-export interface GalleryUpdateManyWithWhereNestedInput {
-  where: GalleryScalarWhereInput;
-  data: GalleryUpdateManyDataInput;
-}
-
-export interface GalleryUpdateManyDataInput {
-  url?: Maybe<string>;
-}
-
-export interface LocationUpdateOneInput {
-  create?: Maybe<LocationCreateInput>;
-  update?: Maybe<LocationUpdateDataInput>;
-  upsert?: Maybe<LocationUpsertNestedInput>;
-  delete?: Maybe<boolean>;
-  disconnect?: Maybe<boolean>;
-  connect?: Maybe<LocationWhereUniqueInput>;
-}
-
-export interface LocationUpdateDataInput {
-  lat?: Maybe<string>;
-  lng?: Maybe<string>;
-  formattedAddress?: Maybe<string>;
-  zipcode?: Maybe<string>;
-  city?: Maybe<string>;
-  state_long?: Maybe<string>;
-  state_short?: Maybe<string>;
-  country_long?: Maybe<string>;
-  country_short?: Maybe<string>;
-}
-
-export interface LocationUpsertNestedInput {
-  update: LocationUpdateDataInput;
-  create: LocationCreateInput;
-}
-
-export interface SocialUpdateOneInput {
-  create?: Maybe<SocialCreateInput>;
-  update?: Maybe<SocialUpdateDataInput>;
-  upsert?: Maybe<SocialUpsertNestedInput>;
-  delete?: Maybe<boolean>;
-  disconnect?: Maybe<boolean>;
-  connect?: Maybe<SocialWhereUniqueInput>;
-}
-
-export interface SocialUpdateDataInput {
-  facebook?: Maybe<string>;
-  twitter?: Maybe<string>;
-  linkedIN?: Maybe<string>;
-  instagram?: Maybe<string>;
-}
-
-export interface SocialUpsertNestedInput {
-  update: SocialUpdateDataInput;
-  create: SocialCreateInput;
-}
-
-export interface HotelUpdateManyWithoutConnectIdInput {
+export interface HotelUpdateManyWithoutPeopleReviewedInput {
   create?: Maybe<
-    HotelCreateWithoutConnectIdInput[] | HotelCreateWithoutConnectIdInput
+    | HotelCreateWithoutPeopleReviewedInput[]
+    | HotelCreateWithoutPeopleReviewedInput
   >;
   delete?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
   connect?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
   set?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
   disconnect?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
   update?: Maybe<
-    | HotelUpdateWithWhereUniqueWithoutConnectIdInput[]
-    | HotelUpdateWithWhereUniqueWithoutConnectIdInput
+    | HotelUpdateWithWhereUniqueWithoutPeopleReviewedInput[]
+    | HotelUpdateWithWhereUniqueWithoutPeopleReviewedInput
   >;
   upsert?: Maybe<
-    | HotelUpsertWithWhereUniqueWithoutConnectIdInput[]
-    | HotelUpsertWithWhereUniqueWithoutConnectIdInput
+    | HotelUpsertWithWhereUniqueWithoutPeopleReviewedInput[]
+    | HotelUpsertWithWhereUniqueWithoutPeopleReviewedInput
   >;
   deleteMany?: Maybe<HotelScalarWhereInput[] | HotelScalarWhereInput>;
   updateMany?: Maybe<
@@ -1931,19 +4837,572 @@ export interface HotelUpdateManyWithoutConnectIdInput {
   >;
 }
 
-export interface HotelUpdateWithWhereUniqueWithoutConnectIdInput {
+export interface HotelUpdateWithWhereUniqueWithoutPeopleReviewedInput {
   where: HotelWhereUniqueInput;
-  data: HotelUpdateWithoutConnectIdDataInput;
+  data: HotelUpdateWithoutPeopleReviewedDataInput;
 }
 
-export interface HotelUpdateWithoutConnectIdDataInput {
+export interface HotelUpdateWithoutPeopleReviewedDataInput {
   peopleLiked?: Maybe<UserUpdateManyWithoutFavourite_postInput>;
+  couponsAvailable?: Maybe<CouponUpdateManyWithoutCouponTargetInput>;
+  connectId?: Maybe<UserUpdateOneWithoutListed_postsInput>;
   agentId?: Maybe<string>;
+  agentEmail?: Maybe<string>;
+  agentName?: Maybe<string>;
   title?: Maybe<string>;
   slug?: Maybe<string>;
   content?: Maybe<string>;
   status?: Maybe<string>;
-  price?: Maybe<string>;
+  price?: Maybe<Int>;
+  isNegotiable?: Maybe<boolean>;
+  propertyType?: Maybe<string>;
+  condition?: Maybe<string>;
+  rating?: Maybe<Float>;
+  ratingCount?: Maybe<Int>;
+  contactNumber?: Maybe<string>;
+  termsAndCondition?: Maybe<string>;
+  amenities?: Maybe<AmenitiesUpdateManyInput>;
+  image?: Maybe<ImageUpdateOneInput>;
+  location?: Maybe<LocationUpdateManyInput>;
+  gallery?: Maybe<GalleryUpdateManyInput>;
+  categories?: Maybe<CategoriesUpdateManyInput>;
+  reviews?: Maybe<ReviewsUpdateManyWithoutReviewedHotelInput>;
+}
+
+export interface CouponUpdateManyWithoutCouponTargetInput {
+  create?: Maybe<
+    | CouponCreateWithoutCouponTargetInput[]
+    | CouponCreateWithoutCouponTargetInput
+  >;
+  delete?: Maybe<CouponWhereUniqueInput[] | CouponWhereUniqueInput>;
+  connect?: Maybe<CouponWhereUniqueInput[] | CouponWhereUniqueInput>;
+  set?: Maybe<CouponWhereUniqueInput[] | CouponWhereUniqueInput>;
+  disconnect?: Maybe<CouponWhereUniqueInput[] | CouponWhereUniqueInput>;
+  update?: Maybe<
+    | CouponUpdateWithWhereUniqueWithoutCouponTargetInput[]
+    | CouponUpdateWithWhereUniqueWithoutCouponTargetInput
+  >;
+  upsert?: Maybe<
+    | CouponUpsertWithWhereUniqueWithoutCouponTargetInput[]
+    | CouponUpsertWithWhereUniqueWithoutCouponTargetInput
+  >;
+  deleteMany?: Maybe<CouponScalarWhereInput[] | CouponScalarWhereInput>;
+  updateMany?: Maybe<
+    | CouponUpdateManyWithWhereNestedInput[]
+    | CouponUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface CouponUpdateWithWhereUniqueWithoutCouponTargetInput {
+  where: CouponWhereUniqueInput;
+  data: CouponUpdateWithoutCouponTargetDataInput;
+}
+
+export interface CouponUpdateWithoutCouponTargetDataInput {
+  couponName?: Maybe<string>;
+  couponDescription?: Maybe<string>;
+  couponAuthor?: Maybe<UserUpdateOneWithoutCoupons_makedInput>;
+  couponAuthorId?: Maybe<string>;
+  couponType?: Maybe<Int>;
+  couponValue?: Maybe<Int>;
+  couponQuantity?: Maybe<Int>;
+  couponStartDate?: Maybe<string>;
+  couponEndDate?: Maybe<string>;
+  couponRange?: Maybe<string>;
+}
+
+export interface CouponUpsertWithWhereUniqueWithoutCouponTargetInput {
+  where: CouponWhereUniqueInput;
+  update: CouponUpdateWithoutCouponTargetDataInput;
+  create: CouponCreateWithoutCouponTargetInput;
+}
+
+export interface CouponScalarWhereInput {
+  couponId?: Maybe<ID_Input>;
+  couponId_not?: Maybe<ID_Input>;
+  couponId_in?: Maybe<ID_Input[] | ID_Input>;
+  couponId_not_in?: Maybe<ID_Input[] | ID_Input>;
+  couponId_lt?: Maybe<ID_Input>;
+  couponId_lte?: Maybe<ID_Input>;
+  couponId_gt?: Maybe<ID_Input>;
+  couponId_gte?: Maybe<ID_Input>;
+  couponId_contains?: Maybe<ID_Input>;
+  couponId_not_contains?: Maybe<ID_Input>;
+  couponId_starts_with?: Maybe<ID_Input>;
+  couponId_not_starts_with?: Maybe<ID_Input>;
+  couponId_ends_with?: Maybe<ID_Input>;
+  couponId_not_ends_with?: Maybe<ID_Input>;
+  couponName?: Maybe<string>;
+  couponName_not?: Maybe<string>;
+  couponName_in?: Maybe<string[] | string>;
+  couponName_not_in?: Maybe<string[] | string>;
+  couponName_lt?: Maybe<string>;
+  couponName_lte?: Maybe<string>;
+  couponName_gt?: Maybe<string>;
+  couponName_gte?: Maybe<string>;
+  couponName_contains?: Maybe<string>;
+  couponName_not_contains?: Maybe<string>;
+  couponName_starts_with?: Maybe<string>;
+  couponName_not_starts_with?: Maybe<string>;
+  couponName_ends_with?: Maybe<string>;
+  couponName_not_ends_with?: Maybe<string>;
+  couponDescription?: Maybe<string>;
+  couponDescription_not?: Maybe<string>;
+  couponDescription_in?: Maybe<string[] | string>;
+  couponDescription_not_in?: Maybe<string[] | string>;
+  couponDescription_lt?: Maybe<string>;
+  couponDescription_lte?: Maybe<string>;
+  couponDescription_gt?: Maybe<string>;
+  couponDescription_gte?: Maybe<string>;
+  couponDescription_contains?: Maybe<string>;
+  couponDescription_not_contains?: Maybe<string>;
+  couponDescription_starts_with?: Maybe<string>;
+  couponDescription_not_starts_with?: Maybe<string>;
+  couponDescription_ends_with?: Maybe<string>;
+  couponDescription_not_ends_with?: Maybe<string>;
+  couponAuthorId?: Maybe<string>;
+  couponAuthorId_not?: Maybe<string>;
+  couponAuthorId_in?: Maybe<string[] | string>;
+  couponAuthorId_not_in?: Maybe<string[] | string>;
+  couponAuthorId_lt?: Maybe<string>;
+  couponAuthorId_lte?: Maybe<string>;
+  couponAuthorId_gt?: Maybe<string>;
+  couponAuthorId_gte?: Maybe<string>;
+  couponAuthorId_contains?: Maybe<string>;
+  couponAuthorId_not_contains?: Maybe<string>;
+  couponAuthorId_starts_with?: Maybe<string>;
+  couponAuthorId_not_starts_with?: Maybe<string>;
+  couponAuthorId_ends_with?: Maybe<string>;
+  couponAuthorId_not_ends_with?: Maybe<string>;
+  couponType?: Maybe<Int>;
+  couponType_not?: Maybe<Int>;
+  couponType_in?: Maybe<Int[] | Int>;
+  couponType_not_in?: Maybe<Int[] | Int>;
+  couponType_lt?: Maybe<Int>;
+  couponType_lte?: Maybe<Int>;
+  couponType_gt?: Maybe<Int>;
+  couponType_gte?: Maybe<Int>;
+  couponValue?: Maybe<Int>;
+  couponValue_not?: Maybe<Int>;
+  couponValue_in?: Maybe<Int[] | Int>;
+  couponValue_not_in?: Maybe<Int[] | Int>;
+  couponValue_lt?: Maybe<Int>;
+  couponValue_lte?: Maybe<Int>;
+  couponValue_gt?: Maybe<Int>;
+  couponValue_gte?: Maybe<Int>;
+  couponQuantity?: Maybe<Int>;
+  couponQuantity_not?: Maybe<Int>;
+  couponQuantity_in?: Maybe<Int[] | Int>;
+  couponQuantity_not_in?: Maybe<Int[] | Int>;
+  couponQuantity_lt?: Maybe<Int>;
+  couponQuantity_lte?: Maybe<Int>;
+  couponQuantity_gt?: Maybe<Int>;
+  couponQuantity_gte?: Maybe<Int>;
+  couponStartDate?: Maybe<string>;
+  couponStartDate_not?: Maybe<string>;
+  couponStartDate_in?: Maybe<string[] | string>;
+  couponStartDate_not_in?: Maybe<string[] | string>;
+  couponStartDate_lt?: Maybe<string>;
+  couponStartDate_lte?: Maybe<string>;
+  couponStartDate_gt?: Maybe<string>;
+  couponStartDate_gte?: Maybe<string>;
+  couponStartDate_contains?: Maybe<string>;
+  couponStartDate_not_contains?: Maybe<string>;
+  couponStartDate_starts_with?: Maybe<string>;
+  couponStartDate_not_starts_with?: Maybe<string>;
+  couponStartDate_ends_with?: Maybe<string>;
+  couponStartDate_not_ends_with?: Maybe<string>;
+  couponEndDate?: Maybe<string>;
+  couponEndDate_not?: Maybe<string>;
+  couponEndDate_in?: Maybe<string[] | string>;
+  couponEndDate_not_in?: Maybe<string[] | string>;
+  couponEndDate_lt?: Maybe<string>;
+  couponEndDate_lte?: Maybe<string>;
+  couponEndDate_gt?: Maybe<string>;
+  couponEndDate_gte?: Maybe<string>;
+  couponEndDate_contains?: Maybe<string>;
+  couponEndDate_not_contains?: Maybe<string>;
+  couponEndDate_starts_with?: Maybe<string>;
+  couponEndDate_not_starts_with?: Maybe<string>;
+  couponEndDate_ends_with?: Maybe<string>;
+  couponEndDate_not_ends_with?: Maybe<string>;
+  couponRange?: Maybe<string>;
+  couponRange_not?: Maybe<string>;
+  couponRange_in?: Maybe<string[] | string>;
+  couponRange_not_in?: Maybe<string[] | string>;
+  couponRange_lt?: Maybe<string>;
+  couponRange_lte?: Maybe<string>;
+  couponRange_gt?: Maybe<string>;
+  couponRange_gte?: Maybe<string>;
+  couponRange_contains?: Maybe<string>;
+  couponRange_not_contains?: Maybe<string>;
+  couponRange_starts_with?: Maybe<string>;
+  couponRange_not_starts_with?: Maybe<string>;
+  couponRange_ends_with?: Maybe<string>;
+  couponRange_not_ends_with?: Maybe<string>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<CouponScalarWhereInput[] | CouponScalarWhereInput>;
+  OR?: Maybe<CouponScalarWhereInput[] | CouponScalarWhereInput>;
+  NOT?: Maybe<CouponScalarWhereInput[] | CouponScalarWhereInput>;
+}
+
+export interface CouponUpdateManyWithWhereNestedInput {
+  where: CouponScalarWhereInput;
+  data: CouponUpdateManyDataInput;
+}
+
+export interface CouponUpdateManyDataInput {
+  couponName?: Maybe<string>;
+  couponDescription?: Maybe<string>;
+  couponAuthorId?: Maybe<string>;
+  couponType?: Maybe<Int>;
+  couponValue?: Maybe<Int>;
+  couponQuantity?: Maybe<Int>;
+  couponStartDate?: Maybe<string>;
+  couponEndDate?: Maybe<string>;
+  couponRange?: Maybe<string>;
+}
+
+export interface UserUpdateOneWithoutListed_postsInput {
+  create?: Maybe<UserCreateWithoutListed_postsInput>;
+  update?: Maybe<UserUpdateWithoutListed_postsDataInput>;
+  upsert?: Maybe<UserUpsertWithoutListed_postsInput>;
+  delete?: Maybe<boolean>;
+  disconnect?: Maybe<boolean>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserUpdateWithoutListed_postsDataInput {
+  first_name?: Maybe<string>;
+  last_name?: Maybe<string>;
+  username?: Maybe<string>;
+  password?: Maybe<string>;
+  email?: Maybe<string>;
+  role?: Maybe<string>;
+  cellNumber?: Maybe<string>;
+  profile_pic_main?: Maybe<string>;
+  cover_pic_main?: Maybe<string>;
+  profile_pic?: Maybe<GalleryUpdateManyInput>;
+  cover_pic?: Maybe<GalleryUpdateManyInput>;
+  date_of_birth?: Maybe<string>;
+  gender?: Maybe<string>;
+  content?: Maybe<string>;
+  notification?: Maybe<NotificationUpdateManyInput>;
+  unreadNotification?: Maybe<Int>;
+  agent_location?: Maybe<LocationUpdateOneInput>;
+  gallery?: Maybe<GalleryUpdateManyInput>;
+  social_profile?: Maybe<SocialUpdateOneInput>;
+  reviews_maked?: Maybe<ReviewsUpdateManyWithoutReviewAuthorIdInput>;
+  favourite_post?: Maybe<HotelUpdateManyWithoutPeopleLikedInput>;
+  reviewed_post?: Maybe<HotelUpdateManyWithoutPeopleReviewedInput>;
+  review_liked?: Maybe<ReviewsUpdateManyWithoutPeopleLikedInput>;
+  review_disliked?: Maybe<ReviewsUpdateManyWithoutPeopleDislikedInput>;
+  stripeId?: Maybe<string>;
+  transaction_had?: Maybe<
+    TransactionUpdateManyWithoutTransactionHotelManagerInput
+  >;
+  transaction_maked?: Maybe<TransactionUpdateManyWithoutTransactionAuthorInput>;
+  coupons_maked?: Maybe<CouponUpdateManyWithoutCouponAuthorInput>;
+  uncheckTransactions?: Maybe<
+    UncheckTransactionsUpdateOneWithoutUserUncheckTransactionsInput
+  >;
+}
+
+export interface HotelUpdateManyWithoutPeopleLikedInput {
+  create?: Maybe<
+    HotelCreateWithoutPeopleLikedInput[] | HotelCreateWithoutPeopleLikedInput
+  >;
+  delete?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
+  connect?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
+  set?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
+  disconnect?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
+  update?: Maybe<
+    | HotelUpdateWithWhereUniqueWithoutPeopleLikedInput[]
+    | HotelUpdateWithWhereUniqueWithoutPeopleLikedInput
+  >;
+  upsert?: Maybe<
+    | HotelUpsertWithWhereUniqueWithoutPeopleLikedInput[]
+    | HotelUpsertWithWhereUniqueWithoutPeopleLikedInput
+  >;
+  deleteMany?: Maybe<HotelScalarWhereInput[] | HotelScalarWhereInput>;
+  updateMany?: Maybe<
+    HotelUpdateManyWithWhereNestedInput[] | HotelUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface HotelUpdateWithWhereUniqueWithoutPeopleLikedInput {
+  where: HotelWhereUniqueInput;
+  data: HotelUpdateWithoutPeopleLikedDataInput;
+}
+
+export interface HotelUpdateWithoutPeopleLikedDataInput {
+  peopleReviewed?: Maybe<UserUpdateManyWithoutReviewed_postInput>;
+  couponsAvailable?: Maybe<CouponUpdateManyWithoutCouponTargetInput>;
+  connectId?: Maybe<UserUpdateOneWithoutListed_postsInput>;
+  agentId?: Maybe<string>;
+  agentEmail?: Maybe<string>;
+  agentName?: Maybe<string>;
+  title?: Maybe<string>;
+  slug?: Maybe<string>;
+  content?: Maybe<string>;
+  status?: Maybe<string>;
+  price?: Maybe<Int>;
+  isNegotiable?: Maybe<boolean>;
+  propertyType?: Maybe<string>;
+  condition?: Maybe<string>;
+  rating?: Maybe<Float>;
+  ratingCount?: Maybe<Int>;
+  contactNumber?: Maybe<string>;
+  termsAndCondition?: Maybe<string>;
+  amenities?: Maybe<AmenitiesUpdateManyInput>;
+  image?: Maybe<ImageUpdateOneInput>;
+  location?: Maybe<LocationUpdateManyInput>;
+  gallery?: Maybe<GalleryUpdateManyInput>;
+  categories?: Maybe<CategoriesUpdateManyInput>;
+  reviews?: Maybe<ReviewsUpdateManyWithoutReviewedHotelInput>;
+}
+
+export interface UserUpdateManyWithoutReviewed_postInput {
+  create?: Maybe<
+    UserCreateWithoutReviewed_postInput[] | UserCreateWithoutReviewed_postInput
+  >;
+  delete?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  set?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  disconnect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  update?: Maybe<
+    | UserUpdateWithWhereUniqueWithoutReviewed_postInput[]
+    | UserUpdateWithWhereUniqueWithoutReviewed_postInput
+  >;
+  upsert?: Maybe<
+    | UserUpsertWithWhereUniqueWithoutReviewed_postInput[]
+    | UserUpsertWithWhereUniqueWithoutReviewed_postInput
+  >;
+  deleteMany?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+  updateMany?: Maybe<
+    UserUpdateManyWithWhereNestedInput[] | UserUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface UserUpdateWithWhereUniqueWithoutReviewed_postInput {
+  where: UserWhereUniqueInput;
+  data: UserUpdateWithoutReviewed_postDataInput;
+}
+
+export interface UserUpdateWithoutReviewed_postDataInput {
+  first_name?: Maybe<string>;
+  last_name?: Maybe<string>;
+  username?: Maybe<string>;
+  password?: Maybe<string>;
+  email?: Maybe<string>;
+  role?: Maybe<string>;
+  cellNumber?: Maybe<string>;
+  profile_pic_main?: Maybe<string>;
+  cover_pic_main?: Maybe<string>;
+  profile_pic?: Maybe<GalleryUpdateManyInput>;
+  cover_pic?: Maybe<GalleryUpdateManyInput>;
+  date_of_birth?: Maybe<string>;
+  gender?: Maybe<string>;
+  content?: Maybe<string>;
+  notification?: Maybe<NotificationUpdateManyInput>;
+  unreadNotification?: Maybe<Int>;
+  agent_location?: Maybe<LocationUpdateOneInput>;
+  gallery?: Maybe<GalleryUpdateManyInput>;
+  social_profile?: Maybe<SocialUpdateOneInput>;
+  reviews_maked?: Maybe<ReviewsUpdateManyWithoutReviewAuthorIdInput>;
+  listed_posts?: Maybe<HotelUpdateManyWithoutConnectIdInput>;
+  favourite_post?: Maybe<HotelUpdateManyWithoutPeopleLikedInput>;
+  review_liked?: Maybe<ReviewsUpdateManyWithoutPeopleLikedInput>;
+  review_disliked?: Maybe<ReviewsUpdateManyWithoutPeopleDislikedInput>;
+  stripeId?: Maybe<string>;
+  transaction_had?: Maybe<
+    TransactionUpdateManyWithoutTransactionHotelManagerInput
+  >;
+  transaction_maked?: Maybe<TransactionUpdateManyWithoutTransactionAuthorInput>;
+  coupons_maked?: Maybe<CouponUpdateManyWithoutCouponAuthorInput>;
+  uncheckTransactions?: Maybe<
+    UncheckTransactionsUpdateOneWithoutUserUncheckTransactionsInput
+  >;
+}
+
+export interface ReviewsUpdateManyWithoutPeopleLikedInput {
+  create?: Maybe<
+    | ReviewsCreateWithoutPeopleLikedInput[]
+    | ReviewsCreateWithoutPeopleLikedInput
+  >;
+  delete?: Maybe<ReviewsWhereUniqueInput[] | ReviewsWhereUniqueInput>;
+  connect?: Maybe<ReviewsWhereUniqueInput[] | ReviewsWhereUniqueInput>;
+  set?: Maybe<ReviewsWhereUniqueInput[] | ReviewsWhereUniqueInput>;
+  disconnect?: Maybe<ReviewsWhereUniqueInput[] | ReviewsWhereUniqueInput>;
+  update?: Maybe<
+    | ReviewsUpdateWithWhereUniqueWithoutPeopleLikedInput[]
+    | ReviewsUpdateWithWhereUniqueWithoutPeopleLikedInput
+  >;
+  upsert?: Maybe<
+    | ReviewsUpsertWithWhereUniqueWithoutPeopleLikedInput[]
+    | ReviewsUpsertWithWhereUniqueWithoutPeopleLikedInput
+  >;
+  deleteMany?: Maybe<ReviewsScalarWhereInput[] | ReviewsScalarWhereInput>;
+  updateMany?: Maybe<
+    | ReviewsUpdateManyWithWhereNestedInput[]
+    | ReviewsUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface ReviewsUpdateWithWhereUniqueWithoutPeopleLikedInput {
+  where: ReviewsWhereUniqueInput;
+  data: ReviewsUpdateWithoutPeopleLikedDataInput;
+}
+
+export interface ReviewsUpdateWithoutPeopleLikedDataInput {
+  reviewTitle?: Maybe<string>;
+  reviewText?: Maybe<string>;
+  sortOfTrip?: Maybe<string>;
+  reviewAuthorId?: Maybe<UserUpdateOneWithoutReviews_makedInput>;
+  peopleDisliked?: Maybe<UserUpdateManyWithoutReview_dislikedInput>;
+  reviewAuthorFirstName?: Maybe<string>;
+  reviewTips?: Maybe<string>;
+  reviewAuthorLastName?: Maybe<string>;
+  reviewAuthorEmail?: Maybe<string>;
+  reviewOverall?: Maybe<Float>;
+  reviewAuthorPic?: Maybe<string>;
+  reviewedHotel?: Maybe<HotelUpdateOneWithoutReviewsInput>;
+  reviewedHotelId?: Maybe<ID_Input>;
+  reviewPics?: Maybe<ReviewImagesUpdateManyInput>;
+  reviewOptional?: Maybe<ReviewOptionalsUpdateManyInput>;
+  reviewFields?: Maybe<ReviewFieldsUpdateManyInput>;
+}
+
+export interface UserUpdateOneWithoutReviews_makedInput {
+  create?: Maybe<UserCreateWithoutReviews_makedInput>;
+  update?: Maybe<UserUpdateWithoutReviews_makedDataInput>;
+  upsert?: Maybe<UserUpsertWithoutReviews_makedInput>;
+  delete?: Maybe<boolean>;
+  disconnect?: Maybe<boolean>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserUpdateWithoutReviews_makedDataInput {
+  first_name?: Maybe<string>;
+  last_name?: Maybe<string>;
+  username?: Maybe<string>;
+  password?: Maybe<string>;
+  email?: Maybe<string>;
+  role?: Maybe<string>;
+  cellNumber?: Maybe<string>;
+  profile_pic_main?: Maybe<string>;
+  cover_pic_main?: Maybe<string>;
+  profile_pic?: Maybe<GalleryUpdateManyInput>;
+  cover_pic?: Maybe<GalleryUpdateManyInput>;
+  date_of_birth?: Maybe<string>;
+  gender?: Maybe<string>;
+  content?: Maybe<string>;
+  notification?: Maybe<NotificationUpdateManyInput>;
+  unreadNotification?: Maybe<Int>;
+  agent_location?: Maybe<LocationUpdateOneInput>;
+  gallery?: Maybe<GalleryUpdateManyInput>;
+  social_profile?: Maybe<SocialUpdateOneInput>;
+  listed_posts?: Maybe<HotelUpdateManyWithoutConnectIdInput>;
+  favourite_post?: Maybe<HotelUpdateManyWithoutPeopleLikedInput>;
+  reviewed_post?: Maybe<HotelUpdateManyWithoutPeopleReviewedInput>;
+  review_liked?: Maybe<ReviewsUpdateManyWithoutPeopleLikedInput>;
+  review_disliked?: Maybe<ReviewsUpdateManyWithoutPeopleDislikedInput>;
+  stripeId?: Maybe<string>;
+  transaction_had?: Maybe<
+    TransactionUpdateManyWithoutTransactionHotelManagerInput
+  >;
+  transaction_maked?: Maybe<TransactionUpdateManyWithoutTransactionAuthorInput>;
+  coupons_maked?: Maybe<CouponUpdateManyWithoutCouponAuthorInput>;
+  uncheckTransactions?: Maybe<
+    UncheckTransactionsUpdateOneWithoutUserUncheckTransactionsInput
+  >;
+}
+
+export interface ReviewsUpdateManyWithoutPeopleDislikedInput {
+  create?: Maybe<
+    | ReviewsCreateWithoutPeopleDislikedInput[]
+    | ReviewsCreateWithoutPeopleDislikedInput
+  >;
+  delete?: Maybe<ReviewsWhereUniqueInput[] | ReviewsWhereUniqueInput>;
+  connect?: Maybe<ReviewsWhereUniqueInput[] | ReviewsWhereUniqueInput>;
+  set?: Maybe<ReviewsWhereUniqueInput[] | ReviewsWhereUniqueInput>;
+  disconnect?: Maybe<ReviewsWhereUniqueInput[] | ReviewsWhereUniqueInput>;
+  update?: Maybe<
+    | ReviewsUpdateWithWhereUniqueWithoutPeopleDislikedInput[]
+    | ReviewsUpdateWithWhereUniqueWithoutPeopleDislikedInput
+  >;
+  upsert?: Maybe<
+    | ReviewsUpsertWithWhereUniqueWithoutPeopleDislikedInput[]
+    | ReviewsUpsertWithWhereUniqueWithoutPeopleDislikedInput
+  >;
+  deleteMany?: Maybe<ReviewsScalarWhereInput[] | ReviewsScalarWhereInput>;
+  updateMany?: Maybe<
+    | ReviewsUpdateManyWithWhereNestedInput[]
+    | ReviewsUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface ReviewsUpdateWithWhereUniqueWithoutPeopleDislikedInput {
+  where: ReviewsWhereUniqueInput;
+  data: ReviewsUpdateWithoutPeopleDislikedDataInput;
+}
+
+export interface ReviewsUpdateWithoutPeopleDislikedDataInput {
+  reviewTitle?: Maybe<string>;
+  reviewText?: Maybe<string>;
+  sortOfTrip?: Maybe<string>;
+  reviewAuthorId?: Maybe<UserUpdateOneWithoutReviews_makedInput>;
+  peopleLiked?: Maybe<UserUpdateManyWithoutReview_likedInput>;
+  reviewAuthorFirstName?: Maybe<string>;
+  reviewTips?: Maybe<string>;
+  reviewAuthorLastName?: Maybe<string>;
+  reviewAuthorEmail?: Maybe<string>;
+  reviewOverall?: Maybe<Float>;
+  reviewAuthorPic?: Maybe<string>;
+  reviewedHotel?: Maybe<HotelUpdateOneWithoutReviewsInput>;
+  reviewedHotelId?: Maybe<ID_Input>;
+  reviewPics?: Maybe<ReviewImagesUpdateManyInput>;
+  reviewOptional?: Maybe<ReviewOptionalsUpdateManyInput>;
+  reviewFields?: Maybe<ReviewFieldsUpdateManyInput>;
+}
+
+export interface HotelUpdateOneWithoutReviewsInput {
+  create?: Maybe<HotelCreateWithoutReviewsInput>;
+  update?: Maybe<HotelUpdateWithoutReviewsDataInput>;
+  upsert?: Maybe<HotelUpsertWithoutReviewsInput>;
+  delete?: Maybe<boolean>;
+  disconnect?: Maybe<boolean>;
+  connect?: Maybe<HotelWhereUniqueInput>;
+}
+
+export interface HotelUpdateWithoutReviewsDataInput {
+  peopleLiked?: Maybe<UserUpdateManyWithoutFavourite_postInput>;
+  peopleReviewed?: Maybe<UserUpdateManyWithoutReviewed_postInput>;
+  couponsAvailable?: Maybe<CouponUpdateManyWithoutCouponTargetInput>;
+  connectId?: Maybe<UserUpdateOneWithoutListed_postsInput>;
+  agentId?: Maybe<string>;
+  agentEmail?: Maybe<string>;
+  agentName?: Maybe<string>;
+  title?: Maybe<string>;
+  slug?: Maybe<string>;
+  content?: Maybe<string>;
+  status?: Maybe<string>;
+  price?: Maybe<Int>;
   isNegotiable?: Maybe<boolean>;
   propertyType?: Maybe<string>;
   condition?: Maybe<string>;
@@ -2127,34 +5586,22 @@ export interface LocationScalarWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  lat?: Maybe<string>;
-  lat_not?: Maybe<string>;
-  lat_in?: Maybe<string[] | string>;
-  lat_not_in?: Maybe<string[] | string>;
-  lat_lt?: Maybe<string>;
-  lat_lte?: Maybe<string>;
-  lat_gt?: Maybe<string>;
-  lat_gte?: Maybe<string>;
-  lat_contains?: Maybe<string>;
-  lat_not_contains?: Maybe<string>;
-  lat_starts_with?: Maybe<string>;
-  lat_not_starts_with?: Maybe<string>;
-  lat_ends_with?: Maybe<string>;
-  lat_not_ends_with?: Maybe<string>;
-  lng?: Maybe<string>;
-  lng_not?: Maybe<string>;
-  lng_in?: Maybe<string[] | string>;
-  lng_not_in?: Maybe<string[] | string>;
-  lng_lt?: Maybe<string>;
-  lng_lte?: Maybe<string>;
-  lng_gt?: Maybe<string>;
-  lng_gte?: Maybe<string>;
-  lng_contains?: Maybe<string>;
-  lng_not_contains?: Maybe<string>;
-  lng_starts_with?: Maybe<string>;
-  lng_not_starts_with?: Maybe<string>;
-  lng_ends_with?: Maybe<string>;
-  lng_not_ends_with?: Maybe<string>;
+  lat?: Maybe<Float>;
+  lat_not?: Maybe<Float>;
+  lat_in?: Maybe<Float[] | Float>;
+  lat_not_in?: Maybe<Float[] | Float>;
+  lat_lt?: Maybe<Float>;
+  lat_lte?: Maybe<Float>;
+  lat_gt?: Maybe<Float>;
+  lat_gte?: Maybe<Float>;
+  lng?: Maybe<Float>;
+  lng_not?: Maybe<Float>;
+  lng_in?: Maybe<Float[] | Float>;
+  lng_not_in?: Maybe<Float[] | Float>;
+  lng_lt?: Maybe<Float>;
+  lng_lte?: Maybe<Float>;
+  lng_gt?: Maybe<Float>;
+  lng_gte?: Maybe<Float>;
   formattedAddress?: Maybe<string>;
   formattedAddress_not?: Maybe<string>;
   formattedAddress_in?: Maybe<string[] | string>;
@@ -2264,8 +5711,8 @@ export interface LocationUpdateManyWithWhereNestedInput {
 }
 
 export interface LocationUpdateManyDataInput {
-  lat?: Maybe<string>;
-  lng?: Maybe<string>;
+  lat?: Maybe<Float>;
+  lng?: Maybe<Float>;
   formattedAddress?: Maybe<string>;
   zipcode?: Maybe<string>;
   city?: Maybe<string>;
@@ -2371,10 +5818,1577 @@ export interface CategoriesUpdateManyDataInput {
   name?: Maybe<string>;
 }
 
-export interface HotelUpsertWithWhereUniqueWithoutConnectIdInput {
+export interface HotelUpsertWithoutReviewsInput {
+  update: HotelUpdateWithoutReviewsDataInput;
+  create: HotelCreateWithoutReviewsInput;
+}
+
+export interface ReviewImagesUpdateManyInput {
+  create?: Maybe<ReviewImagesCreateInput[] | ReviewImagesCreateInput>;
+  update?: Maybe<
+    | ReviewImagesUpdateWithWhereUniqueNestedInput[]
+    | ReviewImagesUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | ReviewImagesUpsertWithWhereUniqueNestedInput[]
+    | ReviewImagesUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<ReviewImagesWhereUniqueInput[] | ReviewImagesWhereUniqueInput>;
+  connect?: Maybe<
+    ReviewImagesWhereUniqueInput[] | ReviewImagesWhereUniqueInput
+  >;
+  set?: Maybe<ReviewImagesWhereUniqueInput[] | ReviewImagesWhereUniqueInput>;
+  disconnect?: Maybe<
+    ReviewImagesWhereUniqueInput[] | ReviewImagesWhereUniqueInput
+  >;
+  deleteMany?: Maybe<
+    ReviewImagesScalarWhereInput[] | ReviewImagesScalarWhereInput
+  >;
+  updateMany?: Maybe<
+    | ReviewImagesUpdateManyWithWhereNestedInput[]
+    | ReviewImagesUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface ReviewImagesUpdateWithWhereUniqueNestedInput {
+  where: ReviewImagesWhereUniqueInput;
+  data: ReviewImagesUpdateDataInput;
+}
+
+export interface ReviewImagesUpdateDataInput {
+  url?: Maybe<string>;
+}
+
+export interface ReviewImagesUpsertWithWhereUniqueNestedInput {
+  where: ReviewImagesWhereUniqueInput;
+  update: ReviewImagesUpdateDataInput;
+  create: ReviewImagesCreateInput;
+}
+
+export interface ReviewImagesScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  url?: Maybe<string>;
+  url_not?: Maybe<string>;
+  url_in?: Maybe<string[] | string>;
+  url_not_in?: Maybe<string[] | string>;
+  url_lt?: Maybe<string>;
+  url_lte?: Maybe<string>;
+  url_gt?: Maybe<string>;
+  url_gte?: Maybe<string>;
+  url_contains?: Maybe<string>;
+  url_not_contains?: Maybe<string>;
+  url_starts_with?: Maybe<string>;
+  url_not_starts_with?: Maybe<string>;
+  url_ends_with?: Maybe<string>;
+  url_not_ends_with?: Maybe<string>;
+  AND?: Maybe<ReviewImagesScalarWhereInput[] | ReviewImagesScalarWhereInput>;
+  OR?: Maybe<ReviewImagesScalarWhereInput[] | ReviewImagesScalarWhereInput>;
+  NOT?: Maybe<ReviewImagesScalarWhereInput[] | ReviewImagesScalarWhereInput>;
+}
+
+export interface ReviewImagesUpdateManyWithWhereNestedInput {
+  where: ReviewImagesScalarWhereInput;
+  data: ReviewImagesUpdateManyDataInput;
+}
+
+export interface ReviewImagesUpdateManyDataInput {
+  url?: Maybe<string>;
+}
+
+export interface ReviewOptionalsUpdateManyInput {
+  create?: Maybe<ReviewOptionalsCreateInput[] | ReviewOptionalsCreateInput>;
+  update?: Maybe<
+    | ReviewOptionalsUpdateWithWhereUniqueNestedInput[]
+    | ReviewOptionalsUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | ReviewOptionalsUpsertWithWhereUniqueNestedInput[]
+    | ReviewOptionalsUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<
+    ReviewOptionalsWhereUniqueInput[] | ReviewOptionalsWhereUniqueInput
+  >;
+  connect?: Maybe<
+    ReviewOptionalsWhereUniqueInput[] | ReviewOptionalsWhereUniqueInput
+  >;
+  set?: Maybe<
+    ReviewOptionalsWhereUniqueInput[] | ReviewOptionalsWhereUniqueInput
+  >;
+  disconnect?: Maybe<
+    ReviewOptionalsWhereUniqueInput[] | ReviewOptionalsWhereUniqueInput
+  >;
+  deleteMany?: Maybe<
+    ReviewOptionalsScalarWhereInput[] | ReviewOptionalsScalarWhereInput
+  >;
+  updateMany?: Maybe<
+    | ReviewOptionalsUpdateManyWithWhereNestedInput[]
+    | ReviewOptionalsUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface ReviewOptionalsUpdateWithWhereUniqueNestedInput {
+  where: ReviewOptionalsWhereUniqueInput;
+  data: ReviewOptionalsUpdateDataInput;
+}
+
+export interface ReviewOptionalsUpdateDataInput {
+  option?: Maybe<string>;
+  optionField?: Maybe<string>;
+}
+
+export interface ReviewOptionalsUpsertWithWhereUniqueNestedInput {
+  where: ReviewOptionalsWhereUniqueInput;
+  update: ReviewOptionalsUpdateDataInput;
+  create: ReviewOptionalsCreateInput;
+}
+
+export interface ReviewOptionalsScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  option?: Maybe<string>;
+  option_not?: Maybe<string>;
+  option_in?: Maybe<string[] | string>;
+  option_not_in?: Maybe<string[] | string>;
+  option_lt?: Maybe<string>;
+  option_lte?: Maybe<string>;
+  option_gt?: Maybe<string>;
+  option_gte?: Maybe<string>;
+  option_contains?: Maybe<string>;
+  option_not_contains?: Maybe<string>;
+  option_starts_with?: Maybe<string>;
+  option_not_starts_with?: Maybe<string>;
+  option_ends_with?: Maybe<string>;
+  option_not_ends_with?: Maybe<string>;
+  optionField?: Maybe<string>;
+  optionField_not?: Maybe<string>;
+  optionField_in?: Maybe<string[] | string>;
+  optionField_not_in?: Maybe<string[] | string>;
+  optionField_lt?: Maybe<string>;
+  optionField_lte?: Maybe<string>;
+  optionField_gt?: Maybe<string>;
+  optionField_gte?: Maybe<string>;
+  optionField_contains?: Maybe<string>;
+  optionField_not_contains?: Maybe<string>;
+  optionField_starts_with?: Maybe<string>;
+  optionField_not_starts_with?: Maybe<string>;
+  optionField_ends_with?: Maybe<string>;
+  optionField_not_ends_with?: Maybe<string>;
+  AND?: Maybe<
+    ReviewOptionalsScalarWhereInput[] | ReviewOptionalsScalarWhereInput
+  >;
+  OR?: Maybe<
+    ReviewOptionalsScalarWhereInput[] | ReviewOptionalsScalarWhereInput
+  >;
+  NOT?: Maybe<
+    ReviewOptionalsScalarWhereInput[] | ReviewOptionalsScalarWhereInput
+  >;
+}
+
+export interface ReviewOptionalsUpdateManyWithWhereNestedInput {
+  where: ReviewOptionalsScalarWhereInput;
+  data: ReviewOptionalsUpdateManyDataInput;
+}
+
+export interface ReviewOptionalsUpdateManyDataInput {
+  option?: Maybe<string>;
+  optionField?: Maybe<string>;
+}
+
+export interface ReviewFieldsUpdateManyInput {
+  create?: Maybe<ReviewFieldsCreateInput[] | ReviewFieldsCreateInput>;
+  update?: Maybe<
+    | ReviewFieldsUpdateWithWhereUniqueNestedInput[]
+    | ReviewFieldsUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | ReviewFieldsUpsertWithWhereUniqueNestedInput[]
+    | ReviewFieldsUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<ReviewFieldsWhereUniqueInput[] | ReviewFieldsWhereUniqueInput>;
+  connect?: Maybe<
+    ReviewFieldsWhereUniqueInput[] | ReviewFieldsWhereUniqueInput
+  >;
+  set?: Maybe<ReviewFieldsWhereUniqueInput[] | ReviewFieldsWhereUniqueInput>;
+  disconnect?: Maybe<
+    ReviewFieldsWhereUniqueInput[] | ReviewFieldsWhereUniqueInput
+  >;
+  deleteMany?: Maybe<
+    ReviewFieldsScalarWhereInput[] | ReviewFieldsScalarWhereInput
+  >;
+  updateMany?: Maybe<
+    | ReviewFieldsUpdateManyWithWhereNestedInput[]
+    | ReviewFieldsUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface ReviewFieldsUpdateWithWhereUniqueNestedInput {
+  where: ReviewFieldsWhereUniqueInput;
+  data: ReviewFieldsUpdateDataInput;
+}
+
+export interface ReviewFieldsUpdateDataInput {
+  rating?: Maybe<Int>;
+  ratingFieldName?: Maybe<string>;
+}
+
+export interface ReviewFieldsUpsertWithWhereUniqueNestedInput {
+  where: ReviewFieldsWhereUniqueInput;
+  update: ReviewFieldsUpdateDataInput;
+  create: ReviewFieldsCreateInput;
+}
+
+export interface ReviewFieldsScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  rating?: Maybe<Int>;
+  rating_not?: Maybe<Int>;
+  rating_in?: Maybe<Int[] | Int>;
+  rating_not_in?: Maybe<Int[] | Int>;
+  rating_lt?: Maybe<Int>;
+  rating_lte?: Maybe<Int>;
+  rating_gt?: Maybe<Int>;
+  rating_gte?: Maybe<Int>;
+  ratingFieldName?: Maybe<string>;
+  ratingFieldName_not?: Maybe<string>;
+  ratingFieldName_in?: Maybe<string[] | string>;
+  ratingFieldName_not_in?: Maybe<string[] | string>;
+  ratingFieldName_lt?: Maybe<string>;
+  ratingFieldName_lte?: Maybe<string>;
+  ratingFieldName_gt?: Maybe<string>;
+  ratingFieldName_gte?: Maybe<string>;
+  ratingFieldName_contains?: Maybe<string>;
+  ratingFieldName_not_contains?: Maybe<string>;
+  ratingFieldName_starts_with?: Maybe<string>;
+  ratingFieldName_not_starts_with?: Maybe<string>;
+  ratingFieldName_ends_with?: Maybe<string>;
+  ratingFieldName_not_ends_with?: Maybe<string>;
+  AND?: Maybe<ReviewFieldsScalarWhereInput[] | ReviewFieldsScalarWhereInput>;
+  OR?: Maybe<ReviewFieldsScalarWhereInput[] | ReviewFieldsScalarWhereInput>;
+  NOT?: Maybe<ReviewFieldsScalarWhereInput[] | ReviewFieldsScalarWhereInput>;
+}
+
+export interface ReviewFieldsUpdateManyWithWhereNestedInput {
+  where: ReviewFieldsScalarWhereInput;
+  data: ReviewFieldsUpdateManyDataInput;
+}
+
+export interface ReviewFieldsUpdateManyDataInput {
+  rating?: Maybe<Int>;
+  ratingFieldName?: Maybe<string>;
+}
+
+export interface ReviewsUpsertWithWhereUniqueWithoutPeopleDislikedInput {
+  where: ReviewsWhereUniqueInput;
+  update: ReviewsUpdateWithoutPeopleDislikedDataInput;
+  create: ReviewsCreateWithoutPeopleDislikedInput;
+}
+
+export interface ReviewsScalarWhereInput {
+  reviewID?: Maybe<ID_Input>;
+  reviewID_not?: Maybe<ID_Input>;
+  reviewID_in?: Maybe<ID_Input[] | ID_Input>;
+  reviewID_not_in?: Maybe<ID_Input[] | ID_Input>;
+  reviewID_lt?: Maybe<ID_Input>;
+  reviewID_lte?: Maybe<ID_Input>;
+  reviewID_gt?: Maybe<ID_Input>;
+  reviewID_gte?: Maybe<ID_Input>;
+  reviewID_contains?: Maybe<ID_Input>;
+  reviewID_not_contains?: Maybe<ID_Input>;
+  reviewID_starts_with?: Maybe<ID_Input>;
+  reviewID_not_starts_with?: Maybe<ID_Input>;
+  reviewID_ends_with?: Maybe<ID_Input>;
+  reviewID_not_ends_with?: Maybe<ID_Input>;
+  reviewTitle?: Maybe<string>;
+  reviewTitle_not?: Maybe<string>;
+  reviewTitle_in?: Maybe<string[] | string>;
+  reviewTitle_not_in?: Maybe<string[] | string>;
+  reviewTitle_lt?: Maybe<string>;
+  reviewTitle_lte?: Maybe<string>;
+  reviewTitle_gt?: Maybe<string>;
+  reviewTitle_gte?: Maybe<string>;
+  reviewTitle_contains?: Maybe<string>;
+  reviewTitle_not_contains?: Maybe<string>;
+  reviewTitle_starts_with?: Maybe<string>;
+  reviewTitle_not_starts_with?: Maybe<string>;
+  reviewTitle_ends_with?: Maybe<string>;
+  reviewTitle_not_ends_with?: Maybe<string>;
+  reviewText?: Maybe<string>;
+  reviewText_not?: Maybe<string>;
+  reviewText_in?: Maybe<string[] | string>;
+  reviewText_not_in?: Maybe<string[] | string>;
+  reviewText_lt?: Maybe<string>;
+  reviewText_lte?: Maybe<string>;
+  reviewText_gt?: Maybe<string>;
+  reviewText_gte?: Maybe<string>;
+  reviewText_contains?: Maybe<string>;
+  reviewText_not_contains?: Maybe<string>;
+  reviewText_starts_with?: Maybe<string>;
+  reviewText_not_starts_with?: Maybe<string>;
+  reviewText_ends_with?: Maybe<string>;
+  reviewText_not_ends_with?: Maybe<string>;
+  sortOfTrip?: Maybe<string>;
+  sortOfTrip_not?: Maybe<string>;
+  sortOfTrip_in?: Maybe<string[] | string>;
+  sortOfTrip_not_in?: Maybe<string[] | string>;
+  sortOfTrip_lt?: Maybe<string>;
+  sortOfTrip_lte?: Maybe<string>;
+  sortOfTrip_gt?: Maybe<string>;
+  sortOfTrip_gte?: Maybe<string>;
+  sortOfTrip_contains?: Maybe<string>;
+  sortOfTrip_not_contains?: Maybe<string>;
+  sortOfTrip_starts_with?: Maybe<string>;
+  sortOfTrip_not_starts_with?: Maybe<string>;
+  sortOfTrip_ends_with?: Maybe<string>;
+  sortOfTrip_not_ends_with?: Maybe<string>;
+  reviewAuthorFirstName?: Maybe<string>;
+  reviewAuthorFirstName_not?: Maybe<string>;
+  reviewAuthorFirstName_in?: Maybe<string[] | string>;
+  reviewAuthorFirstName_not_in?: Maybe<string[] | string>;
+  reviewAuthorFirstName_lt?: Maybe<string>;
+  reviewAuthorFirstName_lte?: Maybe<string>;
+  reviewAuthorFirstName_gt?: Maybe<string>;
+  reviewAuthorFirstName_gte?: Maybe<string>;
+  reviewAuthorFirstName_contains?: Maybe<string>;
+  reviewAuthorFirstName_not_contains?: Maybe<string>;
+  reviewAuthorFirstName_starts_with?: Maybe<string>;
+  reviewAuthorFirstName_not_starts_with?: Maybe<string>;
+  reviewAuthorFirstName_ends_with?: Maybe<string>;
+  reviewAuthorFirstName_not_ends_with?: Maybe<string>;
+  reviewTips?: Maybe<string>;
+  reviewTips_not?: Maybe<string>;
+  reviewTips_in?: Maybe<string[] | string>;
+  reviewTips_not_in?: Maybe<string[] | string>;
+  reviewTips_lt?: Maybe<string>;
+  reviewTips_lte?: Maybe<string>;
+  reviewTips_gt?: Maybe<string>;
+  reviewTips_gte?: Maybe<string>;
+  reviewTips_contains?: Maybe<string>;
+  reviewTips_not_contains?: Maybe<string>;
+  reviewTips_starts_with?: Maybe<string>;
+  reviewTips_not_starts_with?: Maybe<string>;
+  reviewTips_ends_with?: Maybe<string>;
+  reviewTips_not_ends_with?: Maybe<string>;
+  reviewAuthorLastName?: Maybe<string>;
+  reviewAuthorLastName_not?: Maybe<string>;
+  reviewAuthorLastName_in?: Maybe<string[] | string>;
+  reviewAuthorLastName_not_in?: Maybe<string[] | string>;
+  reviewAuthorLastName_lt?: Maybe<string>;
+  reviewAuthorLastName_lte?: Maybe<string>;
+  reviewAuthorLastName_gt?: Maybe<string>;
+  reviewAuthorLastName_gte?: Maybe<string>;
+  reviewAuthorLastName_contains?: Maybe<string>;
+  reviewAuthorLastName_not_contains?: Maybe<string>;
+  reviewAuthorLastName_starts_with?: Maybe<string>;
+  reviewAuthorLastName_not_starts_with?: Maybe<string>;
+  reviewAuthorLastName_ends_with?: Maybe<string>;
+  reviewAuthorLastName_not_ends_with?: Maybe<string>;
+  reviewAuthorEmail?: Maybe<string>;
+  reviewAuthorEmail_not?: Maybe<string>;
+  reviewAuthorEmail_in?: Maybe<string[] | string>;
+  reviewAuthorEmail_not_in?: Maybe<string[] | string>;
+  reviewAuthorEmail_lt?: Maybe<string>;
+  reviewAuthorEmail_lte?: Maybe<string>;
+  reviewAuthorEmail_gt?: Maybe<string>;
+  reviewAuthorEmail_gte?: Maybe<string>;
+  reviewAuthorEmail_contains?: Maybe<string>;
+  reviewAuthorEmail_not_contains?: Maybe<string>;
+  reviewAuthorEmail_starts_with?: Maybe<string>;
+  reviewAuthorEmail_not_starts_with?: Maybe<string>;
+  reviewAuthorEmail_ends_with?: Maybe<string>;
+  reviewAuthorEmail_not_ends_with?: Maybe<string>;
+  reviewOverall?: Maybe<Float>;
+  reviewOverall_not?: Maybe<Float>;
+  reviewOverall_in?: Maybe<Float[] | Float>;
+  reviewOverall_not_in?: Maybe<Float[] | Float>;
+  reviewOverall_lt?: Maybe<Float>;
+  reviewOverall_lte?: Maybe<Float>;
+  reviewOverall_gt?: Maybe<Float>;
+  reviewOverall_gte?: Maybe<Float>;
+  reviewAuthorPic?: Maybe<string>;
+  reviewAuthorPic_not?: Maybe<string>;
+  reviewAuthorPic_in?: Maybe<string[] | string>;
+  reviewAuthorPic_not_in?: Maybe<string[] | string>;
+  reviewAuthorPic_lt?: Maybe<string>;
+  reviewAuthorPic_lte?: Maybe<string>;
+  reviewAuthorPic_gt?: Maybe<string>;
+  reviewAuthorPic_gte?: Maybe<string>;
+  reviewAuthorPic_contains?: Maybe<string>;
+  reviewAuthorPic_not_contains?: Maybe<string>;
+  reviewAuthorPic_starts_with?: Maybe<string>;
+  reviewAuthorPic_not_starts_with?: Maybe<string>;
+  reviewAuthorPic_ends_with?: Maybe<string>;
+  reviewAuthorPic_not_ends_with?: Maybe<string>;
+  reviewedHotelId?: Maybe<ID_Input>;
+  reviewedHotelId_not?: Maybe<ID_Input>;
+  reviewedHotelId_in?: Maybe<ID_Input[] | ID_Input>;
+  reviewedHotelId_not_in?: Maybe<ID_Input[] | ID_Input>;
+  reviewedHotelId_lt?: Maybe<ID_Input>;
+  reviewedHotelId_lte?: Maybe<ID_Input>;
+  reviewedHotelId_gt?: Maybe<ID_Input>;
+  reviewedHotelId_gte?: Maybe<ID_Input>;
+  reviewedHotelId_contains?: Maybe<ID_Input>;
+  reviewedHotelId_not_contains?: Maybe<ID_Input>;
+  reviewedHotelId_starts_with?: Maybe<ID_Input>;
+  reviewedHotelId_not_starts_with?: Maybe<ID_Input>;
+  reviewedHotelId_ends_with?: Maybe<ID_Input>;
+  reviewedHotelId_not_ends_with?: Maybe<ID_Input>;
+  reviewDate?: Maybe<DateTimeInput>;
+  reviewDate_not?: Maybe<DateTimeInput>;
+  reviewDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  reviewDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  reviewDate_lt?: Maybe<DateTimeInput>;
+  reviewDate_lte?: Maybe<DateTimeInput>;
+  reviewDate_gt?: Maybe<DateTimeInput>;
+  reviewDate_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<ReviewsScalarWhereInput[] | ReviewsScalarWhereInput>;
+  OR?: Maybe<ReviewsScalarWhereInput[] | ReviewsScalarWhereInput>;
+  NOT?: Maybe<ReviewsScalarWhereInput[] | ReviewsScalarWhereInput>;
+}
+
+export interface ReviewsUpdateManyWithWhereNestedInput {
+  where: ReviewsScalarWhereInput;
+  data: ReviewsUpdateManyDataInput;
+}
+
+export interface ReviewsUpdateManyDataInput {
+  reviewTitle?: Maybe<string>;
+  reviewText?: Maybe<string>;
+  sortOfTrip?: Maybe<string>;
+  reviewAuthorFirstName?: Maybe<string>;
+  reviewTips?: Maybe<string>;
+  reviewAuthorLastName?: Maybe<string>;
+  reviewAuthorEmail?: Maybe<string>;
+  reviewOverall?: Maybe<Float>;
+  reviewAuthorPic?: Maybe<string>;
+  reviewedHotelId?: Maybe<ID_Input>;
+}
+
+export interface TransactionUpdateManyWithoutTransactionHotelManagerInput {
+  create?: Maybe<
+    | TransactionCreateWithoutTransactionHotelManagerInput[]
+    | TransactionCreateWithoutTransactionHotelManagerInput
+  >;
+  delete?: Maybe<TransactionWhereUniqueInput[] | TransactionWhereUniqueInput>;
+  connect?: Maybe<TransactionWhereUniqueInput[] | TransactionWhereUniqueInput>;
+  set?: Maybe<TransactionWhereUniqueInput[] | TransactionWhereUniqueInput>;
+  disconnect?: Maybe<
+    TransactionWhereUniqueInput[] | TransactionWhereUniqueInput
+  >;
+  update?: Maybe<
+    | TransactionUpdateWithWhereUniqueWithoutTransactionHotelManagerInput[]
+    | TransactionUpdateWithWhereUniqueWithoutTransactionHotelManagerInput
+  >;
+  upsert?: Maybe<
+    | TransactionUpsertWithWhereUniqueWithoutTransactionHotelManagerInput[]
+    | TransactionUpsertWithWhereUniqueWithoutTransactionHotelManagerInput
+  >;
+  deleteMany?: Maybe<
+    TransactionScalarWhereInput[] | TransactionScalarWhereInput
+  >;
+  updateMany?: Maybe<
+    | TransactionUpdateManyWithWhereNestedInput[]
+    | TransactionUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface TransactionUpdateWithWhereUniqueWithoutTransactionHotelManagerInput {
+  where: TransactionWhereUniqueInput;
+  data: TransactionUpdateWithoutTransactionHotelManagerDataInput;
+}
+
+export interface TransactionUpdateWithoutTransactionHotelManagerDataInput {
+  transactionSecretKey?: Maybe<string>;
+  transactionHotelName?: Maybe<string>;
+  transactionHotelId?: Maybe<string>;
+  transactionHotelManagerId?: Maybe<string>;
+  transactionHotelType?: Maybe<string>;
+  transactionPrice?: Maybe<Int>;
+  transactionAuthor?: Maybe<UserUpdateOneWithoutTransaction_makedInput>;
+  transactionAuthorId?: Maybe<string>;
+  transactionAuthorName?: Maybe<string>;
+  transactionAuthorEmail?: Maybe<string>;
+  transactionAuthorContactNumber?: Maybe<string>;
+  transactionAuthorSpecial?: Maybe<string>;
+  transactionAuthorNote?: Maybe<string>;
+  transactionLocationLat?: Maybe<Float>;
+  transactionLocationLng?: Maybe<Float>;
+  transactionRoom?: Maybe<Int>;
+  transactionGuest?: Maybe<Int>;
+  transactionLocationFormattedAddress?: Maybe<string>;
+  transactionRange?: Maybe<Int>;
+  transactionStatus?: Maybe<string>;
+  transactionCoupon?: Maybe<string>;
+  transactionCouponType?: Maybe<Int>;
+  transactionCouponValue?: Maybe<Int>;
+  transactionStartDate?: Maybe<string>;
+  transactionEndDate?: Maybe<string>;
+  transactionStripeId?: Maybe<string>;
+}
+
+export interface UserUpdateOneWithoutTransaction_makedInput {
+  create?: Maybe<UserCreateWithoutTransaction_makedInput>;
+  update?: Maybe<UserUpdateWithoutTransaction_makedDataInput>;
+  upsert?: Maybe<UserUpsertWithoutTransaction_makedInput>;
+  delete?: Maybe<boolean>;
+  disconnect?: Maybe<boolean>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserUpdateWithoutTransaction_makedDataInput {
+  first_name?: Maybe<string>;
+  last_name?: Maybe<string>;
+  username?: Maybe<string>;
+  password?: Maybe<string>;
+  email?: Maybe<string>;
+  role?: Maybe<string>;
+  cellNumber?: Maybe<string>;
+  profile_pic_main?: Maybe<string>;
+  cover_pic_main?: Maybe<string>;
+  profile_pic?: Maybe<GalleryUpdateManyInput>;
+  cover_pic?: Maybe<GalleryUpdateManyInput>;
+  date_of_birth?: Maybe<string>;
+  gender?: Maybe<string>;
+  content?: Maybe<string>;
+  notification?: Maybe<NotificationUpdateManyInput>;
+  unreadNotification?: Maybe<Int>;
+  agent_location?: Maybe<LocationUpdateOneInput>;
+  gallery?: Maybe<GalleryUpdateManyInput>;
+  social_profile?: Maybe<SocialUpdateOneInput>;
+  reviews_maked?: Maybe<ReviewsUpdateManyWithoutReviewAuthorIdInput>;
+  listed_posts?: Maybe<HotelUpdateManyWithoutConnectIdInput>;
+  favourite_post?: Maybe<HotelUpdateManyWithoutPeopleLikedInput>;
+  reviewed_post?: Maybe<HotelUpdateManyWithoutPeopleReviewedInput>;
+  review_liked?: Maybe<ReviewsUpdateManyWithoutPeopleLikedInput>;
+  review_disliked?: Maybe<ReviewsUpdateManyWithoutPeopleDislikedInput>;
+  stripeId?: Maybe<string>;
+  transaction_had?: Maybe<
+    TransactionUpdateManyWithoutTransactionHotelManagerInput
+  >;
+  coupons_maked?: Maybe<CouponUpdateManyWithoutCouponAuthorInput>;
+  uncheckTransactions?: Maybe<
+    UncheckTransactionsUpdateOneWithoutUserUncheckTransactionsInput
+  >;
+}
+
+export interface CouponUpdateManyWithoutCouponAuthorInput {
+  create?: Maybe<
+    | CouponCreateWithoutCouponAuthorInput[]
+    | CouponCreateWithoutCouponAuthorInput
+  >;
+  delete?: Maybe<CouponWhereUniqueInput[] | CouponWhereUniqueInput>;
+  connect?: Maybe<CouponWhereUniqueInput[] | CouponWhereUniqueInput>;
+  set?: Maybe<CouponWhereUniqueInput[] | CouponWhereUniqueInput>;
+  disconnect?: Maybe<CouponWhereUniqueInput[] | CouponWhereUniqueInput>;
+  update?: Maybe<
+    | CouponUpdateWithWhereUniqueWithoutCouponAuthorInput[]
+    | CouponUpdateWithWhereUniqueWithoutCouponAuthorInput
+  >;
+  upsert?: Maybe<
+    | CouponUpsertWithWhereUniqueWithoutCouponAuthorInput[]
+    | CouponUpsertWithWhereUniqueWithoutCouponAuthorInput
+  >;
+  deleteMany?: Maybe<CouponScalarWhereInput[] | CouponScalarWhereInput>;
+  updateMany?: Maybe<
+    | CouponUpdateManyWithWhereNestedInput[]
+    | CouponUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface CouponUpdateWithWhereUniqueWithoutCouponAuthorInput {
+  where: CouponWhereUniqueInput;
+  data: CouponUpdateWithoutCouponAuthorDataInput;
+}
+
+export interface CouponUpdateWithoutCouponAuthorDataInput {
+  couponName?: Maybe<string>;
+  couponDescription?: Maybe<string>;
+  couponAuthorId?: Maybe<string>;
+  couponType?: Maybe<Int>;
+  couponValue?: Maybe<Int>;
+  couponQuantity?: Maybe<Int>;
+  couponStartDate?: Maybe<string>;
+  couponEndDate?: Maybe<string>;
+  couponRange?: Maybe<string>;
+  couponTarget?: Maybe<HotelUpdateManyWithoutCouponsAvailableInput>;
+}
+
+export interface HotelUpdateManyWithoutCouponsAvailableInput {
+  create?: Maybe<
+    | HotelCreateWithoutCouponsAvailableInput[]
+    | HotelCreateWithoutCouponsAvailableInput
+  >;
+  delete?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
+  connect?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
+  set?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
+  disconnect?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
+  update?: Maybe<
+    | HotelUpdateWithWhereUniqueWithoutCouponsAvailableInput[]
+    | HotelUpdateWithWhereUniqueWithoutCouponsAvailableInput
+  >;
+  upsert?: Maybe<
+    | HotelUpsertWithWhereUniqueWithoutCouponsAvailableInput[]
+    | HotelUpsertWithWhereUniqueWithoutCouponsAvailableInput
+  >;
+  deleteMany?: Maybe<HotelScalarWhereInput[] | HotelScalarWhereInput>;
+  updateMany?: Maybe<
+    HotelUpdateManyWithWhereNestedInput[] | HotelUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface HotelUpdateWithWhereUniqueWithoutCouponsAvailableInput {
   where: HotelWhereUniqueInput;
-  update: HotelUpdateWithoutConnectIdDataInput;
-  create: HotelCreateWithoutConnectIdInput;
+  data: HotelUpdateWithoutCouponsAvailableDataInput;
+}
+
+export interface HotelUpdateWithoutCouponsAvailableDataInput {
+  peopleLiked?: Maybe<UserUpdateManyWithoutFavourite_postInput>;
+  peopleReviewed?: Maybe<UserUpdateManyWithoutReviewed_postInput>;
+  connectId?: Maybe<UserUpdateOneWithoutListed_postsInput>;
+  agentId?: Maybe<string>;
+  agentEmail?: Maybe<string>;
+  agentName?: Maybe<string>;
+  title?: Maybe<string>;
+  slug?: Maybe<string>;
+  content?: Maybe<string>;
+  status?: Maybe<string>;
+  price?: Maybe<Int>;
+  isNegotiable?: Maybe<boolean>;
+  propertyType?: Maybe<string>;
+  condition?: Maybe<string>;
+  rating?: Maybe<Float>;
+  ratingCount?: Maybe<Int>;
+  contactNumber?: Maybe<string>;
+  termsAndCondition?: Maybe<string>;
+  amenities?: Maybe<AmenitiesUpdateManyInput>;
+  image?: Maybe<ImageUpdateOneInput>;
+  location?: Maybe<LocationUpdateManyInput>;
+  gallery?: Maybe<GalleryUpdateManyInput>;
+  categories?: Maybe<CategoriesUpdateManyInput>;
+  reviews?: Maybe<ReviewsUpdateManyWithoutReviewedHotelInput>;
+}
+
+export interface ReviewsUpdateManyWithoutReviewedHotelInput {
+  create?: Maybe<
+    | ReviewsCreateWithoutReviewedHotelInput[]
+    | ReviewsCreateWithoutReviewedHotelInput
+  >;
+  delete?: Maybe<ReviewsWhereUniqueInput[] | ReviewsWhereUniqueInput>;
+  connect?: Maybe<ReviewsWhereUniqueInput[] | ReviewsWhereUniqueInput>;
+  set?: Maybe<ReviewsWhereUniqueInput[] | ReviewsWhereUniqueInput>;
+  disconnect?: Maybe<ReviewsWhereUniqueInput[] | ReviewsWhereUniqueInput>;
+  update?: Maybe<
+    | ReviewsUpdateWithWhereUniqueWithoutReviewedHotelInput[]
+    | ReviewsUpdateWithWhereUniqueWithoutReviewedHotelInput
+  >;
+  upsert?: Maybe<
+    | ReviewsUpsertWithWhereUniqueWithoutReviewedHotelInput[]
+    | ReviewsUpsertWithWhereUniqueWithoutReviewedHotelInput
+  >;
+  deleteMany?: Maybe<ReviewsScalarWhereInput[] | ReviewsScalarWhereInput>;
+  updateMany?: Maybe<
+    | ReviewsUpdateManyWithWhereNestedInput[]
+    | ReviewsUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface ReviewsUpdateWithWhereUniqueWithoutReviewedHotelInput {
+  where: ReviewsWhereUniqueInput;
+  data: ReviewsUpdateWithoutReviewedHotelDataInput;
+}
+
+export interface ReviewsUpdateWithoutReviewedHotelDataInput {
+  reviewTitle?: Maybe<string>;
+  reviewText?: Maybe<string>;
+  sortOfTrip?: Maybe<string>;
+  reviewAuthorId?: Maybe<UserUpdateOneWithoutReviews_makedInput>;
+  peopleLiked?: Maybe<UserUpdateManyWithoutReview_likedInput>;
+  peopleDisliked?: Maybe<UserUpdateManyWithoutReview_dislikedInput>;
+  reviewAuthorFirstName?: Maybe<string>;
+  reviewTips?: Maybe<string>;
+  reviewAuthorLastName?: Maybe<string>;
+  reviewAuthorEmail?: Maybe<string>;
+  reviewOverall?: Maybe<Float>;
+  reviewAuthorPic?: Maybe<string>;
+  reviewedHotelId?: Maybe<ID_Input>;
+  reviewPics?: Maybe<ReviewImagesUpdateManyInput>;
+  reviewOptional?: Maybe<ReviewOptionalsUpdateManyInput>;
+  reviewFields?: Maybe<ReviewFieldsUpdateManyInput>;
+}
+
+export interface UserUpdateManyWithoutReview_dislikedInput {
+  create?: Maybe<
+    | UserCreateWithoutReview_dislikedInput[]
+    | UserCreateWithoutReview_dislikedInput
+  >;
+  delete?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  set?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  disconnect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  update?: Maybe<
+    | UserUpdateWithWhereUniqueWithoutReview_dislikedInput[]
+    | UserUpdateWithWhereUniqueWithoutReview_dislikedInput
+  >;
+  upsert?: Maybe<
+    | UserUpsertWithWhereUniqueWithoutReview_dislikedInput[]
+    | UserUpsertWithWhereUniqueWithoutReview_dislikedInput
+  >;
+  deleteMany?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+  updateMany?: Maybe<
+    UserUpdateManyWithWhereNestedInput[] | UserUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface UserUpdateWithWhereUniqueWithoutReview_dislikedInput {
+  where: UserWhereUniqueInput;
+  data: UserUpdateWithoutReview_dislikedDataInput;
+}
+
+export interface UserUpdateWithoutReview_dislikedDataInput {
+  first_name?: Maybe<string>;
+  last_name?: Maybe<string>;
+  username?: Maybe<string>;
+  password?: Maybe<string>;
+  email?: Maybe<string>;
+  role?: Maybe<string>;
+  cellNumber?: Maybe<string>;
+  profile_pic_main?: Maybe<string>;
+  cover_pic_main?: Maybe<string>;
+  profile_pic?: Maybe<GalleryUpdateManyInput>;
+  cover_pic?: Maybe<GalleryUpdateManyInput>;
+  date_of_birth?: Maybe<string>;
+  gender?: Maybe<string>;
+  content?: Maybe<string>;
+  notification?: Maybe<NotificationUpdateManyInput>;
+  unreadNotification?: Maybe<Int>;
+  agent_location?: Maybe<LocationUpdateOneInput>;
+  gallery?: Maybe<GalleryUpdateManyInput>;
+  social_profile?: Maybe<SocialUpdateOneInput>;
+  reviews_maked?: Maybe<ReviewsUpdateManyWithoutReviewAuthorIdInput>;
+  listed_posts?: Maybe<HotelUpdateManyWithoutConnectIdInput>;
+  favourite_post?: Maybe<HotelUpdateManyWithoutPeopleLikedInput>;
+  reviewed_post?: Maybe<HotelUpdateManyWithoutPeopleReviewedInput>;
+  review_liked?: Maybe<ReviewsUpdateManyWithoutPeopleLikedInput>;
+  stripeId?: Maybe<string>;
+  transaction_had?: Maybe<
+    TransactionUpdateManyWithoutTransactionHotelManagerInput
+  >;
+  transaction_maked?: Maybe<TransactionUpdateManyWithoutTransactionAuthorInput>;
+  coupons_maked?: Maybe<CouponUpdateManyWithoutCouponAuthorInput>;
+  uncheckTransactions?: Maybe<
+    UncheckTransactionsUpdateOneWithoutUserUncheckTransactionsInput
+  >;
+}
+
+export interface TransactionUpdateManyWithoutTransactionAuthorInput {
+  create?: Maybe<
+    | TransactionCreateWithoutTransactionAuthorInput[]
+    | TransactionCreateWithoutTransactionAuthorInput
+  >;
+  delete?: Maybe<TransactionWhereUniqueInput[] | TransactionWhereUniqueInput>;
+  connect?: Maybe<TransactionWhereUniqueInput[] | TransactionWhereUniqueInput>;
+  set?: Maybe<TransactionWhereUniqueInput[] | TransactionWhereUniqueInput>;
+  disconnect?: Maybe<
+    TransactionWhereUniqueInput[] | TransactionWhereUniqueInput
+  >;
+  update?: Maybe<
+    | TransactionUpdateWithWhereUniqueWithoutTransactionAuthorInput[]
+    | TransactionUpdateWithWhereUniqueWithoutTransactionAuthorInput
+  >;
+  upsert?: Maybe<
+    | TransactionUpsertWithWhereUniqueWithoutTransactionAuthorInput[]
+    | TransactionUpsertWithWhereUniqueWithoutTransactionAuthorInput
+  >;
+  deleteMany?: Maybe<
+    TransactionScalarWhereInput[] | TransactionScalarWhereInput
+  >;
+  updateMany?: Maybe<
+    | TransactionUpdateManyWithWhereNestedInput[]
+    | TransactionUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface TransactionUpdateWithWhereUniqueWithoutTransactionAuthorInput {
+  where: TransactionWhereUniqueInput;
+  data: TransactionUpdateWithoutTransactionAuthorDataInput;
+}
+
+export interface TransactionUpdateWithoutTransactionAuthorDataInput {
+  transactionSecretKey?: Maybe<string>;
+  transactionHotelName?: Maybe<string>;
+  transactionHotelId?: Maybe<string>;
+  transactionHotelManager?: Maybe<UserUpdateOneWithoutTransaction_hadInput>;
+  transactionHotelManagerId?: Maybe<string>;
+  transactionHotelType?: Maybe<string>;
+  transactionPrice?: Maybe<Int>;
+  transactionAuthorId?: Maybe<string>;
+  transactionAuthorName?: Maybe<string>;
+  transactionAuthorEmail?: Maybe<string>;
+  transactionAuthorContactNumber?: Maybe<string>;
+  transactionAuthorSpecial?: Maybe<string>;
+  transactionAuthorNote?: Maybe<string>;
+  transactionLocationLat?: Maybe<Float>;
+  transactionLocationLng?: Maybe<Float>;
+  transactionRoom?: Maybe<Int>;
+  transactionGuest?: Maybe<Int>;
+  transactionLocationFormattedAddress?: Maybe<string>;
+  transactionRange?: Maybe<Int>;
+  transactionStatus?: Maybe<string>;
+  transactionCoupon?: Maybe<string>;
+  transactionCouponType?: Maybe<Int>;
+  transactionCouponValue?: Maybe<Int>;
+  transactionStartDate?: Maybe<string>;
+  transactionEndDate?: Maybe<string>;
+  transactionStripeId?: Maybe<string>;
+}
+
+export interface UserUpdateOneWithoutTransaction_hadInput {
+  create?: Maybe<UserCreateWithoutTransaction_hadInput>;
+  update?: Maybe<UserUpdateWithoutTransaction_hadDataInput>;
+  upsert?: Maybe<UserUpsertWithoutTransaction_hadInput>;
+  delete?: Maybe<boolean>;
+  disconnect?: Maybe<boolean>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserUpdateWithoutTransaction_hadDataInput {
+  first_name?: Maybe<string>;
+  last_name?: Maybe<string>;
+  username?: Maybe<string>;
+  password?: Maybe<string>;
+  email?: Maybe<string>;
+  role?: Maybe<string>;
+  cellNumber?: Maybe<string>;
+  profile_pic_main?: Maybe<string>;
+  cover_pic_main?: Maybe<string>;
+  profile_pic?: Maybe<GalleryUpdateManyInput>;
+  cover_pic?: Maybe<GalleryUpdateManyInput>;
+  date_of_birth?: Maybe<string>;
+  gender?: Maybe<string>;
+  content?: Maybe<string>;
+  notification?: Maybe<NotificationUpdateManyInput>;
+  unreadNotification?: Maybe<Int>;
+  agent_location?: Maybe<LocationUpdateOneInput>;
+  gallery?: Maybe<GalleryUpdateManyInput>;
+  social_profile?: Maybe<SocialUpdateOneInput>;
+  reviews_maked?: Maybe<ReviewsUpdateManyWithoutReviewAuthorIdInput>;
+  listed_posts?: Maybe<HotelUpdateManyWithoutConnectIdInput>;
+  favourite_post?: Maybe<HotelUpdateManyWithoutPeopleLikedInput>;
+  reviewed_post?: Maybe<HotelUpdateManyWithoutPeopleReviewedInput>;
+  review_liked?: Maybe<ReviewsUpdateManyWithoutPeopleLikedInput>;
+  review_disliked?: Maybe<ReviewsUpdateManyWithoutPeopleDislikedInput>;
+  stripeId?: Maybe<string>;
+  transaction_maked?: Maybe<TransactionUpdateManyWithoutTransactionAuthorInput>;
+  coupons_maked?: Maybe<CouponUpdateManyWithoutCouponAuthorInput>;
+  uncheckTransactions?: Maybe<
+    UncheckTransactionsUpdateOneWithoutUserUncheckTransactionsInput
+  >;
+}
+
+export interface UncheckTransactionsUpdateOneWithoutUserUncheckTransactionsInput {
+  create?: Maybe<UncheckTransactionsCreateWithoutUserUncheckTransactionsInput>;
+  update?: Maybe<
+    UncheckTransactionsUpdateWithoutUserUncheckTransactionsDataInput
+  >;
+  upsert?: Maybe<UncheckTransactionsUpsertWithoutUserUncheckTransactionsInput>;
+  delete?: Maybe<boolean>;
+  disconnect?: Maybe<boolean>;
+  connect?: Maybe<UncheckTransactionsWhereUniqueInput>;
+}
+
+export interface UncheckTransactionsUpdateWithoutUserUncheckTransactionsDataInput {
+  userUncheckTransactionsId?: Maybe<string>;
+  totalPrice?: Maybe<Int>;
+  totalTransactions?: Maybe<Int>;
+}
+
+export interface UncheckTransactionsUpsertWithoutUserUncheckTransactionsInput {
+  update: UncheckTransactionsUpdateWithoutUserUncheckTransactionsDataInput;
+  create: UncheckTransactionsCreateWithoutUserUncheckTransactionsInput;
+}
+
+export interface UserUpsertWithoutTransaction_hadInput {
+  update: UserUpdateWithoutTransaction_hadDataInput;
+  create: UserCreateWithoutTransaction_hadInput;
+}
+
+export interface TransactionUpsertWithWhereUniqueWithoutTransactionAuthorInput {
+  where: TransactionWhereUniqueInput;
+  update: TransactionUpdateWithoutTransactionAuthorDataInput;
+  create: TransactionCreateWithoutTransactionAuthorInput;
+}
+
+export interface TransactionScalarWhereInput {
+  TXID?: Maybe<ID_Input>;
+  TXID_not?: Maybe<ID_Input>;
+  TXID_in?: Maybe<ID_Input[] | ID_Input>;
+  TXID_not_in?: Maybe<ID_Input[] | ID_Input>;
+  TXID_lt?: Maybe<ID_Input>;
+  TXID_lte?: Maybe<ID_Input>;
+  TXID_gt?: Maybe<ID_Input>;
+  TXID_gte?: Maybe<ID_Input>;
+  TXID_contains?: Maybe<ID_Input>;
+  TXID_not_contains?: Maybe<ID_Input>;
+  TXID_starts_with?: Maybe<ID_Input>;
+  TXID_not_starts_with?: Maybe<ID_Input>;
+  TXID_ends_with?: Maybe<ID_Input>;
+  TXID_not_ends_with?: Maybe<ID_Input>;
+  transactionSecretKey?: Maybe<string>;
+  transactionSecretKey_not?: Maybe<string>;
+  transactionSecretKey_in?: Maybe<string[] | string>;
+  transactionSecretKey_not_in?: Maybe<string[] | string>;
+  transactionSecretKey_lt?: Maybe<string>;
+  transactionSecretKey_lte?: Maybe<string>;
+  transactionSecretKey_gt?: Maybe<string>;
+  transactionSecretKey_gte?: Maybe<string>;
+  transactionSecretKey_contains?: Maybe<string>;
+  transactionSecretKey_not_contains?: Maybe<string>;
+  transactionSecretKey_starts_with?: Maybe<string>;
+  transactionSecretKey_not_starts_with?: Maybe<string>;
+  transactionSecretKey_ends_with?: Maybe<string>;
+  transactionSecretKey_not_ends_with?: Maybe<string>;
+  transactionHotelName?: Maybe<string>;
+  transactionHotelName_not?: Maybe<string>;
+  transactionHotelName_in?: Maybe<string[] | string>;
+  transactionHotelName_not_in?: Maybe<string[] | string>;
+  transactionHotelName_lt?: Maybe<string>;
+  transactionHotelName_lte?: Maybe<string>;
+  transactionHotelName_gt?: Maybe<string>;
+  transactionHotelName_gte?: Maybe<string>;
+  transactionHotelName_contains?: Maybe<string>;
+  transactionHotelName_not_contains?: Maybe<string>;
+  transactionHotelName_starts_with?: Maybe<string>;
+  transactionHotelName_not_starts_with?: Maybe<string>;
+  transactionHotelName_ends_with?: Maybe<string>;
+  transactionHotelName_not_ends_with?: Maybe<string>;
+  transactionHotelId?: Maybe<string>;
+  transactionHotelId_not?: Maybe<string>;
+  transactionHotelId_in?: Maybe<string[] | string>;
+  transactionHotelId_not_in?: Maybe<string[] | string>;
+  transactionHotelId_lt?: Maybe<string>;
+  transactionHotelId_lte?: Maybe<string>;
+  transactionHotelId_gt?: Maybe<string>;
+  transactionHotelId_gte?: Maybe<string>;
+  transactionHotelId_contains?: Maybe<string>;
+  transactionHotelId_not_contains?: Maybe<string>;
+  transactionHotelId_starts_with?: Maybe<string>;
+  transactionHotelId_not_starts_with?: Maybe<string>;
+  transactionHotelId_ends_with?: Maybe<string>;
+  transactionHotelId_not_ends_with?: Maybe<string>;
+  transactionHotelManagerId?: Maybe<string>;
+  transactionHotelManagerId_not?: Maybe<string>;
+  transactionHotelManagerId_in?: Maybe<string[] | string>;
+  transactionHotelManagerId_not_in?: Maybe<string[] | string>;
+  transactionHotelManagerId_lt?: Maybe<string>;
+  transactionHotelManagerId_lte?: Maybe<string>;
+  transactionHotelManagerId_gt?: Maybe<string>;
+  transactionHotelManagerId_gte?: Maybe<string>;
+  transactionHotelManagerId_contains?: Maybe<string>;
+  transactionHotelManagerId_not_contains?: Maybe<string>;
+  transactionHotelManagerId_starts_with?: Maybe<string>;
+  transactionHotelManagerId_not_starts_with?: Maybe<string>;
+  transactionHotelManagerId_ends_with?: Maybe<string>;
+  transactionHotelManagerId_not_ends_with?: Maybe<string>;
+  transactionHotelType?: Maybe<string>;
+  transactionHotelType_not?: Maybe<string>;
+  transactionHotelType_in?: Maybe<string[] | string>;
+  transactionHotelType_not_in?: Maybe<string[] | string>;
+  transactionHotelType_lt?: Maybe<string>;
+  transactionHotelType_lte?: Maybe<string>;
+  transactionHotelType_gt?: Maybe<string>;
+  transactionHotelType_gte?: Maybe<string>;
+  transactionHotelType_contains?: Maybe<string>;
+  transactionHotelType_not_contains?: Maybe<string>;
+  transactionHotelType_starts_with?: Maybe<string>;
+  transactionHotelType_not_starts_with?: Maybe<string>;
+  transactionHotelType_ends_with?: Maybe<string>;
+  transactionHotelType_not_ends_with?: Maybe<string>;
+  transactionPrice?: Maybe<Int>;
+  transactionPrice_not?: Maybe<Int>;
+  transactionPrice_in?: Maybe<Int[] | Int>;
+  transactionPrice_not_in?: Maybe<Int[] | Int>;
+  transactionPrice_lt?: Maybe<Int>;
+  transactionPrice_lte?: Maybe<Int>;
+  transactionPrice_gt?: Maybe<Int>;
+  transactionPrice_gte?: Maybe<Int>;
+  transactionAuthorId?: Maybe<string>;
+  transactionAuthorId_not?: Maybe<string>;
+  transactionAuthorId_in?: Maybe<string[] | string>;
+  transactionAuthorId_not_in?: Maybe<string[] | string>;
+  transactionAuthorId_lt?: Maybe<string>;
+  transactionAuthorId_lte?: Maybe<string>;
+  transactionAuthorId_gt?: Maybe<string>;
+  transactionAuthorId_gte?: Maybe<string>;
+  transactionAuthorId_contains?: Maybe<string>;
+  transactionAuthorId_not_contains?: Maybe<string>;
+  transactionAuthorId_starts_with?: Maybe<string>;
+  transactionAuthorId_not_starts_with?: Maybe<string>;
+  transactionAuthorId_ends_with?: Maybe<string>;
+  transactionAuthorId_not_ends_with?: Maybe<string>;
+  transactionAuthorName?: Maybe<string>;
+  transactionAuthorName_not?: Maybe<string>;
+  transactionAuthorName_in?: Maybe<string[] | string>;
+  transactionAuthorName_not_in?: Maybe<string[] | string>;
+  transactionAuthorName_lt?: Maybe<string>;
+  transactionAuthorName_lte?: Maybe<string>;
+  transactionAuthorName_gt?: Maybe<string>;
+  transactionAuthorName_gte?: Maybe<string>;
+  transactionAuthorName_contains?: Maybe<string>;
+  transactionAuthorName_not_contains?: Maybe<string>;
+  transactionAuthorName_starts_with?: Maybe<string>;
+  transactionAuthorName_not_starts_with?: Maybe<string>;
+  transactionAuthorName_ends_with?: Maybe<string>;
+  transactionAuthorName_not_ends_with?: Maybe<string>;
+  transactionAuthorEmail?: Maybe<string>;
+  transactionAuthorEmail_not?: Maybe<string>;
+  transactionAuthorEmail_in?: Maybe<string[] | string>;
+  transactionAuthorEmail_not_in?: Maybe<string[] | string>;
+  transactionAuthorEmail_lt?: Maybe<string>;
+  transactionAuthorEmail_lte?: Maybe<string>;
+  transactionAuthorEmail_gt?: Maybe<string>;
+  transactionAuthorEmail_gte?: Maybe<string>;
+  transactionAuthorEmail_contains?: Maybe<string>;
+  transactionAuthorEmail_not_contains?: Maybe<string>;
+  transactionAuthorEmail_starts_with?: Maybe<string>;
+  transactionAuthorEmail_not_starts_with?: Maybe<string>;
+  transactionAuthorEmail_ends_with?: Maybe<string>;
+  transactionAuthorEmail_not_ends_with?: Maybe<string>;
+  transactionAuthorContactNumber?: Maybe<string>;
+  transactionAuthorContactNumber_not?: Maybe<string>;
+  transactionAuthorContactNumber_in?: Maybe<string[] | string>;
+  transactionAuthorContactNumber_not_in?: Maybe<string[] | string>;
+  transactionAuthorContactNumber_lt?: Maybe<string>;
+  transactionAuthorContactNumber_lte?: Maybe<string>;
+  transactionAuthorContactNumber_gt?: Maybe<string>;
+  transactionAuthorContactNumber_gte?: Maybe<string>;
+  transactionAuthorContactNumber_contains?: Maybe<string>;
+  transactionAuthorContactNumber_not_contains?: Maybe<string>;
+  transactionAuthorContactNumber_starts_with?: Maybe<string>;
+  transactionAuthorContactNumber_not_starts_with?: Maybe<string>;
+  transactionAuthorContactNumber_ends_with?: Maybe<string>;
+  transactionAuthorContactNumber_not_ends_with?: Maybe<string>;
+  transactionAuthorSpecial?: Maybe<string>;
+  transactionAuthorSpecial_not?: Maybe<string>;
+  transactionAuthorSpecial_in?: Maybe<string[] | string>;
+  transactionAuthorSpecial_not_in?: Maybe<string[] | string>;
+  transactionAuthorSpecial_lt?: Maybe<string>;
+  transactionAuthorSpecial_lte?: Maybe<string>;
+  transactionAuthorSpecial_gt?: Maybe<string>;
+  transactionAuthorSpecial_gte?: Maybe<string>;
+  transactionAuthorSpecial_contains?: Maybe<string>;
+  transactionAuthorSpecial_not_contains?: Maybe<string>;
+  transactionAuthorSpecial_starts_with?: Maybe<string>;
+  transactionAuthorSpecial_not_starts_with?: Maybe<string>;
+  transactionAuthorSpecial_ends_with?: Maybe<string>;
+  transactionAuthorSpecial_not_ends_with?: Maybe<string>;
+  transactionAuthorNote?: Maybe<string>;
+  transactionAuthorNote_not?: Maybe<string>;
+  transactionAuthorNote_in?: Maybe<string[] | string>;
+  transactionAuthorNote_not_in?: Maybe<string[] | string>;
+  transactionAuthorNote_lt?: Maybe<string>;
+  transactionAuthorNote_lte?: Maybe<string>;
+  transactionAuthorNote_gt?: Maybe<string>;
+  transactionAuthorNote_gte?: Maybe<string>;
+  transactionAuthorNote_contains?: Maybe<string>;
+  transactionAuthorNote_not_contains?: Maybe<string>;
+  transactionAuthorNote_starts_with?: Maybe<string>;
+  transactionAuthorNote_not_starts_with?: Maybe<string>;
+  transactionAuthorNote_ends_with?: Maybe<string>;
+  transactionAuthorNote_not_ends_with?: Maybe<string>;
+  transactionLocationLat?: Maybe<Float>;
+  transactionLocationLat_not?: Maybe<Float>;
+  transactionLocationLat_in?: Maybe<Float[] | Float>;
+  transactionLocationLat_not_in?: Maybe<Float[] | Float>;
+  transactionLocationLat_lt?: Maybe<Float>;
+  transactionLocationLat_lte?: Maybe<Float>;
+  transactionLocationLat_gt?: Maybe<Float>;
+  transactionLocationLat_gte?: Maybe<Float>;
+  transactionLocationLng?: Maybe<Float>;
+  transactionLocationLng_not?: Maybe<Float>;
+  transactionLocationLng_in?: Maybe<Float[] | Float>;
+  transactionLocationLng_not_in?: Maybe<Float[] | Float>;
+  transactionLocationLng_lt?: Maybe<Float>;
+  transactionLocationLng_lte?: Maybe<Float>;
+  transactionLocationLng_gt?: Maybe<Float>;
+  transactionLocationLng_gte?: Maybe<Float>;
+  transactionRoom?: Maybe<Int>;
+  transactionRoom_not?: Maybe<Int>;
+  transactionRoom_in?: Maybe<Int[] | Int>;
+  transactionRoom_not_in?: Maybe<Int[] | Int>;
+  transactionRoom_lt?: Maybe<Int>;
+  transactionRoom_lte?: Maybe<Int>;
+  transactionRoom_gt?: Maybe<Int>;
+  transactionRoom_gte?: Maybe<Int>;
+  transactionGuest?: Maybe<Int>;
+  transactionGuest_not?: Maybe<Int>;
+  transactionGuest_in?: Maybe<Int[] | Int>;
+  transactionGuest_not_in?: Maybe<Int[] | Int>;
+  transactionGuest_lt?: Maybe<Int>;
+  transactionGuest_lte?: Maybe<Int>;
+  transactionGuest_gt?: Maybe<Int>;
+  transactionGuest_gte?: Maybe<Int>;
+  transactionLocationFormattedAddress?: Maybe<string>;
+  transactionLocationFormattedAddress_not?: Maybe<string>;
+  transactionLocationFormattedAddress_in?: Maybe<string[] | string>;
+  transactionLocationFormattedAddress_not_in?: Maybe<string[] | string>;
+  transactionLocationFormattedAddress_lt?: Maybe<string>;
+  transactionLocationFormattedAddress_lte?: Maybe<string>;
+  transactionLocationFormattedAddress_gt?: Maybe<string>;
+  transactionLocationFormattedAddress_gte?: Maybe<string>;
+  transactionLocationFormattedAddress_contains?: Maybe<string>;
+  transactionLocationFormattedAddress_not_contains?: Maybe<string>;
+  transactionLocationFormattedAddress_starts_with?: Maybe<string>;
+  transactionLocationFormattedAddress_not_starts_with?: Maybe<string>;
+  transactionLocationFormattedAddress_ends_with?: Maybe<string>;
+  transactionLocationFormattedAddress_not_ends_with?: Maybe<string>;
+  transactionRange?: Maybe<Int>;
+  transactionRange_not?: Maybe<Int>;
+  transactionRange_in?: Maybe<Int[] | Int>;
+  transactionRange_not_in?: Maybe<Int[] | Int>;
+  transactionRange_lt?: Maybe<Int>;
+  transactionRange_lte?: Maybe<Int>;
+  transactionRange_gt?: Maybe<Int>;
+  transactionRange_gte?: Maybe<Int>;
+  transactionStatus?: Maybe<string>;
+  transactionStatus_not?: Maybe<string>;
+  transactionStatus_in?: Maybe<string[] | string>;
+  transactionStatus_not_in?: Maybe<string[] | string>;
+  transactionStatus_lt?: Maybe<string>;
+  transactionStatus_lte?: Maybe<string>;
+  transactionStatus_gt?: Maybe<string>;
+  transactionStatus_gte?: Maybe<string>;
+  transactionStatus_contains?: Maybe<string>;
+  transactionStatus_not_contains?: Maybe<string>;
+  transactionStatus_starts_with?: Maybe<string>;
+  transactionStatus_not_starts_with?: Maybe<string>;
+  transactionStatus_ends_with?: Maybe<string>;
+  transactionStatus_not_ends_with?: Maybe<string>;
+  transactionCoupon?: Maybe<string>;
+  transactionCoupon_not?: Maybe<string>;
+  transactionCoupon_in?: Maybe<string[] | string>;
+  transactionCoupon_not_in?: Maybe<string[] | string>;
+  transactionCoupon_lt?: Maybe<string>;
+  transactionCoupon_lte?: Maybe<string>;
+  transactionCoupon_gt?: Maybe<string>;
+  transactionCoupon_gte?: Maybe<string>;
+  transactionCoupon_contains?: Maybe<string>;
+  transactionCoupon_not_contains?: Maybe<string>;
+  transactionCoupon_starts_with?: Maybe<string>;
+  transactionCoupon_not_starts_with?: Maybe<string>;
+  transactionCoupon_ends_with?: Maybe<string>;
+  transactionCoupon_not_ends_with?: Maybe<string>;
+  transactionCouponType?: Maybe<Int>;
+  transactionCouponType_not?: Maybe<Int>;
+  transactionCouponType_in?: Maybe<Int[] | Int>;
+  transactionCouponType_not_in?: Maybe<Int[] | Int>;
+  transactionCouponType_lt?: Maybe<Int>;
+  transactionCouponType_lte?: Maybe<Int>;
+  transactionCouponType_gt?: Maybe<Int>;
+  transactionCouponType_gte?: Maybe<Int>;
+  transactionCouponValue?: Maybe<Int>;
+  transactionCouponValue_not?: Maybe<Int>;
+  transactionCouponValue_in?: Maybe<Int[] | Int>;
+  transactionCouponValue_not_in?: Maybe<Int[] | Int>;
+  transactionCouponValue_lt?: Maybe<Int>;
+  transactionCouponValue_lte?: Maybe<Int>;
+  transactionCouponValue_gt?: Maybe<Int>;
+  transactionCouponValue_gte?: Maybe<Int>;
+  transactionStartDate?: Maybe<string>;
+  transactionStartDate_not?: Maybe<string>;
+  transactionStartDate_in?: Maybe<string[] | string>;
+  transactionStartDate_not_in?: Maybe<string[] | string>;
+  transactionStartDate_lt?: Maybe<string>;
+  transactionStartDate_lte?: Maybe<string>;
+  transactionStartDate_gt?: Maybe<string>;
+  transactionStartDate_gte?: Maybe<string>;
+  transactionStartDate_contains?: Maybe<string>;
+  transactionStartDate_not_contains?: Maybe<string>;
+  transactionStartDate_starts_with?: Maybe<string>;
+  transactionStartDate_not_starts_with?: Maybe<string>;
+  transactionStartDate_ends_with?: Maybe<string>;
+  transactionStartDate_not_ends_with?: Maybe<string>;
+  transactionEndDate?: Maybe<string>;
+  transactionEndDate_not?: Maybe<string>;
+  transactionEndDate_in?: Maybe<string[] | string>;
+  transactionEndDate_not_in?: Maybe<string[] | string>;
+  transactionEndDate_lt?: Maybe<string>;
+  transactionEndDate_lte?: Maybe<string>;
+  transactionEndDate_gt?: Maybe<string>;
+  transactionEndDate_gte?: Maybe<string>;
+  transactionEndDate_contains?: Maybe<string>;
+  transactionEndDate_not_contains?: Maybe<string>;
+  transactionEndDate_starts_with?: Maybe<string>;
+  transactionEndDate_not_starts_with?: Maybe<string>;
+  transactionEndDate_ends_with?: Maybe<string>;
+  transactionEndDate_not_ends_with?: Maybe<string>;
+  transactionStripeId?: Maybe<string>;
+  transactionStripeId_not?: Maybe<string>;
+  transactionStripeId_in?: Maybe<string[] | string>;
+  transactionStripeId_not_in?: Maybe<string[] | string>;
+  transactionStripeId_lt?: Maybe<string>;
+  transactionStripeId_lte?: Maybe<string>;
+  transactionStripeId_gt?: Maybe<string>;
+  transactionStripeId_gte?: Maybe<string>;
+  transactionStripeId_contains?: Maybe<string>;
+  transactionStripeId_not_contains?: Maybe<string>;
+  transactionStripeId_starts_with?: Maybe<string>;
+  transactionStripeId_not_starts_with?: Maybe<string>;
+  transactionStripeId_ends_with?: Maybe<string>;
+  transactionStripeId_not_ends_with?: Maybe<string>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<TransactionScalarWhereInput[] | TransactionScalarWhereInput>;
+  OR?: Maybe<TransactionScalarWhereInput[] | TransactionScalarWhereInput>;
+  NOT?: Maybe<TransactionScalarWhereInput[] | TransactionScalarWhereInput>;
+}
+
+export interface TransactionUpdateManyWithWhereNestedInput {
+  where: TransactionScalarWhereInput;
+  data: TransactionUpdateManyDataInput;
+}
+
+export interface TransactionUpdateManyDataInput {
+  transactionSecretKey?: Maybe<string>;
+  transactionHotelName?: Maybe<string>;
+  transactionHotelId?: Maybe<string>;
+  transactionHotelManagerId?: Maybe<string>;
+  transactionHotelType?: Maybe<string>;
+  transactionPrice?: Maybe<Int>;
+  transactionAuthorId?: Maybe<string>;
+  transactionAuthorName?: Maybe<string>;
+  transactionAuthorEmail?: Maybe<string>;
+  transactionAuthorContactNumber?: Maybe<string>;
+  transactionAuthorSpecial?: Maybe<string>;
+  transactionAuthorNote?: Maybe<string>;
+  transactionLocationLat?: Maybe<Float>;
+  transactionLocationLng?: Maybe<Float>;
+  transactionRoom?: Maybe<Int>;
+  transactionGuest?: Maybe<Int>;
+  transactionLocationFormattedAddress?: Maybe<string>;
+  transactionRange?: Maybe<Int>;
+  transactionStatus?: Maybe<string>;
+  transactionCoupon?: Maybe<string>;
+  transactionCouponType?: Maybe<Int>;
+  transactionCouponValue?: Maybe<Int>;
+  transactionStartDate?: Maybe<string>;
+  transactionEndDate?: Maybe<string>;
+  transactionStripeId?: Maybe<string>;
+}
+
+export interface UserUpsertWithWhereUniqueWithoutReview_dislikedInput {
+  where: UserWhereUniqueInput;
+  update: UserUpdateWithoutReview_dislikedDataInput;
+  create: UserCreateWithoutReview_dislikedInput;
+}
+
+export interface UserScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  first_name?: Maybe<string>;
+  first_name_not?: Maybe<string>;
+  first_name_in?: Maybe<string[] | string>;
+  first_name_not_in?: Maybe<string[] | string>;
+  first_name_lt?: Maybe<string>;
+  first_name_lte?: Maybe<string>;
+  first_name_gt?: Maybe<string>;
+  first_name_gte?: Maybe<string>;
+  first_name_contains?: Maybe<string>;
+  first_name_not_contains?: Maybe<string>;
+  first_name_starts_with?: Maybe<string>;
+  first_name_not_starts_with?: Maybe<string>;
+  first_name_ends_with?: Maybe<string>;
+  first_name_not_ends_with?: Maybe<string>;
+  last_name?: Maybe<string>;
+  last_name_not?: Maybe<string>;
+  last_name_in?: Maybe<string[] | string>;
+  last_name_not_in?: Maybe<string[] | string>;
+  last_name_lt?: Maybe<string>;
+  last_name_lte?: Maybe<string>;
+  last_name_gt?: Maybe<string>;
+  last_name_gte?: Maybe<string>;
+  last_name_contains?: Maybe<string>;
+  last_name_not_contains?: Maybe<string>;
+  last_name_starts_with?: Maybe<string>;
+  last_name_not_starts_with?: Maybe<string>;
+  last_name_ends_with?: Maybe<string>;
+  last_name_not_ends_with?: Maybe<string>;
+  username?: Maybe<string>;
+  username_not?: Maybe<string>;
+  username_in?: Maybe<string[] | string>;
+  username_not_in?: Maybe<string[] | string>;
+  username_lt?: Maybe<string>;
+  username_lte?: Maybe<string>;
+  username_gt?: Maybe<string>;
+  username_gte?: Maybe<string>;
+  username_contains?: Maybe<string>;
+  username_not_contains?: Maybe<string>;
+  username_starts_with?: Maybe<string>;
+  username_not_starts_with?: Maybe<string>;
+  username_ends_with?: Maybe<string>;
+  username_not_ends_with?: Maybe<string>;
+  password?: Maybe<string>;
+  password_not?: Maybe<string>;
+  password_in?: Maybe<string[] | string>;
+  password_not_in?: Maybe<string[] | string>;
+  password_lt?: Maybe<string>;
+  password_lte?: Maybe<string>;
+  password_gt?: Maybe<string>;
+  password_gte?: Maybe<string>;
+  password_contains?: Maybe<string>;
+  password_not_contains?: Maybe<string>;
+  password_starts_with?: Maybe<string>;
+  password_not_starts_with?: Maybe<string>;
+  password_ends_with?: Maybe<string>;
+  password_not_ends_with?: Maybe<string>;
+  email?: Maybe<string>;
+  email_not?: Maybe<string>;
+  email_in?: Maybe<string[] | string>;
+  email_not_in?: Maybe<string[] | string>;
+  email_lt?: Maybe<string>;
+  email_lte?: Maybe<string>;
+  email_gt?: Maybe<string>;
+  email_gte?: Maybe<string>;
+  email_contains?: Maybe<string>;
+  email_not_contains?: Maybe<string>;
+  email_starts_with?: Maybe<string>;
+  email_not_starts_with?: Maybe<string>;
+  email_ends_with?: Maybe<string>;
+  email_not_ends_with?: Maybe<string>;
+  role?: Maybe<string>;
+  role_not?: Maybe<string>;
+  role_in?: Maybe<string[] | string>;
+  role_not_in?: Maybe<string[] | string>;
+  role_lt?: Maybe<string>;
+  role_lte?: Maybe<string>;
+  role_gt?: Maybe<string>;
+  role_gte?: Maybe<string>;
+  role_contains?: Maybe<string>;
+  role_not_contains?: Maybe<string>;
+  role_starts_with?: Maybe<string>;
+  role_not_starts_with?: Maybe<string>;
+  role_ends_with?: Maybe<string>;
+  role_not_ends_with?: Maybe<string>;
+  cellNumber?: Maybe<string>;
+  cellNumber_not?: Maybe<string>;
+  cellNumber_in?: Maybe<string[] | string>;
+  cellNumber_not_in?: Maybe<string[] | string>;
+  cellNumber_lt?: Maybe<string>;
+  cellNumber_lte?: Maybe<string>;
+  cellNumber_gt?: Maybe<string>;
+  cellNumber_gte?: Maybe<string>;
+  cellNumber_contains?: Maybe<string>;
+  cellNumber_not_contains?: Maybe<string>;
+  cellNumber_starts_with?: Maybe<string>;
+  cellNumber_not_starts_with?: Maybe<string>;
+  cellNumber_ends_with?: Maybe<string>;
+  cellNumber_not_ends_with?: Maybe<string>;
+  profile_pic_main?: Maybe<string>;
+  profile_pic_main_not?: Maybe<string>;
+  profile_pic_main_in?: Maybe<string[] | string>;
+  profile_pic_main_not_in?: Maybe<string[] | string>;
+  profile_pic_main_lt?: Maybe<string>;
+  profile_pic_main_lte?: Maybe<string>;
+  profile_pic_main_gt?: Maybe<string>;
+  profile_pic_main_gte?: Maybe<string>;
+  profile_pic_main_contains?: Maybe<string>;
+  profile_pic_main_not_contains?: Maybe<string>;
+  profile_pic_main_starts_with?: Maybe<string>;
+  profile_pic_main_not_starts_with?: Maybe<string>;
+  profile_pic_main_ends_with?: Maybe<string>;
+  profile_pic_main_not_ends_with?: Maybe<string>;
+  cover_pic_main?: Maybe<string>;
+  cover_pic_main_not?: Maybe<string>;
+  cover_pic_main_in?: Maybe<string[] | string>;
+  cover_pic_main_not_in?: Maybe<string[] | string>;
+  cover_pic_main_lt?: Maybe<string>;
+  cover_pic_main_lte?: Maybe<string>;
+  cover_pic_main_gt?: Maybe<string>;
+  cover_pic_main_gte?: Maybe<string>;
+  cover_pic_main_contains?: Maybe<string>;
+  cover_pic_main_not_contains?: Maybe<string>;
+  cover_pic_main_starts_with?: Maybe<string>;
+  cover_pic_main_not_starts_with?: Maybe<string>;
+  cover_pic_main_ends_with?: Maybe<string>;
+  cover_pic_main_not_ends_with?: Maybe<string>;
+  date_of_birth?: Maybe<string>;
+  date_of_birth_not?: Maybe<string>;
+  date_of_birth_in?: Maybe<string[] | string>;
+  date_of_birth_not_in?: Maybe<string[] | string>;
+  date_of_birth_lt?: Maybe<string>;
+  date_of_birth_lte?: Maybe<string>;
+  date_of_birth_gt?: Maybe<string>;
+  date_of_birth_gte?: Maybe<string>;
+  date_of_birth_contains?: Maybe<string>;
+  date_of_birth_not_contains?: Maybe<string>;
+  date_of_birth_starts_with?: Maybe<string>;
+  date_of_birth_not_starts_with?: Maybe<string>;
+  date_of_birth_ends_with?: Maybe<string>;
+  date_of_birth_not_ends_with?: Maybe<string>;
+  gender?: Maybe<string>;
+  gender_not?: Maybe<string>;
+  gender_in?: Maybe<string[] | string>;
+  gender_not_in?: Maybe<string[] | string>;
+  gender_lt?: Maybe<string>;
+  gender_lte?: Maybe<string>;
+  gender_gt?: Maybe<string>;
+  gender_gte?: Maybe<string>;
+  gender_contains?: Maybe<string>;
+  gender_not_contains?: Maybe<string>;
+  gender_starts_with?: Maybe<string>;
+  gender_not_starts_with?: Maybe<string>;
+  gender_ends_with?: Maybe<string>;
+  gender_not_ends_with?: Maybe<string>;
+  content?: Maybe<string>;
+  content_not?: Maybe<string>;
+  content_in?: Maybe<string[] | string>;
+  content_not_in?: Maybe<string[] | string>;
+  content_lt?: Maybe<string>;
+  content_lte?: Maybe<string>;
+  content_gt?: Maybe<string>;
+  content_gte?: Maybe<string>;
+  content_contains?: Maybe<string>;
+  content_not_contains?: Maybe<string>;
+  content_starts_with?: Maybe<string>;
+  content_not_starts_with?: Maybe<string>;
+  content_ends_with?: Maybe<string>;
+  content_not_ends_with?: Maybe<string>;
+  unreadNotification?: Maybe<Int>;
+  unreadNotification_not?: Maybe<Int>;
+  unreadNotification_in?: Maybe<Int[] | Int>;
+  unreadNotification_not_in?: Maybe<Int[] | Int>;
+  unreadNotification_lt?: Maybe<Int>;
+  unreadNotification_lte?: Maybe<Int>;
+  unreadNotification_gt?: Maybe<Int>;
+  unreadNotification_gte?: Maybe<Int>;
+  stripeId?: Maybe<string>;
+  stripeId_not?: Maybe<string>;
+  stripeId_in?: Maybe<string[] | string>;
+  stripeId_not_in?: Maybe<string[] | string>;
+  stripeId_lt?: Maybe<string>;
+  stripeId_lte?: Maybe<string>;
+  stripeId_gt?: Maybe<string>;
+  stripeId_gte?: Maybe<string>;
+  stripeId_contains?: Maybe<string>;
+  stripeId_not_contains?: Maybe<string>;
+  stripeId_starts_with?: Maybe<string>;
+  stripeId_not_starts_with?: Maybe<string>;
+  stripeId_ends_with?: Maybe<string>;
+  stripeId_not_ends_with?: Maybe<string>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+  OR?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+  NOT?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+}
+
+export interface UserUpdateManyWithWhereNestedInput {
+  where: UserScalarWhereInput;
+  data: UserUpdateManyDataInput;
+}
+
+export interface UserUpdateManyDataInput {
+  first_name?: Maybe<string>;
+  last_name?: Maybe<string>;
+  username?: Maybe<string>;
+  password?: Maybe<string>;
+  email?: Maybe<string>;
+  role?: Maybe<string>;
+  cellNumber?: Maybe<string>;
+  profile_pic_main?: Maybe<string>;
+  cover_pic_main?: Maybe<string>;
+  date_of_birth?: Maybe<string>;
+  gender?: Maybe<string>;
+  content?: Maybe<string>;
+  unreadNotification?: Maybe<Int>;
+  stripeId?: Maybe<string>;
+}
+
+export interface ReviewsUpsertWithWhereUniqueWithoutReviewedHotelInput {
+  where: ReviewsWhereUniqueInput;
+  update: ReviewsUpdateWithoutReviewedHotelDataInput;
+  create: ReviewsCreateWithoutReviewedHotelInput;
+}
+
+export interface HotelUpsertWithWhereUniqueWithoutCouponsAvailableInput {
+  where: HotelWhereUniqueInput;
+  update: HotelUpdateWithoutCouponsAvailableDataInput;
+  create: HotelCreateWithoutCouponsAvailableInput;
 }
 
 export interface HotelScalarWhereInput {
@@ -2406,6 +7420,34 @@ export interface HotelScalarWhereInput {
   agentId_not_starts_with?: Maybe<string>;
   agentId_ends_with?: Maybe<string>;
   agentId_not_ends_with?: Maybe<string>;
+  agentEmail?: Maybe<string>;
+  agentEmail_not?: Maybe<string>;
+  agentEmail_in?: Maybe<string[] | string>;
+  agentEmail_not_in?: Maybe<string[] | string>;
+  agentEmail_lt?: Maybe<string>;
+  agentEmail_lte?: Maybe<string>;
+  agentEmail_gt?: Maybe<string>;
+  agentEmail_gte?: Maybe<string>;
+  agentEmail_contains?: Maybe<string>;
+  agentEmail_not_contains?: Maybe<string>;
+  agentEmail_starts_with?: Maybe<string>;
+  agentEmail_not_starts_with?: Maybe<string>;
+  agentEmail_ends_with?: Maybe<string>;
+  agentEmail_not_ends_with?: Maybe<string>;
+  agentName?: Maybe<string>;
+  agentName_not?: Maybe<string>;
+  agentName_in?: Maybe<string[] | string>;
+  agentName_not_in?: Maybe<string[] | string>;
+  agentName_lt?: Maybe<string>;
+  agentName_lte?: Maybe<string>;
+  agentName_gt?: Maybe<string>;
+  agentName_gte?: Maybe<string>;
+  agentName_contains?: Maybe<string>;
+  agentName_not_contains?: Maybe<string>;
+  agentName_starts_with?: Maybe<string>;
+  agentName_not_starts_with?: Maybe<string>;
+  agentName_ends_with?: Maybe<string>;
+  agentName_not_ends_with?: Maybe<string>;
   title?: Maybe<string>;
   title_not?: Maybe<string>;
   title_in?: Maybe<string[] | string>;
@@ -2462,20 +7504,14 @@ export interface HotelScalarWhereInput {
   status_not_starts_with?: Maybe<string>;
   status_ends_with?: Maybe<string>;
   status_not_ends_with?: Maybe<string>;
-  price?: Maybe<string>;
-  price_not?: Maybe<string>;
-  price_in?: Maybe<string[] | string>;
-  price_not_in?: Maybe<string[] | string>;
-  price_lt?: Maybe<string>;
-  price_lte?: Maybe<string>;
-  price_gt?: Maybe<string>;
-  price_gte?: Maybe<string>;
-  price_contains?: Maybe<string>;
-  price_not_contains?: Maybe<string>;
-  price_starts_with?: Maybe<string>;
-  price_not_starts_with?: Maybe<string>;
-  price_ends_with?: Maybe<string>;
-  price_not_ends_with?: Maybe<string>;
+  price?: Maybe<Int>;
+  price_not?: Maybe<Int>;
+  price_in?: Maybe<Int[] | Int>;
+  price_not_in?: Maybe<Int[] | Int>;
+  price_lt?: Maybe<Int>;
+  price_lte?: Maybe<Int>;
+  price_gt?: Maybe<Int>;
+  price_gte?: Maybe<Int>;
   isNegotiable?: Maybe<boolean>;
   isNegotiable_not?: Maybe<boolean>;
   propertyType?: Maybe<string>;
@@ -2578,11 +7614,13 @@ export interface HotelUpdateManyWithWhereNestedInput {
 
 export interface HotelUpdateManyDataInput {
   agentId?: Maybe<string>;
+  agentEmail?: Maybe<string>;
+  agentName?: Maybe<string>;
   title?: Maybe<string>;
   slug?: Maybe<string>;
   content?: Maybe<string>;
   status?: Maybe<string>;
-  price?: Maybe<string>;
+  price?: Maybe<Int>;
   isNegotiable?: Maybe<boolean>;
   propertyType?: Maybe<string>;
   condition?: Maybe<string>;
@@ -2592,265 +7630,38 @@ export interface HotelUpdateManyDataInput {
   termsAndCondition?: Maybe<string>;
 }
 
-export interface UserUpsertWithWhereUniqueWithoutFavourite_postInput {
+export interface CouponUpsertWithWhereUniqueWithoutCouponAuthorInput {
+  where: CouponWhereUniqueInput;
+  update: CouponUpdateWithoutCouponAuthorDataInput;
+  create: CouponCreateWithoutCouponAuthorInput;
+}
+
+export interface UserUpsertWithoutTransaction_makedInput {
+  update: UserUpdateWithoutTransaction_makedDataInput;
+  create: UserCreateWithoutTransaction_makedInput;
+}
+
+export interface TransactionUpsertWithWhereUniqueWithoutTransactionHotelManagerInput {
+  where: TransactionWhereUniqueInput;
+  update: TransactionUpdateWithoutTransactionHotelManagerDataInput;
+  create: TransactionCreateWithoutTransactionHotelManagerInput;
+}
+
+export interface UserUpsertWithoutReviews_makedInput {
+  update: UserUpdateWithoutReviews_makedDataInput;
+  create: UserCreateWithoutReviews_makedInput;
+}
+
+export interface ReviewsUpsertWithWhereUniqueWithoutPeopleLikedInput {
+  where: ReviewsWhereUniqueInput;
+  update: ReviewsUpdateWithoutPeopleLikedDataInput;
+  create: ReviewsCreateWithoutPeopleLikedInput;
+}
+
+export interface UserUpsertWithWhereUniqueWithoutReviewed_postInput {
   where: UserWhereUniqueInput;
-  update: UserUpdateWithoutFavourite_postDataInput;
-  create: UserCreateWithoutFavourite_postInput;
-}
-
-export interface UserScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  first_name?: Maybe<string>;
-  first_name_not?: Maybe<string>;
-  first_name_in?: Maybe<string[] | string>;
-  first_name_not_in?: Maybe<string[] | string>;
-  first_name_lt?: Maybe<string>;
-  first_name_lte?: Maybe<string>;
-  first_name_gt?: Maybe<string>;
-  first_name_gte?: Maybe<string>;
-  first_name_contains?: Maybe<string>;
-  first_name_not_contains?: Maybe<string>;
-  first_name_starts_with?: Maybe<string>;
-  first_name_not_starts_with?: Maybe<string>;
-  first_name_ends_with?: Maybe<string>;
-  first_name_not_ends_with?: Maybe<string>;
-  last_name?: Maybe<string>;
-  last_name_not?: Maybe<string>;
-  last_name_in?: Maybe<string[] | string>;
-  last_name_not_in?: Maybe<string[] | string>;
-  last_name_lt?: Maybe<string>;
-  last_name_lte?: Maybe<string>;
-  last_name_gt?: Maybe<string>;
-  last_name_gte?: Maybe<string>;
-  last_name_contains?: Maybe<string>;
-  last_name_not_contains?: Maybe<string>;
-  last_name_starts_with?: Maybe<string>;
-  last_name_not_starts_with?: Maybe<string>;
-  last_name_ends_with?: Maybe<string>;
-  last_name_not_ends_with?: Maybe<string>;
-  username?: Maybe<string>;
-  username_not?: Maybe<string>;
-  username_in?: Maybe<string[] | string>;
-  username_not_in?: Maybe<string[] | string>;
-  username_lt?: Maybe<string>;
-  username_lte?: Maybe<string>;
-  username_gt?: Maybe<string>;
-  username_gte?: Maybe<string>;
-  username_contains?: Maybe<string>;
-  username_not_contains?: Maybe<string>;
-  username_starts_with?: Maybe<string>;
-  username_not_starts_with?: Maybe<string>;
-  username_ends_with?: Maybe<string>;
-  username_not_ends_with?: Maybe<string>;
-  password?: Maybe<string>;
-  password_not?: Maybe<string>;
-  password_in?: Maybe<string[] | string>;
-  password_not_in?: Maybe<string[] | string>;
-  password_lt?: Maybe<string>;
-  password_lte?: Maybe<string>;
-  password_gt?: Maybe<string>;
-  password_gte?: Maybe<string>;
-  password_contains?: Maybe<string>;
-  password_not_contains?: Maybe<string>;
-  password_starts_with?: Maybe<string>;
-  password_not_starts_with?: Maybe<string>;
-  password_ends_with?: Maybe<string>;
-  password_not_ends_with?: Maybe<string>;
-  email?: Maybe<string>;
-  email_not?: Maybe<string>;
-  email_in?: Maybe<string[] | string>;
-  email_not_in?: Maybe<string[] | string>;
-  email_lt?: Maybe<string>;
-  email_lte?: Maybe<string>;
-  email_gt?: Maybe<string>;
-  email_gte?: Maybe<string>;
-  email_contains?: Maybe<string>;
-  email_not_contains?: Maybe<string>;
-  email_starts_with?: Maybe<string>;
-  email_not_starts_with?: Maybe<string>;
-  email_ends_with?: Maybe<string>;
-  email_not_ends_with?: Maybe<string>;
-  cellNumber?: Maybe<string>;
-  cellNumber_not?: Maybe<string>;
-  cellNumber_in?: Maybe<string[] | string>;
-  cellNumber_not_in?: Maybe<string[] | string>;
-  cellNumber_lt?: Maybe<string>;
-  cellNumber_lte?: Maybe<string>;
-  cellNumber_gt?: Maybe<string>;
-  cellNumber_gte?: Maybe<string>;
-  cellNumber_contains?: Maybe<string>;
-  cellNumber_not_contains?: Maybe<string>;
-  cellNumber_starts_with?: Maybe<string>;
-  cellNumber_not_starts_with?: Maybe<string>;
-  cellNumber_ends_with?: Maybe<string>;
-  cellNumber_not_ends_with?: Maybe<string>;
-  date_of_birth?: Maybe<string>;
-  date_of_birth_not?: Maybe<string>;
-  date_of_birth_in?: Maybe<string[] | string>;
-  date_of_birth_not_in?: Maybe<string[] | string>;
-  date_of_birth_lt?: Maybe<string>;
-  date_of_birth_lte?: Maybe<string>;
-  date_of_birth_gt?: Maybe<string>;
-  date_of_birth_gte?: Maybe<string>;
-  date_of_birth_contains?: Maybe<string>;
-  date_of_birth_not_contains?: Maybe<string>;
-  date_of_birth_starts_with?: Maybe<string>;
-  date_of_birth_not_starts_with?: Maybe<string>;
-  date_of_birth_ends_with?: Maybe<string>;
-  date_of_birth_not_ends_with?: Maybe<string>;
-  gender?: Maybe<string>;
-  gender_not?: Maybe<string>;
-  gender_in?: Maybe<string[] | string>;
-  gender_not_in?: Maybe<string[] | string>;
-  gender_lt?: Maybe<string>;
-  gender_lte?: Maybe<string>;
-  gender_gt?: Maybe<string>;
-  gender_gte?: Maybe<string>;
-  gender_contains?: Maybe<string>;
-  gender_not_contains?: Maybe<string>;
-  gender_starts_with?: Maybe<string>;
-  gender_not_starts_with?: Maybe<string>;
-  gender_ends_with?: Maybe<string>;
-  gender_not_ends_with?: Maybe<string>;
-  content?: Maybe<string>;
-  content_not?: Maybe<string>;
-  content_in?: Maybe<string[] | string>;
-  content_not_in?: Maybe<string[] | string>;
-  content_lt?: Maybe<string>;
-  content_lte?: Maybe<string>;
-  content_gt?: Maybe<string>;
-  content_gte?: Maybe<string>;
-  content_contains?: Maybe<string>;
-  content_not_contains?: Maybe<string>;
-  content_starts_with?: Maybe<string>;
-  content_not_starts_with?: Maybe<string>;
-  content_ends_with?: Maybe<string>;
-  content_not_ends_with?: Maybe<string>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  AND?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
-  OR?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
-  NOT?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
-}
-
-export interface UserUpdateManyWithWhereNestedInput {
-  where: UserScalarWhereInput;
-  data: UserUpdateManyDataInput;
-}
-
-export interface UserUpdateManyDataInput {
-  first_name?: Maybe<string>;
-  last_name?: Maybe<string>;
-  username?: Maybe<string>;
-  password?: Maybe<string>;
-  email?: Maybe<string>;
-  cellNumber?: Maybe<string>;
-  date_of_birth?: Maybe<string>;
-  gender?: Maybe<string>;
-  content?: Maybe<string>;
-}
-
-export interface UserUpdateOneWithoutListed_postsInput {
-  create?: Maybe<UserCreateWithoutListed_postsInput>;
-  update?: Maybe<UserUpdateWithoutListed_postsDataInput>;
-  upsert?: Maybe<UserUpsertWithoutListed_postsInput>;
-  delete?: Maybe<boolean>;
-  disconnect?: Maybe<boolean>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export interface UserUpdateWithoutListed_postsDataInput {
-  first_name?: Maybe<string>;
-  last_name?: Maybe<string>;
-  username?: Maybe<string>;
-  password?: Maybe<string>;
-  email?: Maybe<string>;
-  cellNumber?: Maybe<string>;
-  profile_pic?: Maybe<GalleryUpdateManyInput>;
-  cover_pic?: Maybe<GalleryUpdateManyInput>;
-  date_of_birth?: Maybe<string>;
-  gender?: Maybe<string>;
-  content?: Maybe<string>;
-  agent_location?: Maybe<LocationUpdateOneInput>;
-  gallery?: Maybe<GalleryUpdateManyInput>;
-  social_profile?: Maybe<SocialUpdateOneInput>;
-  favourite_post?: Maybe<HotelUpdateManyWithoutPeopleLikedInput>;
-}
-
-export interface HotelUpdateManyWithoutPeopleLikedInput {
-  create?: Maybe<
-    HotelCreateWithoutPeopleLikedInput[] | HotelCreateWithoutPeopleLikedInput
-  >;
-  delete?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
-  connect?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
-  set?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
-  disconnect?: Maybe<HotelWhereUniqueInput[] | HotelWhereUniqueInput>;
-  update?: Maybe<
-    | HotelUpdateWithWhereUniqueWithoutPeopleLikedInput[]
-    | HotelUpdateWithWhereUniqueWithoutPeopleLikedInput
-  >;
-  upsert?: Maybe<
-    | HotelUpsertWithWhereUniqueWithoutPeopleLikedInput[]
-    | HotelUpsertWithWhereUniqueWithoutPeopleLikedInput
-  >;
-  deleteMany?: Maybe<HotelScalarWhereInput[] | HotelScalarWhereInput>;
-  updateMany?: Maybe<
-    HotelUpdateManyWithWhereNestedInput[] | HotelUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface HotelUpdateWithWhereUniqueWithoutPeopleLikedInput {
-  where: HotelWhereUniqueInput;
-  data: HotelUpdateWithoutPeopleLikedDataInput;
-}
-
-export interface HotelUpdateWithoutPeopleLikedDataInput {
-  connectId?: Maybe<UserUpdateOneWithoutListed_postsInput>;
-  agentId?: Maybe<string>;
-  title?: Maybe<string>;
-  slug?: Maybe<string>;
-  content?: Maybe<string>;
-  status?: Maybe<string>;
-  price?: Maybe<string>;
-  isNegotiable?: Maybe<boolean>;
-  propertyType?: Maybe<string>;
-  condition?: Maybe<string>;
-  rating?: Maybe<Float>;
-  ratingCount?: Maybe<Int>;
-  contactNumber?: Maybe<string>;
-  termsAndCondition?: Maybe<string>;
-  amenities?: Maybe<AmenitiesUpdateManyInput>;
-  image?: Maybe<ImageUpdateOneInput>;
-  location?: Maybe<LocationUpdateManyInput>;
-  gallery?: Maybe<GalleryUpdateManyInput>;
-  categories?: Maybe<CategoriesUpdateManyInput>;
+  update: UserUpdateWithoutReviewed_postDataInput;
+  create: UserCreateWithoutReviewed_postInput;
 }
 
 export interface HotelUpsertWithWhereUniqueWithoutPeopleLikedInput {
@@ -2864,13 +7675,131 @@ export interface UserUpsertWithoutListed_postsInput {
   create: UserCreateWithoutListed_postsInput;
 }
 
-export interface HotelUpdateManyMutationInput {
+export interface HotelUpsertWithWhereUniqueWithoutPeopleReviewedInput {
+  where: HotelWhereUniqueInput;
+  update: HotelUpdateWithoutPeopleReviewedDataInput;
+  create: HotelCreateWithoutPeopleReviewedInput;
+}
+
+export interface UserUpsertWithWhereUniqueWithoutFavourite_postInput {
+  where: UserWhereUniqueInput;
+  update: UserUpdateWithoutFavourite_postDataInput;
+  create: UserCreateWithoutFavourite_postInput;
+}
+
+export interface HotelUpsertWithWhereUniqueWithoutConnectIdInput {
+  where: HotelWhereUniqueInput;
+  update: HotelUpdateWithoutConnectIdDataInput;
+  create: HotelCreateWithoutConnectIdInput;
+}
+
+export interface UserUpsertWithWhereUniqueWithoutReview_likedInput {
+  where: UserWhereUniqueInput;
+  update: UserUpdateWithoutReview_likedDataInput;
+  create: UserCreateWithoutReview_likedInput;
+}
+
+export interface ReviewsUpsertWithWhereUniqueWithoutReviewAuthorIdInput {
+  where: ReviewsWhereUniqueInput;
+  update: ReviewsUpdateWithoutReviewAuthorIdDataInput;
+  create: ReviewsCreateWithoutReviewAuthorIdInput;
+}
+
+export interface UserUpsertWithoutCoupons_makedInput {
+  update: UserUpdateWithoutCoupons_makedDataInput;
+  create: UserCreateWithoutCoupons_makedInput;
+}
+
+export interface CouponUpdateManyMutationInput {
+  couponName?: Maybe<string>;
+  couponDescription?: Maybe<string>;
+  couponAuthorId?: Maybe<string>;
+  couponType?: Maybe<Int>;
+  couponValue?: Maybe<Int>;
+  couponQuantity?: Maybe<Int>;
+  couponStartDate?: Maybe<string>;
+  couponEndDate?: Maybe<string>;
+  couponRange?: Maybe<string>;
+}
+
+export interface GalleryUpdateInput {
+  uid?: Maybe<string>;
+  url?: Maybe<string>;
+  signedRequest?: Maybe<string>;
+}
+
+export interface GalleryUpdateManyMutationInput {
+  uid?: Maybe<string>;
+  url?: Maybe<string>;
+  signedRequest?: Maybe<string>;
+}
+
+export interface HotelCreateInput {
+  id?: Maybe<ID_Input>;
+  peopleLiked?: Maybe<UserCreateManyWithoutFavourite_postInput>;
+  peopleReviewed?: Maybe<UserCreateManyWithoutReviewed_postInput>;
+  couponsAvailable?: Maybe<CouponCreateManyWithoutCouponTargetInput>;
+  connectId?: Maybe<UserCreateOneWithoutListed_postsInput>;
   agentId?: Maybe<string>;
+  agentEmail?: Maybe<string>;
+  agentName?: Maybe<string>;
+  title: string;
+  slug?: Maybe<string>;
+  content?: Maybe<string>;
+  status?: Maybe<string>;
+  price?: Maybe<Int>;
+  isNegotiable?: Maybe<boolean>;
+  propertyType?: Maybe<string>;
+  condition?: Maybe<string>;
+  rating?: Maybe<Float>;
+  ratingCount?: Maybe<Int>;
+  contactNumber?: Maybe<string>;
+  termsAndCondition?: Maybe<string>;
+  amenities?: Maybe<AmenitiesCreateManyInput>;
+  image?: Maybe<ImageCreateOneInput>;
+  location?: Maybe<LocationCreateManyInput>;
+  gallery?: Maybe<GalleryCreateManyInput>;
+  categories?: Maybe<CategoriesCreateManyInput>;
+  reviews?: Maybe<ReviewsCreateManyWithoutReviewedHotelInput>;
+}
+
+export interface HotelUpdateInput {
+  peopleLiked?: Maybe<UserUpdateManyWithoutFavourite_postInput>;
+  peopleReviewed?: Maybe<UserUpdateManyWithoutReviewed_postInput>;
+  couponsAvailable?: Maybe<CouponUpdateManyWithoutCouponTargetInput>;
+  connectId?: Maybe<UserUpdateOneWithoutListed_postsInput>;
+  agentId?: Maybe<string>;
+  agentEmail?: Maybe<string>;
+  agentName?: Maybe<string>;
   title?: Maybe<string>;
   slug?: Maybe<string>;
   content?: Maybe<string>;
   status?: Maybe<string>;
-  price?: Maybe<string>;
+  price?: Maybe<Int>;
+  isNegotiable?: Maybe<boolean>;
+  propertyType?: Maybe<string>;
+  condition?: Maybe<string>;
+  rating?: Maybe<Float>;
+  ratingCount?: Maybe<Int>;
+  contactNumber?: Maybe<string>;
+  termsAndCondition?: Maybe<string>;
+  amenities?: Maybe<AmenitiesUpdateManyInput>;
+  image?: Maybe<ImageUpdateOneInput>;
+  location?: Maybe<LocationUpdateManyInput>;
+  gallery?: Maybe<GalleryUpdateManyInput>;
+  categories?: Maybe<CategoriesUpdateManyInput>;
+  reviews?: Maybe<ReviewsUpdateManyWithoutReviewedHotelInput>;
+}
+
+export interface HotelUpdateManyMutationInput {
+  agentId?: Maybe<string>;
+  agentEmail?: Maybe<string>;
+  agentName?: Maybe<string>;
+  title?: Maybe<string>;
+  slug?: Maybe<string>;
+  content?: Maybe<string>;
+  status?: Maybe<string>;
+  price?: Maybe<Int>;
   isNegotiable?: Maybe<boolean>;
   propertyType?: Maybe<string>;
   condition?: Maybe<string>;
@@ -2891,8 +7820,8 @@ export interface ImageUpdateManyMutationInput {
 }
 
 export interface LocationUpdateInput {
-  lat?: Maybe<string>;
-  lng?: Maybe<string>;
+  lat?: Maybe<Float>;
+  lng?: Maybe<Float>;
   formattedAddress?: Maybe<string>;
   zipcode?: Maybe<string>;
   city?: Maybe<string>;
@@ -2903,8 +7832,8 @@ export interface LocationUpdateInput {
 }
 
 export interface LocationUpdateManyMutationInput {
-  lat?: Maybe<string>;
-  lng?: Maybe<string>;
+  lat?: Maybe<Float>;
+  lng?: Maybe<Float>;
   formattedAddress?: Maybe<string>;
   zipcode?: Maybe<string>;
   city?: Maybe<string>;
@@ -2914,18 +7843,324 @@ export interface LocationUpdateManyMutationInput {
   country_short?: Maybe<string>;
 }
 
+export interface NotificationUpdateInput {
+  reviewAuthorName?: Maybe<string>;
+  reviewedHotelName?: Maybe<string>;
+  reviewTitle?: Maybe<string>;
+  reviewText?: Maybe<string>;
+  read?: Maybe<boolean>;
+  old?: Maybe<boolean>;
+  userNotificationId?: Maybe<string>;
+  peopleReviewedQuantity?: Maybe<Int>;
+  query?: Maybe<string>;
+  reviewAuthorProfilePic?: Maybe<string>;
+}
+
+export interface NotificationUpdateManyMutationInput {
+  reviewAuthorName?: Maybe<string>;
+  reviewedHotelName?: Maybe<string>;
+  reviewTitle?: Maybe<string>;
+  reviewText?: Maybe<string>;
+  read?: Maybe<boolean>;
+  old?: Maybe<boolean>;
+  userNotificationId?: Maybe<string>;
+  peopleReviewedQuantity?: Maybe<Int>;
+  query?: Maybe<string>;
+  reviewAuthorProfilePic?: Maybe<string>;
+}
+
+export interface ReviewFieldsUpdateInput {
+  rating?: Maybe<Int>;
+  ratingFieldName?: Maybe<string>;
+}
+
+export interface ReviewFieldsUpdateManyMutationInput {
+  rating?: Maybe<Int>;
+  ratingFieldName?: Maybe<string>;
+}
+
+export interface ReviewImagesUpdateInput {
+  url?: Maybe<string>;
+}
+
+export interface ReviewImagesUpdateManyMutationInput {
+  url?: Maybe<string>;
+}
+
+export interface ReviewOptionalsUpdateInput {
+  option?: Maybe<string>;
+  optionField?: Maybe<string>;
+}
+
+export interface ReviewOptionalsUpdateManyMutationInput {
+  option?: Maybe<string>;
+  optionField?: Maybe<string>;
+}
+
+export interface ReviewsCreateInput {
+  reviewID?: Maybe<ID_Input>;
+  reviewTitle?: Maybe<string>;
+  reviewText?: Maybe<string>;
+  sortOfTrip?: Maybe<string>;
+  reviewAuthorId?: Maybe<UserCreateOneWithoutReviews_makedInput>;
+  peopleLiked?: Maybe<UserCreateManyWithoutReview_likedInput>;
+  peopleDisliked?: Maybe<UserCreateManyWithoutReview_dislikedInput>;
+  reviewAuthorFirstName?: Maybe<string>;
+  reviewTips?: Maybe<string>;
+  reviewAuthorLastName?: Maybe<string>;
+  reviewAuthorEmail?: Maybe<string>;
+  reviewOverall?: Maybe<Float>;
+  reviewAuthorPic?: Maybe<string>;
+  reviewedHotel?: Maybe<HotelCreateOneWithoutReviewsInput>;
+  reviewedHotelId?: Maybe<ID_Input>;
+  reviewPics?: Maybe<ReviewImagesCreateManyInput>;
+  reviewOptional?: Maybe<ReviewOptionalsCreateManyInput>;
+  reviewFields?: Maybe<ReviewFieldsCreateManyInput>;
+}
+
+export interface ReviewsUpdateInput {
+  reviewTitle?: Maybe<string>;
+  reviewText?: Maybe<string>;
+  sortOfTrip?: Maybe<string>;
+  reviewAuthorId?: Maybe<UserUpdateOneWithoutReviews_makedInput>;
+  peopleLiked?: Maybe<UserUpdateManyWithoutReview_likedInput>;
+  peopleDisliked?: Maybe<UserUpdateManyWithoutReview_dislikedInput>;
+  reviewAuthorFirstName?: Maybe<string>;
+  reviewTips?: Maybe<string>;
+  reviewAuthorLastName?: Maybe<string>;
+  reviewAuthorEmail?: Maybe<string>;
+  reviewOverall?: Maybe<Float>;
+  reviewAuthorPic?: Maybe<string>;
+  reviewedHotel?: Maybe<HotelUpdateOneWithoutReviewsInput>;
+  reviewedHotelId?: Maybe<ID_Input>;
+  reviewPics?: Maybe<ReviewImagesUpdateManyInput>;
+  reviewOptional?: Maybe<ReviewOptionalsUpdateManyInput>;
+  reviewFields?: Maybe<ReviewFieldsUpdateManyInput>;
+}
+
+export interface ReviewsUpdateManyMutationInput {
+  reviewTitle?: Maybe<string>;
+  reviewText?: Maybe<string>;
+  sortOfTrip?: Maybe<string>;
+  reviewAuthorFirstName?: Maybe<string>;
+  reviewTips?: Maybe<string>;
+  reviewAuthorLastName?: Maybe<string>;
+  reviewAuthorEmail?: Maybe<string>;
+  reviewOverall?: Maybe<Float>;
+  reviewAuthorPic?: Maybe<string>;
+  reviewedHotelId?: Maybe<ID_Input>;
+}
+
 export interface SocialUpdateInput {
   facebook?: Maybe<string>;
   twitter?: Maybe<string>;
-  linkedIN?: Maybe<string>;
+  linkedIn?: Maybe<string>;
   instagram?: Maybe<string>;
 }
 
 export interface SocialUpdateManyMutationInput {
   facebook?: Maybe<string>;
   twitter?: Maybe<string>;
-  linkedIN?: Maybe<string>;
+  linkedIn?: Maybe<string>;
   instagram?: Maybe<string>;
+}
+
+export interface TransactionCreateInput {
+  TXID?: Maybe<ID_Input>;
+  transactionSecretKey?: Maybe<string>;
+  transactionHotelName?: Maybe<string>;
+  transactionHotelId?: Maybe<string>;
+  transactionHotelManager?: Maybe<UserCreateOneWithoutTransaction_hadInput>;
+  transactionHotelManagerId?: Maybe<string>;
+  transactionHotelType?: Maybe<string>;
+  transactionPrice?: Maybe<Int>;
+  transactionAuthor?: Maybe<UserCreateOneWithoutTransaction_makedInput>;
+  transactionAuthorId?: Maybe<string>;
+  transactionAuthorName?: Maybe<string>;
+  transactionAuthorEmail?: Maybe<string>;
+  transactionAuthorContactNumber?: Maybe<string>;
+  transactionAuthorSpecial?: Maybe<string>;
+  transactionAuthorNote?: Maybe<string>;
+  transactionLocationLat?: Maybe<Float>;
+  transactionLocationLng?: Maybe<Float>;
+  transactionRoom?: Maybe<Int>;
+  transactionGuest?: Maybe<Int>;
+  transactionLocationFormattedAddress?: Maybe<string>;
+  transactionRange?: Maybe<Int>;
+  transactionStatus?: Maybe<string>;
+  transactionCoupon?: Maybe<string>;
+  transactionCouponType?: Maybe<Int>;
+  transactionCouponValue?: Maybe<Int>;
+  transactionStartDate?: Maybe<string>;
+  transactionEndDate?: Maybe<string>;
+  transactionStripeId?: Maybe<string>;
+}
+
+export interface TransactionUpdateInput {
+  transactionSecretKey?: Maybe<string>;
+  transactionHotelName?: Maybe<string>;
+  transactionHotelId?: Maybe<string>;
+  transactionHotelManager?: Maybe<UserUpdateOneWithoutTransaction_hadInput>;
+  transactionHotelManagerId?: Maybe<string>;
+  transactionHotelType?: Maybe<string>;
+  transactionPrice?: Maybe<Int>;
+  transactionAuthor?: Maybe<UserUpdateOneWithoutTransaction_makedInput>;
+  transactionAuthorId?: Maybe<string>;
+  transactionAuthorName?: Maybe<string>;
+  transactionAuthorEmail?: Maybe<string>;
+  transactionAuthorContactNumber?: Maybe<string>;
+  transactionAuthorSpecial?: Maybe<string>;
+  transactionAuthorNote?: Maybe<string>;
+  transactionLocationLat?: Maybe<Float>;
+  transactionLocationLng?: Maybe<Float>;
+  transactionRoom?: Maybe<Int>;
+  transactionGuest?: Maybe<Int>;
+  transactionLocationFormattedAddress?: Maybe<string>;
+  transactionRange?: Maybe<Int>;
+  transactionStatus?: Maybe<string>;
+  transactionCoupon?: Maybe<string>;
+  transactionCouponType?: Maybe<Int>;
+  transactionCouponValue?: Maybe<Int>;
+  transactionStartDate?: Maybe<string>;
+  transactionEndDate?: Maybe<string>;
+  transactionStripeId?: Maybe<string>;
+}
+
+export interface TransactionUpdateManyMutationInput {
+  transactionSecretKey?: Maybe<string>;
+  transactionHotelName?: Maybe<string>;
+  transactionHotelId?: Maybe<string>;
+  transactionHotelManagerId?: Maybe<string>;
+  transactionHotelType?: Maybe<string>;
+  transactionPrice?: Maybe<Int>;
+  transactionAuthorId?: Maybe<string>;
+  transactionAuthorName?: Maybe<string>;
+  transactionAuthorEmail?: Maybe<string>;
+  transactionAuthorContactNumber?: Maybe<string>;
+  transactionAuthorSpecial?: Maybe<string>;
+  transactionAuthorNote?: Maybe<string>;
+  transactionLocationLat?: Maybe<Float>;
+  transactionLocationLng?: Maybe<Float>;
+  transactionRoom?: Maybe<Int>;
+  transactionGuest?: Maybe<Int>;
+  transactionLocationFormattedAddress?: Maybe<string>;
+  transactionRange?: Maybe<Int>;
+  transactionStatus?: Maybe<string>;
+  transactionCoupon?: Maybe<string>;
+  transactionCouponType?: Maybe<Int>;
+  transactionCouponValue?: Maybe<Int>;
+  transactionStartDate?: Maybe<string>;
+  transactionEndDate?: Maybe<string>;
+  transactionStripeId?: Maybe<string>;
+}
+
+export interface UncheckTransactionsCreateInput {
+  id?: Maybe<ID_Input>;
+  userUncheckTransactionsId?: Maybe<string>;
+  userUncheckTransactions?: Maybe<UserCreateOneWithoutUncheckTransactionsInput>;
+  totalPrice?: Maybe<Int>;
+  totalTransactions?: Maybe<Int>;
+}
+
+export interface UserCreateOneWithoutUncheckTransactionsInput {
+  create?: Maybe<UserCreateWithoutUncheckTransactionsInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserCreateWithoutUncheckTransactionsInput {
+  id?: Maybe<ID_Input>;
+  first_name: string;
+  last_name: string;
+  username: string;
+  password: string;
+  email: string;
+  role?: Maybe<string>;
+  cellNumber?: Maybe<string>;
+  profile_pic_main?: Maybe<string>;
+  cover_pic_main?: Maybe<string>;
+  profile_pic?: Maybe<GalleryCreateManyInput>;
+  cover_pic?: Maybe<GalleryCreateManyInput>;
+  date_of_birth?: Maybe<string>;
+  gender?: Maybe<string>;
+  content?: Maybe<string>;
+  notification?: Maybe<NotificationCreateManyInput>;
+  unreadNotification?: Maybe<Int>;
+  agent_location?: Maybe<LocationCreateOneInput>;
+  gallery?: Maybe<GalleryCreateManyInput>;
+  social_profile?: Maybe<SocialCreateOneInput>;
+  reviews_maked?: Maybe<ReviewsCreateManyWithoutReviewAuthorIdInput>;
+  listed_posts?: Maybe<HotelCreateManyWithoutConnectIdInput>;
+  favourite_post?: Maybe<HotelCreateManyWithoutPeopleLikedInput>;
+  reviewed_post?: Maybe<HotelCreateManyWithoutPeopleReviewedInput>;
+  review_liked?: Maybe<ReviewsCreateManyWithoutPeopleLikedInput>;
+  review_disliked?: Maybe<ReviewsCreateManyWithoutPeopleDislikedInput>;
+  stripeId?: Maybe<string>;
+  transaction_had?: Maybe<
+    TransactionCreateManyWithoutTransactionHotelManagerInput
+  >;
+  transaction_maked?: Maybe<TransactionCreateManyWithoutTransactionAuthorInput>;
+  coupons_maked?: Maybe<CouponCreateManyWithoutCouponAuthorInput>;
+}
+
+export interface UncheckTransactionsUpdateInput {
+  userUncheckTransactionsId?: Maybe<string>;
+  userUncheckTransactions?: Maybe<UserUpdateOneWithoutUncheckTransactionsInput>;
+  totalPrice?: Maybe<Int>;
+  totalTransactions?: Maybe<Int>;
+}
+
+export interface UserUpdateOneWithoutUncheckTransactionsInput {
+  create?: Maybe<UserCreateWithoutUncheckTransactionsInput>;
+  update?: Maybe<UserUpdateWithoutUncheckTransactionsDataInput>;
+  upsert?: Maybe<UserUpsertWithoutUncheckTransactionsInput>;
+  delete?: Maybe<boolean>;
+  disconnect?: Maybe<boolean>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserUpdateWithoutUncheckTransactionsDataInput {
+  first_name?: Maybe<string>;
+  last_name?: Maybe<string>;
+  username?: Maybe<string>;
+  password?: Maybe<string>;
+  email?: Maybe<string>;
+  role?: Maybe<string>;
+  cellNumber?: Maybe<string>;
+  profile_pic_main?: Maybe<string>;
+  cover_pic_main?: Maybe<string>;
+  profile_pic?: Maybe<GalleryUpdateManyInput>;
+  cover_pic?: Maybe<GalleryUpdateManyInput>;
+  date_of_birth?: Maybe<string>;
+  gender?: Maybe<string>;
+  content?: Maybe<string>;
+  notification?: Maybe<NotificationUpdateManyInput>;
+  unreadNotification?: Maybe<Int>;
+  agent_location?: Maybe<LocationUpdateOneInput>;
+  gallery?: Maybe<GalleryUpdateManyInput>;
+  social_profile?: Maybe<SocialUpdateOneInput>;
+  reviews_maked?: Maybe<ReviewsUpdateManyWithoutReviewAuthorIdInput>;
+  listed_posts?: Maybe<HotelUpdateManyWithoutConnectIdInput>;
+  favourite_post?: Maybe<HotelUpdateManyWithoutPeopleLikedInput>;
+  reviewed_post?: Maybe<HotelUpdateManyWithoutPeopleReviewedInput>;
+  review_liked?: Maybe<ReviewsUpdateManyWithoutPeopleLikedInput>;
+  review_disliked?: Maybe<ReviewsUpdateManyWithoutPeopleDislikedInput>;
+  stripeId?: Maybe<string>;
+  transaction_had?: Maybe<
+    TransactionUpdateManyWithoutTransactionHotelManagerInput
+  >;
+  transaction_maked?: Maybe<TransactionUpdateManyWithoutTransactionAuthorInput>;
+  coupons_maked?: Maybe<CouponUpdateManyWithoutCouponAuthorInput>;
+}
+
+export interface UserUpsertWithoutUncheckTransactionsInput {
+  update: UserUpdateWithoutUncheckTransactionsDataInput;
+  create: UserCreateWithoutUncheckTransactionsInput;
+}
+
+export interface UncheckTransactionsUpdateManyMutationInput {
+  userUncheckTransactionsId?: Maybe<string>;
+  totalPrice?: Maybe<Int>;
+  totalTransactions?: Maybe<Int>;
 }
 
 export interface UserCreateInput {
@@ -2935,17 +8170,35 @@ export interface UserCreateInput {
   username: string;
   password: string;
   email: string;
+  role?: Maybe<string>;
   cellNumber?: Maybe<string>;
+  profile_pic_main?: Maybe<string>;
+  cover_pic_main?: Maybe<string>;
   profile_pic?: Maybe<GalleryCreateManyInput>;
   cover_pic?: Maybe<GalleryCreateManyInput>;
   date_of_birth?: Maybe<string>;
   gender?: Maybe<string>;
   content?: Maybe<string>;
+  notification?: Maybe<NotificationCreateManyInput>;
+  unreadNotification?: Maybe<Int>;
   agent_location?: Maybe<LocationCreateOneInput>;
   gallery?: Maybe<GalleryCreateManyInput>;
   social_profile?: Maybe<SocialCreateOneInput>;
+  reviews_maked?: Maybe<ReviewsCreateManyWithoutReviewAuthorIdInput>;
   listed_posts?: Maybe<HotelCreateManyWithoutConnectIdInput>;
   favourite_post?: Maybe<HotelCreateManyWithoutPeopleLikedInput>;
+  reviewed_post?: Maybe<HotelCreateManyWithoutPeopleReviewedInput>;
+  review_liked?: Maybe<ReviewsCreateManyWithoutPeopleLikedInput>;
+  review_disliked?: Maybe<ReviewsCreateManyWithoutPeopleDislikedInput>;
+  stripeId?: Maybe<string>;
+  transaction_had?: Maybe<
+    TransactionCreateManyWithoutTransactionHotelManagerInput
+  >;
+  transaction_maked?: Maybe<TransactionCreateManyWithoutTransactionAuthorInput>;
+  coupons_maked?: Maybe<CouponCreateManyWithoutCouponAuthorInput>;
+  uncheckTransactions?: Maybe<
+    UncheckTransactionsCreateOneWithoutUserUncheckTransactionsInput
+  >;
 }
 
 export interface UserUpdateInput {
@@ -2954,17 +8207,35 @@ export interface UserUpdateInput {
   username?: Maybe<string>;
   password?: Maybe<string>;
   email?: Maybe<string>;
+  role?: Maybe<string>;
   cellNumber?: Maybe<string>;
+  profile_pic_main?: Maybe<string>;
+  cover_pic_main?: Maybe<string>;
   profile_pic?: Maybe<GalleryUpdateManyInput>;
   cover_pic?: Maybe<GalleryUpdateManyInput>;
   date_of_birth?: Maybe<string>;
   gender?: Maybe<string>;
   content?: Maybe<string>;
+  notification?: Maybe<NotificationUpdateManyInput>;
+  unreadNotification?: Maybe<Int>;
   agent_location?: Maybe<LocationUpdateOneInput>;
   gallery?: Maybe<GalleryUpdateManyInput>;
   social_profile?: Maybe<SocialUpdateOneInput>;
+  reviews_maked?: Maybe<ReviewsUpdateManyWithoutReviewAuthorIdInput>;
   listed_posts?: Maybe<HotelUpdateManyWithoutConnectIdInput>;
   favourite_post?: Maybe<HotelUpdateManyWithoutPeopleLikedInput>;
+  reviewed_post?: Maybe<HotelUpdateManyWithoutPeopleReviewedInput>;
+  review_liked?: Maybe<ReviewsUpdateManyWithoutPeopleLikedInput>;
+  review_disliked?: Maybe<ReviewsUpdateManyWithoutPeopleDislikedInput>;
+  stripeId?: Maybe<string>;
+  transaction_had?: Maybe<
+    TransactionUpdateManyWithoutTransactionHotelManagerInput
+  >;
+  transaction_maked?: Maybe<TransactionUpdateManyWithoutTransactionAuthorInput>;
+  coupons_maked?: Maybe<CouponUpdateManyWithoutCouponAuthorInput>;
+  uncheckTransactions?: Maybe<
+    UncheckTransactionsUpdateOneWithoutUserUncheckTransactionsInput
+  >;
 }
 
 export interface UserUpdateManyMutationInput {
@@ -2973,10 +8244,15 @@ export interface UserUpdateManyMutationInput {
   username?: Maybe<string>;
   password?: Maybe<string>;
   email?: Maybe<string>;
+  role?: Maybe<string>;
   cellNumber?: Maybe<string>;
+  profile_pic_main?: Maybe<string>;
+  cover_pic_main?: Maybe<string>;
   date_of_birth?: Maybe<string>;
   gender?: Maybe<string>;
   content?: Maybe<string>;
+  unreadNotification?: Maybe<Int>;
+  stripeId?: Maybe<string>;
 }
 
 export interface AmenitiesSubscriptionWhereInput {
@@ -3033,6 +8309,17 @@ export interface CategoryImagesSubscriptionWhereInput {
   >;
 }
 
+export interface CouponSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<string>;
+  updatedFields_contains_every?: Maybe<string[] | string>;
+  updatedFields_contains_some?: Maybe<string[] | string>;
+  node?: Maybe<CouponWhereInput>;
+  AND?: Maybe<CouponSubscriptionWhereInput[] | CouponSubscriptionWhereInput>;
+  OR?: Maybe<CouponSubscriptionWhereInput[] | CouponSubscriptionWhereInput>;
+  NOT?: Maybe<CouponSubscriptionWhereInput[] | CouponSubscriptionWhereInput>;
+}
+
 export interface GallerySubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<string>;
@@ -3081,6 +8368,88 @@ export interface LocationSubscriptionWhereInput {
   >;
 }
 
+export interface NotificationSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<string>;
+  updatedFields_contains_every?: Maybe<string[] | string>;
+  updatedFields_contains_some?: Maybe<string[] | string>;
+  node?: Maybe<NotificationWhereInput>;
+  AND?: Maybe<
+    NotificationSubscriptionWhereInput[] | NotificationSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    NotificationSubscriptionWhereInput[] | NotificationSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    NotificationSubscriptionWhereInput[] | NotificationSubscriptionWhereInput
+  >;
+}
+
+export interface ReviewFieldsSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<string>;
+  updatedFields_contains_every?: Maybe<string[] | string>;
+  updatedFields_contains_some?: Maybe<string[] | string>;
+  node?: Maybe<ReviewFieldsWhereInput>;
+  AND?: Maybe<
+    ReviewFieldsSubscriptionWhereInput[] | ReviewFieldsSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    ReviewFieldsSubscriptionWhereInput[] | ReviewFieldsSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    ReviewFieldsSubscriptionWhereInput[] | ReviewFieldsSubscriptionWhereInput
+  >;
+}
+
+export interface ReviewImagesSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<string>;
+  updatedFields_contains_every?: Maybe<string[] | string>;
+  updatedFields_contains_some?: Maybe<string[] | string>;
+  node?: Maybe<ReviewImagesWhereInput>;
+  AND?: Maybe<
+    ReviewImagesSubscriptionWhereInput[] | ReviewImagesSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    ReviewImagesSubscriptionWhereInput[] | ReviewImagesSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    ReviewImagesSubscriptionWhereInput[] | ReviewImagesSubscriptionWhereInput
+  >;
+}
+
+export interface ReviewOptionalsSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<string>;
+  updatedFields_contains_every?: Maybe<string[] | string>;
+  updatedFields_contains_some?: Maybe<string[] | string>;
+  node?: Maybe<ReviewOptionalsWhereInput>;
+  AND?: Maybe<
+    | ReviewOptionalsSubscriptionWhereInput[]
+    | ReviewOptionalsSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    | ReviewOptionalsSubscriptionWhereInput[]
+    | ReviewOptionalsSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    | ReviewOptionalsSubscriptionWhereInput[]
+    | ReviewOptionalsSubscriptionWhereInput
+  >;
+}
+
+export interface ReviewsSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<string>;
+  updatedFields_contains_every?: Maybe<string[] | string>;
+  updatedFields_contains_some?: Maybe<string[] | string>;
+  node?: Maybe<ReviewsWhereInput>;
+  AND?: Maybe<ReviewsSubscriptionWhereInput[] | ReviewsSubscriptionWhereInput>;
+  OR?: Maybe<ReviewsSubscriptionWhereInput[] | ReviewsSubscriptionWhereInput>;
+  NOT?: Maybe<ReviewsSubscriptionWhereInput[] | ReviewsSubscriptionWhereInput>;
+}
+
 export interface SocialSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<string>;
@@ -3090,6 +8459,43 @@ export interface SocialSubscriptionWhereInput {
   AND?: Maybe<SocialSubscriptionWhereInput[] | SocialSubscriptionWhereInput>;
   OR?: Maybe<SocialSubscriptionWhereInput[] | SocialSubscriptionWhereInput>;
   NOT?: Maybe<SocialSubscriptionWhereInput[] | SocialSubscriptionWhereInput>;
+}
+
+export interface TransactionSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<string>;
+  updatedFields_contains_every?: Maybe<string[] | string>;
+  updatedFields_contains_some?: Maybe<string[] | string>;
+  node?: Maybe<TransactionWhereInput>;
+  AND?: Maybe<
+    TransactionSubscriptionWhereInput[] | TransactionSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    TransactionSubscriptionWhereInput[] | TransactionSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    TransactionSubscriptionWhereInput[] | TransactionSubscriptionWhereInput
+  >;
+}
+
+export interface UncheckTransactionsSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<string>;
+  updatedFields_contains_every?: Maybe<string[] | string>;
+  updatedFields_contains_some?: Maybe<string[] | string>;
+  node?: Maybe<UncheckTransactionsWhereInput>;
+  AND?: Maybe<
+    | UncheckTransactionsSubscriptionWhereInput[]
+    | UncheckTransactionsSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    | UncheckTransactionsSubscriptionWhereInput[]
+    | UncheckTransactionsSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    | UncheckTransactionsSubscriptionWhereInput[]
+    | UncheckTransactionsSubscriptionWhereInput
+  >;
 }
 
 export interface UserSubscriptionWhereInput {
@@ -3403,28 +8809,1596 @@ export interface AggregateCategoryImagesSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
+export interface Coupon {
+  couponId: ID_Output;
+  couponName: string;
+  couponDescription?: string;
+  couponAuthorId?: string;
+  couponType?: Int;
+  couponValue?: Int;
+  couponQuantity?: Int;
+  couponStartDate?: string;
+  couponEndDate?: string;
+  couponRange?: string;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface CouponPromise extends Promise<Coupon>, Fragmentable {
+  couponId: () => Promise<ID_Output>;
+  couponName: () => Promise<string>;
+  couponDescription: () => Promise<string>;
+  couponAuthor: <T = UserPromise>() => T;
+  couponAuthorId: () => Promise<string>;
+  couponType: () => Promise<Int>;
+  couponValue: () => Promise<Int>;
+  couponQuantity: () => Promise<Int>;
+  couponStartDate: () => Promise<string>;
+  couponEndDate: () => Promise<string>;
+  couponRange: () => Promise<string>;
+  couponTarget: <T = FragmentableArray<Hotel>>(args?: {
+    where?: HotelWhereInput;
+    orderBy?: HotelOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface CouponSubscription
+  extends Promise<AsyncIterator<Coupon>>,
+    Fragmentable {
+  couponId: () => Promise<AsyncIterator<ID_Output>>;
+  couponName: () => Promise<AsyncIterator<string>>;
+  couponDescription: () => Promise<AsyncIterator<string>>;
+  couponAuthor: <T = UserSubscription>() => T;
+  couponAuthorId: () => Promise<AsyncIterator<string>>;
+  couponType: () => Promise<AsyncIterator<Int>>;
+  couponValue: () => Promise<AsyncIterator<Int>>;
+  couponQuantity: () => Promise<AsyncIterator<Int>>;
+  couponStartDate: () => Promise<AsyncIterator<string>>;
+  couponEndDate: () => Promise<AsyncIterator<string>>;
+  couponRange: () => Promise<AsyncIterator<string>>;
+  couponTarget: <T = Promise<AsyncIterator<HotelSubscription>>>(args?: {
+    where?: HotelWhereInput;
+    orderBy?: HotelOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface CouponNullablePromise
+  extends Promise<Coupon | null>,
+    Fragmentable {
+  couponId: () => Promise<ID_Output>;
+  couponName: () => Promise<string>;
+  couponDescription: () => Promise<string>;
+  couponAuthor: <T = UserPromise>() => T;
+  couponAuthorId: () => Promise<string>;
+  couponType: () => Promise<Int>;
+  couponValue: () => Promise<Int>;
+  couponQuantity: () => Promise<Int>;
+  couponStartDate: () => Promise<string>;
+  couponEndDate: () => Promise<string>;
+  couponRange: () => Promise<string>;
+  couponTarget: <T = FragmentableArray<Hotel>>(args?: {
+    where?: HotelWhereInput;
+    orderBy?: HotelOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface User {
+  id: ID_Output;
+  first_name: string;
+  last_name: string;
+  username: string;
+  password: string;
+  email: string;
+  role?: string;
+  cellNumber?: string;
+  profile_pic_main?: string;
+  cover_pic_main?: string;
+  date_of_birth?: string;
+  gender?: string;
+  content?: string;
+  unreadNotification?: Int;
+  stripeId?: string;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface UserPromise extends Promise<User>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  first_name: () => Promise<string>;
+  last_name: () => Promise<string>;
+  username: () => Promise<string>;
+  password: () => Promise<string>;
+  email: () => Promise<string>;
+  role: () => Promise<string>;
+  cellNumber: () => Promise<string>;
+  profile_pic_main: () => Promise<string>;
+  cover_pic_main: () => Promise<string>;
+  profile_pic: <T = FragmentableArray<Gallery>>(args?: {
+    where?: GalleryWhereInput;
+    orderBy?: GalleryOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  cover_pic: <T = FragmentableArray<Gallery>>(args?: {
+    where?: GalleryWhereInput;
+    orderBy?: GalleryOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  date_of_birth: () => Promise<string>;
+  gender: () => Promise<string>;
+  content: () => Promise<string>;
+  notification: <T = FragmentableArray<Notification>>(args?: {
+    where?: NotificationWhereInput;
+    orderBy?: NotificationOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  unreadNotification: () => Promise<Int>;
+  agent_location: <T = LocationPromise>() => T;
+  gallery: <T = FragmentableArray<Gallery>>(args?: {
+    where?: GalleryWhereInput;
+    orderBy?: GalleryOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  social_profile: <T = SocialPromise>() => T;
+  reviews_maked: <T = FragmentableArray<Reviews>>(args?: {
+    where?: ReviewsWhereInput;
+    orderBy?: ReviewsOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  listed_posts: <T = FragmentableArray<Hotel>>(args?: {
+    where?: HotelWhereInput;
+    orderBy?: HotelOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  favourite_post: <T = FragmentableArray<Hotel>>(args?: {
+    where?: HotelWhereInput;
+    orderBy?: HotelOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  reviewed_post: <T = FragmentableArray<Hotel>>(args?: {
+    where?: HotelWhereInput;
+    orderBy?: HotelOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  review_liked: <T = FragmentableArray<Reviews>>(args?: {
+    where?: ReviewsWhereInput;
+    orderBy?: ReviewsOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  review_disliked: <T = FragmentableArray<Reviews>>(args?: {
+    where?: ReviewsWhereInput;
+    orderBy?: ReviewsOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  stripeId: () => Promise<string>;
+  transaction_had: <T = FragmentableArray<Transaction>>(args?: {
+    where?: TransactionWhereInput;
+    orderBy?: TransactionOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  transaction_maked: <T = FragmentableArray<Transaction>>(args?: {
+    where?: TransactionWhereInput;
+    orderBy?: TransactionOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  coupons_maked: <T = FragmentableArray<Coupon>>(args?: {
+    where?: CouponWhereInput;
+    orderBy?: CouponOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  uncheckTransactions: <T = UncheckTransactionsPromise>() => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface UserSubscription
+  extends Promise<AsyncIterator<User>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  first_name: () => Promise<AsyncIterator<string>>;
+  last_name: () => Promise<AsyncIterator<string>>;
+  username: () => Promise<AsyncIterator<string>>;
+  password: () => Promise<AsyncIterator<string>>;
+  email: () => Promise<AsyncIterator<string>>;
+  role: () => Promise<AsyncIterator<string>>;
+  cellNumber: () => Promise<AsyncIterator<string>>;
+  profile_pic_main: () => Promise<AsyncIterator<string>>;
+  cover_pic_main: () => Promise<AsyncIterator<string>>;
+  profile_pic: <T = Promise<AsyncIterator<GallerySubscription>>>(args?: {
+    where?: GalleryWhereInput;
+    orderBy?: GalleryOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  cover_pic: <T = Promise<AsyncIterator<GallerySubscription>>>(args?: {
+    where?: GalleryWhereInput;
+    orderBy?: GalleryOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  date_of_birth: () => Promise<AsyncIterator<string>>;
+  gender: () => Promise<AsyncIterator<string>>;
+  content: () => Promise<AsyncIterator<string>>;
+  notification: <T = Promise<AsyncIterator<NotificationSubscription>>>(args?: {
+    where?: NotificationWhereInput;
+    orderBy?: NotificationOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  unreadNotification: () => Promise<AsyncIterator<Int>>;
+  agent_location: <T = LocationSubscription>() => T;
+  gallery: <T = Promise<AsyncIterator<GallerySubscription>>>(args?: {
+    where?: GalleryWhereInput;
+    orderBy?: GalleryOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  social_profile: <T = SocialSubscription>() => T;
+  reviews_maked: <T = Promise<AsyncIterator<ReviewsSubscription>>>(args?: {
+    where?: ReviewsWhereInput;
+    orderBy?: ReviewsOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  listed_posts: <T = Promise<AsyncIterator<HotelSubscription>>>(args?: {
+    where?: HotelWhereInput;
+    orderBy?: HotelOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  favourite_post: <T = Promise<AsyncIterator<HotelSubscription>>>(args?: {
+    where?: HotelWhereInput;
+    orderBy?: HotelOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  reviewed_post: <T = Promise<AsyncIterator<HotelSubscription>>>(args?: {
+    where?: HotelWhereInput;
+    orderBy?: HotelOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  review_liked: <T = Promise<AsyncIterator<ReviewsSubscription>>>(args?: {
+    where?: ReviewsWhereInput;
+    orderBy?: ReviewsOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  review_disliked: <T = Promise<AsyncIterator<ReviewsSubscription>>>(args?: {
+    where?: ReviewsWhereInput;
+    orderBy?: ReviewsOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  stripeId: () => Promise<AsyncIterator<string>>;
+  transaction_had: <
+    T = Promise<AsyncIterator<TransactionSubscription>>
+  >(args?: {
+    where?: TransactionWhereInput;
+    orderBy?: TransactionOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  transaction_maked: <
+    T = Promise<AsyncIterator<TransactionSubscription>>
+  >(args?: {
+    where?: TransactionWhereInput;
+    orderBy?: TransactionOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  coupons_maked: <T = Promise<AsyncIterator<CouponSubscription>>>(args?: {
+    where?: CouponWhereInput;
+    orderBy?: CouponOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  uncheckTransactions: <T = UncheckTransactionsSubscription>() => T;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface UserNullablePromise
+  extends Promise<User | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  first_name: () => Promise<string>;
+  last_name: () => Promise<string>;
+  username: () => Promise<string>;
+  password: () => Promise<string>;
+  email: () => Promise<string>;
+  role: () => Promise<string>;
+  cellNumber: () => Promise<string>;
+  profile_pic_main: () => Promise<string>;
+  cover_pic_main: () => Promise<string>;
+  profile_pic: <T = FragmentableArray<Gallery>>(args?: {
+    where?: GalleryWhereInput;
+    orderBy?: GalleryOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  cover_pic: <T = FragmentableArray<Gallery>>(args?: {
+    where?: GalleryWhereInput;
+    orderBy?: GalleryOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  date_of_birth: () => Promise<string>;
+  gender: () => Promise<string>;
+  content: () => Promise<string>;
+  notification: <T = FragmentableArray<Notification>>(args?: {
+    where?: NotificationWhereInput;
+    orderBy?: NotificationOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  unreadNotification: () => Promise<Int>;
+  agent_location: <T = LocationPromise>() => T;
+  gallery: <T = FragmentableArray<Gallery>>(args?: {
+    where?: GalleryWhereInput;
+    orderBy?: GalleryOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  social_profile: <T = SocialPromise>() => T;
+  reviews_maked: <T = FragmentableArray<Reviews>>(args?: {
+    where?: ReviewsWhereInput;
+    orderBy?: ReviewsOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  listed_posts: <T = FragmentableArray<Hotel>>(args?: {
+    where?: HotelWhereInput;
+    orderBy?: HotelOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  favourite_post: <T = FragmentableArray<Hotel>>(args?: {
+    where?: HotelWhereInput;
+    orderBy?: HotelOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  reviewed_post: <T = FragmentableArray<Hotel>>(args?: {
+    where?: HotelWhereInput;
+    orderBy?: HotelOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  review_liked: <T = FragmentableArray<Reviews>>(args?: {
+    where?: ReviewsWhereInput;
+    orderBy?: ReviewsOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  review_disliked: <T = FragmentableArray<Reviews>>(args?: {
+    where?: ReviewsWhereInput;
+    orderBy?: ReviewsOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  stripeId: () => Promise<string>;
+  transaction_had: <T = FragmentableArray<Transaction>>(args?: {
+    where?: TransactionWhereInput;
+    orderBy?: TransactionOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  transaction_maked: <T = FragmentableArray<Transaction>>(args?: {
+    where?: TransactionWhereInput;
+    orderBy?: TransactionOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  coupons_maked: <T = FragmentableArray<Coupon>>(args?: {
+    where?: CouponWhereInput;
+    orderBy?: CouponOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  uncheckTransactions: <T = UncheckTransactionsPromise>() => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
 export interface Gallery {
   id: ID_Output;
+  uid?: string;
   url?: string;
+  signedRequest?: string;
 }
 
 export interface GalleryPromise extends Promise<Gallery>, Fragmentable {
   id: () => Promise<ID_Output>;
+  uid: () => Promise<string>;
   url: () => Promise<string>;
+  signedRequest: () => Promise<string>;
 }
 
 export interface GallerySubscription
   extends Promise<AsyncIterator<Gallery>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  uid: () => Promise<AsyncIterator<string>>;
   url: () => Promise<AsyncIterator<string>>;
+  signedRequest: () => Promise<AsyncIterator<string>>;
 }
 
 export interface GalleryNullablePromise
   extends Promise<Gallery | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  uid: () => Promise<string>;
   url: () => Promise<string>;
+  signedRequest: () => Promise<string>;
+}
+
+export interface Notification {
+  id: ID_Output;
+  reviewAuthorName?: string;
+  reviewedHotelName?: string;
+  reviewTitle?: string;
+  reviewText?: string;
+  read?: boolean;
+  old?: boolean;
+  userNotificationId?: string;
+  peopleReviewedQuantity?: Int;
+  query?: string;
+  reviewAuthorProfilePic?: string;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface NotificationPromise
+  extends Promise<Notification>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  reviewAuthorName: () => Promise<string>;
+  reviewedHotelName: () => Promise<string>;
+  reviewTitle: () => Promise<string>;
+  reviewText: () => Promise<string>;
+  read: () => Promise<boolean>;
+  old: () => Promise<boolean>;
+  userNotificationId: () => Promise<string>;
+  peopleReviewedQuantity: () => Promise<Int>;
+  query: () => Promise<string>;
+  reviewAuthorProfilePic: () => Promise<string>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface NotificationSubscription
+  extends Promise<AsyncIterator<Notification>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  reviewAuthorName: () => Promise<AsyncIterator<string>>;
+  reviewedHotelName: () => Promise<AsyncIterator<string>>;
+  reviewTitle: () => Promise<AsyncIterator<string>>;
+  reviewText: () => Promise<AsyncIterator<string>>;
+  read: () => Promise<AsyncIterator<boolean>>;
+  old: () => Promise<AsyncIterator<boolean>>;
+  userNotificationId: () => Promise<AsyncIterator<string>>;
+  peopleReviewedQuantity: () => Promise<AsyncIterator<Int>>;
+  query: () => Promise<AsyncIterator<string>>;
+  reviewAuthorProfilePic: () => Promise<AsyncIterator<string>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface NotificationNullablePromise
+  extends Promise<Notification | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  reviewAuthorName: () => Promise<string>;
+  reviewedHotelName: () => Promise<string>;
+  reviewTitle: () => Promise<string>;
+  reviewText: () => Promise<string>;
+  read: () => Promise<boolean>;
+  old: () => Promise<boolean>;
+  userNotificationId: () => Promise<string>;
+  peopleReviewedQuantity: () => Promise<Int>;
+  query: () => Promise<string>;
+  reviewAuthorProfilePic: () => Promise<string>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface Location {
+  id: ID_Output;
+  lat?: Float;
+  lng?: Float;
+  formattedAddress?: string;
+  zipcode?: string;
+  city?: string;
+  state_long?: string;
+  state_short?: string;
+  country_long?: string;
+  country_short?: string;
+}
+
+export interface LocationPromise extends Promise<Location>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  lat: () => Promise<Float>;
+  lng: () => Promise<Float>;
+  formattedAddress: () => Promise<string>;
+  zipcode: () => Promise<string>;
+  city: () => Promise<string>;
+  state_long: () => Promise<string>;
+  state_short: () => Promise<string>;
+  country_long: () => Promise<string>;
+  country_short: () => Promise<string>;
+}
+
+export interface LocationSubscription
+  extends Promise<AsyncIterator<Location>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  lat: () => Promise<AsyncIterator<Float>>;
+  lng: () => Promise<AsyncIterator<Float>>;
+  formattedAddress: () => Promise<AsyncIterator<string>>;
+  zipcode: () => Promise<AsyncIterator<string>>;
+  city: () => Promise<AsyncIterator<string>>;
+  state_long: () => Promise<AsyncIterator<string>>;
+  state_short: () => Promise<AsyncIterator<string>>;
+  country_long: () => Promise<AsyncIterator<string>>;
+  country_short: () => Promise<AsyncIterator<string>>;
+}
+
+export interface LocationNullablePromise
+  extends Promise<Location | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  lat: () => Promise<Float>;
+  lng: () => Promise<Float>;
+  formattedAddress: () => Promise<string>;
+  zipcode: () => Promise<string>;
+  city: () => Promise<string>;
+  state_long: () => Promise<string>;
+  state_short: () => Promise<string>;
+  country_long: () => Promise<string>;
+  country_short: () => Promise<string>;
+}
+
+export interface Social {
+  id: ID_Output;
+  facebook?: string;
+  twitter?: string;
+  linkedIn?: string;
+  instagram?: string;
+}
+
+export interface SocialPromise extends Promise<Social>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  facebook: () => Promise<string>;
+  twitter: () => Promise<string>;
+  linkedIn: () => Promise<string>;
+  instagram: () => Promise<string>;
+}
+
+export interface SocialSubscription
+  extends Promise<AsyncIterator<Social>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  facebook: () => Promise<AsyncIterator<string>>;
+  twitter: () => Promise<AsyncIterator<string>>;
+  linkedIn: () => Promise<AsyncIterator<string>>;
+  instagram: () => Promise<AsyncIterator<string>>;
+}
+
+export interface SocialNullablePromise
+  extends Promise<Social | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  facebook: () => Promise<string>;
+  twitter: () => Promise<string>;
+  linkedIn: () => Promise<string>;
+  instagram: () => Promise<string>;
+}
+
+export interface Reviews {
+  reviewID: ID_Output;
+  reviewTitle?: string;
+  reviewText?: string;
+  sortOfTrip?: string;
+  reviewAuthorFirstName?: string;
+  reviewTips?: string;
+  reviewAuthorLastName?: string;
+  reviewAuthorEmail?: string;
+  reviewOverall?: Float;
+  reviewAuthorPic?: string;
+  reviewedHotelId?: ID_Output;
+  reviewDate: DateTimeOutput;
+}
+
+export interface ReviewsPromise extends Promise<Reviews>, Fragmentable {
+  reviewID: () => Promise<ID_Output>;
+  reviewTitle: () => Promise<string>;
+  reviewText: () => Promise<string>;
+  sortOfTrip: () => Promise<string>;
+  reviewAuthorId: <T = UserPromise>() => T;
+  peopleLiked: <T = FragmentableArray<User>>(args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  peopleDisliked: <T = FragmentableArray<User>>(args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  reviewAuthorFirstName: () => Promise<string>;
+  reviewTips: () => Promise<string>;
+  reviewAuthorLastName: () => Promise<string>;
+  reviewAuthorEmail: () => Promise<string>;
+  reviewOverall: () => Promise<Float>;
+  reviewAuthorPic: () => Promise<string>;
+  reviewedHotel: <T = HotelPromise>() => T;
+  reviewedHotelId: () => Promise<ID_Output>;
+  reviewPics: <T = FragmentableArray<ReviewImages>>(args?: {
+    where?: ReviewImagesWhereInput;
+    orderBy?: ReviewImagesOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  reviewDate: () => Promise<DateTimeOutput>;
+  reviewOptional: <T = FragmentableArray<ReviewOptionals>>(args?: {
+    where?: ReviewOptionalsWhereInput;
+    orderBy?: ReviewOptionalsOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  reviewFields: <T = FragmentableArray<ReviewFields>>(args?: {
+    where?: ReviewFieldsWhereInput;
+    orderBy?: ReviewFieldsOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface ReviewsSubscription
+  extends Promise<AsyncIterator<Reviews>>,
+    Fragmentable {
+  reviewID: () => Promise<AsyncIterator<ID_Output>>;
+  reviewTitle: () => Promise<AsyncIterator<string>>;
+  reviewText: () => Promise<AsyncIterator<string>>;
+  sortOfTrip: () => Promise<AsyncIterator<string>>;
+  reviewAuthorId: <T = UserSubscription>() => T;
+  peopleLiked: <T = Promise<AsyncIterator<UserSubscription>>>(args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  peopleDisliked: <T = Promise<AsyncIterator<UserSubscription>>>(args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  reviewAuthorFirstName: () => Promise<AsyncIterator<string>>;
+  reviewTips: () => Promise<AsyncIterator<string>>;
+  reviewAuthorLastName: () => Promise<AsyncIterator<string>>;
+  reviewAuthorEmail: () => Promise<AsyncIterator<string>>;
+  reviewOverall: () => Promise<AsyncIterator<Float>>;
+  reviewAuthorPic: () => Promise<AsyncIterator<string>>;
+  reviewedHotel: <T = HotelSubscription>() => T;
+  reviewedHotelId: () => Promise<AsyncIterator<ID_Output>>;
+  reviewPics: <T = Promise<AsyncIterator<ReviewImagesSubscription>>>(args?: {
+    where?: ReviewImagesWhereInput;
+    orderBy?: ReviewImagesOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  reviewDate: () => Promise<AsyncIterator<DateTimeOutput>>;
+  reviewOptional: <
+    T = Promise<AsyncIterator<ReviewOptionalsSubscription>>
+  >(args?: {
+    where?: ReviewOptionalsWhereInput;
+    orderBy?: ReviewOptionalsOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  reviewFields: <T = Promise<AsyncIterator<ReviewFieldsSubscription>>>(args?: {
+    where?: ReviewFieldsWhereInput;
+    orderBy?: ReviewFieldsOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface ReviewsNullablePromise
+  extends Promise<Reviews | null>,
+    Fragmentable {
+  reviewID: () => Promise<ID_Output>;
+  reviewTitle: () => Promise<string>;
+  reviewText: () => Promise<string>;
+  sortOfTrip: () => Promise<string>;
+  reviewAuthorId: <T = UserPromise>() => T;
+  peopleLiked: <T = FragmentableArray<User>>(args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  peopleDisliked: <T = FragmentableArray<User>>(args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  reviewAuthorFirstName: () => Promise<string>;
+  reviewTips: () => Promise<string>;
+  reviewAuthorLastName: () => Promise<string>;
+  reviewAuthorEmail: () => Promise<string>;
+  reviewOverall: () => Promise<Float>;
+  reviewAuthorPic: () => Promise<string>;
+  reviewedHotel: <T = HotelPromise>() => T;
+  reviewedHotelId: () => Promise<ID_Output>;
+  reviewPics: <T = FragmentableArray<ReviewImages>>(args?: {
+    where?: ReviewImagesWhereInput;
+    orderBy?: ReviewImagesOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  reviewDate: () => Promise<DateTimeOutput>;
+  reviewOptional: <T = FragmentableArray<ReviewOptionals>>(args?: {
+    where?: ReviewOptionalsWhereInput;
+    orderBy?: ReviewOptionalsOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  reviewFields: <T = FragmentableArray<ReviewFields>>(args?: {
+    where?: ReviewFieldsWhereInput;
+    orderBy?: ReviewFieldsOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface Hotel {
+  id: ID_Output;
+  agentId?: string;
+  agentEmail?: string;
+  agentName?: string;
+  title: string;
+  slug?: string;
+  content?: string;
+  status?: string;
+  price?: Int;
+  isNegotiable?: boolean;
+  propertyType?: string;
+  condition?: string;
+  rating?: Float;
+  ratingCount?: Int;
+  contactNumber?: string;
+  termsAndCondition?: string;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface HotelPromise extends Promise<Hotel>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  peopleLiked: <T = FragmentableArray<User>>(args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  peopleReviewed: <T = FragmentableArray<User>>(args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  couponsAvailable: <T = FragmentableArray<Coupon>>(args?: {
+    where?: CouponWhereInput;
+    orderBy?: CouponOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  connectId: <T = UserPromise>() => T;
+  agentId: () => Promise<string>;
+  agentEmail: () => Promise<string>;
+  agentName: () => Promise<string>;
+  title: () => Promise<string>;
+  slug: () => Promise<string>;
+  content: () => Promise<string>;
+  status: () => Promise<string>;
+  price: () => Promise<Int>;
+  isNegotiable: () => Promise<boolean>;
+  propertyType: () => Promise<string>;
+  condition: () => Promise<string>;
+  rating: () => Promise<Float>;
+  ratingCount: () => Promise<Int>;
+  contactNumber: () => Promise<string>;
+  termsAndCondition: () => Promise<string>;
+  amenities: <T = FragmentableArray<Amenities>>(args?: {
+    where?: AmenitiesWhereInput;
+    orderBy?: AmenitiesOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  image: <T = ImagePromise>() => T;
+  location: <T = FragmentableArray<Location>>(args?: {
+    where?: LocationWhereInput;
+    orderBy?: LocationOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  gallery: <T = FragmentableArray<Gallery>>(args?: {
+    where?: GalleryWhereInput;
+    orderBy?: GalleryOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  categories: <T = FragmentableArray<Categories>>(args?: {
+    where?: CategoriesWhereInput;
+    orderBy?: CategoriesOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  reviews: <T = FragmentableArray<Reviews>>(args?: {
+    where?: ReviewsWhereInput;
+    orderBy?: ReviewsOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface HotelSubscription
+  extends Promise<AsyncIterator<Hotel>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  peopleLiked: <T = Promise<AsyncIterator<UserSubscription>>>(args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  peopleReviewed: <T = Promise<AsyncIterator<UserSubscription>>>(args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  couponsAvailable: <T = Promise<AsyncIterator<CouponSubscription>>>(args?: {
+    where?: CouponWhereInput;
+    orderBy?: CouponOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  connectId: <T = UserSubscription>() => T;
+  agentId: () => Promise<AsyncIterator<string>>;
+  agentEmail: () => Promise<AsyncIterator<string>>;
+  agentName: () => Promise<AsyncIterator<string>>;
+  title: () => Promise<AsyncIterator<string>>;
+  slug: () => Promise<AsyncIterator<string>>;
+  content: () => Promise<AsyncIterator<string>>;
+  status: () => Promise<AsyncIterator<string>>;
+  price: () => Promise<AsyncIterator<Int>>;
+  isNegotiable: () => Promise<AsyncIterator<boolean>>;
+  propertyType: () => Promise<AsyncIterator<string>>;
+  condition: () => Promise<AsyncIterator<string>>;
+  rating: () => Promise<AsyncIterator<Float>>;
+  ratingCount: () => Promise<AsyncIterator<Int>>;
+  contactNumber: () => Promise<AsyncIterator<string>>;
+  termsAndCondition: () => Promise<AsyncIterator<string>>;
+  amenities: <T = Promise<AsyncIterator<AmenitiesSubscription>>>(args?: {
+    where?: AmenitiesWhereInput;
+    orderBy?: AmenitiesOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  image: <T = ImageSubscription>() => T;
+  location: <T = Promise<AsyncIterator<LocationSubscription>>>(args?: {
+    where?: LocationWhereInput;
+    orderBy?: LocationOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  gallery: <T = Promise<AsyncIterator<GallerySubscription>>>(args?: {
+    where?: GalleryWhereInput;
+    orderBy?: GalleryOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  categories: <T = Promise<AsyncIterator<CategoriesSubscription>>>(args?: {
+    where?: CategoriesWhereInput;
+    orderBy?: CategoriesOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  reviews: <T = Promise<AsyncIterator<ReviewsSubscription>>>(args?: {
+    where?: ReviewsWhereInput;
+    orderBy?: ReviewsOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface HotelNullablePromise
+  extends Promise<Hotel | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  peopleLiked: <T = FragmentableArray<User>>(args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  peopleReviewed: <T = FragmentableArray<User>>(args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  couponsAvailable: <T = FragmentableArray<Coupon>>(args?: {
+    where?: CouponWhereInput;
+    orderBy?: CouponOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  connectId: <T = UserPromise>() => T;
+  agentId: () => Promise<string>;
+  agentEmail: () => Promise<string>;
+  agentName: () => Promise<string>;
+  title: () => Promise<string>;
+  slug: () => Promise<string>;
+  content: () => Promise<string>;
+  status: () => Promise<string>;
+  price: () => Promise<Int>;
+  isNegotiable: () => Promise<boolean>;
+  propertyType: () => Promise<string>;
+  condition: () => Promise<string>;
+  rating: () => Promise<Float>;
+  ratingCount: () => Promise<Int>;
+  contactNumber: () => Promise<string>;
+  termsAndCondition: () => Promise<string>;
+  amenities: <T = FragmentableArray<Amenities>>(args?: {
+    where?: AmenitiesWhereInput;
+    orderBy?: AmenitiesOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  image: <T = ImagePromise>() => T;
+  location: <T = FragmentableArray<Location>>(args?: {
+    where?: LocationWhereInput;
+    orderBy?: LocationOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  gallery: <T = FragmentableArray<Gallery>>(args?: {
+    where?: GalleryWhereInput;
+    orderBy?: GalleryOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  categories: <T = FragmentableArray<Categories>>(args?: {
+    where?: CategoriesWhereInput;
+    orderBy?: CategoriesOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  reviews: <T = FragmentableArray<Reviews>>(args?: {
+    where?: ReviewsWhereInput;
+    orderBy?: ReviewsOrderByInput;
+    skip?: Int;
+    after?: string;
+    before?: string;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface Image {
+  id: ID_Output;
+  url?: string;
+  thumb_url?: string;
+}
+
+export interface ImagePromise extends Promise<Image>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  url: () => Promise<string>;
+  thumb_url: () => Promise<string>;
+}
+
+export interface ImageSubscription
+  extends Promise<AsyncIterator<Image>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  url: () => Promise<AsyncIterator<string>>;
+  thumb_url: () => Promise<AsyncIterator<string>>;
+}
+
+export interface ImageNullablePromise
+  extends Promise<Image | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  url: () => Promise<string>;
+  thumb_url: () => Promise<string>;
+}
+
+export interface ReviewImages {
+  id: ID_Output;
+  url?: string;
+}
+
+export interface ReviewImagesPromise
+  extends Promise<ReviewImages>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  url: () => Promise<string>;
+}
+
+export interface ReviewImagesSubscription
+  extends Promise<AsyncIterator<ReviewImages>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  url: () => Promise<AsyncIterator<string>>;
+}
+
+export interface ReviewImagesNullablePromise
+  extends Promise<ReviewImages | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  url: () => Promise<string>;
+}
+
+export interface ReviewOptionals {
+  id: ID_Output;
+  option?: string;
+  optionField?: string;
+}
+
+export interface ReviewOptionalsPromise
+  extends Promise<ReviewOptionals>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  option: () => Promise<string>;
+  optionField: () => Promise<string>;
+}
+
+export interface ReviewOptionalsSubscription
+  extends Promise<AsyncIterator<ReviewOptionals>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  option: () => Promise<AsyncIterator<string>>;
+  optionField: () => Promise<AsyncIterator<string>>;
+}
+
+export interface ReviewOptionalsNullablePromise
+  extends Promise<ReviewOptionals | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  option: () => Promise<string>;
+  optionField: () => Promise<string>;
+}
+
+export interface ReviewFields {
+  id: ID_Output;
+  rating?: Int;
+  ratingFieldName?: string;
+}
+
+export interface ReviewFieldsPromise
+  extends Promise<ReviewFields>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  rating: () => Promise<Int>;
+  ratingFieldName: () => Promise<string>;
+}
+
+export interface ReviewFieldsSubscription
+  extends Promise<AsyncIterator<ReviewFields>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  rating: () => Promise<AsyncIterator<Int>>;
+  ratingFieldName: () => Promise<AsyncIterator<string>>;
+}
+
+export interface ReviewFieldsNullablePromise
+  extends Promise<ReviewFields | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  rating: () => Promise<Int>;
+  ratingFieldName: () => Promise<string>;
+}
+
+export interface Transaction {
+  TXID: ID_Output;
+  transactionSecretKey?: string;
+  transactionHotelName?: string;
+  transactionHotelId?: string;
+  transactionHotelManagerId?: string;
+  transactionHotelType?: string;
+  transactionPrice?: Int;
+  transactionAuthorId?: string;
+  transactionAuthorName?: string;
+  transactionAuthorEmail?: string;
+  transactionAuthorContactNumber?: string;
+  transactionAuthorSpecial?: string;
+  transactionAuthorNote?: string;
+  transactionLocationLat?: Float;
+  transactionLocationLng?: Float;
+  transactionRoom?: Int;
+  transactionGuest?: Int;
+  transactionLocationFormattedAddress?: string;
+  transactionRange?: Int;
+  transactionStatus?: string;
+  transactionCoupon?: string;
+  transactionCouponType?: Int;
+  transactionCouponValue?: Int;
+  transactionStartDate?: string;
+  transactionEndDate?: string;
+  transactionStripeId?: string;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface TransactionPromise extends Promise<Transaction>, Fragmentable {
+  TXID: () => Promise<ID_Output>;
+  transactionSecretKey: () => Promise<string>;
+  transactionHotelName: () => Promise<string>;
+  transactionHotelId: () => Promise<string>;
+  transactionHotelManager: <T = UserPromise>() => T;
+  transactionHotelManagerId: () => Promise<string>;
+  transactionHotelType: () => Promise<string>;
+  transactionPrice: () => Promise<Int>;
+  transactionAuthor: <T = UserPromise>() => T;
+  transactionAuthorId: () => Promise<string>;
+  transactionAuthorName: () => Promise<string>;
+  transactionAuthorEmail: () => Promise<string>;
+  transactionAuthorContactNumber: () => Promise<string>;
+  transactionAuthorSpecial: () => Promise<string>;
+  transactionAuthorNote: () => Promise<string>;
+  transactionLocationLat: () => Promise<Float>;
+  transactionLocationLng: () => Promise<Float>;
+  transactionRoom: () => Promise<Int>;
+  transactionGuest: () => Promise<Int>;
+  transactionLocationFormattedAddress: () => Promise<string>;
+  transactionRange: () => Promise<Int>;
+  transactionStatus: () => Promise<string>;
+  transactionCoupon: () => Promise<string>;
+  transactionCouponType: () => Promise<Int>;
+  transactionCouponValue: () => Promise<Int>;
+  transactionStartDate: () => Promise<string>;
+  transactionEndDate: () => Promise<string>;
+  transactionStripeId: () => Promise<string>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface TransactionSubscription
+  extends Promise<AsyncIterator<Transaction>>,
+    Fragmentable {
+  TXID: () => Promise<AsyncIterator<ID_Output>>;
+  transactionSecretKey: () => Promise<AsyncIterator<string>>;
+  transactionHotelName: () => Promise<AsyncIterator<string>>;
+  transactionHotelId: () => Promise<AsyncIterator<string>>;
+  transactionHotelManager: <T = UserSubscription>() => T;
+  transactionHotelManagerId: () => Promise<AsyncIterator<string>>;
+  transactionHotelType: () => Promise<AsyncIterator<string>>;
+  transactionPrice: () => Promise<AsyncIterator<Int>>;
+  transactionAuthor: <T = UserSubscription>() => T;
+  transactionAuthorId: () => Promise<AsyncIterator<string>>;
+  transactionAuthorName: () => Promise<AsyncIterator<string>>;
+  transactionAuthorEmail: () => Promise<AsyncIterator<string>>;
+  transactionAuthorContactNumber: () => Promise<AsyncIterator<string>>;
+  transactionAuthorSpecial: () => Promise<AsyncIterator<string>>;
+  transactionAuthorNote: () => Promise<AsyncIterator<string>>;
+  transactionLocationLat: () => Promise<AsyncIterator<Float>>;
+  transactionLocationLng: () => Promise<AsyncIterator<Float>>;
+  transactionRoom: () => Promise<AsyncIterator<Int>>;
+  transactionGuest: () => Promise<AsyncIterator<Int>>;
+  transactionLocationFormattedAddress: () => Promise<AsyncIterator<string>>;
+  transactionRange: () => Promise<AsyncIterator<Int>>;
+  transactionStatus: () => Promise<AsyncIterator<string>>;
+  transactionCoupon: () => Promise<AsyncIterator<string>>;
+  transactionCouponType: () => Promise<AsyncIterator<Int>>;
+  transactionCouponValue: () => Promise<AsyncIterator<Int>>;
+  transactionStartDate: () => Promise<AsyncIterator<string>>;
+  transactionEndDate: () => Promise<AsyncIterator<string>>;
+  transactionStripeId: () => Promise<AsyncIterator<string>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface TransactionNullablePromise
+  extends Promise<Transaction | null>,
+    Fragmentable {
+  TXID: () => Promise<ID_Output>;
+  transactionSecretKey: () => Promise<string>;
+  transactionHotelName: () => Promise<string>;
+  transactionHotelId: () => Promise<string>;
+  transactionHotelManager: <T = UserPromise>() => T;
+  transactionHotelManagerId: () => Promise<string>;
+  transactionHotelType: () => Promise<string>;
+  transactionPrice: () => Promise<Int>;
+  transactionAuthor: <T = UserPromise>() => T;
+  transactionAuthorId: () => Promise<string>;
+  transactionAuthorName: () => Promise<string>;
+  transactionAuthorEmail: () => Promise<string>;
+  transactionAuthorContactNumber: () => Promise<string>;
+  transactionAuthorSpecial: () => Promise<string>;
+  transactionAuthorNote: () => Promise<string>;
+  transactionLocationLat: () => Promise<Float>;
+  transactionLocationLng: () => Promise<Float>;
+  transactionRoom: () => Promise<Int>;
+  transactionGuest: () => Promise<Int>;
+  transactionLocationFormattedAddress: () => Promise<string>;
+  transactionRange: () => Promise<Int>;
+  transactionStatus: () => Promise<string>;
+  transactionCoupon: () => Promise<string>;
+  transactionCouponType: () => Promise<Int>;
+  transactionCouponValue: () => Promise<Int>;
+  transactionStartDate: () => Promise<string>;
+  transactionEndDate: () => Promise<string>;
+  transactionStripeId: () => Promise<string>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface UncheckTransactions {
+  id: ID_Output;
+  userUncheckTransactionsId?: string;
+  totalPrice?: Int;
+  totalTransactions?: Int;
+}
+
+export interface UncheckTransactionsPromise
+  extends Promise<UncheckTransactions>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  userUncheckTransactionsId: () => Promise<string>;
+  userUncheckTransactions: <T = UserPromise>() => T;
+  totalPrice: () => Promise<Int>;
+  totalTransactions: () => Promise<Int>;
+}
+
+export interface UncheckTransactionsSubscription
+  extends Promise<AsyncIterator<UncheckTransactions>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  userUncheckTransactionsId: () => Promise<AsyncIterator<string>>;
+  userUncheckTransactions: <T = UserSubscription>() => T;
+  totalPrice: () => Promise<AsyncIterator<Int>>;
+  totalTransactions: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface UncheckTransactionsNullablePromise
+  extends Promise<UncheckTransactions | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  userUncheckTransactionsId: () => Promise<string>;
+  userUncheckTransactions: <T = UserPromise>() => T;
+  totalPrice: () => Promise<Int>;
+  totalTransactions: () => Promise<Int>;
+}
+
+export interface CouponConnection {
+  pageInfo: PageInfo;
+  edges: CouponEdge[];
+}
+
+export interface CouponConnectionPromise
+  extends Promise<CouponConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<CouponEdge>>() => T;
+  aggregate: <T = AggregateCouponPromise>() => T;
+}
+
+export interface CouponConnectionSubscription
+  extends Promise<AsyncIterator<CouponConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<CouponEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateCouponSubscription>() => T;
+}
+
+export interface CouponEdge {
+  node: Coupon;
+  cursor: string;
+}
+
+export interface CouponEdgePromise extends Promise<CouponEdge>, Fragmentable {
+  node: <T = CouponPromise>() => T;
+  cursor: () => Promise<string>;
+}
+
+export interface CouponEdgeSubscription
+  extends Promise<AsyncIterator<CouponEdge>>,
+    Fragmentable {
+  node: <T = CouponSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<string>>;
+}
+
+export interface AggregateCoupon {
+  count: Int;
+}
+
+export interface AggregateCouponPromise
+  extends Promise<AggregateCoupon>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateCouponSubscription
+  extends Promise<AsyncIterator<AggregateCoupon>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface GalleryConnection {
@@ -3479,552 +10453,6 @@ export interface AggregateGallerySubscription
   extends Promise<AsyncIterator<AggregateGallery>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface Hotel {
-  id: ID_Output;
-  agentId?: string;
-  title: string;
-  slug?: string;
-  content?: string;
-  status?: string;
-  price?: string;
-  isNegotiable?: boolean;
-  propertyType?: string;
-  condition?: string;
-  rating?: Float;
-  ratingCount?: Int;
-  contactNumber?: string;
-  termsAndCondition?: string;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface HotelPromise extends Promise<Hotel>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  peopleLiked: <T = FragmentableArray<User>>(args?: {
-    where?: UserWhereInput;
-    orderBy?: UserOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  connectId: <T = UserPromise>() => T;
-  agentId: () => Promise<string>;
-  title: () => Promise<string>;
-  slug: () => Promise<string>;
-  content: () => Promise<string>;
-  status: () => Promise<string>;
-  price: () => Promise<string>;
-  isNegotiable: () => Promise<boolean>;
-  propertyType: () => Promise<string>;
-  condition: () => Promise<string>;
-  rating: () => Promise<Float>;
-  ratingCount: () => Promise<Int>;
-  contactNumber: () => Promise<string>;
-  termsAndCondition: () => Promise<string>;
-  amenities: <T = FragmentableArray<Amenities>>(args?: {
-    where?: AmenitiesWhereInput;
-    orderBy?: AmenitiesOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  image: <T = ImagePromise>() => T;
-  location: <T = FragmentableArray<Location>>(args?: {
-    where?: LocationWhereInput;
-    orderBy?: LocationOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  gallery: <T = FragmentableArray<Gallery>>(args?: {
-    where?: GalleryWhereInput;
-    orderBy?: GalleryOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  categories: <T = FragmentableArray<Categories>>(args?: {
-    where?: CategoriesWhereInput;
-    orderBy?: CategoriesOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface HotelSubscription
-  extends Promise<AsyncIterator<Hotel>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  peopleLiked: <T = Promise<AsyncIterator<UserSubscription>>>(args?: {
-    where?: UserWhereInput;
-    orderBy?: UserOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  connectId: <T = UserSubscription>() => T;
-  agentId: () => Promise<AsyncIterator<string>>;
-  title: () => Promise<AsyncIterator<string>>;
-  slug: () => Promise<AsyncIterator<string>>;
-  content: () => Promise<AsyncIterator<string>>;
-  status: () => Promise<AsyncIterator<string>>;
-  price: () => Promise<AsyncIterator<string>>;
-  isNegotiable: () => Promise<AsyncIterator<boolean>>;
-  propertyType: () => Promise<AsyncIterator<string>>;
-  condition: () => Promise<AsyncIterator<string>>;
-  rating: () => Promise<AsyncIterator<Float>>;
-  ratingCount: () => Promise<AsyncIterator<Int>>;
-  contactNumber: () => Promise<AsyncIterator<string>>;
-  termsAndCondition: () => Promise<AsyncIterator<string>>;
-  amenities: <T = Promise<AsyncIterator<AmenitiesSubscription>>>(args?: {
-    where?: AmenitiesWhereInput;
-    orderBy?: AmenitiesOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  image: <T = ImageSubscription>() => T;
-  location: <T = Promise<AsyncIterator<LocationSubscription>>>(args?: {
-    where?: LocationWhereInput;
-    orderBy?: LocationOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  gallery: <T = Promise<AsyncIterator<GallerySubscription>>>(args?: {
-    where?: GalleryWhereInput;
-    orderBy?: GalleryOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  categories: <T = Promise<AsyncIterator<CategoriesSubscription>>>(args?: {
-    where?: CategoriesWhereInput;
-    orderBy?: CategoriesOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface HotelNullablePromise
-  extends Promise<Hotel | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  peopleLiked: <T = FragmentableArray<User>>(args?: {
-    where?: UserWhereInput;
-    orderBy?: UserOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  connectId: <T = UserPromise>() => T;
-  agentId: () => Promise<string>;
-  title: () => Promise<string>;
-  slug: () => Promise<string>;
-  content: () => Promise<string>;
-  status: () => Promise<string>;
-  price: () => Promise<string>;
-  isNegotiable: () => Promise<boolean>;
-  propertyType: () => Promise<string>;
-  condition: () => Promise<string>;
-  rating: () => Promise<Float>;
-  ratingCount: () => Promise<Int>;
-  contactNumber: () => Promise<string>;
-  termsAndCondition: () => Promise<string>;
-  amenities: <T = FragmentableArray<Amenities>>(args?: {
-    where?: AmenitiesWhereInput;
-    orderBy?: AmenitiesOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  image: <T = ImagePromise>() => T;
-  location: <T = FragmentableArray<Location>>(args?: {
-    where?: LocationWhereInput;
-    orderBy?: LocationOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  gallery: <T = FragmentableArray<Gallery>>(args?: {
-    where?: GalleryWhereInput;
-    orderBy?: GalleryOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  categories: <T = FragmentableArray<Categories>>(args?: {
-    where?: CategoriesWhereInput;
-    orderBy?: CategoriesOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface User {
-  id: ID_Output;
-  first_name: string;
-  last_name: string;
-  username: string;
-  password: string;
-  email: string;
-  cellNumber?: string;
-  date_of_birth?: string;
-  gender?: string;
-  content?: string;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface UserPromise extends Promise<User>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  first_name: () => Promise<string>;
-  last_name: () => Promise<string>;
-  username: () => Promise<string>;
-  password: () => Promise<string>;
-  email: () => Promise<string>;
-  cellNumber: () => Promise<string>;
-  profile_pic: <T = FragmentableArray<Gallery>>(args?: {
-    where?: GalleryWhereInput;
-    orderBy?: GalleryOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  cover_pic: <T = FragmentableArray<Gallery>>(args?: {
-    where?: GalleryWhereInput;
-    orderBy?: GalleryOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  date_of_birth: () => Promise<string>;
-  gender: () => Promise<string>;
-  content: () => Promise<string>;
-  agent_location: <T = LocationPromise>() => T;
-  gallery: <T = FragmentableArray<Gallery>>(args?: {
-    where?: GalleryWhereInput;
-    orderBy?: GalleryOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  social_profile: <T = SocialPromise>() => T;
-  listed_posts: <T = FragmentableArray<Hotel>>(args?: {
-    where?: HotelWhereInput;
-    orderBy?: HotelOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  favourite_post: <T = FragmentableArray<Hotel>>(args?: {
-    where?: HotelWhereInput;
-    orderBy?: HotelOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface UserSubscription
-  extends Promise<AsyncIterator<User>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  first_name: () => Promise<AsyncIterator<string>>;
-  last_name: () => Promise<AsyncIterator<string>>;
-  username: () => Promise<AsyncIterator<string>>;
-  password: () => Promise<AsyncIterator<string>>;
-  email: () => Promise<AsyncIterator<string>>;
-  cellNumber: () => Promise<AsyncIterator<string>>;
-  profile_pic: <T = Promise<AsyncIterator<GallerySubscription>>>(args?: {
-    where?: GalleryWhereInput;
-    orderBy?: GalleryOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  cover_pic: <T = Promise<AsyncIterator<GallerySubscription>>>(args?: {
-    where?: GalleryWhereInput;
-    orderBy?: GalleryOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  date_of_birth: () => Promise<AsyncIterator<string>>;
-  gender: () => Promise<AsyncIterator<string>>;
-  content: () => Promise<AsyncIterator<string>>;
-  agent_location: <T = LocationSubscription>() => T;
-  gallery: <T = Promise<AsyncIterator<GallerySubscription>>>(args?: {
-    where?: GalleryWhereInput;
-    orderBy?: GalleryOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  social_profile: <T = SocialSubscription>() => T;
-  listed_posts: <T = Promise<AsyncIterator<HotelSubscription>>>(args?: {
-    where?: HotelWhereInput;
-    orderBy?: HotelOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  favourite_post: <T = Promise<AsyncIterator<HotelSubscription>>>(args?: {
-    where?: HotelWhereInput;
-    orderBy?: HotelOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface UserNullablePromise
-  extends Promise<User | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  first_name: () => Promise<string>;
-  last_name: () => Promise<string>;
-  username: () => Promise<string>;
-  password: () => Promise<string>;
-  email: () => Promise<string>;
-  cellNumber: () => Promise<string>;
-  profile_pic: <T = FragmentableArray<Gallery>>(args?: {
-    where?: GalleryWhereInput;
-    orderBy?: GalleryOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  cover_pic: <T = FragmentableArray<Gallery>>(args?: {
-    where?: GalleryWhereInput;
-    orderBy?: GalleryOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  date_of_birth: () => Promise<string>;
-  gender: () => Promise<string>;
-  content: () => Promise<string>;
-  agent_location: <T = LocationPromise>() => T;
-  gallery: <T = FragmentableArray<Gallery>>(args?: {
-    where?: GalleryWhereInput;
-    orderBy?: GalleryOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  social_profile: <T = SocialPromise>() => T;
-  listed_posts: <T = FragmentableArray<Hotel>>(args?: {
-    where?: HotelWhereInput;
-    orderBy?: HotelOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  favourite_post: <T = FragmentableArray<Hotel>>(args?: {
-    where?: HotelWhereInput;
-    orderBy?: HotelOrderByInput;
-    skip?: Int;
-    after?: string;
-    before?: string;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface Location {
-  id: ID_Output;
-  lat?: string;
-  lng?: string;
-  formattedAddress?: string;
-  zipcode?: string;
-  city?: string;
-  state_long?: string;
-  state_short?: string;
-  country_long?: string;
-  country_short?: string;
-}
-
-export interface LocationPromise extends Promise<Location>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  lat: () => Promise<string>;
-  lng: () => Promise<string>;
-  formattedAddress: () => Promise<string>;
-  zipcode: () => Promise<string>;
-  city: () => Promise<string>;
-  state_long: () => Promise<string>;
-  state_short: () => Promise<string>;
-  country_long: () => Promise<string>;
-  country_short: () => Promise<string>;
-}
-
-export interface LocationSubscription
-  extends Promise<AsyncIterator<Location>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  lat: () => Promise<AsyncIterator<string>>;
-  lng: () => Promise<AsyncIterator<string>>;
-  formattedAddress: () => Promise<AsyncIterator<string>>;
-  zipcode: () => Promise<AsyncIterator<string>>;
-  city: () => Promise<AsyncIterator<string>>;
-  state_long: () => Promise<AsyncIterator<string>>;
-  state_short: () => Promise<AsyncIterator<string>>;
-  country_long: () => Promise<AsyncIterator<string>>;
-  country_short: () => Promise<AsyncIterator<string>>;
-}
-
-export interface LocationNullablePromise
-  extends Promise<Location | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  lat: () => Promise<string>;
-  lng: () => Promise<string>;
-  formattedAddress: () => Promise<string>;
-  zipcode: () => Promise<string>;
-  city: () => Promise<string>;
-  state_long: () => Promise<string>;
-  state_short: () => Promise<string>;
-  country_long: () => Promise<string>;
-  country_short: () => Promise<string>;
-}
-
-export interface Social {
-  id: ID_Output;
-  facebook?: string;
-  twitter?: string;
-  linkedIN?: string;
-  instagram?: string;
-}
-
-export interface SocialPromise extends Promise<Social>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  facebook: () => Promise<string>;
-  twitter: () => Promise<string>;
-  linkedIN: () => Promise<string>;
-  instagram: () => Promise<string>;
-}
-
-export interface SocialSubscription
-  extends Promise<AsyncIterator<Social>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  facebook: () => Promise<AsyncIterator<string>>;
-  twitter: () => Promise<AsyncIterator<string>>;
-  linkedIN: () => Promise<AsyncIterator<string>>;
-  instagram: () => Promise<AsyncIterator<string>>;
-}
-
-export interface SocialNullablePromise
-  extends Promise<Social | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  facebook: () => Promise<string>;
-  twitter: () => Promise<string>;
-  linkedIN: () => Promise<string>;
-  instagram: () => Promise<string>;
-}
-
-export interface Image {
-  id: ID_Output;
-  url?: string;
-  thumb_url?: string;
-}
-
-export interface ImagePromise extends Promise<Image>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  url: () => Promise<string>;
-  thumb_url: () => Promise<string>;
-}
-
-export interface ImageSubscription
-  extends Promise<AsyncIterator<Image>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  url: () => Promise<AsyncIterator<string>>;
-  thumb_url: () => Promise<AsyncIterator<string>>;
-}
-
-export interface ImageNullablePromise
-  extends Promise<Image | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  url: () => Promise<string>;
-  thumb_url: () => Promise<string>;
 }
 
 export interface HotelConnection {
@@ -4191,6 +10619,284 @@ export interface AggregateLocationSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
+export interface NotificationConnection {
+  pageInfo: PageInfo;
+  edges: NotificationEdge[];
+}
+
+export interface NotificationConnectionPromise
+  extends Promise<NotificationConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<NotificationEdge>>() => T;
+  aggregate: <T = AggregateNotificationPromise>() => T;
+}
+
+export interface NotificationConnectionSubscription
+  extends Promise<AsyncIterator<NotificationConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<NotificationEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateNotificationSubscription>() => T;
+}
+
+export interface NotificationEdge {
+  node: Notification;
+  cursor: string;
+}
+
+export interface NotificationEdgePromise
+  extends Promise<NotificationEdge>,
+    Fragmentable {
+  node: <T = NotificationPromise>() => T;
+  cursor: () => Promise<string>;
+}
+
+export interface NotificationEdgeSubscription
+  extends Promise<AsyncIterator<NotificationEdge>>,
+    Fragmentable {
+  node: <T = NotificationSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<string>>;
+}
+
+export interface AggregateNotification {
+  count: Int;
+}
+
+export interface AggregateNotificationPromise
+  extends Promise<AggregateNotification>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateNotificationSubscription
+  extends Promise<AsyncIterator<AggregateNotification>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface ReviewFieldsConnection {
+  pageInfo: PageInfo;
+  edges: ReviewFieldsEdge[];
+}
+
+export interface ReviewFieldsConnectionPromise
+  extends Promise<ReviewFieldsConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<ReviewFieldsEdge>>() => T;
+  aggregate: <T = AggregateReviewFieldsPromise>() => T;
+}
+
+export interface ReviewFieldsConnectionSubscription
+  extends Promise<AsyncIterator<ReviewFieldsConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ReviewFieldsEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateReviewFieldsSubscription>() => T;
+}
+
+export interface ReviewFieldsEdge {
+  node: ReviewFields;
+  cursor: string;
+}
+
+export interface ReviewFieldsEdgePromise
+  extends Promise<ReviewFieldsEdge>,
+    Fragmentable {
+  node: <T = ReviewFieldsPromise>() => T;
+  cursor: () => Promise<string>;
+}
+
+export interface ReviewFieldsEdgeSubscription
+  extends Promise<AsyncIterator<ReviewFieldsEdge>>,
+    Fragmentable {
+  node: <T = ReviewFieldsSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<string>>;
+}
+
+export interface AggregateReviewFields {
+  count: Int;
+}
+
+export interface AggregateReviewFieldsPromise
+  extends Promise<AggregateReviewFields>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateReviewFieldsSubscription
+  extends Promise<AsyncIterator<AggregateReviewFields>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface ReviewImagesConnection {
+  pageInfo: PageInfo;
+  edges: ReviewImagesEdge[];
+}
+
+export interface ReviewImagesConnectionPromise
+  extends Promise<ReviewImagesConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<ReviewImagesEdge>>() => T;
+  aggregate: <T = AggregateReviewImagesPromise>() => T;
+}
+
+export interface ReviewImagesConnectionSubscription
+  extends Promise<AsyncIterator<ReviewImagesConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ReviewImagesEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateReviewImagesSubscription>() => T;
+}
+
+export interface ReviewImagesEdge {
+  node: ReviewImages;
+  cursor: string;
+}
+
+export interface ReviewImagesEdgePromise
+  extends Promise<ReviewImagesEdge>,
+    Fragmentable {
+  node: <T = ReviewImagesPromise>() => T;
+  cursor: () => Promise<string>;
+}
+
+export interface ReviewImagesEdgeSubscription
+  extends Promise<AsyncIterator<ReviewImagesEdge>>,
+    Fragmentable {
+  node: <T = ReviewImagesSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<string>>;
+}
+
+export interface AggregateReviewImages {
+  count: Int;
+}
+
+export interface AggregateReviewImagesPromise
+  extends Promise<AggregateReviewImages>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateReviewImagesSubscription
+  extends Promise<AsyncIterator<AggregateReviewImages>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface ReviewOptionalsConnection {
+  pageInfo: PageInfo;
+  edges: ReviewOptionalsEdge[];
+}
+
+export interface ReviewOptionalsConnectionPromise
+  extends Promise<ReviewOptionalsConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<ReviewOptionalsEdge>>() => T;
+  aggregate: <T = AggregateReviewOptionalsPromise>() => T;
+}
+
+export interface ReviewOptionalsConnectionSubscription
+  extends Promise<AsyncIterator<ReviewOptionalsConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ReviewOptionalsEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateReviewOptionalsSubscription>() => T;
+}
+
+export interface ReviewOptionalsEdge {
+  node: ReviewOptionals;
+  cursor: string;
+}
+
+export interface ReviewOptionalsEdgePromise
+  extends Promise<ReviewOptionalsEdge>,
+    Fragmentable {
+  node: <T = ReviewOptionalsPromise>() => T;
+  cursor: () => Promise<string>;
+}
+
+export interface ReviewOptionalsEdgeSubscription
+  extends Promise<AsyncIterator<ReviewOptionalsEdge>>,
+    Fragmentable {
+  node: <T = ReviewOptionalsSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<string>>;
+}
+
+export interface AggregateReviewOptionals {
+  count: Int;
+}
+
+export interface AggregateReviewOptionalsPromise
+  extends Promise<AggregateReviewOptionals>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateReviewOptionalsSubscription
+  extends Promise<AsyncIterator<AggregateReviewOptionals>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface ReviewsConnection {
+  pageInfo: PageInfo;
+  edges: ReviewsEdge[];
+}
+
+export interface ReviewsConnectionPromise
+  extends Promise<ReviewsConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<ReviewsEdge>>() => T;
+  aggregate: <T = AggregateReviewsPromise>() => T;
+}
+
+export interface ReviewsConnectionSubscription
+  extends Promise<AsyncIterator<ReviewsConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ReviewsEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateReviewsSubscription>() => T;
+}
+
+export interface ReviewsEdge {
+  node: Reviews;
+  cursor: string;
+}
+
+export interface ReviewsEdgePromise extends Promise<ReviewsEdge>, Fragmentable {
+  node: <T = ReviewsPromise>() => T;
+  cursor: () => Promise<string>;
+}
+
+export interface ReviewsEdgeSubscription
+  extends Promise<AsyncIterator<ReviewsEdge>>,
+    Fragmentable {
+  node: <T = ReviewsSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<string>>;
+}
+
+export interface AggregateReviews {
+  count: Int;
+}
+
+export interface AggregateReviewsPromise
+  extends Promise<AggregateReviews>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateReviewsSubscription
+  extends Promise<AsyncIterator<AggregateReviews>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
 export interface SocialConnection {
   pageInfo: PageInfo;
   edges: SocialEdge[];
@@ -4241,6 +10947,120 @@ export interface AggregateSocialPromise
 
 export interface AggregateSocialSubscription
   extends Promise<AsyncIterator<AggregateSocial>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface TransactionConnection {
+  pageInfo: PageInfo;
+  edges: TransactionEdge[];
+}
+
+export interface TransactionConnectionPromise
+  extends Promise<TransactionConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<TransactionEdge>>() => T;
+  aggregate: <T = AggregateTransactionPromise>() => T;
+}
+
+export interface TransactionConnectionSubscription
+  extends Promise<AsyncIterator<TransactionConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<TransactionEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateTransactionSubscription>() => T;
+}
+
+export interface TransactionEdge {
+  node: Transaction;
+  cursor: string;
+}
+
+export interface TransactionEdgePromise
+  extends Promise<TransactionEdge>,
+    Fragmentable {
+  node: <T = TransactionPromise>() => T;
+  cursor: () => Promise<string>;
+}
+
+export interface TransactionEdgeSubscription
+  extends Promise<AsyncIterator<TransactionEdge>>,
+    Fragmentable {
+  node: <T = TransactionSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<string>>;
+}
+
+export interface AggregateTransaction {
+  count: Int;
+}
+
+export interface AggregateTransactionPromise
+  extends Promise<AggregateTransaction>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateTransactionSubscription
+  extends Promise<AsyncIterator<AggregateTransaction>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface UncheckTransactionsConnection {
+  pageInfo: PageInfo;
+  edges: UncheckTransactionsEdge[];
+}
+
+export interface UncheckTransactionsConnectionPromise
+  extends Promise<UncheckTransactionsConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<UncheckTransactionsEdge>>() => T;
+  aggregate: <T = AggregateUncheckTransactionsPromise>() => T;
+}
+
+export interface UncheckTransactionsConnectionSubscription
+  extends Promise<AsyncIterator<UncheckTransactionsConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <
+    T = Promise<AsyncIterator<UncheckTransactionsEdgeSubscription>>
+  >() => T;
+  aggregate: <T = AggregateUncheckTransactionsSubscription>() => T;
+}
+
+export interface UncheckTransactionsEdge {
+  node: UncheckTransactions;
+  cursor: string;
+}
+
+export interface UncheckTransactionsEdgePromise
+  extends Promise<UncheckTransactionsEdge>,
+    Fragmentable {
+  node: <T = UncheckTransactionsPromise>() => T;
+  cursor: () => Promise<string>;
+}
+
+export interface UncheckTransactionsEdgeSubscription
+  extends Promise<AsyncIterator<UncheckTransactionsEdge>>,
+    Fragmentable {
+  node: <T = UncheckTransactionsSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<string>>;
+}
+
+export interface AggregateUncheckTransactions {
+  count: Int;
+}
+
+export interface AggregateUncheckTransactionsPromise
+  extends Promise<AggregateUncheckTransactions>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateUncheckTransactionsSubscription
+  extends Promise<AsyncIterator<AggregateUncheckTransactions>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
@@ -4468,6 +11288,80 @@ export interface CategoryImagesPreviousValuesSubscription
   url: () => Promise<AsyncIterator<string>>;
 }
 
+export interface CouponSubscriptionPayload {
+  mutation: MutationType;
+  node: Coupon;
+  updatedFields: string[];
+  previousValues: CouponPreviousValues;
+}
+
+export interface CouponSubscriptionPayloadPromise
+  extends Promise<CouponSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = CouponPromise>() => T;
+  updatedFields: () => Promise<string[]>;
+  previousValues: <T = CouponPreviousValuesPromise>() => T;
+}
+
+export interface CouponSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<CouponSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = CouponSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<string[]>>;
+  previousValues: <T = CouponPreviousValuesSubscription>() => T;
+}
+
+export interface CouponPreviousValues {
+  couponId: ID_Output;
+  couponName: string;
+  couponDescription?: string;
+  couponAuthorId?: string;
+  couponType?: Int;
+  couponValue?: Int;
+  couponQuantity?: Int;
+  couponStartDate?: string;
+  couponEndDate?: string;
+  couponRange?: string;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface CouponPreviousValuesPromise
+  extends Promise<CouponPreviousValues>,
+    Fragmentable {
+  couponId: () => Promise<ID_Output>;
+  couponName: () => Promise<string>;
+  couponDescription: () => Promise<string>;
+  couponAuthorId: () => Promise<string>;
+  couponType: () => Promise<Int>;
+  couponValue: () => Promise<Int>;
+  couponQuantity: () => Promise<Int>;
+  couponStartDate: () => Promise<string>;
+  couponEndDate: () => Promise<string>;
+  couponRange: () => Promise<string>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface CouponPreviousValuesSubscription
+  extends Promise<AsyncIterator<CouponPreviousValues>>,
+    Fragmentable {
+  couponId: () => Promise<AsyncIterator<ID_Output>>;
+  couponName: () => Promise<AsyncIterator<string>>;
+  couponDescription: () => Promise<AsyncIterator<string>>;
+  couponAuthorId: () => Promise<AsyncIterator<string>>;
+  couponType: () => Promise<AsyncIterator<Int>>;
+  couponValue: () => Promise<AsyncIterator<Int>>;
+  couponQuantity: () => Promise<AsyncIterator<Int>>;
+  couponStartDate: () => Promise<AsyncIterator<string>>;
+  couponEndDate: () => Promise<AsyncIterator<string>>;
+  couponRange: () => Promise<AsyncIterator<string>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
 export interface GallerySubscriptionPayload {
   mutation: MutationType;
   node: Gallery;
@@ -4495,21 +11389,27 @@ export interface GallerySubscriptionPayloadSubscription
 
 export interface GalleryPreviousValues {
   id: ID_Output;
+  uid?: string;
   url?: string;
+  signedRequest?: string;
 }
 
 export interface GalleryPreviousValuesPromise
   extends Promise<GalleryPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  uid: () => Promise<string>;
   url: () => Promise<string>;
+  signedRequest: () => Promise<string>;
 }
 
 export interface GalleryPreviousValuesSubscription
   extends Promise<AsyncIterator<GalleryPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  uid: () => Promise<AsyncIterator<string>>;
   url: () => Promise<AsyncIterator<string>>;
+  signedRequest: () => Promise<AsyncIterator<string>>;
 }
 
 export interface HotelSubscriptionPayload {
@@ -4540,11 +11440,13 @@ export interface HotelSubscriptionPayloadSubscription
 export interface HotelPreviousValues {
   id: ID_Output;
   agentId?: string;
+  agentEmail?: string;
+  agentName?: string;
   title: string;
   slug?: string;
   content?: string;
   status?: string;
-  price?: string;
+  price?: Int;
   isNegotiable?: boolean;
   propertyType?: string;
   condition?: string;
@@ -4561,11 +11463,13 @@ export interface HotelPreviousValuesPromise
     Fragmentable {
   id: () => Promise<ID_Output>;
   agentId: () => Promise<string>;
+  agentEmail: () => Promise<string>;
+  agentName: () => Promise<string>;
   title: () => Promise<string>;
   slug: () => Promise<string>;
   content: () => Promise<string>;
   status: () => Promise<string>;
-  price: () => Promise<string>;
+  price: () => Promise<Int>;
   isNegotiable: () => Promise<boolean>;
   propertyType: () => Promise<string>;
   condition: () => Promise<string>;
@@ -4582,11 +11486,13 @@ export interface HotelPreviousValuesSubscription
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   agentId: () => Promise<AsyncIterator<string>>;
+  agentEmail: () => Promise<AsyncIterator<string>>;
+  agentName: () => Promise<AsyncIterator<string>>;
   title: () => Promise<AsyncIterator<string>>;
   slug: () => Promise<AsyncIterator<string>>;
   content: () => Promise<AsyncIterator<string>>;
   status: () => Promise<AsyncIterator<string>>;
-  price: () => Promise<AsyncIterator<string>>;
+  price: () => Promise<AsyncIterator<Int>>;
   isNegotiable: () => Promise<AsyncIterator<boolean>>;
   propertyType: () => Promise<AsyncIterator<string>>;
   condition: () => Promise<AsyncIterator<string>>;
@@ -4672,8 +11578,8 @@ export interface LocationSubscriptionPayloadSubscription
 
 export interface LocationPreviousValues {
   id: ID_Output;
-  lat?: string;
-  lng?: string;
+  lat?: Float;
+  lng?: Float;
   formattedAddress?: string;
   zipcode?: string;
   city?: string;
@@ -4687,8 +11593,8 @@ export interface LocationPreviousValuesPromise
   extends Promise<LocationPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  lat: () => Promise<string>;
-  lng: () => Promise<string>;
+  lat: () => Promise<Float>;
+  lng: () => Promise<Float>;
   formattedAddress: () => Promise<string>;
   zipcode: () => Promise<string>;
   city: () => Promise<string>;
@@ -4702,8 +11608,8 @@ export interface LocationPreviousValuesSubscription
   extends Promise<AsyncIterator<LocationPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  lat: () => Promise<AsyncIterator<string>>;
-  lng: () => Promise<AsyncIterator<string>>;
+  lat: () => Promise<AsyncIterator<Float>>;
+  lng: () => Promise<AsyncIterator<Float>>;
   formattedAddress: () => Promise<AsyncIterator<string>>;
   zipcode: () => Promise<AsyncIterator<string>>;
   city: () => Promise<AsyncIterator<string>>;
@@ -4711,6 +11617,295 @@ export interface LocationPreviousValuesSubscription
   state_short: () => Promise<AsyncIterator<string>>;
   country_long: () => Promise<AsyncIterator<string>>;
   country_short: () => Promise<AsyncIterator<string>>;
+}
+
+export interface NotificationSubscriptionPayload {
+  mutation: MutationType;
+  node: Notification;
+  updatedFields: string[];
+  previousValues: NotificationPreviousValues;
+}
+
+export interface NotificationSubscriptionPayloadPromise
+  extends Promise<NotificationSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = NotificationPromise>() => T;
+  updatedFields: () => Promise<string[]>;
+  previousValues: <T = NotificationPreviousValuesPromise>() => T;
+}
+
+export interface NotificationSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<NotificationSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = NotificationSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<string[]>>;
+  previousValues: <T = NotificationPreviousValuesSubscription>() => T;
+}
+
+export interface NotificationPreviousValues {
+  id: ID_Output;
+  reviewAuthorName?: string;
+  reviewedHotelName?: string;
+  reviewTitle?: string;
+  reviewText?: string;
+  read?: boolean;
+  old?: boolean;
+  userNotificationId?: string;
+  peopleReviewedQuantity?: Int;
+  query?: string;
+  reviewAuthorProfilePic?: string;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface NotificationPreviousValuesPromise
+  extends Promise<NotificationPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  reviewAuthorName: () => Promise<string>;
+  reviewedHotelName: () => Promise<string>;
+  reviewTitle: () => Promise<string>;
+  reviewText: () => Promise<string>;
+  read: () => Promise<boolean>;
+  old: () => Promise<boolean>;
+  userNotificationId: () => Promise<string>;
+  peopleReviewedQuantity: () => Promise<Int>;
+  query: () => Promise<string>;
+  reviewAuthorProfilePic: () => Promise<string>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface NotificationPreviousValuesSubscription
+  extends Promise<AsyncIterator<NotificationPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  reviewAuthorName: () => Promise<AsyncIterator<string>>;
+  reviewedHotelName: () => Promise<AsyncIterator<string>>;
+  reviewTitle: () => Promise<AsyncIterator<string>>;
+  reviewText: () => Promise<AsyncIterator<string>>;
+  read: () => Promise<AsyncIterator<boolean>>;
+  old: () => Promise<AsyncIterator<boolean>>;
+  userNotificationId: () => Promise<AsyncIterator<string>>;
+  peopleReviewedQuantity: () => Promise<AsyncIterator<Int>>;
+  query: () => Promise<AsyncIterator<string>>;
+  reviewAuthorProfilePic: () => Promise<AsyncIterator<string>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface ReviewFieldsSubscriptionPayload {
+  mutation: MutationType;
+  node: ReviewFields;
+  updatedFields: string[];
+  previousValues: ReviewFieldsPreviousValues;
+}
+
+export interface ReviewFieldsSubscriptionPayloadPromise
+  extends Promise<ReviewFieldsSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = ReviewFieldsPromise>() => T;
+  updatedFields: () => Promise<string[]>;
+  previousValues: <T = ReviewFieldsPreviousValuesPromise>() => T;
+}
+
+export interface ReviewFieldsSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<ReviewFieldsSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = ReviewFieldsSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<string[]>>;
+  previousValues: <T = ReviewFieldsPreviousValuesSubscription>() => T;
+}
+
+export interface ReviewFieldsPreviousValues {
+  id: ID_Output;
+  rating?: Int;
+  ratingFieldName?: string;
+}
+
+export interface ReviewFieldsPreviousValuesPromise
+  extends Promise<ReviewFieldsPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  rating: () => Promise<Int>;
+  ratingFieldName: () => Promise<string>;
+}
+
+export interface ReviewFieldsPreviousValuesSubscription
+  extends Promise<AsyncIterator<ReviewFieldsPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  rating: () => Promise<AsyncIterator<Int>>;
+  ratingFieldName: () => Promise<AsyncIterator<string>>;
+}
+
+export interface ReviewImagesSubscriptionPayload {
+  mutation: MutationType;
+  node: ReviewImages;
+  updatedFields: string[];
+  previousValues: ReviewImagesPreviousValues;
+}
+
+export interface ReviewImagesSubscriptionPayloadPromise
+  extends Promise<ReviewImagesSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = ReviewImagesPromise>() => T;
+  updatedFields: () => Promise<string[]>;
+  previousValues: <T = ReviewImagesPreviousValuesPromise>() => T;
+}
+
+export interface ReviewImagesSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<ReviewImagesSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = ReviewImagesSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<string[]>>;
+  previousValues: <T = ReviewImagesPreviousValuesSubscription>() => T;
+}
+
+export interface ReviewImagesPreviousValues {
+  id: ID_Output;
+  url?: string;
+}
+
+export interface ReviewImagesPreviousValuesPromise
+  extends Promise<ReviewImagesPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  url: () => Promise<string>;
+}
+
+export interface ReviewImagesPreviousValuesSubscription
+  extends Promise<AsyncIterator<ReviewImagesPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  url: () => Promise<AsyncIterator<string>>;
+}
+
+export interface ReviewOptionalsSubscriptionPayload {
+  mutation: MutationType;
+  node: ReviewOptionals;
+  updatedFields: string[];
+  previousValues: ReviewOptionalsPreviousValues;
+}
+
+export interface ReviewOptionalsSubscriptionPayloadPromise
+  extends Promise<ReviewOptionalsSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = ReviewOptionalsPromise>() => T;
+  updatedFields: () => Promise<string[]>;
+  previousValues: <T = ReviewOptionalsPreviousValuesPromise>() => T;
+}
+
+export interface ReviewOptionalsSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<ReviewOptionalsSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = ReviewOptionalsSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<string[]>>;
+  previousValues: <T = ReviewOptionalsPreviousValuesSubscription>() => T;
+}
+
+export interface ReviewOptionalsPreviousValues {
+  id: ID_Output;
+  option?: string;
+  optionField?: string;
+}
+
+export interface ReviewOptionalsPreviousValuesPromise
+  extends Promise<ReviewOptionalsPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  option: () => Promise<string>;
+  optionField: () => Promise<string>;
+}
+
+export interface ReviewOptionalsPreviousValuesSubscription
+  extends Promise<AsyncIterator<ReviewOptionalsPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  option: () => Promise<AsyncIterator<string>>;
+  optionField: () => Promise<AsyncIterator<string>>;
+}
+
+export interface ReviewsSubscriptionPayload {
+  mutation: MutationType;
+  node: Reviews;
+  updatedFields: string[];
+  previousValues: ReviewsPreviousValues;
+}
+
+export interface ReviewsSubscriptionPayloadPromise
+  extends Promise<ReviewsSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = ReviewsPromise>() => T;
+  updatedFields: () => Promise<string[]>;
+  previousValues: <T = ReviewsPreviousValuesPromise>() => T;
+}
+
+export interface ReviewsSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<ReviewsSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = ReviewsSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<string[]>>;
+  previousValues: <T = ReviewsPreviousValuesSubscription>() => T;
+}
+
+export interface ReviewsPreviousValues {
+  reviewID: ID_Output;
+  reviewTitle?: string;
+  reviewText?: string;
+  sortOfTrip?: string;
+  reviewAuthorFirstName?: string;
+  reviewTips?: string;
+  reviewAuthorLastName?: string;
+  reviewAuthorEmail?: string;
+  reviewOverall?: Float;
+  reviewAuthorPic?: string;
+  reviewedHotelId?: ID_Output;
+  reviewDate: DateTimeOutput;
+}
+
+export interface ReviewsPreviousValuesPromise
+  extends Promise<ReviewsPreviousValues>,
+    Fragmentable {
+  reviewID: () => Promise<ID_Output>;
+  reviewTitle: () => Promise<string>;
+  reviewText: () => Promise<string>;
+  sortOfTrip: () => Promise<string>;
+  reviewAuthorFirstName: () => Promise<string>;
+  reviewTips: () => Promise<string>;
+  reviewAuthorLastName: () => Promise<string>;
+  reviewAuthorEmail: () => Promise<string>;
+  reviewOverall: () => Promise<Float>;
+  reviewAuthorPic: () => Promise<string>;
+  reviewedHotelId: () => Promise<ID_Output>;
+  reviewDate: () => Promise<DateTimeOutput>;
+}
+
+export interface ReviewsPreviousValuesSubscription
+  extends Promise<AsyncIterator<ReviewsPreviousValues>>,
+    Fragmentable {
+  reviewID: () => Promise<AsyncIterator<ID_Output>>;
+  reviewTitle: () => Promise<AsyncIterator<string>>;
+  reviewText: () => Promise<AsyncIterator<string>>;
+  sortOfTrip: () => Promise<AsyncIterator<string>>;
+  reviewAuthorFirstName: () => Promise<AsyncIterator<string>>;
+  reviewTips: () => Promise<AsyncIterator<string>>;
+  reviewAuthorLastName: () => Promise<AsyncIterator<string>>;
+  reviewAuthorEmail: () => Promise<AsyncIterator<string>>;
+  reviewOverall: () => Promise<AsyncIterator<Float>>;
+  reviewAuthorPic: () => Promise<AsyncIterator<string>>;
+  reviewedHotelId: () => Promise<AsyncIterator<ID_Output>>;
+  reviewDate: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
 export interface SocialSubscriptionPayload {
@@ -4742,7 +11937,7 @@ export interface SocialPreviousValues {
   id: ID_Output;
   facebook?: string;
   twitter?: string;
-  linkedIN?: string;
+  linkedIn?: string;
   instagram?: string;
 }
 
@@ -4752,7 +11947,7 @@ export interface SocialPreviousValuesPromise
   id: () => Promise<ID_Output>;
   facebook: () => Promise<string>;
   twitter: () => Promise<string>;
-  linkedIN: () => Promise<string>;
+  linkedIn: () => Promise<string>;
   instagram: () => Promise<string>;
 }
 
@@ -4762,8 +11957,180 @@ export interface SocialPreviousValuesSubscription
   id: () => Promise<AsyncIterator<ID_Output>>;
   facebook: () => Promise<AsyncIterator<string>>;
   twitter: () => Promise<AsyncIterator<string>>;
-  linkedIN: () => Promise<AsyncIterator<string>>;
+  linkedIn: () => Promise<AsyncIterator<string>>;
   instagram: () => Promise<AsyncIterator<string>>;
+}
+
+export interface TransactionSubscriptionPayload {
+  mutation: MutationType;
+  node: Transaction;
+  updatedFields: string[];
+  previousValues: TransactionPreviousValues;
+}
+
+export interface TransactionSubscriptionPayloadPromise
+  extends Promise<TransactionSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = TransactionPromise>() => T;
+  updatedFields: () => Promise<string[]>;
+  previousValues: <T = TransactionPreviousValuesPromise>() => T;
+}
+
+export interface TransactionSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<TransactionSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = TransactionSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<string[]>>;
+  previousValues: <T = TransactionPreviousValuesSubscription>() => T;
+}
+
+export interface TransactionPreviousValues {
+  TXID: ID_Output;
+  transactionSecretKey?: string;
+  transactionHotelName?: string;
+  transactionHotelId?: string;
+  transactionHotelManagerId?: string;
+  transactionHotelType?: string;
+  transactionPrice?: Int;
+  transactionAuthorId?: string;
+  transactionAuthorName?: string;
+  transactionAuthorEmail?: string;
+  transactionAuthorContactNumber?: string;
+  transactionAuthorSpecial?: string;
+  transactionAuthorNote?: string;
+  transactionLocationLat?: Float;
+  transactionLocationLng?: Float;
+  transactionRoom?: Int;
+  transactionGuest?: Int;
+  transactionLocationFormattedAddress?: string;
+  transactionRange?: Int;
+  transactionStatus?: string;
+  transactionCoupon?: string;
+  transactionCouponType?: Int;
+  transactionCouponValue?: Int;
+  transactionStartDate?: string;
+  transactionEndDate?: string;
+  transactionStripeId?: string;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface TransactionPreviousValuesPromise
+  extends Promise<TransactionPreviousValues>,
+    Fragmentable {
+  TXID: () => Promise<ID_Output>;
+  transactionSecretKey: () => Promise<string>;
+  transactionHotelName: () => Promise<string>;
+  transactionHotelId: () => Promise<string>;
+  transactionHotelManagerId: () => Promise<string>;
+  transactionHotelType: () => Promise<string>;
+  transactionPrice: () => Promise<Int>;
+  transactionAuthorId: () => Promise<string>;
+  transactionAuthorName: () => Promise<string>;
+  transactionAuthorEmail: () => Promise<string>;
+  transactionAuthorContactNumber: () => Promise<string>;
+  transactionAuthorSpecial: () => Promise<string>;
+  transactionAuthorNote: () => Promise<string>;
+  transactionLocationLat: () => Promise<Float>;
+  transactionLocationLng: () => Promise<Float>;
+  transactionRoom: () => Promise<Int>;
+  transactionGuest: () => Promise<Int>;
+  transactionLocationFormattedAddress: () => Promise<string>;
+  transactionRange: () => Promise<Int>;
+  transactionStatus: () => Promise<string>;
+  transactionCoupon: () => Promise<string>;
+  transactionCouponType: () => Promise<Int>;
+  transactionCouponValue: () => Promise<Int>;
+  transactionStartDate: () => Promise<string>;
+  transactionEndDate: () => Promise<string>;
+  transactionStripeId: () => Promise<string>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface TransactionPreviousValuesSubscription
+  extends Promise<AsyncIterator<TransactionPreviousValues>>,
+    Fragmentable {
+  TXID: () => Promise<AsyncIterator<ID_Output>>;
+  transactionSecretKey: () => Promise<AsyncIterator<string>>;
+  transactionHotelName: () => Promise<AsyncIterator<string>>;
+  transactionHotelId: () => Promise<AsyncIterator<string>>;
+  transactionHotelManagerId: () => Promise<AsyncIterator<string>>;
+  transactionHotelType: () => Promise<AsyncIterator<string>>;
+  transactionPrice: () => Promise<AsyncIterator<Int>>;
+  transactionAuthorId: () => Promise<AsyncIterator<string>>;
+  transactionAuthorName: () => Promise<AsyncIterator<string>>;
+  transactionAuthorEmail: () => Promise<AsyncIterator<string>>;
+  transactionAuthorContactNumber: () => Promise<AsyncIterator<string>>;
+  transactionAuthorSpecial: () => Promise<AsyncIterator<string>>;
+  transactionAuthorNote: () => Promise<AsyncIterator<string>>;
+  transactionLocationLat: () => Promise<AsyncIterator<Float>>;
+  transactionLocationLng: () => Promise<AsyncIterator<Float>>;
+  transactionRoom: () => Promise<AsyncIterator<Int>>;
+  transactionGuest: () => Promise<AsyncIterator<Int>>;
+  transactionLocationFormattedAddress: () => Promise<AsyncIterator<string>>;
+  transactionRange: () => Promise<AsyncIterator<Int>>;
+  transactionStatus: () => Promise<AsyncIterator<string>>;
+  transactionCoupon: () => Promise<AsyncIterator<string>>;
+  transactionCouponType: () => Promise<AsyncIterator<Int>>;
+  transactionCouponValue: () => Promise<AsyncIterator<Int>>;
+  transactionStartDate: () => Promise<AsyncIterator<string>>;
+  transactionEndDate: () => Promise<AsyncIterator<string>>;
+  transactionStripeId: () => Promise<AsyncIterator<string>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface UncheckTransactionsSubscriptionPayload {
+  mutation: MutationType;
+  node: UncheckTransactions;
+  updatedFields: string[];
+  previousValues: UncheckTransactionsPreviousValues;
+}
+
+export interface UncheckTransactionsSubscriptionPayloadPromise
+  extends Promise<UncheckTransactionsSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = UncheckTransactionsPromise>() => T;
+  updatedFields: () => Promise<string[]>;
+  previousValues: <T = UncheckTransactionsPreviousValuesPromise>() => T;
+}
+
+export interface UncheckTransactionsSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<UncheckTransactionsSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = UncheckTransactionsSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<string[]>>;
+  previousValues: <T = UncheckTransactionsPreviousValuesSubscription>() => T;
+}
+
+export interface UncheckTransactionsPreviousValues {
+  id: ID_Output;
+  userUncheckTransactionsId?: string;
+  totalPrice?: Int;
+  totalTransactions?: Int;
+}
+
+export interface UncheckTransactionsPreviousValuesPromise
+  extends Promise<UncheckTransactionsPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  userUncheckTransactionsId: () => Promise<string>;
+  totalPrice: () => Promise<Int>;
+  totalTransactions: () => Promise<Int>;
+}
+
+export interface UncheckTransactionsPreviousValuesSubscription
+  extends Promise<AsyncIterator<UncheckTransactionsPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  userUncheckTransactionsId: () => Promise<AsyncIterator<string>>;
+  totalPrice: () => Promise<AsyncIterator<Int>>;
+  totalTransactions: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface UserSubscriptionPayload {
@@ -4798,10 +12165,15 @@ export interface UserPreviousValues {
   username: string;
   password: string;
   email: string;
+  role?: string;
   cellNumber?: string;
+  profile_pic_main?: string;
+  cover_pic_main?: string;
   date_of_birth?: string;
   gender?: string;
   content?: string;
+  unreadNotification?: Int;
+  stripeId?: string;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -4815,10 +12187,15 @@ export interface UserPreviousValuesPromise
   username: () => Promise<string>;
   password: () => Promise<string>;
   email: () => Promise<string>;
+  role: () => Promise<string>;
   cellNumber: () => Promise<string>;
+  profile_pic_main: () => Promise<string>;
+  cover_pic_main: () => Promise<string>;
   date_of_birth: () => Promise<string>;
   gender: () => Promise<string>;
   content: () => Promise<string>;
+  unreadNotification: () => Promise<Int>;
+  stripeId: () => Promise<string>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -4832,10 +12209,15 @@ export interface UserPreviousValuesSubscription
   username: () => Promise<AsyncIterator<string>>;
   password: () => Promise<AsyncIterator<string>>;
   email: () => Promise<AsyncIterator<string>>;
+  role: () => Promise<AsyncIterator<string>>;
   cellNumber: () => Promise<AsyncIterator<string>>;
+  profile_pic_main: () => Promise<AsyncIterator<string>>;
+  cover_pic_main: () => Promise<AsyncIterator<string>>;
   date_of_birth: () => Promise<AsyncIterator<string>>;
   gender: () => Promise<AsyncIterator<string>>;
   content: () => Promise<AsyncIterator<string>>;
+  unreadNotification: () => Promise<AsyncIterator<Int>>;
+  stripeId: () => Promise<AsyncIterator<string>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
@@ -4862,11 +12244,6 @@ The `String` scalar type represents textual data, represented as UTF-8 character
 export type String = string;
 
 /*
-The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).
-*/
-export type Float = number;
-
-/*
 DateTime scalar input type, allowing Date
 */
 export type DateTimeInput = Date | string;
@@ -4875,6 +12252,11 @@ export type DateTimeInput = Date | string;
 DateTime scalar output type, which is always a string
 */
 export type DateTimeOutput = string;
+
+/*
+The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).
+*/
+export type Float = number;
 
 export type Long = string;
 
@@ -4888,15 +12270,43 @@ export const models: Model[] = [
     embedded: false
   },
   {
+    name: "Transaction",
+    embedded: false
+  },
+  {
+    name: "Coupon",
+    embedded: false
+  },
+  {
+    name: "Hotel",
+    embedded: false
+  },
+  {
+    name: "Notification",
+    embedded: false
+  },
+  {
+    name: "UncheckTransactions",
+    embedded: false
+  },
+  {
+    name: "Reviews",
+    embedded: false
+  },
+  {
+    name: "ReviewOptionals",
+    embedded: false
+  },
+  {
+    name: "ReviewFields",
+    embedded: false
+  },
+  {
     name: "Social",
     embedded: false
   },
   {
     name: "Gender",
-    embedded: false
-  },
-  {
-    name: "Hotel",
     embedded: false
   },
   {
@@ -4909,6 +12319,10 @@ export const models: Model[] = [
   },
   {
     name: "CategoryImages",
+    embedded: false
+  },
+  {
+    name: "ReviewImages",
     embedded: false
   },
   {
