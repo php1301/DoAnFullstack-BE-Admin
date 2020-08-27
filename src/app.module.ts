@@ -9,9 +9,9 @@ import { APP_PIPE } from '@nestjs/core';
 import { ConfigModule } from '@nestjs/config';
 import { ScheduleModule } from '@nestjs/schedule';
 import { UserModule } from './user/user.module';
-import { PubSub } from 'graphql-subscriptions';
-import { RedisPubSub } from 'graphql-redis-subscriptions';
-import * as Redis from 'ioredis';
+// import { PubSub } from 'graphql-subscriptions';
+// import { RedisPubSub } from 'graphql-redis-subscriptions';
+// import * as Redis from 'ioredis';
 // document cho mail https://nest-modules.github.io/mailer/docs/mailer.html
 import { MailerModule } from '@nestjs-modules/mailer';
 import { PugAdapter } from '@nestjs-modules/mailer/dist/adapters/pug.adapter';
@@ -22,6 +22,7 @@ import { TransactionModule } from './transaction/transaction.module';
 import { StripeService } from './utils/stripe';
 import { CronService } from './cron/cron.service';
 import { CronModule } from './cron/cron.module';
+import { MailService } from './services/sendEmail';
 
 // Để validation work xuyên suốt app thì phải provide validation pipe
 @Module({
@@ -72,6 +73,7 @@ import { CronModule } from './cron/cron.module';
       provide: APP_PIPE,
       useClass: ValidationPipe,
     },
+    MailService,
     AwsService,
     StripeService,
     CronService,
