@@ -4,8 +4,8 @@ import * as mailjet from 'node-mailjet';
 @Injectable()
 export class MailService {
   constructor(private readonly mailerService: MailerService) {}
-  public sendEmail(email): void {
-    console.log(email, process.env.LOCAL_EMAIL, process.env.LOCAL_PASSWORD);
+  public sendEmail(email, code): void {
+    // console.log(email, process.env.LOCAL_EMAIL, process.env.LOCAL_PASSWORD);
     this.mailerService
       .sendMail({
         to: email,
@@ -13,7 +13,8 @@ export class MailService {
         subject: 'Reset password Link ✔',
         template: __dirname + '/template/reset',
         context: {
-          email: email,
+          email,
+          code,
         },
       })
       .then(success => {
