@@ -32,6 +32,8 @@ type User {
   transaction_maked: [Transaction]
     @relation(link: INLINE, name: "Transaction_maked")
   coupons_maked: [Coupon] @relation(link: INLINE, name: "Coupon_maked")
+  uncheckTransactions: UncheckTransactions
+    @relation(link: INLINE, name: "Uncheck_transactions")
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
@@ -128,6 +130,13 @@ type Notification {
   reviewAuthorProfilePic: String
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
+}
+type UncheckTransactions {
+  id: ID! @id
+  userUncheckTransactionsId: String
+  userUncheckTransactions: User @relation(name: "Uncheck_transactions")
+  totalPrice: Int @default(value: 0)
+  totalTransactions: Int @default(value: 0)
 }
 type Reviews {
   reviewID: ID! @id
