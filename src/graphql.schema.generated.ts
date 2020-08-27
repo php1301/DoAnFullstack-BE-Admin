@@ -150,6 +150,8 @@ export class TransactionInput {
     transactionLocationFormattedAddress?: string;
     transactionLocationLat?: number;
     transactionLocationLng?: number;
+    transactionRoom?: number;
+    transactionGuest?: number;
     transactionRange?: number;
     transactionStartDate?: string;
     transactionEndDate?: string;
@@ -197,6 +199,7 @@ export class AuthPayload {
     last_name?: string;
     profile_pic_main?: string;
     cover_pic_main?: string;
+    role?: string;
 }
 
 export class Categories {
@@ -301,6 +304,10 @@ export abstract class IMutation {
 
     abstract login(loginInput?: LoginInput): AuthPayload | Promise<AuthPayload>;
 
+    abstract facebookLogin(email?: string, accessToken?: string, socialInfo?: string, socialId?: string, socialProfileLink?: string): AuthPayload | Promise<AuthPayload>;
+
+    abstract googleLogin(email?: string, accessToken?: string, socialInfo?: string, socialId?: string, profileImage?: string): AuthPayload | Promise<AuthPayload>;
+
     abstract createHotel(addHotelInput?: AddHotelInput, location?: LocationInput[], image?: ImageInput[], categories?: CategoriesInput[]): Hotel | Promise<Hotel>;
 
     abstract sortHotel(type?: string): Hotel[] | Promise<Hotel[]>;
@@ -327,6 +334,8 @@ export abstract class IMutation {
 
     abstract forgetPassword(email?: string): User | Promise<User>;
 
+    abstract changePasswordFromForgetPassword(email?: string, password?: string): User | Promise<User>;
+
     abstract sendContact(contact?: ContactInput): User | Promise<User>;
 
     abstract makeReviews(reviews?: ReviewInput, hotelId?: string): Hotel | Promise<Hotel>;
@@ -346,6 +355,8 @@ export abstract class IMutation {
     abstract checkCoupon(hotelId?: string, couponName?: string): Coupon | Promise<Coupon>;
 
     abstract processTransactions(id?: string[], type?: number): Transaction | Promise<Transaction>;
+
+    abstract updateTotalUnreadTransactions(): User | Promise<User>;
 
     abstract deleteCoupons(id?: string[]): Coupon[] | Promise<Coupon[]>;
 
@@ -429,6 +440,10 @@ export abstract class IQuery {
 
     abstract getTransactionDetails(transactionSecretKey?: string): Transaction[] | Promise<Transaction[]>;
 
+    abstract getTotalUnreadTransactions(): User | Promise<User>;
+
+    abstract getVendorStripeId(id?: string): User | Promise<User>;
+
     abstract noop(): boolean | Promise<boolean>;
 }
 
@@ -486,7 +501,7 @@ export abstract class ISubscription {
 
     abstract realtimeLikeDislike(reviewID?: string): Reviews | Promise<Reviews>;
 
-    abstract realtimeNotiTransaction(userId?: string): Notification | Promise<Notification>;
+    abstract realtimeNotificationTransaction(userId?: string): TransactionNotification | Promise<TransactionNotification>;
 }
 
 export class Transaction {
@@ -508,6 +523,8 @@ export class Transaction {
     transactionLocationLat?: number;
     transactionLocationLng?: number;
     transactionLocationFormattedAddress?: string;
+    transactionRoom?: number;
+    transactionGuest?: number;
     transactionRange?: number;
     transactionStatus?: string;
     transactionCoupon?: string;
@@ -518,6 +535,19 @@ export class Transaction {
     transactionStripeId?: string;
     createdAt: string;
     updatedAt: string;
+}
+
+export class TransactionNotification {
+    TXID: string;
+    transactionPrice?: number;
+}
+
+export class UncheckTransactions {
+    id: string;
+    userUncheckTransactionsId?: string;
+    userUncheckTransactions?: User;
+    totalPrice?: number;
+    totalTransactions?: number;
 }
 
 export class Unread {
@@ -554,6 +584,7 @@ export class User {
     review_disliked?: Reviews[];
     transaction_had?: Transaction[];
     transaction_maked?: Transaction[];
+    uncheckTransactions?: UncheckTransactions;
     coupons_maked?: Coupon[];
     createdAt: string;
     updatedAt: string;
