@@ -11,6 +11,7 @@ import { Response, Request } from 'express';
 import { AwsService } from 'src/aws/aws.service';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import * as fs from 'fs';
+import * as jwt2 from 'jsonwebtoken';
 
 import { StripeService } from './stripe';
 
