@@ -10,5 +10,11 @@ export class AuthService {
     if (!user) throw Error('Authenticate validation error');
     return user
   }
+  async socialValidate({ email }): Promise<User> {
+    const user = await this.prisma.client.user({ email });
+    console.log(user)
+    if (!user) throw Error('Authenticate validation error');
+    return user
+  }
 //   Check có user ko bằng cách find Id
 }

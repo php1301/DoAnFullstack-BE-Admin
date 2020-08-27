@@ -5,6 +5,9 @@ import { PrismaModule } from 'src/prisma/prisma.module';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './jwt.strategy';
+import { FacebookStrategy } from './facebook.strategy';
+import { GoogleStrategy } from './google.strategy';
+import { GithubController } from './github/github.controller';
 
 @Module({
   imports: [
@@ -21,6 +24,7 @@ import { JwtStrategy } from './jwt.strategy';
       },
     }),
   ],
-  providers: [AuthService, AuthResolver, JwtStrategy],
+  providers: [AuthService, AuthResolver, JwtStrategy, FacebookStrategy, GoogleStrategy],
+  controllers: [GithubController],
 })
 export class AuthModule {}
