@@ -15,7 +15,6 @@ import { UserModule } from './user/user.module';
 // document cho mail https://nest-modules.github.io/mailer/docs/mailer.html
 import { MailerModule } from '@nestjs-modules/mailer';
 import { PugAdapter } from '@nestjs-modules/mailer/dist/adapters/pug.adapter';
-import { PingPongModule } from './ping-pong/ping-pong.module';
 import { AwsService } from './aws/aws.service';
 import { UtilsModule } from './utils/utils.module';
 import { TransactionModule } from './transaction/transaction.module';
@@ -62,7 +61,6 @@ import { MailService } from './services/sendEmail';
     HotelModule,
     AuthModule,
     UserModule,
-    PingPongModule,
     UtilsModule,
     TransactionModule,
     CronModule,
