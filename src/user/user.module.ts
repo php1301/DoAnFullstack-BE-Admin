@@ -12,8 +12,9 @@ import * as Redis from 'ioredis';
       provide: 'PUB_SUB',
       useFactory: () => {
         const options = {
-          host: 'localhost',
-          port: 6379,
+          host : 'us1-devoted-eagle-31038.lambda.store',
+          port : '31038',
+          password: 'a12ca63c60714b60a1b01bb7299f193f',
         };
         return new RedisPubSub({
           publisher: new Redis(options),

@@ -462,16 +462,7 @@ input CouponCheckedPayload {
   couponType: Int
 }
 # Realtime Section
-type Query {
-  noop: Boolean
-}
-
-type Mutation {
-  ping: Ping
-}
-
 type Subscription {
-  pong: Pong
   unreadNotification(channelId: String): Unread
   notificationBell(channelId: String): Notification
   realtimeReviews(hotelId: String): Reviews
@@ -518,11 +509,4 @@ type UncheckTransactions {
 }
 type Unread {
   unreadNotification: Int
-}
-type Ping {
-  id: ID
-}
-
-type Pong {
-  pingId: ID
 }

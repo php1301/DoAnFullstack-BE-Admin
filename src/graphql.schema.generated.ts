@@ -361,8 +361,6 @@ export abstract class IMutation {
     abstract deleteCoupons(id?: string[]): Coupon[] | Promise<Coupon[]>;
 
     abstract updateStripeId(stripeId?: string, type?: string): User | Promise<User>;
-
-    abstract ping(): Ping | Promise<Ping>;
 }
 
 export class Notification {
@@ -379,14 +377,6 @@ export class Notification {
     old?: boolean;
     createdAt: string;
     updatedAt: string;
-}
-
-export class Ping {
-    id?: string;
-}
-
-export class Pong {
-    pingId?: string;
 }
 
 export abstract class IQuery {
@@ -443,8 +433,6 @@ export abstract class IQuery {
     abstract getTotalUnreadTransactions(): User | Promise<User>;
 
     abstract getVendorStripeId(id?: string): User | Promise<User>;
-
-    abstract noop(): boolean | Promise<boolean>;
 }
 
 export class ReviewFields {
@@ -491,8 +479,6 @@ export class Social {
 }
 
 export abstract class ISubscription {
-    abstract pong(): Pong | Promise<Pong>;
-
     abstract unreadNotification(channelId?: string): Unread | Promise<Unread>;
 
     abstract notificationBell(channelId?: string): Notification | Promise<Notification>;
