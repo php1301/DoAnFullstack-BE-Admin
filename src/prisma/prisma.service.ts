@@ -5,6 +5,8 @@ export class PrismaService {
   client: Prisma;
 
   constructor() {
-    this.client = new Prisma();
+    this.client = new Prisma({
+      endpoint: 'https://hotelprismaserver.herokuapp.com'
+    });
   }
 }
