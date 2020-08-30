@@ -21,7 +21,7 @@ const setup = async (dataMock: any[]) => {
   dataMock.forEach(async i => {
     hotel
       .createHotel({
-        agentId: '5f47f018a7b11b0007d4d2f4',
+        agentId: '5f4b4aae51915100070a6c9e',
         connectId: {
           connect: {
             email: 'duyminhpham1201@gmail.com',

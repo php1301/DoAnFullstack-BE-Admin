@@ -1,5 +1,37 @@
-version: '3'
+version: '3.7'
+
 services:
+  # API container
+  api:
+    container_name: api
+    # build:
+    #   context: ./
+    image: abcxyz.docker bla bla
+    restart: on-failure
+    volumes:
+      - api:/usr/src/app
+    ports:
+      - 3000:3000
+    env_file:
+      - ./.env
+    depends_on:
+      - redis
+      - prisma
+    networks:
+      - api
+  redis:
+    image: redis:latest
+    container_name: redis
+    restart: on-failure
+    ports:
+      - 6379:6379
+    volumes:
+      - redis-data:/var/lib/redis
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    entrypoint: redis-server /usr/local/etc/redis/redis.conf
+    networks:
+      api:
+        ipv4_address: 172.28.1.4
   prisma:
     image: prismagraphql/prisma:1.34
     restart: always
@@ -11,8 +43,12 @@ services:
         databases:
           default:
             connector: mongo
-            uri: mongodb://host.docker.internal:27017/HotelPrisma
+            uri: mongodb://prisma:prisma@mongo:27017/HotelPrisma?authSource=admin
             database: HotelPrisma
+    networks:
+      - api
+    depends_on:
+      - mongo
   mongo:
     image: mongo:3.6
     restart: always
@@ -23,5 +59,15 @@ services:
       - '27017:27017'
     volumes:
       - mongo:/var/lib/mongo
+    networks:
+      - api
 volumes:
-  mongo: ~
+  mongo:
+  api:
+  redis-data:
+networks:
+  api:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.0.0/16
