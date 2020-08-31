@@ -43,7 +43,7 @@ export class AuthResolver {
     );
     console.log(jwt)
     console.log("jwt")
-    res.cookie('token', jwt, { httpOnly: true });
+    res.cookie('token', jwt, { httpOnly: true, sameSite:"none" });
     return user;
   }
   @Mutation()
@@ -83,7 +83,7 @@ export class AuthResolver {
         },
         process.env.JWT_SECRET,
       );
-      res.cookie('token', jwt, { httpOnly: false });
+      res.cookie('token', jwt, { httpOnly: true, sameSite:"none" });
       return socialUser;
     }
     // sign JWT hợp lệ
@@ -96,7 +96,7 @@ export class AuthResolver {
       },
       process.env.JWT_SECRET,
     );
-    res.cookie('token', jwt, { httpOnly: false });
+    res.cookie('token', jwt, { httpOnly: true, sameSite:"none" });
     return user;
   }
   @Mutation()
@@ -130,7 +130,7 @@ export class AuthResolver {
         },
         process.env.JWT_SECRET,
       );
-      res.cookie('token', jwt, { httpOnly: false });
+      res.cookie('token', jwt, { httpOnly: true, sameSite:"none" });
       return socialUser;
     }
     // sign JWT hợp lệ
@@ -143,7 +143,7 @@ export class AuthResolver {
       },
       process.env.JWT_SECRET,
     );
-    res.cookie('token', jwt, { httpOnly: false });
+    res.cookie('token', jwt, { httpOnly: true, sameSite:"none" });
     return user;
   }
   @Mutation()
@@ -191,7 +191,7 @@ export class AuthResolver {
       },
       process.env.JWT_SECRET,
     );
-    res.cookie('token', jwt, { httpOnly: false });
+    res.cookie('token', jwt, { httpOnly: true, sameSite:"none" });
     return user;
   }
   @Mutation()
