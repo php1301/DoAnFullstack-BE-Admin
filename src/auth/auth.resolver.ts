@@ -31,7 +31,7 @@ export class AuthResolver {
     if (!valid) {
       throw Error('Password is incorrect');
     }
-
+    console.log("this is new");
     console.log(process.env.JWT_SECRET);
     const jwt = jwt2.sign(
       {
@@ -42,7 +42,8 @@ export class AuthResolver {
       process.env.JWT_SECRET,
     );
     console.log(jwt)
-    res.cookie('token', jwt, { httpOnly: false });
+    console.log("jwt")
+    res.cookie('token', jwt, { httpOnly: true });
     return user;
   }
   @Mutation()
