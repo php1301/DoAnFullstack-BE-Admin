@@ -6,7 +6,7 @@ import * as _ from 'lodash';
 //     secret: 'secreetttttt',
 //   })  //custom endpoint
 
-// Có thể hoàn toàn ko cần làm file seed
+// Có thể hoàn toàn ko cần làm file seed.ts
 // Call truyền đối số data vào hàm và gọi luôn
 // Nhưng chủ yếu để biết chạy chạy seed mongodb graphql bằng cli
 
