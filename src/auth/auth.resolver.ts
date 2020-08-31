@@ -41,6 +41,7 @@ export class AuthResolver {
       },
       process.env.JWT_SECRET,
     );
+    console.log(jwt)
     res.cookie('token', jwt, { httpOnly: false });
     return user;
   }
