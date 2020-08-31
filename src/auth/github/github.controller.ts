@@ -42,7 +42,11 @@ export class GithubController {
           },
           process.env.JWT_SECRET,
         );
-        res.cookie('token', jwt, { httpOnly: false });
+        res.cookie('token', jwt, {
+          httpOnly: true,
+          sameSite: 'none',
+          secure: true,
+        });
         const userSendToClient = {
           first_name: user.first_name,
           last_name: user.last_name,
@@ -53,7 +57,7 @@ export class GithubController {
           role: user.role,
         };
         res.status(200).json({ userSendToClient });
-        return user
+        return user;
       }
       //   userEmails.body.map(async i => {
       //     console.log(i.email);
@@ -77,7 +81,11 @@ export class GithubController {
         },
         process.env.JWT_SECRET,
       );
-      res.cookie('token', jwt, { httpOnly: false });
+      res.cookie('token', jwt, {
+        httpOnly: true,
+        sameSite: 'none',
+        secure: true,
+      });
       const userSendToClient = {
         first_name: userCreated.first_name,
         last_name: userCreated.last_name,
@@ -88,7 +96,7 @@ export class GithubController {
         role: userCreated.role,
       };
       res.status(200).json({ userSendToClient });
-      return userCreated
+      return userCreated;
     } catch (e) {
       console.log(e);
     }
