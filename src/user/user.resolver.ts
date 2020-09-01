@@ -698,7 +698,7 @@ export class UserResolver {
       throw Error('Email not exists');
     }
     const code = uuidv4();
-    res.cookie('reset-password', code, { httpOnly: true });
+    res.cookie('reset-password', code, { httpOnly: false });
     return this.mailService.sendEmail(email, code);
   }
   @Mutation()

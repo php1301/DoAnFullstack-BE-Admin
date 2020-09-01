@@ -43,7 +43,7 @@ export class GithubController {
           process.env.JWT_SECRET,
         );
         res.cookie('token', jwt, {
-          httpOnly: true,
+          httpOnly: false,
           sameSite: 'none',
           secure: true,
         });
@@ -82,7 +82,7 @@ export class GithubController {
         process.env.JWT_SECRET,
       );
       res.cookie('token', jwt, {
-        httpOnly: true,
+        httpOnly: false,
         sameSite: 'none',
         secure: true,
       });

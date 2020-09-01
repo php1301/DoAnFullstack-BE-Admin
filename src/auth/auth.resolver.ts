@@ -31,7 +31,7 @@ export class AuthResolver {
     if (!valid) {
       throw Error('Password is incorrect');
     }
-    console.log("this is new");
+    console.log('this is new');
     console.log(process.env.JWT_SECRET);
     const jwt = jwt2.sign(
       {
@@ -41,9 +41,13 @@ export class AuthResolver {
       },
       process.env.JWT_SECRET,
     );
-    console.log(jwt)
-    console.log("jwt")
-    res.cookie('token', jwt, { httpOnly: true, sameSite:"none", secure:true });
+    console.log(jwt);
+    console.log('jwt');
+    res.cookie('token', jwt, {
+      httpOnly: false,
+      sameSite: 'none',
+      secure: true,
+    });
     return user;
   }
   @Mutation()
@@ -83,7 +87,11 @@ export class AuthResolver {
         },
         process.env.JWT_SECRET,
       );
-      res.cookie('token', jwt, { httpOnly: true, sameSite:"none", secure:true });
+      res.cookie('token', jwt, {
+        httpOnly: false,
+        sameSite: 'none',
+        secure: true,
+      });
       return socialUser;
     }
     // sign JWT hợp lệ
@@ -96,7 +104,11 @@ export class AuthResolver {
       },
       process.env.JWT_SECRET,
     );
-    res.cookie('token', jwt, { httpOnly: true, sameSite:"none", secure:true });
+    res.cookie('token', jwt, {
+      httpOnly: false,
+      sameSite: 'none',
+      secure: true,
+    });
     return user;
   }
   @Mutation()
@@ -130,7 +142,11 @@ export class AuthResolver {
         },
         process.env.JWT_SECRET,
       );
-      res.cookie('token', jwt, { httpOnly: true, sameSite:"none", secure:true });
+      res.cookie('token', jwt, {
+        httpOnly: false,
+        sameSite: 'none',
+        secure: true,
+      });
       return socialUser;
     }
     // sign JWT hợp lệ
@@ -143,7 +159,11 @@ export class AuthResolver {
       },
       process.env.JWT_SECRET,
     );
-    res.cookie('token', jwt, { httpOnly: true, sameSite:"none", secure:true });
+    res.cookie('token', jwt, {
+      httpOnly: false,
+      sameSite: 'none',
+      secure: true,
+    });
     return user;
   }
   @Mutation()
@@ -191,7 +211,11 @@ export class AuthResolver {
       },
       process.env.JWT_SECRET,
     );
-    res.cookie('token', jwt, { httpOnly: true, sameSite:"none", secure:true });
+    res.cookie('token', jwt, {
+      httpOnly: false,
+      sameSite: 'none',
+      secure: true,
+    });
     return user;
   }
   @Mutation()
@@ -227,7 +251,7 @@ export class AuthResolver {
     //   },
     //   process.env.JWT_SECRET,
     // );
-    // res.cookie('token', jwt, { httpOnly: true });
+    // res.cookie('token', jwt, { httpOnly: false });
     return this.prisma.client.updateUser({
       where: {
         id: user.id,
