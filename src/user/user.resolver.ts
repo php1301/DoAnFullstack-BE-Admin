@@ -698,7 +698,12 @@ export class UserResolver {
       throw Error('Email not exists');
     }
     const code = uuidv4();
-    res.cookie('reset-password', code, { httpOnly: false });
+    res.cookie('reset-password', code, {
+      httpOnly: false,
+      sameSite: 'none',
+      secure: true,
+      domain: '.hotel-prisma.vercel.app',
+    });
     return this.mailService.sendEmail(email, code);
   }
   @Mutation()
