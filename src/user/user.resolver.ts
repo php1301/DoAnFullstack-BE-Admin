@@ -702,7 +702,6 @@ export class UserResolver {
       httpOnly: false,
       sameSite: 'none',
       secure: true,
-      domain: '.hotel-prisma.vercel.app',
     });
     return this.mailService.sendEmail(email, code);
   }
