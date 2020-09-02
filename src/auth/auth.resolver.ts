@@ -62,7 +62,7 @@ export class AuthResolver {
   ) {
     // Có thể thêm biến type để tạo nhiều dạng social như google, github,...
     const user = await this.prisma.client.user({ email });
-    const profile_pic_main = `http://graph.facebook.com/${socialId}/picture?width=200&height=200`;
+    const profile_pic_main = `https://graph.facebook.com/${socialId}/picture?width=200&height=200`;
     if (!user) {
       const socialUser = await this.prisma.client.createUser({
         email,
