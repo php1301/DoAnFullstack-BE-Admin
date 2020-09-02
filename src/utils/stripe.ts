@@ -59,8 +59,8 @@ export class StripeService {
       });
       const accountLink = await this.stripe.accountLinks.create({
         account: account.id,
-        refresh_url: 'http://localhost:3002/error', // Khi link ko còn valid
-        return_url: `http://localhost:3002/processing?accountId=${account.id}&plan=${plan.type}`, // redirect  //Dev mode thì đang http
+        refresh_url: 'https://vercel-v2.hotel-prisma.ml//error', // Khi link ko còn valid
+        return_url: `https://vercel-v2.hotel-prisma.ml/processing?accountId=${account.id}&plan=${plan.type}`, // redirect  //Dev mode thì đang http
         type: 'account_onboarding',
       });
       res.status(200).json({ accountLink });
