@@ -44,6 +44,7 @@ export class AuthResolver {
     console.log(jwt);
     console.log('jwt');
     res.cookie('token', jwt, {
+      domain: '.hotel-prisma.ml',
       httpOnly: false,
       sameSite: 'none',
       secure: true,
@@ -88,6 +89,7 @@ export class AuthResolver {
         process.env.JWT_SECRET,
       );
       res.cookie('token', jwt, {
+        domain: '.hotel-prisma.ml',
         httpOnly: false,
         sameSite: 'none',
         secure: true,
@@ -105,6 +107,7 @@ export class AuthResolver {
       process.env.JWT_SECRET,
     );
     res.cookie('token', jwt, {
+      domain: '.hotel-prisma.ml',
       httpOnly: false,
       sameSite: 'none',
       secure: true,
@@ -143,6 +146,7 @@ export class AuthResolver {
         process.env.JWT_SECRET,
       );
       res.cookie('token', jwt, {
+        domain: '.hotel-prisma.ml',
         httpOnly: false,
         sameSite: 'none',
         secure: true,
@@ -160,6 +164,7 @@ export class AuthResolver {
       process.env.JWT_SECRET,
     );
     res.cookie('token', jwt, {
+      domain: '.hotel-prisma.ml',
       httpOnly: false,
       sameSite: 'none',
       secure: true,
@@ -212,6 +217,7 @@ export class AuthResolver {
       process.env.JWT_SECRET,
     );
     res.cookie('token', jwt, {
+      domain: '.hotel-prisma.ml',
       httpOnly: false,
       sameSite: 'none',
       secure: true,

@@ -699,6 +699,7 @@ export class UserResolver {
     }
     const code = uuidv4();
     res.cookie('reset-password', code, {
+      domain: '.hotel-prisma.ml',
       httpOnly: false,
       sameSite: 'none',
       secure: true,
