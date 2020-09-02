@@ -1,3 +1,4 @@
+// Nhớ replace all từ http sang https khi sử dụng cho prod
 export const mockData = [
   {
     title: 'Handmade Wooden Mouse',
@@ -17,9 +18,9 @@ export const mockData = [
     slug: 'amet-rem-tempora',
     status: 'publish',
     image: {
-      url: 'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1.jpg',
+      url: 'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1_thumb.jpg',
     },
     price: '223.00',
     isNegotiable: false,
@@ -56,15 +57,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4_thumb.jpg',
       },
     ],
     categories: [
@@ -74,7 +75,7 @@ export const mockData = [
         image: {
           id: 22552,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5.jpg',
         },
       },
       {
@@ -83,7 +84,7 @@ export const mockData = [
         image: {
           id: 77761,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6.jpg',
         },
       },
     ],
@@ -106,9 +107,9 @@ export const mockData = [
     slug: 'dolore-rerum-voluptates',
     status: 'publish',
     image: {
-      url: 'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7.jpg',
+      url: 'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7_thumb.jpg',
     },
     price: '768.00',
     isNegotiable: true,
@@ -145,15 +146,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9_thumb.jpg',
       },
     ],
     categories: [
@@ -163,7 +164,7 @@ export const mockData = [
         image: {
           id: 19167,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11.jpg',
         },
       },
       {
@@ -172,7 +173,7 @@ export const mockData = [
         image: {
           id: 16428,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12.jpg',
         },
       },
     ],
@@ -196,9 +197,9 @@ export const mockData = [
     status: 'draft',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13_thumb.jpg',
     },
     price: '191.00',
     isNegotiable: false,
@@ -235,15 +236,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16_thumb.jpg',
       },
     ],
     categories: [
@@ -253,7 +254,7 @@ export const mockData = [
         image: {
           id: 48920,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17.jpg',
         },
       },
       {
@@ -262,7 +263,7 @@ export const mockData = [
         image: {
           id: 63044,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18.jpg',
         },
       },
     ],
@@ -286,9 +287,9 @@ export const mockData = [
     status: 'publish',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19_thumb.jpg',
     },
     price: '662.00',
     isNegotiable: true,
@@ -325,15 +326,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2_thumb.jpg',
       },
     ],
     categories: [
@@ -343,7 +344,7 @@ export const mockData = [
         image: {
           id: 61717,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3.jpg',
         },
       },
       {
@@ -352,7 +353,7 @@ export const mockData = [
         image: {
           id: 38977,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4.jpg',
         },
       },
     ],
@@ -375,9 +376,9 @@ export const mockData = [
     slug: 'repellat-excepturi-nobis',
     status: 'draft',
     image: {
-      url: 'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5.jpg',
+      url: 'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5_thumb.jpg',
     },
     price: '888.00',
     isNegotiable: false,
@@ -414,15 +415,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8_thumb.jpg',
       },
     ],
     categories: [
@@ -432,7 +433,7 @@ export const mockData = [
         image: {
           id: 96094,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9.jpg',
         },
       },
       {
@@ -441,7 +442,7 @@ export const mockData = [
         image: {
           id: 62679,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10.jpg',
         },
       },
     ],
@@ -465,9 +466,9 @@ export const mockData = [
     status: 'draft',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11_thumb.jpg',
     },
     price: '316.00',
     isNegotiable: true,
@@ -504,15 +505,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14_thumb.jpg',
       },
     ],
     categories: [
@@ -522,7 +523,7 @@ export const mockData = [
         image: {
           id: 58361,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15.jpg',
         },
       },
       {
@@ -531,7 +532,7 @@ export const mockData = [
         image: {
           id: 37088,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16.jpg',
         },
       },
     ],
@@ -555,9 +556,9 @@ export const mockData = [
     status: 'publish',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17_thumb.jpg',
     },
     price: '245.00',
     isNegotiable: false,
@@ -594,15 +595,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20_thumb.jpg',
       },
     ],
     categories: [
@@ -612,7 +613,7 @@ export const mockData = [
         image: {
           id: 75607,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1.jpg',
         },
       },
       {
@@ -621,7 +622,7 @@ export const mockData = [
         image: {
           id: 53293,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2.jpg',
         },
       },
     ],
@@ -644,9 +645,9 @@ export const mockData = [
     slug: 'nobis-et-et',
     status: 'draft',
     image: {
-      url: 'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3.jpg',
+      url: 'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3_thumb.jpg',
     },
     price: '662.00',
     isNegotiable: false,
@@ -683,15 +684,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6_thumb.jpg',
       },
     ],
     categories: [
@@ -701,7 +702,7 @@ export const mockData = [
         image: {
           id: 56187,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7.jpg',
         },
       },
       {
@@ -710,7 +711,7 @@ export const mockData = [
         image: {
           id: 87999,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8.jpg',
         },
       },
     ],
@@ -733,9 +734,9 @@ export const mockData = [
     slug: 'eum-voluptas-tempore',
     status: 'draft',
     image: {
-      url: 'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9.jpg',
+      url: 'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9_thumb.jpg',
     },
     price: '170.00',
     isNegotiable: false,
@@ -772,15 +773,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12_thumb.jpg',
       },
     ],
     categories: [
@@ -790,7 +791,7 @@ export const mockData = [
         image: {
           id: 84182,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13.jpg',
         },
       },
       {
@@ -799,7 +800,7 @@ export const mockData = [
         image: {
           id: 63767,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14.jpg',
         },
       },
     ],
@@ -823,9 +824,9 @@ export const mockData = [
     status: 'publish',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15_thumb.jpg',
     },
     price: '195.00',
     isNegotiable: true,
@@ -862,15 +863,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18_thumb.jpg',
       },
     ],
     categories: [
@@ -880,7 +881,7 @@ export const mockData = [
         image: {
           id: 53415,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19.jpg',
         },
       },
       {
@@ -889,7 +890,7 @@ export const mockData = [
         image: {
           id: 81374,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20.jpg',
         },
       },
     ],
@@ -912,9 +913,9 @@ export const mockData = [
     slug: 'ipsum-libero-in',
     status: 'draft',
     image: {
-      url: 'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1.jpg',
+      url: 'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1_thumb.jpg',
     },
     price: '410.00',
     isNegotiable: true,
@@ -951,15 +952,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4_thumb.jpg',
       },
     ],
     categories: [
@@ -969,7 +970,7 @@ export const mockData = [
         image: {
           id: 10185,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5.jpg',
         },
       },
       {
@@ -978,7 +979,7 @@ export const mockData = [
         image: {
           id: 67182,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6.jpg',
         },
       },
     ],
@@ -1001,9 +1002,9 @@ export const mockData = [
     slug: 'mollitia-laudantium-magnam',
     status: 'publish',
     image: {
-      url: 'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7.jpg',
+      url: 'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7_thumb.jpg',
     },
     price: '377.00',
     isNegotiable: true,
@@ -1040,15 +1041,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10_thumb.jpg',
       },
     ],
     categories: [
@@ -1058,7 +1059,7 @@ export const mockData = [
         image: {
           id: 58629,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11.jpg',
         },
       },
       {
@@ -1067,7 +1068,7 @@ export const mockData = [
         image: {
           id: 4891,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12.jpg',
         },
       },
     ],
@@ -1091,9 +1092,9 @@ export const mockData = [
     status: 'publish',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13_thumb.jpg',
     },
     price: '30.00',
     isNegotiable: true,
@@ -1130,15 +1131,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16_thumb.jpg',
       },
     ],
     categories: [
@@ -1148,7 +1149,7 @@ export const mockData = [
         image: {
           id: 81026,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17.jpg',
         },
       },
       {
@@ -1157,7 +1158,7 @@ export const mockData = [
         image: {
           id: 14937,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18.jpg',
         },
       },
     ],
@@ -1181,9 +1182,9 @@ export const mockData = [
     status: 'draft',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19_thumb.jpg',
     },
     price: '390.00',
     isNegotiable: false,
@@ -1220,15 +1221,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2_thumb.jpg',
       },
     ],
     categories: [
@@ -1238,7 +1239,7 @@ export const mockData = [
         image: {
           id: 33062,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3.jpg',
         },
       },
       {
@@ -1247,7 +1248,7 @@ export const mockData = [
         image: {
           id: 66264,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4.jpg',
         },
       },
     ],
@@ -1270,9 +1271,9 @@ export const mockData = [
     slug: 'laboriosam-animi-fuga',
     status: 'draft',
     image: {
-      url: 'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5.jpg',
+      url: 'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5_thumb.jpg',
     },
     price: '312.00',
     isNegotiable: false,
@@ -1309,15 +1310,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8_thumb.jpg',
       },
     ],
     categories: [
@@ -1327,7 +1328,7 @@ export const mockData = [
         image: {
           id: 90707,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9.jpg',
         },
       },
       {
@@ -1336,7 +1337,7 @@ export const mockData = [
         image: {
           id: 47746,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10.jpg',
         },
       },
     ],
@@ -1360,9 +1361,9 @@ export const mockData = [
     status: 'publish',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11_thumb.jpg',
     },
     price: '438.00',
     isNegotiable: true,
@@ -1399,15 +1400,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14_thumb.jpg',
       },
     ],
     categories: [
@@ -1417,7 +1418,7 @@ export const mockData = [
         image: {
           id: 43167,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15.jpg',
         },
       },
       {
@@ -1426,7 +1427,7 @@ export const mockData = [
         image: {
           id: 98191,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16.jpg',
         },
       },
     ],
@@ -1450,9 +1451,9 @@ export const mockData = [
     status: 'draft',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18_thumb.jpg',
     },
     price: '366.00',
     isNegotiable: true,
@@ -1489,15 +1490,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19_thumb.jpg',
       },
     ],
     categories: [
@@ -1507,7 +1508,7 @@ export const mockData = [
         image: {
           id: 890,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1.jpg',
         },
       },
       {
@@ -1516,9 +1517,9 @@ export const mockData = [
         image: {
           id: 98189,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15.jpg',
           thumb_url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15_thumb.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15_thumb.jpg',
         },
       },
     ],
@@ -1541,9 +1542,9 @@ export const mockData = [
     slug: 'qui-quis-inventore',
     status: 'publish',
     image: {
-      url: 'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2.jpg',
+      url: 'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2_thumb.jpg',
     },
     price: '753.00',
     isNegotiable: false,
@@ -1580,15 +1581,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6_thumb.jpg',
       },
     ],
     categories: [
@@ -1598,7 +1599,7 @@ export const mockData = [
         image: {
           id: 31149,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7.jpg',
         },
       },
       {
@@ -1607,7 +1608,7 @@ export const mockData = [
         image: {
           id: 50761,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8.jpg',
         },
       },
     ],
@@ -1630,9 +1631,9 @@ export const mockData = [
     slug: 'aspernatur-perferendis-illo',
     status: 'draft',
     image: {
-      url: 'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9.jpg',
+      url: 'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9_thumb.jpg',
     },
     price: '204.00',
     isNegotiable: false,
@@ -1669,15 +1670,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12_thumb.jpg',
       },
     ],
     categories: [
@@ -1687,7 +1688,7 @@ export const mockData = [
         image: {
           id: 22507,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14.jpg',
         },
       },
       {
@@ -1696,7 +1697,7 @@ export const mockData = [
         image: {
           id: 47914,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13.jpg',
         },
       },
     ],
@@ -1720,9 +1721,9 @@ export const mockData = [
     status: 'publish',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15_thumb.jpg',
     },
     price: '648.00',
     isNegotiable: true,
@@ -1759,15 +1760,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16_thumb.jpg',
       },
     ],
     categories: [
@@ -1777,7 +1778,7 @@ export const mockData = [
         image: {
           id: 21543,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19.jpg',
         },
       },
       {
@@ -1786,7 +1787,7 @@ export const mockData = [
         image: {
           id: 87771,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20.jpg',
         },
       },
     ],
@@ -1809,9 +1810,9 @@ export const mockData = [
     slug: 'ratione-rerum-labore',
     status: 'publish',
     image: {
-      url: 'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1.jpg',
+      url: 'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1_thumb.jpg',
     },
     price: '648.00',
     isNegotiable: true,
@@ -1848,15 +1849,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4_thumb.jpg',
       },
     ],
     categories: [
@@ -1866,7 +1867,7 @@ export const mockData = [
         image: {
           id: 95459,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6.jpg',
         },
       },
       {
@@ -1875,7 +1876,7 @@ export const mockData = [
         image: {
           id: 66075,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5.jpg',
         },
       },
     ],
@@ -1898,9 +1899,9 @@ export const mockData = [
     slug: 'et-molestiae-incidunt',
     status: 'draft',
     image: {
-      url: 'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1.jpg',
+      url: 'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1_thumb.jpg',
     },
     price: '985.00',
     isNegotiable: false,
@@ -1937,15 +1938,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8_thumb.jpg',
       },
     ],
     categories: [
@@ -1955,7 +1956,7 @@ export const mockData = [
         image: {
           id: 10054,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10.jpg',
         },
       },
       {
@@ -1964,7 +1965,7 @@ export const mockData = [
         image: {
           id: 47654,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11.jpg',
         },
       },
     ],
@@ -1988,9 +1989,9 @@ export const mockData = [
     status: 'publish',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12_thumb.jpg',
     },
     price: '487.00',
     isNegotiable: true,
@@ -2027,15 +2028,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15_thumb.jpg',
       },
     ],
     categories: [
@@ -2045,7 +2046,7 @@ export const mockData = [
         image: {
           id: 56132,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16.jpg',
         },
       },
       {
@@ -2054,7 +2055,7 @@ export const mockData = [
         image: {
           id: 56802,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17.jpg',
         },
       },
     ],
@@ -2078,9 +2079,9 @@ export const mockData = [
     status: 'draft',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18_thumb.jpg',
     },
     price: '146.00',
     isNegotiable: true,
@@ -2117,15 +2118,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1_thumb.jpg',
       },
     ],
     categories: [
@@ -2135,7 +2136,7 @@ export const mockData = [
         image: {
           id: 62162,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2.jpg',
         },
       },
       {
@@ -2144,7 +2145,7 @@ export const mockData = [
         image: {
           id: 31743,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3.jpg',
         },
       },
     ],
@@ -2167,9 +2168,9 @@ export const mockData = [
     slug: 'libero-ut-rerum',
     status: 'draft',
     image: {
-      url: 'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4.jpg',
+      url: 'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4_thumb.jpg',
     },
     price: '114.00',
     isNegotiable: false,
@@ -2206,15 +2207,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7_thumb.jpg',
       },
     ],
     categories: [
@@ -2224,7 +2225,7 @@ export const mockData = [
         image: {
           id: 88490,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8.jpg',
         },
       },
       {
@@ -2233,7 +2234,7 @@ export const mockData = [
         image: {
           id: 47349,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9.jpg',
         },
       },
     ],
@@ -2257,9 +2258,9 @@ export const mockData = [
     status: 'publish',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10_thumb.jpg',
     },
     price: '180.00',
     isNegotiable: true,
@@ -2296,15 +2297,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13_thumb.jpg',
       },
     ],
     categories: [
@@ -2314,7 +2315,7 @@ export const mockData = [
         image: {
           id: 85643,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14.jpg',
         },
       },
       {
@@ -2323,7 +2324,7 @@ export const mockData = [
         image: {
           id: 4206,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15.jpg',
         },
       },
     ],
@@ -2347,9 +2348,9 @@ export const mockData = [
     status: 'publish',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16_thumb.jpg',
     },
     price: '137.00',
     isNegotiable: true,
@@ -2386,15 +2387,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19_thumb.jpg',
       },
     ],
     categories: [
@@ -2404,7 +2405,7 @@ export const mockData = [
         image: {
           id: 12544,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20.jpg',
         },
       },
       {
@@ -2413,7 +2414,7 @@ export const mockData = [
         image: {
           id: 6554,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1.jpg',
         },
       },
     ],
@@ -2436,9 +2437,9 @@ export const mockData = [
     slug: 'excepturi-molestiae-laborum',
     status: 'draft',
     image: {
-      url: 'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2.jpg',
+      url: 'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2_thumb.jpg',
     },
     price: '122.00',
     isNegotiable: true,
@@ -2475,15 +2476,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14_thumb.jpg',
       },
     ],
     categories: [
@@ -2493,7 +2494,7 @@ export const mockData = [
         image: {
           id: 89630,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13.jpg',
         },
       },
       {
@@ -2502,7 +2503,7 @@ export const mockData = [
         image: {
           id: 355,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12.jpg',
         },
       },
     ],
@@ -2526,9 +2527,9 @@ export const mockData = [
     status: 'publish',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11_thumb.jpg',
     },
     price: '704.00',
     isNegotiable: false,
@@ -2565,15 +2566,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8_thumb.jpg',
       },
     ],
     categories: [
@@ -2583,7 +2584,7 @@ export const mockData = [
         image: {
           id: 54660,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7.jpg',
         },
       },
       {
@@ -2592,7 +2593,7 @@ export const mockData = [
         image: {
           id: 61480,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6.jpg',
         },
       },
     ],
@@ -2615,9 +2616,9 @@ export const mockData = [
     slug: 'omnis-voluptate-commodi',
     status: 'draft',
     image: {
-      url: 'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5.jpg',
+      url: 'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5_thumb.jpg',
     },
     price: '450.00',
     isNegotiable: false,
@@ -2654,15 +2655,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3_thumb.jpg',
       },
     ],
     categories: [
@@ -2672,7 +2673,7 @@ export const mockData = [
         image: {
           id: 52397,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2.jpg',
         },
       },
       {
@@ -2681,7 +2682,7 @@ export const mockData = [
         image: {
           id: 18748,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1.jpg',
         },
       },
     ],
@@ -2705,9 +2706,9 @@ export const mockData = [
     status: 'draft',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20_thumb.jpg',
     },
     price: '228.00',
     isNegotiable: false,
@@ -2744,15 +2745,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17_thumb.jpg',
       },
     ],
     categories: [
@@ -2762,7 +2763,7 @@ export const mockData = [
         image: {
           id: 62062,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16.jpg',
         },
       },
       {
@@ -2771,7 +2772,7 @@ export const mockData = [
         image: {
           id: 24692,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15.jpg',
         },
       },
     ],
@@ -2795,9 +2796,9 @@ export const mockData = [
     status: 'draft',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14_thumb.jpg',
     },
     price: '630.00',
     isNegotiable: false,
@@ -2834,15 +2835,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11_thumb.jpg',
       },
     ],
     categories: [
@@ -2852,7 +2853,7 @@ export const mockData = [
         image: {
           id: 99769,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10.jpg',
         },
       },
       {
@@ -2861,7 +2862,7 @@ export const mockData = [
         image: {
           id: 1359,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9.jpg',
         },
       },
     ],
@@ -2885,9 +2886,9 @@ export const mockData = [
     status: 'draft',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8_thumb.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8_thumb.jpg',
     },
     price: '983.00',
     isNegotiable: false,
@@ -2924,15 +2925,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5_thumb.jpg',
       },
     ],
     categories: [
@@ -2942,7 +2943,7 @@ export const mockData = [
         image: {
           id: 43621,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4.jpg',
         },
       },
       {
@@ -2951,7 +2952,7 @@ export const mockData = [
         image: {
           id: 10075,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3.jpg',
         },
       },
     ],
@@ -2974,9 +2975,9 @@ export const mockData = [
     slug: 'sapiente-non-voluptatem',
     status: 'draft',
     image: {
-      url: 'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2jpg',
+      url: 'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2_thumb.jpg',
     },
     price: '986.00',
     isNegotiable: false,
@@ -3013,15 +3014,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19_thumb.jpg',
       },
     ],
     categories: [
@@ -3031,7 +3032,7 @@ export const mockData = [
         image: {
           id: 99500,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18.jpg',
         },
       },
       {
@@ -3040,7 +3041,7 @@ export const mockData = [
         image: {
           id: 95852,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17.jpg',
         },
       },
     ],
@@ -3064,9 +3065,9 @@ export const mockData = [
     status: 'draft',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16_thumb.jpg',
     },
     price: '50.00',
     isNegotiable: true,
@@ -3103,15 +3104,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13_thumb.jpg',
       },
     ],
     categories: [
@@ -3121,7 +3122,7 @@ export const mockData = [
         image: {
           id: 37904,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12.jpg',
         },
       },
       {
@@ -3130,7 +3131,7 @@ export const mockData = [
         image: {
           id: 45353,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11.jpg',
         },
       },
     ],
@@ -3154,9 +3155,9 @@ export const mockData = [
     status: 'publish',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10_thumb.jpg',
     },
     price: '980.00',
     isNegotiable: false,
@@ -3193,15 +3194,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7_thumb.jpg',
       },
     ],
     categories: [
@@ -3211,7 +3212,7 @@ export const mockData = [
         image: {
           id: 46658,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6.jpg',
         },
       },
       {
@@ -3220,7 +3221,7 @@ export const mockData = [
         image: {
           id: 15898,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5.jpg',
         },
       },
     ],
@@ -3243,9 +3244,9 @@ export const mockData = [
     slug: 'ex-pariatur-nemo',
     status: 'publish',
     image: {
-      url: 'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4.jpg',
+      url: 'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4_thumb.jpg',
     },
     price: '619.00',
     isNegotiable: false,
@@ -3282,15 +3283,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1_thumb.jpg',
       },
     ],
     categories: [
@@ -3300,7 +3301,7 @@ export const mockData = [
         image: {
           id: 44555,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20.jpg',
         },
       },
       {
@@ -3309,7 +3310,7 @@ export const mockData = [
         image: {
           id: 83660,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19.jpg',
         },
       },
     ],
@@ -3333,9 +3334,9 @@ export const mockData = [
     status: 'publish',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18_thumb.jpg',
     },
     price: '906.00',
     isNegotiable: true,
@@ -3372,15 +3373,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15_thumb.jpg',
       },
     ],
     categories: [
@@ -3390,7 +3391,7 @@ export const mockData = [
         image: {
           id: 79593,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14.jpg',
         },
       },
       {
@@ -3399,7 +3400,7 @@ export const mockData = [
         image: {
           id: 94324,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13.jpg',
         },
       },
     ],
@@ -3423,9 +3424,9 @@ export const mockData = [
     status: 'publish',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12_thumb.jpg',
     },
     price: '888.00',
     isNegotiable: false,
@@ -3462,15 +3463,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10_thumb.jpg',
       },
     ],
     categories: [
@@ -3480,7 +3481,7 @@ export const mockData = [
         image: {
           id: 77323,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8.jpg',
         },
       },
       {
@@ -3489,7 +3490,7 @@ export const mockData = [
         image: {
           id: 49731,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7.jpg',
         },
       },
     ],
@@ -3512,9 +3513,9 @@ export const mockData = [
     slug: 'qui-nostrum-nostrum',
     status: 'draft',
     image: {
-      url: 'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6.jpg',
+      url: 'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6_thumb.jpg',
     },
     price: '22.00',
     isNegotiable: false,
@@ -3551,15 +3552,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3_thumb.jpg',
       },
     ],
     categories: [
@@ -3569,7 +3570,7 @@ export const mockData = [
         image: {
           id: 49341,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2.jpg',
         },
       },
       {
@@ -3578,7 +3579,7 @@ export const mockData = [
         image: {
           id: 47582,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1.jpg',
         },
       },
     ],
@@ -3602,9 +3603,9 @@ export const mockData = [
     status: 'draft',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20_thumb.jpg',
     },
     price: '759.00',
     isNegotiable: true,
@@ -3641,15 +3642,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17_thumb.jpg',
       },
     ],
     categories: [
@@ -3659,7 +3660,7 @@ export const mockData = [
         image: {
           id: 30503,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16.jpg',
         },
       },
       {
@@ -3668,7 +3669,7 @@ export const mockData = [
         image: {
           id: 14597,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15.jpg',
         },
       },
     ],
@@ -3692,9 +3693,9 @@ export const mockData = [
     status: 'draft',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14_thumb.jpg',
     },
     price: '786.00',
     isNegotiable: true,
@@ -3731,15 +3732,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11_thumb.jpg',
       },
     ],
     categories: [
@@ -3749,7 +3750,7 @@ export const mockData = [
         image: {
           id: 12120,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10.jpg',
         },
       },
       {
@@ -3758,7 +3759,7 @@ export const mockData = [
         image: {
           id: 29221,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9.jpg',
         },
       },
     ],
@@ -3781,9 +3782,9 @@ export const mockData = [
     slug: 'voluptas-repellendus-tempore',
     status: 'draft',
     image: {
-      url: 'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8.jpg',
+      url: 'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8_thumb.jpg',
     },
     price: '540.00',
     isNegotiable: false,
@@ -3820,15 +3821,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5_thumb.jpg',
       },
     ],
     categories: [
@@ -3838,7 +3839,7 @@ export const mockData = [
         image: {
           id: 58645,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4.jpg',
         },
       },
       {
@@ -3847,7 +3848,7 @@ export const mockData = [
         image: {
           id: 48740,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3.jpg',
         },
       },
     ],
@@ -3870,9 +3871,9 @@ export const mockData = [
     slug: 'quis-odio-eos',
     status: 'draft',
     image: {
-      url: 'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2.jpg',
+      url: 'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2_thumb.jpg',
     },
     price: '124.00',
     isNegotiable: false,
@@ -3909,15 +3910,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19_thumb.jpg',
       },
     ],
     categories: [
@@ -3927,7 +3928,7 @@ export const mockData = [
         image: {
           id: 79256,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18.jpg',
         },
       },
       {
@@ -3936,7 +3937,7 @@ export const mockData = [
         image: {
           id: 91433,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17.jpg',
         },
       },
     ],
@@ -3960,9 +3961,9 @@ export const mockData = [
     status: 'draft',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16_thumb.jpg',
     },
     price: '668.00',
     isNegotiable: true,
@@ -3999,15 +4000,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13_thumb.jpg',
       },
     ],
     categories: [
@@ -4017,7 +4018,7 @@ export const mockData = [
         image: {
           id: 85698,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12.jpg',
         },
       },
       {
@@ -4026,7 +4027,7 @@ export const mockData = [
         image: {
           id: 46169,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11.jpg',
         },
       },
     ],
@@ -4050,9 +4051,9 @@ export const mockData = [
     status: 'draft',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10_thumb.jpg',
     },
     price: '405.00',
     isNegotiable: false,
@@ -4089,15 +4090,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7_thumb.jpg',
       },
     ],
     categories: [
@@ -4107,7 +4108,7 @@ export const mockData = [
         image: {
           id: 71908,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6.jpg',
         },
       },
       {
@@ -4116,7 +4117,7 @@ export const mockData = [
         image: {
           id: 85250,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5.jpg',
         },
       },
     ],
@@ -4139,9 +4140,9 @@ export const mockData = [
     slug: 'quasi-voluptatem-voluptatem',
     status: 'draft',
     image: {
-      url: 'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4.jpg',
+      url: 'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4_thumb.jpg',
     },
     price: '117.00',
     isNegotiable: true,
@@ -4178,15 +4179,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1_thumb.jpg',
       },
     ],
     categories: [
@@ -4196,7 +4197,7 @@ export const mockData = [
         image: {
           id: 94478,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-20.jpg',
         },
       },
       {
@@ -4205,7 +4206,7 @@ export const mockData = [
         image: {
           id: 6959,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-19.jpg',
         },
       },
     ],
@@ -4229,9 +4230,9 @@ export const mockData = [
     status: 'draft',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-18_thumb.jpg',
     },
     price: '253.00',
     isNegotiable: true,
@@ -4268,15 +4269,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-17_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-16_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-15_thumb.jpg',
       },
     ],
     categories: [
@@ -4286,7 +4287,7 @@ export const mockData = [
         image: {
           id: 99921,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-14.jpg',
         },
       },
       {
@@ -4295,7 +4296,7 @@ export const mockData = [
         image: {
           id: 30943,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-13.jpg',
         },
       },
     ],
@@ -4319,9 +4320,9 @@ export const mockData = [
     status: 'publish',
     image: {
       url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-12_thumb.jpg',
     },
     price: '834.00',
     isNegotiable: false,
@@ -4358,15 +4359,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-11_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-10_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-9_thumb.jpg',
       },
     ],
     categories: [
@@ -4376,7 +4377,7 @@ export const mockData = [
         image: {
           id: 28297,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-8.jpg',
         },
       },
       {
@@ -4385,7 +4386,7 @@ export const mockData = [
         image: {
           id: 75368,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-7.jpg',
         },
       },
     ],
@@ -4408,9 +4409,9 @@ export const mockData = [
     slug: 'non-cum-id',
     status: 'draft',
     image: {
-      url: 'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6.jpg',
+      url: 'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6.jpg',
       thumb_url:
-        'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6_thumb.jpg',
+        'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6_thumb.jpg',
     },
     price: '559.00',
     isNegotiable: true,
@@ -4447,15 +4448,15 @@ export const mockData = [
     gallery: [
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4_thumb.jpg',
       },
       {
         url:
-          'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3_thumb.jpg',
+          'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3_thumb.jpg',
       },
     ],
     categories: [
@@ -4465,7 +4466,7 @@ export const mockData = [
         image: {
           id: 54324,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2.jpg',
         },
       },
       {
@@ -4474,7 +4475,7 @@ export const mockData = [
         image: {
           id: 82286,
           url:
-            'http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1.jpg',
+            'https://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1.jpg',
         },
       },
     ],
