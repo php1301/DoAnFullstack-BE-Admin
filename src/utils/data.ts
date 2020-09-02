@@ -4482,7 +4482,6 @@ export const mockData = [
   },
 ];
 import { Prisma as ClientPrisma } from '../../generated/prisma-client';
-import Stripe from 'stripe';
 // const stripeSecretKey = require(process.env.STRIPE_SECRET);
 // export const stripe = new Stripe(stripeSecretKey, {
 //   apiVersion: '2020-03-02',
