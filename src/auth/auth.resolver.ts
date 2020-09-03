@@ -296,7 +296,7 @@ export class AuthResolver {
         },
         process.env.JWT_SECRET,
       );
-      res.clearCookie('reset-password');
+      res.clearCookie('reset-password', { domain: '.hotel-prisma.ml' }); //Khi làm development thì bỏ domain đi
       // res.cookie('token', jwt, { httpOnly: false });
       return updatedUser;
     } catch (e) {
