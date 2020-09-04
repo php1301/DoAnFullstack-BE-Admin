@@ -236,7 +236,7 @@ export class TransactionResolver {
           date.getDate(),
         order_id: transactionPayload.transactionSecretKey,
       };
-      // this.mailService.mockMailjet(dataMail);
+      this.mailService.mockMailjet(dataMail);
       const transactionNotiPayload = {
         TXID: transactionPayload.TXID,
         transactionPrice: transaction.transactionPrice,
@@ -349,7 +349,7 @@ export class TransactionResolver {
           date.getDate(),
         order_id: transactionPayload.transactionSecretKey,
       };
-      // this.mailService.mockMailjet(dataMail);
+      this.mailService.mockMailjet(dataMail);
       const transactionNotiPayload = {
         TXID: transactionPayload.TXID,
         transactionPrice: transaction.transactionPrice,
