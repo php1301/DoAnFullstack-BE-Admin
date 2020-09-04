@@ -22,7 +22,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: phucpham1301/hotelprisma-v1.0
-        tags: github-action
+        tags: github-actions-docker
     - name: Push to GitHub Packages
       uses: docker/build-push-action@v1
       with:
@@ -30,5 +30,5 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: docker.pkg.github.com
         repository: php1301/DoAnFullstack-BE-Admin/Nest-Prisma-Mongo-Redis
-        tag_with_ref: true
+        tags: github-actions-docker
   
