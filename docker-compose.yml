@@ -6,7 +6,7 @@ services:
     container_name: api
     # build:
     #   context: ./
-    image: phucpham1301/hotelprisma-v1.0:latest
+    image: phucpham1301/hotelprisma-v1.0:github-actions-docker    
     restart: on-failure
     volumes:
       - api:/usr/src/app
