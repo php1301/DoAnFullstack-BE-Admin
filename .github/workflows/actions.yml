@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: master
+          fetch-depth: 0
       - name: npm install
         uses: actions/npm@master
         with:
