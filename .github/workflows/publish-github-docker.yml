@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Push Docker Image To DockerHub and Github Package
 
 on:
   push:
@@ -16,11 +16,19 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
   
-    - name: Build and push Docker images
+    - name: Build and push Docker images To DockerHub
       uses: docker/build-push-action@v1
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: phucpham1301/hotelprisma-v1.0
         tags: github-action
+    - name: Push to GitHub Packages
+      uses: docker/build-push-action@v1
+      with:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: docker.pkg.github.com
+        repository: php1301/DoAnFullstack-BE-Admin/Nest-Prisma-Mongo-Redis
+        tag_with_ref: true
   
