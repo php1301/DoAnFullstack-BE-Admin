@@ -11,7 +11,7 @@ export class MailService {
         to: email,
         from: process.env.LOCAL_EMAIL,
         subject: 'Reset password Link ✔',
-        template: __dirname + '/template/reset',
+        template: process.cwd() + '/template/reset',
         context: {
           email,
           code,
