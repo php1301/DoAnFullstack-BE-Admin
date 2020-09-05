@@ -19,7 +19,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
-          repository: php1301/doanfullstack-be-admin/nest-prisma-mongo-redis
+          repository: php1301/doanfullstack-be-admin/nest-prisma-mongo-redis-v1
           tags: github-actions-docker
       - name: Build and push Docker images To DockerHub
         uses: docker/build-push-action@v1
