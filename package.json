@@ -50,7 +50,7 @@
     "graphql-subscriptions": "^1.1.0",
     "graphql-tools": "^6.0.10",
     "ioredis": "^4.17.3",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "node-mailjet": "^3.3.1",
     "nodemailer": "^6.4.10",
     "passport": "^0.4.1",
