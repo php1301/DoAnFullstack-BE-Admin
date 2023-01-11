@@ -42,7 +42,7 @@
     "aws-sdk": "^2.709.0",
     "bcryptjs": "^2.4.3",
     "class-transformer": "^0.2.3",
-    "class-validator": "^0.12.2",
+    "class-validator": "^0.14.0",
     "cookie-parser": "^1.4.5",
     "global": "^4.4.0",
     "graphql": "14.6.0",
